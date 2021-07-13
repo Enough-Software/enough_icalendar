@@ -1,5 +1,5 @@
 name: enough_icalendar
-description: icalendar library in pure Dart. Fully compliant with RFC 5545..
+description: icalendar library in pure Dart. Fully compliant with RFC 5545.
 version: 0.1.0
 homepage: https://github.com/Enough-Software/enough_icalendar
 

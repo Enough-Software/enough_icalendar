@@ -52,7 +52,7 @@ Check out the full API documentation at https://pub.dev/documentation/enough_ica
 
 ## Features and bugs
 
-`enough_icalendar` supports all icalendar components and provides easy to access mmodels:
+`enough_icalendar` supports all icalendar components and provides easy to access models:
 * `VCALENDAR` 
 * `VEVENT` 
 * `VTIMEZONE` with the `STANDARD` and `DAYLIGHT` subcomponents
