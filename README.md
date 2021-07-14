@@ -22,8 +22,8 @@ SUMMARY:Bastille Day Party
 GEO:48.85299;2.36885
 END:VEVENT
 END:VCALENDAR''';
-  final icalendar = Component.parse(text) as VCalendar;
-  print(icalendar.productId);
+  final icalendar = VComponent.parse(text) as VCalendar;
+  print(icalendar.productId); // -//hacksw/handcal//NONSGML v1.0//EN
   final event = icalendar.children.first as VEvent;
   print(event.summary); // Bastille Day Party
   print(event.start); // 1997-06-14 at 17:00
@@ -40,7 +40,7 @@ Add this dependency your pubspec.yaml file:
 
 ```
 dependencies:
-  enough_icalendar: ^0.1.0
+  enough_icalendar: ^0.2.0
 ```
 The latest version or `enough_icalendar` is [![enough_icalendar version](https://img.shields.io/pub/v/enough_icalendar.svg)](https://pub.dartlang.org/packages/enough_icalendar).
 
