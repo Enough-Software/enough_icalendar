@@ -14,7 +14,7 @@ SUMMARY:Bastille Day Party
 GEO:48.85299;2.36885
 END:VEVENT
 END:VCALENDAR''';
-  final icalendar = Component.parse(text) as VCalendar;
+  final icalendar = VComponent.parse(text) as VCalendar;
   print(icalendar.productId);
   final event = icalendar.children.first as VEvent;
   print(event.summary); // Bastille Day Party

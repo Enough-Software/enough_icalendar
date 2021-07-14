@@ -672,6 +672,10 @@ class TriggerProperty extends Property {
 
   IsoDuration? get duration => value is IsoDuration ? value : null;
   DateTime? get dateTime => value is DateTime ? value : null;
+  AlarmTriggerRelationship get triggerRelation =>
+      getParameterValue<AlarmTriggerRelationship>(
+          ParameterType.alarmTriggerRelationship) ??
+      AlarmTriggerRelationship.start;
 
   TriggerProperty(String definition) : super(definition, ValueType.duration);
 }

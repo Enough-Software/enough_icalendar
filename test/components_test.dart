@@ -19,7 +19,7 @@ SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCALENDAR'''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
       expect(output.length, input.length);
       for (var i = 0; i < output.length; i++) {
@@ -33,7 +33,7 @@ END:VCALENDAR'''
  ng description 
        that exists on a long line.'''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
       expect(output.length, 1);
       expect(output[0],
@@ -55,7 +55,7 @@ END:VEVENT
 END:VCA
  LENDAR'''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
       expect(output.length, input.length - 1);
       for (var i = 0; i < output.length - 1; i++) {
@@ -79,7 +79,7 @@ SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCALENDAR'''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
       expect(output.length, input.length - 1);
       for (var i = 1; i < output.length; i++) {
@@ -109,7 +109,7 @@ END:VEVE
  NT
 END:VCALENDAR'''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       final expected =
           '''BEGIN:VCALENDAR
 VERSION:2.0
@@ -151,7 +151,7 @@ END:VEVENT
 END:VCALENDAR
 '''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       final expected =
           '''BEGIN:VCALENDAR
 PRODID:-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN
@@ -203,7 +203,7 @@ END:VEVENT
 END:VCALENDAR
 '''
               .split('\n');
-      final output = Component.unfold(input);
+      final output = VComponent.unfold(input);
       final expected =
           '''BEGIN:VCALENDAR
 METHOD:xyz
@@ -249,7 +249,7 @@ DTEND:19970715T040000Z
 SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCALENDAR''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
@@ -275,7 +275,7 @@ SUMMARY:Annual Employee Review
 CLASS:PRIVATE
 CATEGORIES:BUSINESS,HUMAN RESOURCES
 END:VEVENT''';
-      final event = Component.parse(text);
+      final event = VComponent.parse(text);
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary, 'Annual Employee Review');
       expect(event.uid, '19970901T130000Z-123401@example.com');
@@ -299,7 +299,7 @@ CATEGORIES:BUSINESS,HUMAN RESOURCES
 TRANSP:TRANSPARENT
 END:VEVENT
 ''';
-      final event = Component.parse(text);
+      final event = VComponent.parse(text);
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary,
           'Laurel is in sensitivity awareness class.');
@@ -325,7 +325,7 @@ CATEGORIES:ANNIVERSARY,PERSONAL,SPECIAL OCCASION\r
 RRULE:FREQ=YEARLY\r
 END:VEVENT\r
 ''';
-      final event = Component.parse(text);
+      final event = VComponent.parse(text);
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary, 'Our Blissful Anniversary');
       expect(event.uid, '19970901T130000Z-123403@example.com');
@@ -349,7 +349,7 @@ SUMMARY:Festival International de Jazz de Montreal
 TRANSP:TRANSPARENT
 END:VEVENT
 ''';
-      final event = Component.parse(text);
+      final event = VComponent.parse(text);
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary,
           'Festival International de Jazz de Montreal');
@@ -381,7 +381,7 @@ DESCRIPTION:Networld+Interop Conference \r
 END:VEVENT\r
 END:VCALENDAR\r
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN');
@@ -425,7 +425,7 @@ DESCRIPTION:Networld+Interop Conference
 END:VEVENT
 END:VCALENDAR
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN');
@@ -484,7 +484,7 @@ LOCATION:1CP Conference Room 4350
 END:VEVENT
 END:VCALENDAR
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//RDU Software//NONSGML HandCal//EN');
@@ -519,7 +519,7 @@ END:VCALENDAR
       var phase = timezone.children.first;
       expect(phase, isInstanceOf<VTimezonePhase>());
       expect(phase.name, 'STANDARD');
-      expect(phase.componentType, ComponentType.timezonePhaseStandard);
+      expect(phase.componentType, VComponentType.timezonePhaseStandard);
       expect((phase as VTimezonePhase).timezoneName, 'EST');
       expect(phase.start, DateTime(1998, 10, 25, 02, 00, 00));
       expect(phase.from, UtcOffset.value(offsetHour: -4, offsetMinute: 0));
@@ -527,7 +527,7 @@ END:VCALENDAR
       phase = timezone.children[1];
       expect(phase, isInstanceOf<VTimezonePhase>());
       expect(phase.name, 'DAYLIGHT');
-      expect(phase.componentType, ComponentType.timezonePhaseDaylight);
+      expect(phase.componentType, VComponentType.timezonePhaseDaylight);
       expect((phase as VTimezonePhase).timezoneName, 'EDT');
       expect(phase.start, DateTime(1999, 04, 04, 02, 00, 00));
       expect(phase.from, UtcOffset.value(offsetHour: -5, offsetMinute: 0));
@@ -559,7 +559,7 @@ ATTACH;FMTTYPE=application/postscript:ftp://example.com/pub/
 END:VEVENT
 END:VCALENDAR
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//ABC Corporation//NONSGML My Product//EN');
@@ -617,7 +617,7 @@ END:VALARM
 END:VTODO
 END:VCALENDAR
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//ABC Corporation//NONSGML My Product//EN');
@@ -642,7 +642,7 @@ END:VCALENDAR
       expect(todo.children.length, 1);
       final alarm = todo.children.first;
       expect(alarm, isInstanceOf<VAlarm>());
-      expect((alarm as VAlarm).componentType, ComponentType.alarm);
+      expect((alarm as VAlarm).componentType, VComponentType.alarm);
       expect(alarm.action, AlarmAction.audio);
       expect(alarm.triggerDate, DateTime(1998, 04, 03, 12, 00, 00));
       expect(alarm.repeat, 4);
@@ -672,7 +672,7 @@ URL:http://www.example.com/calendar/busytime/jsmith.ifb
 END:VFREEBUSY
 END:VCALENDAR
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//RDU Software//NONSGML HandCal//EN');
@@ -737,7 +737,7 @@ DESCRIPTION:Project xyz Review Meeting Minutes\n\r
 END:VJOURNAL\r
 END:VCALENDAR\r
 ''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//ABC Corporation//NONSGML My Product//EN');
@@ -784,7 +784,7 @@ DESCRIPTION:
 ORGANIZER;CN="Covidzentrum Bremen":MAILTO:sofortsupport@ticket.io
 END:VEVENT
 END:VCALENDAR''';
-      final calendar = Component.parse(text);
+      final calendar = VComponent.parse(text);
       expect(calendar, isInstanceOf<VCalendar>());
       expect((calendar as VCalendar).version, '2.0');
       expect(calendar.isVersion2, isTrue);

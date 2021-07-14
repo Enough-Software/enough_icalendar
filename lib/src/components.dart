@@ -4,7 +4,7 @@ import 'properties.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 
 /// The type of the component, convenient for switch cases
-enum ComponentType {
+enum VComponentType {
   calendar,
   event,
   todo,
@@ -20,9 +20,9 @@ enum ComponentType {
 }
 
 /// Commmon properties
-class Component {
+class VComponent {
   /// The type of the component, convenient for switch cases
-  final ComponentType componentType;
+  final VComponentType componentType;
 
   /// The name of the component like `VEVENT` or `VCALENDAR`
   final String name;
@@ -31,37 +31,38 @@ class Component {
   final List<Property> properties = <Property>[];
 
   /// The parent component, if any
-  final Component? parent;
+  final VComponent? parent;
 
   /// The children of this component, empty when there a no children
-  final List<Component> children = <Component>[];
+  final List<VComponent> children = <VComponent>[];
 
-  Component(this.name, [this.parent]) : componentType = _getComponentType(name);
+  VComponent(this.name, [this.parent])
+      : componentType = _getComponentType(name);
 
-  static ComponentType _getComponentType(String name) {
+  static VComponentType _getComponentType(String name) {
     switch (name) {
       case VCalendar.componentName:
-        return ComponentType.calendar;
+        return VComponentType.calendar;
       case VEvent.componentName:
-        return ComponentType.event;
+        return VComponentType.event;
       case VTimezone.componentName:
-        return ComponentType.timezone;
+        return VComponentType.timezone;
       case VTimezonePhase.componentNameStandard:
-        return ComponentType.timezonePhaseStandard;
+        return VComponentType.timezonePhaseStandard;
       case VTimezonePhase.componentNameDaylight:
-        return ComponentType.timezonePhaseDaylight;
+        return VComponentType.timezonePhaseDaylight;
       case VTodo.componentName:
-        return ComponentType.todo;
+        return VComponentType.todo;
       case VJournal.componentName:
-        return ComponentType.journal;
+        return VComponentType.journal;
       case VAlarm.componentName:
-        return ComponentType.alarm;
+        return VComponentType.alarm;
       case VFreeBusy.componentName:
-        return ComponentType.freeBusy;
+        return VComponentType.freeBusy;
     }
     print(
         'Warning: Component not registered: $name (in Component._getComponentType)');
-    return ComponentType.other;
+    return VComponentType.other;
   }
 
   /// Gets the version of this calendar, typically `2.0`
@@ -115,7 +116,7 @@ class Component {
   /// The [text] can either contain `\r\n` (`CRLF`) or `\n` linebreaks, when both linebreak types are present in the [text], `CRLF` linebreaks are assumed.
   /// Folded lines are unfolded automatically.
   /// When you have a custom line delimiter, use [parseLines] instead.
-  static Component parse(String text,
+  static VComponent parse(String text,
       {Property? Function(String name, String definition)? customParser}) {
     final containsStandardCompliantLineBreaks = text.contains('\r\n');
     final foldedLines = containsStandardCompliantLineBreaks
@@ -134,9 +135,9 @@ class Component {
   /// Parses the component from the specified text [lines].
   ///
   /// Compare [parse] for details.
-  static Component parseLines(List<String> lines) {
-    Component root = _createComponent(lines.first);
-    Component current = root;
+  static VComponent parseLines(List<String> lines) {
+    VComponent root = _createComponent(lines.first);
+    VComponent current = root;
     for (var i = 1; i < lines.length; i++) {
       final line = lines[i];
       if (line.startsWith('BEGIN:')) {
@@ -162,7 +163,7 @@ class Component {
   }
 
   /// Creates the component based on the first line
-  static Component _createComponent(String line, {Component? parent}) {
+  static VComponent _createComponent(String line, {VComponent? parent}) {
     switch (line) {
       case 'BEGIN:VCALENDAR':
         return VCalendar(parent: parent);
@@ -254,9 +255,9 @@ extension WhiteSpaceDetector on String {
 /// Contains a `VCALENDAR` component
 ///
 /// Often the parent component for others such as [VEvent]
-class VCalendar extends Component {
+class VCalendar extends VComponent {
   static const String componentName = 'VCALENDAR';
-  VCalendar({Component? parent}) : super(componentName, parent);
+  VCalendar({VComponent? parent}) : super(componentName, parent);
 
   /// Retrieves the scale of the calendar, typically `GREGORIAN`
   ///
@@ -284,8 +285,8 @@ class VCalendar extends Component {
           ?.textValue;
 }
 
-class _UidMandatoryComponent extends Component {
-  _UidMandatoryComponent(String name, [Component? parent])
+class _UidMandatoryComponent extends VComponent {
+  _UidMandatoryComponent(String name, [VComponent? parent])
       : super(name, parent);
 
   /// Retrieves the UID identifying this calendar component
@@ -309,7 +310,7 @@ class _UidMandatoryComponent extends Component {
 }
 
 class _EventTodoJournalComponent extends _UidMandatoryComponent {
-  _EventTodoJournalComponent(String name, Component? parent)
+  _EventTodoJournalComponent(String name, VComponent? parent)
       : super(name, parent);
 
   /// This property defines the access classification for a calendar component
@@ -413,7 +414,7 @@ class _EventTodoJournalComponent extends _UidMandatoryComponent {
 /// Contains information about an event.
 class VEvent extends _EventTodoJournalComponent {
   static const String componentName = 'VEVENT';
-  VEvent({Component? parent}) : super(componentName, parent);
+  VEvent({VComponent? parent}) : super(componentName, parent);
 
   /// Tries to the timezone ID like `America/New_York` or `Europe/Berlin` from `DTSTART` property.
   String? get timezoneId {
@@ -485,7 +486,7 @@ class VEvent extends _EventTodoJournalComponent {
 
 class VTodo extends _EventTodoJournalComponent {
   static const String componentName = 'VTODO';
-  VTodo({Component? parent}) : super(componentName, parent);
+  VTodo({VComponent? parent}) : super(componentName, parent);
 
   /// Gets the revision sequence number of this component
   int? get sequence =>
@@ -562,7 +563,7 @@ class VTodo extends _EventTodoJournalComponent {
 
 class VJournal extends _EventTodoJournalComponent {
   static const String componentName = 'VJOURNAL';
-  VJournal({Component? parent}) : super(componentName, parent);
+  VJournal({VComponent? parent}) : super(componentName, parent);
 
   /// Gets the revision sequence number of this component
   int? get sequence =>
@@ -575,9 +576,9 @@ class VJournal extends _EventTodoJournalComponent {
       JournalStatus.unknown;
 }
 
-class VTimezone extends Component {
+class VTimezone extends VComponent {
   static const String componentName = 'VTIMEZONE';
-  VTimezone({Component? parent}) : super(componentName, parent);
+  VTimezone({VComponent? parent}) : super(componentName, parent);
 
   /// Retrieves the ID such as `America/New_York` or `Europe/Berlin`
   String get timezoneId =>
@@ -601,9 +602,9 @@ class VTimezone extends Component {
     }
     var numberOfStandardChildren = 0, numberOfDaylightChildren = 0;
     for (final phase in children) {
-      if (phase.componentType == ComponentType.timezonePhaseStandard) {
+      if (phase.componentType == VComponentType.timezonePhaseStandard) {
         numberOfStandardChildren++;
-      } else if (phase.componentType == ComponentType.timezonePhaseDaylight) {
+      } else if (phase.componentType == VComponentType.timezonePhaseDaylight) {
         numberOfDaylightChildren++;
       }
     }
@@ -614,7 +615,8 @@ class VTimezone extends Component {
   }
 }
 
-class VTimezonePhase extends Component {
+/// Contains the standard or daylight timezone subcomponent
+class VTimezonePhase extends VComponent {
   static const String componentNameStandard = 'STANDARD';
   static const String componentNameDaylight = 'DAYLIGHT';
 
@@ -673,24 +675,49 @@ class VTimezonePhase extends Component {
   }
 }
 
-class VAlarm extends Component {
+/// Contains an alarm definition with a trigger ([triggerDate] or [triggerRelativeDuration]) and an [action].
+class VAlarm extends VComponent {
   static const String componentName = 'VALARM';
-  VAlarm({Component? parent}) : super(componentName, parent);
+  VAlarm({VComponent? parent}) : super(componentName, parent);
 
+  /// Retrieves the date of the trigger.
+  ///
+  /// Compare [triggerRelativeDuration] for the alternative relative duration
   DateTime? get triggerDate =>
       getProperty<TriggerProperty>(TriggerProperty.propertyName)?.dateTime;
+
+  /// Retrieves the relative duration of the trigger, e.g. -15 minutes (`-PT15M`) as a reminder before an event starts.
+  ///
+  /// Compare [triggerDate] for a fixed date.
+  /// Compare [triggerRelation] to see if the [triggerRelativeDuration] is calculated in relation to the [VEvent.start] or [VEvent.end] time.
   IsoDuration? get triggerRelativeDuration =>
       getProperty<TriggerProperty>(TriggerProperty.propertyName)?.duration;
 
+  /// Resolves if the [triggerRelativeDuration] is calculated in relation to the [VEvent.start] or [VEvent.end] time.
+  ///
+  /// Defaults to [VEvent.start] / [AlarmTriggerRelationship.start].
+  /// Compare [triggerRelativeDuration]
+  AlarmTriggerRelationship get triggerRelation =>
+      getProperty<TriggerProperty>(TriggerProperty.propertyName)
+          ?.triggerRelation ??
+      AlarmTriggerRelationship.start;
+
+  /// How often the alarm can be repeated, defaults to `0`, ie no additional repeats after the first alaram.
   int get repeat =>
       getProperty<IntegerProperty>(IntegerProperty.propertyNameRepeat)
           ?.intValue ??
       0;
 
+  /// Retrieves the action in case it is one described by the icalendar standard or  [AlarmAction.other] in other cases.
+  ///
+  /// Compare [actionText] in case of a non-standard alarm action.
   AlarmAction get action =>
       getProperty<ActionProperty>(ActionProperty.propertyName)?.action ??
       AlarmAction.other;
 
+  /// Retrieve the alarm action as a text.
+  ///
+  /// Compare [action] for easier retrieval in case of a standardized action.
   String? get actionText =>
       getProperty<ActionProperty>(ActionProperty.propertyName)?.textValue;
 
@@ -699,6 +726,8 @@ class VAlarm extends Component {
       getProperty<DurationProperty>(DurationProperty.propertyName)?.duration;
 
   /// Retrieves the attachments
+  ///
+  /// In case the [action] is an [AlarmAction.audio], one attachment describing the audio is expected.
   List<AttachmentProperty> get attachments =>
       getProperties<AttachmentProperty>(AttachmentProperty.propertyName)
           .toList();
@@ -726,7 +755,7 @@ class VAlarm extends Component {
 /// Provides information about free and busy times of a particular user
 class VFreeBusy extends _UidMandatoryComponent {
   static const String componentName = 'VFREEBUSY';
-  VFreeBusy({Component? parent}) : super(componentName, parent);
+  VFreeBusy({VComponent? parent}) : super(componentName, parent);
 
   /// Retrieves the list of free busy entries
   List<FreeBusyProperty> get freeBusyProperties =>
