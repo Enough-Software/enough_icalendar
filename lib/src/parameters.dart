@@ -175,7 +175,7 @@ class BooleanParameter extends Parameter<bool> {
       : super(type, name, textValue, ValueType.text, parse(textValue));
 
   static bool parse(String textValue) {
-    return textValue == 'TRUE';
+    return (textValue == 'TRUE' || textValue == 'YES');
   }
 }
 
