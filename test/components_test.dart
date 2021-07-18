@@ -1,6 +1,4 @@
-import 'package:enough_icalendar/src/components.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:enough_icalendar/enough_icalendar.dart';
 
 void main() {
@@ -537,7 +535,7 @@ END:VCALENDAR
     test('with attachments and sequence', () {
       final text =
           '''BEGIN:VCALENDAR
-METHOD:xyz
+METHOD:PUBLISH
 VERSION:2.0
 PRODID:-//ABC Corporation//NONSGML My Product//EN
 BEGIN:VEVENT
@@ -565,7 +563,7 @@ END:VCALENDAR
           '-//ABC Corporation//NONSGML My Product//EN');
       expect(calendar.version, '2.0');
       expect(calendar.isVersion2, isTrue);
-      expect(calendar.method, 'xyz');
+      expect(calendar.method, Method.publish);
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final event = calendar.children.first;
@@ -698,7 +696,8 @@ END:VCALENDAR
           DateTime(1998, 03, 14, 23, 30, 00));
       expect(freebusy.freeBusyProperties[0].periods[0].endDate,
           DateTime(1998, 03, 15, 00, 30, 00));
-      expect(freebusy.freeBusyProperties[0].freeBusyType, FreeBusyStatus.busy);
+      expect(
+          freebusy.freeBusyProperties[0].freeBusyType, FreeBusyTimeType.busy);
       expect(freebusy.freeBusyProperties[1].periods.length, 1);
       expect(freebusy.freeBusyProperties[1].periods[0].startDate,
           DateTime(1998, 03, 16, 15, 30, 00));
@@ -809,6 +808,50 @@ END:VCALENDAR''';
       expect(event.organizer!.uri, Uri.parse('MAILTO:sofortsupport@ticket.io'));
       expect(event.organizer!.email, 'sofortsupport@ticket.io');
       expect(event.organizer!.commonName, 'Covidzentrum Bremen');
+    });
+  });
+
+  group('Create Calendar Invites', () {
+    test('Simple event', () {
+      final invite = VCalendar.createEvent(
+        organizerEmail: 'a@example.com',
+        attendeeEmails: ['a@example.com', 'b@example.com', 'c@example.com'],
+        rsvp: true,
+        start: DateTime(2021, 07, 21, 10, 00),
+        end: DateTime(2021, 07, 21, 11, 00),
+        location: 'Big meeting room',
+        url: Uri.parse('https://enough.de'),
+        summary: 'Discussion',
+        description:
+            'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?',
+        productId: 'enough_icalendar/v1',
+      );
+      // print(invite);
+      invite.checkValidity();
+      expect(invite.isVersion2, isTrue);
+      expect(invite.isGregorian, isTrue);
+      expect(invite.productId, 'enough_icalendar/v1');
+      expect(invite.children, isNotEmpty);
+      final event = invite.children.first;
+      event.checkValidity();
+      expect(event, isInstanceOf<VEvent>());
+      expect((event as VEvent).start, DateTime(2021, 07, 21, 10, 00));
+      expect(event.end, DateTime(2021, 07, 21, 11, 00));
+      expect(event.location, 'Big meeting room');
+      expect(event.url, Uri.parse('https://enough.de'));
+      expect(event.summary, 'Discussion');
+      expect(event.description,
+          'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?');
+      expect(event.attendees, isNotEmpty);
+      expect(event.attendees.length, 3);
+      expect(event.attendees[0].rsvp, isTrue);
+      expect(event.attendees[0].email, 'a@example.com');
+      expect(event.attendees[1].rsvp, isTrue);
+      expect(event.attendees[1].email, 'b@example.com');
+      expect(event.attendees[2].rsvp, isTrue);
+      expect(event.attendees[2].email, 'c@example.com');
+      expect(event.organizer, isNotNull);
+      expect(event.organizer?.email, 'a@example.com');
     });
   });
 }

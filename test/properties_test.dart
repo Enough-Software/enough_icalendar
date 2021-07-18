@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:enough_icalendar/enough_icalendar.dart';
 
 void main() {
@@ -147,7 +146,7 @@ void main() {
     expect(prop.name, 'FREEBUSY');
     expect(prop.textValue, '19970308T160000Z/PT8H30M');
     expect((prop as FreeBusyProperty).freeBusyType,
-        FreeBusyStatus.busyUnavailable);
+        FreeBusyTimeType.busyUnavailable);
     expect(prop.periods, isNotNull);
     expect(prop.periods, isNotEmpty);
     expect(prop.periods.length, 1);
@@ -160,7 +159,7 @@ void main() {
         'FREEBUSY;FBTYPE=FREE:19970308T160000Z/PT3H,19970308T200000Z/PT1H');
     expect(prop.name, 'FREEBUSY');
     expect(prop.textValue, '19970308T160000Z/PT3H,19970308T200000Z/PT1H');
-    expect((prop as FreeBusyProperty).freeBusyType, FreeBusyStatus.free);
+    expect((prop as FreeBusyProperty).freeBusyType, FreeBusyTimeType.free);
     expect(prop.periods, isNotEmpty);
     expect(prop.periods.length, 2);
     expect(prop.periods[0].startDate, DateTime(1997, 03, 08, 16, 00, 00));
@@ -177,7 +176,7 @@ void main() {
     expect(prop.name, 'FREEBUSY');
     expect(prop.textValue,
         '19970308T160000Z/PT3H,19970308T200000Z/PT1H,19970308T230000Z/19970309T000000Z');
-    expect((prop as FreeBusyProperty).freeBusyType, FreeBusyStatus.free);
+    expect((prop as FreeBusyProperty).freeBusyType, FreeBusyTimeType.free);
     expect(prop.periods, isNotEmpty);
     expect(prop.periods.length, 3);
     expect(prop.periods[0].startDate, DateTime(1997, 03, 08, 16, 00, 00));

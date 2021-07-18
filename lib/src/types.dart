@@ -77,6 +77,59 @@ extension ExtensionValueType on ValueType {
   }
 }
 
+enum EventStatus { tentative, confirmed, cancelled, unknown }
+
+extension ExtensionEventStatus on EventStatus {
+  String get name {
+    switch (this) {
+      case EventStatus.tentative:
+        return 'TENTATIVE';
+      case EventStatus.confirmed:
+        return 'CONFIRMED';
+      case EventStatus.cancelled:
+        return 'CANCELLED';
+      case EventStatus.unknown:
+        return 'UNKNOWN';
+    }
+  }
+}
+
+enum TodoStatus { needsAction, completed, inProcess, cancelled, unknown }
+
+extension ExtensionTodoStatus on TodoStatus {
+  String get name {
+    switch (this) {
+      case TodoStatus.needsAction:
+        return 'NEEDS-ACTION';
+      case TodoStatus.completed:
+        return 'COMPLETED';
+      case TodoStatus.inProcess:
+        return 'IN-PROCESS';
+      case TodoStatus.cancelled:
+        return 'CANCELLED';
+      case TodoStatus.unknown:
+        return 'UNKNOWN';
+    }
+  }
+}
+
+enum JournalStatus { draft, finalized, cancelled, unknown }
+
+extension ExtensionJournalStatus on JournalStatus {
+  String get name {
+    switch (this) {
+      case JournalStatus.draft:
+        return 'DRAFT';
+      case JournalStatus.finalized:
+        return 'FINAL';
+      case JournalStatus.cancelled:
+        return 'CANCELLED';
+      case JournalStatus.unknown:
+        return 'UNKNOWN';
+    }
+  }
+}
+
 enum Classification { public, private, confidential, other }
 
 extension ExtensionClassificationValue on Classification {
@@ -168,6 +221,8 @@ class Recurrence {
   /// The "DTSTART" property value always counts as the first occurrence.
   final int? count;
 
+  final int? _interval;
+
   /// The `INTERVAL` rule part contains a positive integer representing at which intervals the recurrence rule repeats.
   ///
   /// The default value is
@@ -176,7 +231,7 @@ class Recurrence {
   /// DAILY rule, every week for a WEEKLY rule, every month for a
   /// MONTHLY rule, and every year for a YEARLY rule.  For example,
   /// within a DAILY rule, a value of "8" means every eight days.
-  final int interval;
+  int get interval => _interval ?? 1;
 
   /// Seconds modifier / limiter for this Recurrence.
   ///
@@ -269,20 +324,23 @@ class Recurrence {
   /// `FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`
   final List<int>? bySetPos;
 
-  /// The `WKST` rule part specifies the day on which the workweek starts.
+  final int? _startOfWorkWeek;
+
+  /// The `WKST` rule part specifies the day on which the workweek starts, defaults to [DateTime.monday].
   ///
   /// Valid values are MO, TU, WE, TH, FR, SA, and SU.  This is
   /// significant when a WEEKLY "RRULE" has an interval greater than 1,
   /// and a BYDAY rule part is specified.  This is also significant when
   /// in a YEARLY "RRULE" when a BYWEEKNO rule part is specified.  The
   /// default value is MO.
-  final int startOfWorkWeek;
+  int get startOfWorkWeek => _startOfWorkWeek ?? DateTime.monday;
 
-  Recurrence(
+  /// Creates a new Recurrence rule with the specified [frequency] and other optional settings.
+  const Recurrence(
     this.frequency, {
     this.until,
     this.count,
-    this.interval = 1,
+    int? interval,
     this.bySecond,
     this.byMinute,
     this.byHour,
@@ -291,9 +349,92 @@ class Recurrence {
     this.byWeek,
     this.byMonth,
     this.byMonthDay,
-    this.startOfWorkWeek = DateTime.monday,
+    int? startOfWorkWeek,
     this.bySetPos,
-  });
+  })  : _interval = interval,
+        _startOfWorkWeek = startOfWorkWeek;
+
+  @override
+  int get hashCode =>
+      frequency.index +
+      (until?.millisecondsSinceEpoch ?? 0) +
+      (count ?? 0) +
+      (_interval ?? 0) +
+      (bySecond?.length ?? 0) +
+      (byMinute?.length ?? 0) +
+      (byHour?.length ?? 0) +
+      (byWeekDay?.length ?? 0) +
+      (byMonthDay?.length ?? 0) +
+      (byYearDay?.length ?? 0) +
+      (byWeek?.length ?? 0) +
+      (byMonth?.length ?? 0) +
+      (_startOfWorkWeek ?? 0) +
+      (bySetPos?.length ?? 0);
+
+  @override
+  operator ==(Object other) =>
+      other is Recurrence &&
+      other.frequency == frequency &&
+      other.until == until &&
+      other.count == count &&
+      other._interval == _interval &&
+      other.bySecond == bySecond &&
+      other.byMinute == byMinute &&
+      other.byHour == byHour &&
+      other.byWeekDay == byWeekDay &&
+      other.byMonthDay == byMonthDay &&
+      other.byYearDay == byYearDay &&
+      other.byWeek == byWeek &&
+      other.byMonth == byMonth &&
+      other._startOfWorkWeek == _startOfWorkWeek &&
+      other.bySetPos == bySetPos;
+
+  @override
+  String toString() {
+    final buffer = StringBuffer();
+    buffer..write('FREQ=')..write(frequency.name);
+    if (until != null) {
+      buffer..write(';UNTIL=');
+      DateHelper.renderDate(until!, buffer);
+    }
+    if (count != null) {
+      buffer..write(';COUNT=')..write(count);
+    }
+    if (_interval != null) {
+      buffer..write(';INTERVAL=')..write(interval);
+    }
+    if (bySecond != null) {
+      buffer..write(';BYSECOND=')..write(bySecond!.join(','));
+    }
+    if (byMinute != null) {
+      buffer..write(';BYMINUTE=')..write(byMinute!.join(','));
+    }
+    if (byHour != null) {
+      buffer..write(';BYHOUR=')..write(byHour!.join(','));
+    }
+    if (byWeekDay != null) {
+      buffer..write(';BYDAY=')..write(byWeekDay!.join(','));
+    }
+    if (byMonthDay != null) {
+      buffer..write(';BYMONTHDAY=')..write(byMonthDay!.join(','));
+    }
+    if (byYearDay != null) {
+      buffer..write(';BYYEARDAY=')..write(byYearDay!.join(','));
+    }
+    if (byWeek != null) {
+      buffer..write(';BYWEEK=')..write(byWeek!.join(','));
+    }
+    if (byMonth != null) {
+      buffer..write(';BYMONTH=')..write(byMonth!.join(','));
+    }
+    if (_startOfWorkWeek != null) {
+      buffer..write(';WKST')..write(_startOfWorkWeek);
+    }
+    if (bySetPos != null) {
+      buffer..write(';BYSETPOS=')..write(bySetPos!.join(','));
+    }
+    return buffer.toString();
+  }
 
   static String? _lastContent;
   static Map<String, String>? _lastResult;
@@ -346,9 +487,9 @@ class Recurrence {
       return null;
     }
     if (until.contains('T')) {
-      return DateParser.parseDateTime(until);
+      return DateHelper.parseDateTime(until);
     }
-    return DateParser.parseDate(until);
+    return DateHelper.parseDate(until);
   }
 
   static int? _parseIntValue(String content, String fieldName) {
@@ -579,6 +720,38 @@ class TimeOfDayWithSeconds {
   TimeOfDayWithSeconds(
       {required this.hour, required this.minute, required this.second});
 
+  @override
+  int get hashCode => hour + minute * 60 + second * 60 * 60;
+
+  @override
+  operator ==(Object other) =>
+      other is TimeOfDayWithSeconds &&
+      other.hour == hour &&
+      other.minute == minute &&
+      other.second == second;
+
+  void render(StringBuffer buffer) {
+    if (hour < 10) {
+      buffer.write('0');
+    }
+    buffer.write(hour);
+    if (minute < 10) {
+      buffer.write('0');
+    }
+    buffer.write(minute);
+    if (second < 10) {
+      buffer.write('0');
+    }
+    buffer.write(second);
+  }
+
+  @override
+  String toString() {
+    final buffer = StringBuffer();
+    render(buffer);
+    return buffer.toString();
+  }
+
   static TimeOfDayWithSeconds parse(String content) {
     final hour = int.tryParse(content.substring(0, 2));
     final minute = int.tryParse(content.substring(2, 4));
@@ -587,6 +760,21 @@ class TimeOfDayWithSeconds {
       throw FormatException('Invalid time definition: $content');
     }
     return TimeOfDayWithSeconds(hour: hour, minute: minute, second: second);
+  }
+
+  static void renderTime(DateTime value, StringBuffer buffer) {
+    if (value.hour < 10) {
+      buffer.write('0');
+    }
+    buffer.write(value.hour);
+    if (value.minute < 10) {
+      buffer.write('0');
+    }
+    buffer.write(value.minute);
+    if (value.second < 10) {
+      buffer.write('0');
+    }
+    buffer.write(value.second);
   }
 }
 
@@ -655,8 +843,8 @@ class UtcOffset {
   }
 }
 
-class DateParser {
-  DateParser._();
+class DateHelper {
+  DateHelper._();
 
   static DateTime parseDate(String content) {
     if (content.length != 4 + 2 + 2) {
@@ -676,10 +864,37 @@ class DateParser {
     if (content.length < 4 + 2 + 2 + 1 + 6 || tIndex != 4 + 2 + 2) {
       throw FormatException('Invalid datetime definition: $content');
     }
-    final date = DateParser.parseDate(content.substring(0, 4 + 2 + 2));
+    final date = DateHelper.parseDate(content.substring(0, 4 + 2 + 2));
     final time = TimeOfDayWithSeconds.parse(content.substring(tIndex + 1));
     return DateTime(
         date.year, date.month, date.day, time.hour, time.minute, time.second);
+  }
+
+  static void renderDate(DateTime value, StringBuffer buffer) {
+    if (value.year < 10) {
+      buffer.write('000');
+    } else if (value.year < 100) {
+      buffer.write('00');
+    } else if (value.year < 1000) {
+      buffer.write('0');
+    }
+    buffer.write(value.year);
+    if (value.month < 10) {
+      buffer.write('0');
+    }
+    buffer.write(value.month);
+    if (value.day < 10) {
+      buffer.write('0');
+    }
+    buffer.write(value.day);
+  }
+
+  static String toDateTimeString(DateTime value) {
+    final buffer = StringBuffer();
+    renderDate(value, buffer);
+    buffer.write('T');
+    TimeOfDayWithSeconds.renderTime(value, buffer);
+    return buffer.toString();
   }
 }
 
@@ -687,15 +902,28 @@ class DateTimeOrDuration {
   final DateTime? dateTime;
   final IsoDuration? duration;
 
-  DateTimeOrDuration(this.dateTime, this.duration);
+  DateTimeOrDuration(this.dateTime, this.duration)
+      : assert(dateTime != null || duration != null,
+            'Either duration or dateTime must be set'),
+        assert(!(duration != null && dateTime != null),
+            'Either duration or dateTime must be set, but not both');
+
+  @override
+  String toString() {
+    if (dateTime != null) {
+      return DateHelper.toDateTimeString(dateTime!);
+    } else {
+      return duration!.toString();
+    }
+  }
 
   static DateTimeOrDuration parse(String textValue, ValueType type) {
     DateTime? dateTime;
     IsoDuration? duration;
     if (type == ValueType.dateTime) {
-      dateTime = DateParser.parseDateTime(textValue);
+      dateTime = DateHelper.parseDateTime(textValue);
     } else if (type == ValueType.date) {
-      dateTime = DateParser.parseDate(textValue);
+      dateTime = DateHelper.parseDate(textValue);
     } else if (type == ValueType.duration) {
       duration = IsoDuration.parse(textValue);
     } else {
@@ -743,7 +971,7 @@ class Period {
   static DateTime _parseStartDate(String content) {
     final separatorIndex = _getSeparatorIndex(content);
     final startDateText = content.substring(0, separatorIndex);
-    return DateParser.parseDateTime(startDateText);
+    return DateHelper.parseDateTime(startDateText);
   }
 
   static DateTime? _parseEndDate(String content) {
@@ -752,7 +980,7 @@ class Period {
     if (endText.startsWith('P')) {
       return null;
     }
-    return DateParser.parseDateTime(endText);
+    return DateHelper.parseDateTime(endText);
   }
 
   static IsoDuration? _parseDuration(String content) {
@@ -933,20 +1161,20 @@ class IsoDuration {
 /// To specify the free or busy time type.
 ///
 /// Compare [ParameterType.freeBusyTimeType], [FreeBusyType]
-enum FreeBusyStatus { free, busy, busyUnavailable, busyTentative, other }
+enum FreeBusyTimeType { free, busy, busyUnavailable, busyTentative, other }
 
-extension ExtensionFreeBusyValue on FreeBusyStatus {
+extension ExtensionFreeBusyValue on FreeBusyTimeType {
   String? get name {
     switch (this) {
-      case FreeBusyStatus.free:
+      case FreeBusyTimeType.free:
         return 'FREE';
-      case FreeBusyStatus.busy:
+      case FreeBusyTimeType.busy:
         return 'BUSY';
-      case FreeBusyStatus.busyUnavailable:
+      case FreeBusyTimeType.busyUnavailable:
         return 'BUSY-UNAVAILABLE';
-      case FreeBusyStatus.busyTentative:
+      case FreeBusyTimeType.busyTentative:
         return 'BUSY-TENTATIVE';
-      case FreeBusyStatus.other:
+      case FreeBusyTimeType.other:
         return null;
     }
   }
@@ -1099,11 +1327,14 @@ enum ParticipantStatus {
   /// Accepted tentatively
   tentative,
 
-  /// Delegated (for a task)
+  /// Delegated (for a VTodo task)
   delegated,
 
-  /// In Process (for a task)
+  /// In Process (for a VTodo task) also
   inProcess,
+
+  /// partial progres (for a VTodo task)
+  partial,
 
   /// Completed (for a task)
   completed,
@@ -1129,6 +1360,8 @@ extension ExtensionParticpantStatus on ParticipantStatus {
         return 'IN-PROCESS';
       case ParticipantStatus.completed:
         return 'COMPLETED';
+      case ParticipantStatus.partial:
+        return 'PARTIAL';
       case ParticipantStatus.other:
         return null;
     }
@@ -1183,6 +1416,21 @@ enum AlarmAction {
   other
 }
 
+extension ExtensionAlarmAction on AlarmAction {
+  String? get name {
+    switch (this) {
+      case AlarmAction.audio:
+        return 'AUDIO';
+      case AlarmAction.display:
+        return 'DISPLAY';
+      case AlarmAction.email:
+        return 'EMAIL';
+      case AlarmAction.other:
+        return null;
+    }
+  }
+}
+
 /// Contains all relevant binary information
 class Binary {
   /// The data in textual form
@@ -1213,4 +1461,152 @@ class GeoLocation {
       ..write(longitude);
     return buffer.toString();
   }
+}
+
+/// The iTIP compatible method.
+///
+/// Compare https://datatracker.ietf.org/doc/html/rfc5546
+enum Method {
+  /// Post notification of an event / free-busy timeslot / todo / journal.
+  ///
+  /// Used primarily as a method of advertising the existence of an event / todo / journal / timeslot.
+  ///
+  /// Applicable for [VEvent], [VFreeBusy], [VTodo], [VJournal]
+  publish,
+
+  /// Make a request for an event, ask for free-busy timeslots, assign a todo.
+  ///
+  /// This is an explicit invitation to one or more Attendees.
+  /// Requests are also used to update or change an existing event / todo.
+  /// Clients that cannot handle REQUEST MAY degrade the event to view it as a PUBLISH.
+  ///
+  /// Applicable for [VEvent], [VFreeBusy], [VTodo]
+  request,
+
+  /// Reply to an event / free-busy / todo request.
+  ///
+  /// Event attendees may set their status (PARTSTAT) to ACCEPTED, DECLINED, TENTATIVE, or DELEGATED.
+  /// Todo attendees MAY set PARTSTAT to ACCEPTED, DECLINED, TENTATIVE, DELEGATED, PARTIAL, and COMPLETED.
+  ///
+  /// Applicable for [VEvent], [VFreeBusy], [VTodo]
+  /// Compare [ParticipantStatus]
+  reply,
+
+  /// Add one or more instances to an existing event / todo / journal.
+  ///
+  /// Applicable for [VEvent], [VTodo], [VJournal]
+  add,
+
+  /// Cancel one or more instances of an existing event / todo / journal.
+  ///
+  /// Applicable for [VEvent], [VTodo], [VJournal]
+  cancel,
+
+  /// A request is sent to an Organizer by an Attendee asking for the latest version of an event / todo to be resent to the requester.
+  ///
+  /// Applicable for [VEvent], [VTodo]
+  refresh,
+
+  /// Counter a REQUEST with an alternative proposal.
+  ///
+  /// Sent by an Attendee to the Organizer.
+  ///
+  /// Applicable for [VEvent], [VTodo]
+  counter,
+
+  /// Decline a counter proposal.
+  ///
+  /// Sent to an Attendee by the Organizer.
+  ///
+  /// Applicable for [VEvent], [VTodo]
+  declineCounter,
+}
+
+extension ExtensionMethod on Method {
+  String get name {
+    switch (this) {
+      case Method.publish:
+        return 'PUBLISH';
+      case Method.request:
+        return 'REQUEST';
+      case Method.reply:
+        return 'REPLY';
+      case Method.add:
+        return 'ADD';
+      case Method.cancel:
+        return 'CANCEL';
+      case Method.refresh:
+        return 'REFRESH';
+      case Method.counter:
+        return 'COUNTER';
+      case Method.declineCounter:
+        return 'DECLINECOUNTER';
+    }
+  }
+}
+
+/// The priority of a task or event
+enum Priority { high, medium, low, undefined }
+
+extension ExtensionPriority on Priority {
+  int get numericValue {
+    switch (this) {
+      case Priority.high:
+        return 1;
+      case Priority.medium:
+        return 5;
+      case Priority.low:
+        return 9;
+      case Priority.undefined:
+        return 0;
+    }
+  }
+}
+
+/// Transparency for busy time searches
+enum TimeTransparency {
+  /// The associated event's timeslot is visible in busy time searches
+  opaque,
+
+  /// The associated event's timeslot is hiddem from busy time searches
+  transparent,
+}
+
+extension ExtensionTimeTransparency on TimeTransparency {
+  String get name {
+    switch (this) {
+      case TimeTransparency.opaque:
+        return 'OPAQUE';
+      case TimeTransparency.transparent:
+        return 'TRANSPARENT';
+    }
+  }
+}
+
+/// Possible responses to an [VCalendar] or [VComponent] object.
+///
+/// The available responses depend on the used method of the component and the type of the recipient user, ie is the current user the organizator or not
+enum ResponseOption {
+  /// The participant can change the status
+  ///
+  /// Compare [ParticipantStatus], [VCalendar.replyWithParticipantStatus]
+  changeParticipantStatus,
+
+  /// The participant can propose a counter event/task, e.g. with a different time slot
+  ///
+  /// Compare [VCalendar.counter]
+  counter,
+
+  /// The organizer can decline a counter proposal
+  ///
+  /// Compare [VCalendar.counterDecline]
+  declineCounter,
+
+  /// The organizer can acccess a counter proposal
+  ///
+  /// Compare [VCalendar.counterAccept]
+  acceptCounter,
+
+  /// Update the existing component
+  update,
 }

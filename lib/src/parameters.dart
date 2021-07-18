@@ -32,58 +32,58 @@ abstract class Parameter<T> {
           'No equals sign (=) found in parameter [$definition]');
     }
     final name = definition.substring(0, splitIndex);
-    final value = definition.substring(splitIndex + 1);
+    final textValue = definition.substring(splitIndex + 1);
     switch (name) {
       case 'ALTREP':
-        return UriParameter(ParameterType.alternateRepresentation, name, value);
+        return UriParameter(
+            ParameterType.alternateRepresentation, name, textValue);
       case 'CN':
-        return TextParameter(ParameterType.commonName, name, value);
+        return TextParameter(ParameterType.commonName, name, textValue);
       case 'CUTYPE':
         return CalendarUserTypeParameter(
-            ParameterType.calendarUserType, name, value);
+            ParameterType.calendarUserType, name, textValue);
       case 'DELEGATED-FROM':
-        return CalendarAddressParameter(
-            ParameterType.delegateFrom, name, value);
+        return UriParameter(ParameterType.delegateFrom, name, textValue);
       case 'DELEGATED-TO':
-        return CalendarAddressParameter(ParameterType.delegateTo, name, value);
+        return UriParameter(ParameterType.delegateTo, name, textValue);
       case 'DIR':
-        return UriParameter(ParameterType.directory, name, value);
+        return UriParameter(ParameterType.directory, name, textValue);
       case 'ENCODING':
-        return TextParameter(ParameterType.encoding, name, value);
+        return TextParameter(ParameterType.encoding, name, textValue);
       case 'FMTTYPE':
-        return TextParameter(ParameterType.formatType, name, value);
+        return TextParameter(ParameterType.formatType, name, textValue);
       case 'FBTYPE':
-        return FreeBusyStatusParameter(
-            ParameterType.freeBusyTimeType, name, value);
+        return FreeBusyTimeTypeParameter(
+            ParameterType.freeBusyTimeType, name, textValue);
       case 'LANGUAGE':
-        return TextParameter(ParameterType.language, name, value);
+        return TextParameter(ParameterType.language, name, textValue);
       case 'MEMBER':
-        return UriListParameter(ParameterType.member, name, value);
+        return UriListParameter(ParameterType.member, name, textValue);
       case 'PARTSTAT':
         return ParticipantStatusParameter(
-            ParameterType.participantStatus, name, value);
+            ParameterType.participantStatus, name, textValue);
       case 'RANGE':
-        return RangeParameter(ParameterType.range, name, value);
+        return RangeParameter(ParameterType.range, name, textValue);
       case 'RELATED':
         return AlarmTriggerRelationshipParameter(
-            ParameterType.alarmTriggerRelationship, name, value);
+            ParameterType.alarmTriggerRelationship, name, textValue);
       case 'RELTYPE':
         return RelationshipParameter(
-            ParameterType.relationshipType, name, value);
+            ParameterType.relationshipType, name, textValue);
       case 'ROLE':
         return ParticipantRoleParameter(
-            ParameterType.participantRole, name, value);
+            ParameterType.participantRole, name, textValue);
       case 'RSVP':
-        return BooleanParameter(ParameterType.rsvp, name, value);
+        return BooleanParameter(ParameterType.rsvp, name, textValue);
       case 'SENT-BY':
-        return CalendarAddressParameter(ParameterType.sentBy, name, value);
+        return UriParameter(ParameterType.sentBy, name, textValue);
       case 'TZID':
-        return TextParameter(ParameterType.timezoneId, name, value);
+        return TextParameter(ParameterType.timezoneId, name, textValue);
       case 'VALUE':
-        return ValueParameter(ParameterType.value, name, value);
+        return ValueParameter(ParameterType.value, name, textValue);
       default:
         print('Encountered unsupported parameter [$name]');
-        return TextParameter(ParameterType.other, name, value);
+        return TextParameter(ParameterType.other, name, textValue);
     }
   }
 }
@@ -95,6 +95,9 @@ class UriParameter extends Parameter<Uri> {
 
   UriParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.uri, parse(textValue));
+
+  UriParameter.value(ParameterType type, Uri value)
+      : super(type, type.name!, '"$value"', ValueType.uri, value);
 
   static Uri parse(String textValue) {
     if (textValue.startsWith('"')) {
@@ -159,6 +162,9 @@ class TextParameter extends Parameter<String> {
   TextParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.text, parse(textValue));
 
+  TextParameter.value(ParameterType type, String value)
+      : super(type, type.name!, value, ValueType.text, value);
+
   static String parse(String textValue) {
     if (textValue.startsWith('"')) {
       textValue = textValue.substring(1, textValue.length - 1);
@@ -172,31 +178,13 @@ class BooleanParameter extends Parameter<bool> {
   bool get boolValue => value;
 
   BooleanParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.text, parse(textValue));
+      : super(type, name, textValue, ValueType.boolean, parse(textValue));
+  BooleanParameter.value(ParameterType type, bool value)
+      : super(type, type.name!, value ? 'TRUE' : 'FALSE', ValueType.boolean,
+            value);
 
   static bool parse(String textValue) {
     return (textValue == 'TRUE' || textValue == 'YES');
-  }
-}
-
-/// Parameter containing a single user information
-class CalendarAddressParameter extends Parameter<String> {
-  String get email => value;
-  CalendarAddressParameter(ParameterType type, String name, String textValue)
-      : super(
-            type, name, textValue, ValueType.calendarAddress, parse(textValue));
-
-  static String parse(String textValue) {
-    if (textValue.startsWith('"')) {
-      textValue = textValue.substring(1, textValue.length - 1);
-    }
-    if (textValue.startsWith('mailto:')) {
-      return textValue.substring('mailto:'.length);
-    }
-    if (textValue.contains('@')) {
-      return textValue;
-    }
-    throw FormatException('Invalid calendar user address: [$textValue]');
   }
 }
 
@@ -204,6 +192,13 @@ class CalendarAddressParameter extends Parameter<String> {
 class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
   CalendarUserTypeParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.other, parse(textValue));
+  CalendarUserTypeParameter.value(CalendarUserType value)
+      : super(
+            ParameterType.calendarUserType,
+            ParameterType.calendarUserType.name!,
+            value.name!,
+            ValueType.other,
+            value);
 
   static CalendarUserType parse(String textValue) {
     switch (textValue) {
@@ -224,24 +219,24 @@ class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
 }
 
 /// Parameter defining the status of a free busy property
-class FreeBusyStatusParameter extends Parameter<FreeBusyStatus> {
-  FreeBusyStatus get status => value;
+class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
+  FreeBusyTimeType get timeType => value;
 
-  FreeBusyStatusParameter(ParameterType type, String name, String textValue)
+  FreeBusyTimeTypeParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeFreeBusy, parse(textValue));
 
-  static FreeBusyStatus parse(String textValue) {
+  static FreeBusyTimeType parse(String textValue) {
     switch (textValue) {
       case 'FREE':
-        return FreeBusyStatus.free;
+        return FreeBusyTimeType.free;
       case 'BUSY':
-        return FreeBusyStatus.busy;
+        return FreeBusyTimeType.busy;
       case 'BUSY-UNAVAILABLE':
-        return FreeBusyStatus.busyUnavailable;
+        return FreeBusyTimeType.busyUnavailable;
       case 'BUSY-TENTATIVE':
-        return FreeBusyStatus.busyTentative;
+        return FreeBusyTimeType.busyTentative;
       default:
-        return FreeBusyStatus.other;
+        return FreeBusyTimeType.other;
     }
   }
 }
@@ -253,6 +248,13 @@ class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
   ParticipantStatusParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeParticipantStatus,
             parse(textValue));
+  ParticipantStatusParameter.value(ParticipantStatus status)
+      : super(
+            ParameterType.participantStatus,
+            ParameterType.participantStatus.name!,
+            status.name!,
+            ValueType.typeParticipantStatus,
+            status);
 
   static ParticipantStatus parse(String textValue) {
     switch (textValue) {
@@ -268,6 +270,8 @@ class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
         return ParticipantStatus.delegated;
       case 'IN-PROCESS':
         return ParticipantStatus.inProcess;
+      case 'PARTIAL':
+        return ParticipantStatus.partial;
       case 'COMPLETED':
         return ParticipantStatus.completed;
       default:
@@ -317,6 +321,13 @@ class AlarmTriggerRelationshipParameter
       ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeAlarmTriggerRelationship,
             parse(textValue));
+  AlarmTriggerRelationshipParameter.value(AlarmTriggerRelationship relation)
+      : super(
+            ParameterType.alarmTriggerRelationship,
+            ParameterType.alarmTriggerRelationship.name!,
+            relation.name!,
+            ValueType.typeAlarmTriggerRelationship,
+            relation);
 
   static AlarmTriggerRelationship parse(String textValue) {
     switch (textValue) {
@@ -357,6 +368,14 @@ class ParticipantRoleParameter extends Parameter<Role> {
 
   ParticipantRoleParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeRole, parse(textValue));
+
+  ParticipantRoleParameter.value(Role role)
+      : super(
+            ParameterType.participantRole,
+            ParameterType.participantRole.name!,
+            role.name!,
+            ValueType.typeRole,
+            role);
 
   static Role parse(String content) {
     switch (content) {
@@ -421,64 +440,64 @@ class ValueParameter extends Parameter<ValueType> {
 
 /// Common parameter types
 enum ParameterType {
-  /// `ALTREP` Alternate text representation
+  /// `ALTREP` Alternate text representation [UriParameter]
   alternateRepresentation,
 
-  /// `CN` common name
+  /// `CN` common name [TextParameter]
   commonName,
 
-  /// `CUTYPE` calendar user type
+  /// `CUTYPE` calendar user type [CalendarUserTypeParameter]
   calendarUserType,
 
-  /// `DELEGATED-FROM` delegator
+  /// `DELEGATED-FROM` delegator [UriParameter]
   delegateFrom,
 
-  /// `DELEGATED-TO` delgatee
+  /// `DELEGATED-TO` delgatee [UriParameter]
   delegateTo,
 
-  /// `DIR` directory
+  /// `DIR` directory [UriParameter]
   directory,
 
-  /// `ENCODING` inline encoding
+  /// `ENCODING` inline encoding [TextParameter]
   encoding,
 
-  /// `FMTTYPE` format type / media type / mime type, e.g. `text/plain` or `image/png`
+  /// `FMTTYPE` format type / media type / mime type, e.g. `text/plain` or `image/png`  [TextParameter]
   formatType,
 
-  /// `FBTTYPE` free busy time type
+  /// `FBTYPE` free busy time type [FreeBusyTimeTypeParameter]
   freeBusyTimeType,
 
-  /// `LANGUAGE` language
+  /// `LANGUAGE` language [TextParameter]
   language,
 
-  /// `MEMBER` group or list membership
+  /// `MEMBER` group or list membership [UriListParameter]
   member,
 
-  /// `PARTSTAT` participant status
+  /// `PARTSTAT` participant status - [ParticipantStatusParameter]
   participantStatus,
 
-  /// `RANGE` recurrence identifier range
+  /// `RANGE` recurrence identifier range [RangeParameter]
   range,
 
-  /// `RELATED` alarm trigger relationship
+  /// `RELATED` alarm trigger relationship [AlarmTriggerRelationshipParameter]
   alarmTriggerRelationship,
 
-  /// `RELTYPE` relationship type
+  /// `RELTYPE` relationship type [RelationshipParameter]
   relationshipType,
 
-  /// `ROLE` participant role
+  /// `ROLE` participant role [ParticipantRoleParameter]
   participantRole,
 
-  /// `RSVP` répondez s'il vous plaît - answer is asked for
+  /// `RSVP` répondez s'il vous plaît - answer is asked for [BooleanParameter]
   rsvp,
 
-  /// `SENT-BY` sent by
+  /// `SENT-BY` sent by [UriParameter]
   sentBy,
 
-  /// `TZID` reference to time zone object
+  /// `TZID` reference to time zone object [TextParameter]
   timezoneId,
 
-  /// `VALUE` property value data type, e.g. `BINARY`
+  /// `VALUE` property value data type, e.g. `BINARY` [ValueParameter]
   value,
 
   /// Any other parameter type
