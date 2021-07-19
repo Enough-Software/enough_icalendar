@@ -368,6 +368,11 @@ class VCalendar extends VComponent {
           ?.textValue ??
       'GREGORIAN';
 
+  /// Convencience method for getting the first event child, if there is any:
+  VEvent? get event => children.firstWhereOrNull(
+          (component) => component.componentType == VComponentType.event)
+      as VEvent?;
+
   /// Sets the scale of the calendar
   set calendarScale(String? value) => setOrRemoveProperty(
       CalendarScaleProperty.propertyName, CalendarScaleProperty.create(value));
@@ -704,13 +709,14 @@ class VCalendar extends VComponent {
       ..timezoneId = timezoneId;
     final event = VEvent(parent: calendar);
     calendar.children.add(event);
+    organizer ??= OrganizerProperty.create(email: organizerEmail);
     event
       ..timeStamp = timeStamp ?? DateTime.now()
-      ..uid = uid ?? createRandomId()
+      ..uid = uid ?? createUid(organizerUri: organizer!.uri)
       ..start = start
       ..end = end
       ..duration = duration
-      ..organizer = organizer ?? OrganizerProperty.create(email: organizerEmail)
+      ..organizer = organizer
       ..summary = summary
       ..description = description
       ..location = location
@@ -731,18 +737,43 @@ class VCalendar extends VComponent {
   ///
   /// Specify [length] when a different length than 18 characters should be used.
   /// This can be used as a UID, for example.
-  static String createRandomId({int length = 18}) {
+  static String _createRandomId({int length = 18, StringBuffer? buffer}) {
     final characters =
         '0123456789_abcdefghijklmnopqrstuvwxyz-ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     final characterRunes = characters.runes.toList();
     final max = characters.length;
     final random = Random(DateTime.now().millisecondsSinceEpoch);
-    final buffer = StringBuffer();
+    buffer ??= StringBuffer();
     for (var count = length; count > 0; count--) {
       final charIndex = random.nextInt(max);
       final rune = characterRunes.elementAt(charIndex);
       buffer.writeCharCode(rune);
     }
+    return buffer.toString();
+  }
+
+  /// Creates a random UID for the given [domain].
+  ///
+  /// Instead of the [domain] you can also specify the [organizerUri].
+  /// When neither the [domain] nor the [organizerUri] is specified, a default domain will be appended.
+  static String createUid({String? domain, Uri? organizerUri}) {
+    final buffer = StringBuffer();
+    _createRandomId(buffer: buffer);
+    if (domain == null) {
+      if (organizerUri != null) {
+        if (organizerUri.host.isNotEmpty) {
+          domain = organizerUri.host;
+        } else {
+          final path = organizerUri.path;
+          final atIndex = path.indexOf('@');
+          if (atIndex != -1) {
+            domain = path.substring(atIndex + 1);
+          }
+        }
+      }
+      domain ??= 'enough.de';
+    }
+    buffer..write('@')..write(domain);
     return buffer.toString();
   }
 }
