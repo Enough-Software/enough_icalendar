@@ -42,6 +42,14 @@ class Property {
 
   void setParameter(Parameter value) => parameters[value.name] = value;
 
+  void setOrRemoveParameter(ParameterType type, Parameter? value) {
+    if (value == null) {
+      parameters.remove(type.name);
+    } else {
+      parameters[type.name!] = value;
+    }
+  }
+
   T? getParameterValue<T>(ParameterType param) =>
       parameters[param.name]?.value as T?;
 
@@ -409,12 +417,29 @@ class UserProperty extends UriProperty {
   static const String propertyNameContact = 'CONTACT';
   UserProperty(String definition) : super(definition);
 
+  /// Gets the common name associated with this calendar user
   String? get commonName => getParameterValue<String>(ParameterType.commonName);
 
+  /// Sets the common name associated with this calendar user
+  set commonName(String? value) => setOrRemoveParameter(
+      ParameterType.commonName,
+      TextParameter.create(ParameterType.commonName, value));
+
+  /// Gets the directory link, for example an LDAP URI
   Uri? get directory => getParameterValue<Uri>(ParameterType.directory);
 
+  /// Sets the directory
+  set directory(Uri? value) => setOrRemoveParameter(ParameterType.directory,
+      UriParameter.create(ParameterType.directory, value));
+
+  /// Gets the alternative representation, e.g. a link to a VCARD
   Uri? get alternateRepresentation =>
       getParameterValue<Uri>(ParameterType.alternateRepresentation);
+
+  /// Sets the alternative representation
+  set alternateRepresentation(Uri? value) => setOrRemoveParameter(
+      ParameterType.alternateRepresentation,
+      UriParameter.create(ParameterType.alternateRepresentation, value));
 
   /// Retrieves the type of the user.
   ///
@@ -423,6 +448,11 @@ class UserProperty extends UriProperty {
       getParameterValue<CalendarUserType>(ParameterType.calendarUserType) ??
       CalendarUserType.unknown;
 
+  /// Set the type of the user
+  set userType(CalendarUserType? value) => setOrRemoveParameter(
+      ParameterType.calendarUserType, CalendarUserTypeParameter.create(value));
+
+  /// Retrieve the email from this value
   String? get email => uri.isScheme('MAILTO') ? uri.path : null;
 }
 
@@ -438,10 +468,18 @@ class AttendeeProperty extends UserProperty {
   /// Stands for "Répondez s'il vous plaît", meaning "Please respond".
   bool get rsvp => getParameterValue<bool>(ParameterType.rsvp) ?? false;
 
+  /// Sets the rsvp request value
+  set rsvp(bool? value) => setOrRemoveParameter(
+      ParameterType.rsvp, BooleanParameter.create(ParameterType.rsvp, value));
+
   /// Gets the role of this participant, defaults to [Role.requiredParticipant]
   Role get role =>
       getParameterValue<Role>(ParameterType.participantRole) ??
       Role.requiredParticipant;
+
+  /// Sets the role of this participant
+  set role(Role? value) => setOrRemoveParameter(
+      ParameterType.participantRole, ParticipantRoleParameter.create(value));
 
   /// Gets the participant status of this attendee
   ///
@@ -449,8 +487,17 @@ class AttendeeProperty extends UserProperty {
   ParticipantStatus? get participantStatus =>
       getParameterValue<ParticipantStatus>(ParameterType.participantStatus);
 
+  /// Sets the participant status
+  set participantStatus(ParticipantStatus? value) => setOrRemoveParameter(
+      ParameterType.participantStatus,
+      ParticipantStatusParameter.create(value));
+
   /// Retrieves the URI of the the user that this attendee has delegated the event or task to
   Uri? get delegatedTo => getParameterValue<Uri>(ParameterType.delegateTo);
+
+  /// Sets the delegatedTo URI
+  set delegatedTo(Uri? value) => setOrRemoveParameter(ParameterType.delegateTo,
+      UriParameter.create(ParameterType.delegateTo, value));
 
   /// Retrieves the email of the the user that this attendee has delegated the event or task to
   String? get delegatedToEmail {
@@ -461,8 +508,17 @@ class AttendeeProperty extends UserProperty {
     return uri.path;
   }
 
+  /// Sets the delegatedToEmail, will generate a delegatedToUri
+  set delegatedToEmail(String? value) =>
+      delegatedTo = value == null ? null : Uri.parse('mailto:$value');
+
   /// Retrieves the URI of the the user that this attendee has delegated the event or task from
   Uri? get delegatedFrom => getParameterValue<Uri>(ParameterType.delegateFrom);
+
+  /// Sets the delegatedFrom URI
+  set delegatedFrom(Uri? value) => setOrRemoveParameter(
+      ParameterType.delegateFrom,
+      UriParameter.create(ParameterType.delegateTo, value));
 
   /// Retrieves the email of the the user that this attendee has delegated the event or task from
   String? get delegatedFromEmail {
@@ -472,6 +528,10 @@ class AttendeeProperty extends UserProperty {
     }
     return uri.path;
   }
+
+  /// Sets the delegatedFromEmail, will generate a delegatedFromUri
+  set delegatedFromEmail(String? value) =>
+      delegatedFrom = value == null ? null : Uri.parse('mailto:$value');
 
   AttendeeProperty(String definition) : super(definition);
 
@@ -548,7 +608,12 @@ class OrganizerProperty extends UserProperty {
   static const String propertyName = 'ORGANIZER';
   Uri get organizer => uri;
 
+  /// Gets the sender of this organizer
   Uri? get sentBy => getParameterValue<Uri>(ParameterType.sentBy);
+
+  /// Sets the sender of this organizer
+  set sentBy(Uri? value) => setOrRemoveParameter(
+      ParameterType.sentBy, UriParameter.create(ParameterType.sentBy, value));
 
   OrganizerProperty(String definition) : super(definition);
 
@@ -625,10 +690,18 @@ class AttachmentProperty extends Property {
   /// Retrieves the mime type / media type / format type like `image/png` as specified in the `FMTTYPE` parameter.
   String? get mediaType => getParameterValue<String>(ParameterType.formatType);
 
+  /// Sets the media type
+  set mediaType(String? value) => setOrRemoveParameter(ParameterType.formatType,
+      TextParameter.create(ParameterType.formatType, value));
+
   /// Retrieves the encoding such as `BASE64`, only relevant when the content is binary
   ///
   /// Compare [isBinary]
   String? get encoding => getParameterValue<String>(ParameterType.encoding);
+
+  /// Sets the encoding
+  set encoding(String? value) => setOrRemoveParameter(ParameterType.encoding,
+      TextParameter.create(ParameterType.encoding, value));
 
   /// Checks if this contains binary data
   ///
@@ -714,10 +787,9 @@ class ClassificationProperty extends Property {
 class TextProperty extends Property {
   /// `COMMENT`
   static const String propertyNameComment = 'COMMENT';
-  static const
 
-      /// `DESCRIPTION`
-      String propertyNameDescription = 'DESCRIPTION';
+  /// `DESCRIPTION`
+  static const String propertyNameDescription = 'DESCRIPTION';
 
   /// `PRODID`
   static const String propertyNameProductIdentifier = 'PRODID';
@@ -746,9 +818,21 @@ class TextProperty extends Property {
   /// `RELATED-TO`
   static const String propertyNameRelatedTo = 'RELATED-TO';
 
+  /// Retrieve the language
   String? get language => this[ParameterType.language]?.textValue;
+
+  /// Sets the language
+  set language(String? value) => setOrRemoveParameter(ParameterType.language,
+      TextParameter.create(ParameterType.language, value));
+
+  /// Gets a link to an alternative representation
   Uri? get alternateRepresentation =>
       (this[ParameterType.alternateRepresentation] as UriParameter?)?.uri;
+
+  /// Sets a link to an alternative representation
+  set alternateRepresentation(Uri? value) => setOrRemoveParameter(
+      ParameterType.alternateRepresentation,
+      UriParameter.create(ParameterType.alternateRepresentation, value));
 
   String get text => value as String;
 
@@ -866,6 +950,11 @@ class DateTimeProperty extends Property {
   /// Retrieves the timezone ID like `America/New_York` or `Europe/Berlin` from the `TZID` parameter.
   String? get timezoneId => this[ParameterType.timezoneId]?.textValue;
 
+  /// Set the timezone ID
+  set timezoneId(String? value) => setOrRemoveParameter(
+      ParameterType.timezoneId,
+      TextParameter.create(ParameterType.timezoneId, value));
+
   DateTimeProperty(String definition) : super(definition, ValueType.dateTime);
 
   static DateTimeProperty? create(String name, DateTime? value,
@@ -930,9 +1019,14 @@ class FreeBusyProperty extends Property {
   /// `FREEBUSY`
   static const String propertyName = 'FREEBUSY';
 
+  /// Gets the type, defaults to [FreeBusyTimeType.busy]
   FreeBusyTimeType get freeBusyType =>
       getParameterValue<FreeBusyTimeType>(ParameterType.freeBusyTimeType) ??
       FreeBusyTimeType.busy;
+
+  /// Sets the type
+  set freeBusyType(FreeBusyTimeType? value) => setOrRemoveParameter(
+      ParameterType.freeBusyTimeType, FreeBusyTimeTypeParameter.create(value));
 
   List<Period> get periods => value as List<Period>;
 
@@ -1103,10 +1197,17 @@ class TriggerProperty extends Property {
 
   IsoDuration? get duration => value is IsoDuration ? value : null;
   DateTime? get dateTime => value is DateTime ? value : null;
+
+  /// Does the trigger relate to the start or the end of the enclosing VEvent?
   AlarmTriggerRelationship get triggerRelation =>
       getParameterValue<AlarmTriggerRelationship>(
           ParameterType.alarmTriggerRelationship) ??
       AlarmTriggerRelationship.start;
+
+  /// Sets the trigger relation
+  set triggerRelation(AlarmTriggerRelationship? value) => setOrRemoveParameter(
+      ParameterType.alarmTriggerRelationship,
+      AlarmTriggerRelationshipParameter.create(value));
 
   TriggerProperty(String definition) : super(definition, ValueType.duration);
 

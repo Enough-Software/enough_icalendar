@@ -1,3 +1,5 @@
+import 'package:enough_icalendar/enough_icalendar.dart';
+
 /// To explicitly specify the value type format for a property value.
 enum ValueType {
   binary,
@@ -1583,30 +1585,57 @@ extension ExtensionTimeTransparency on TimeTransparency {
   }
 }
 
-/// Possible responses to an [VCalendar] or [VComponent] object.
+// /// Possible responses to an [VCalendar] or [VComponent] object.
+// ///
+// /// The available responses depend on the used method of the component and the type of the recipient user, ie is the current user the organizator or not
+// enum ResponseOption {
+//   /// The participant can change the status
+//   ///
+//   /// Compare [ParticipantStatus], [VCalendar.replyWithParticipantStatus]
+//   changeParticipantStatus,
+
+//   /// The participant can propose a counter event/task, e.g. with a different time slot
+//   ///
+//   /// Compare [VCalendar.counter]
+//   counter,
+
+//   /// The organizer can decline a counter proposal
+//   ///
+//   /// Compare [VCalendar.counterDecline]
+//   declineCounter,
+
+//   /// The organizer can acccess a counter proposal
+//   ///
+//   /// Compare [VCalendar.counterAccept]
+//   acceptCounter,
+
+//   /// Update the existing component
+//   update,
+// }
+
+/// Wraps changes that are to be sent to both the attendee(s) as well as the group.
 ///
-/// The available responses depend on the used method of the component and the type of the recipient user, ie is the current user the organizator or not
-enum ResponseOption {
-  /// The participant can change the status
-  ///
-  /// Compare [ParticipantStatus], [VCalendar.replyWithParticipantStatus]
-  changeParticipantStatus,
+/// Example for this is to cancel an event for one or several attendees.
+/// Compare [VCalendar.cancelEventForAttendees]
+class AttendeeCancelResult {
+  /// The request / info for attendees for which the participation was cancelled:
+  final VCalendar requestForCancelledAttendees;
+  // The request / update into for the remaining attendees:
+  final VCalendar requestUpdateForGroup;
 
-  /// The participant can propose a counter event/task, e.g. with a different time slot
-  ///
-  /// Compare [VCalendar.counter]
-  counter,
+  const AttendeeCancelResult(
+      this.requestForCancelledAttendees, this.requestUpdateForGroup);
+}
 
-  /// The organizer can decline a counter proposal
-  ///
-  /// Compare [VCalendar.counterDecline]
-  declineCounter,
+/// Wraps delegation requests
+///
+/// Compare [VCalendar.delegate]
+class AttendeeDelegatedResult {
+  /// The request for the attendee to which the particaption should be delegated:
+  final VCalendar requestForDelegatee;
 
-  /// The organizer can acccess a counter proposal
-  ///
-  /// Compare [VCalendar.counterAccept]
-  acceptCounter,
+  /// The reply with the information for the organizer
+  final VCalendar replyForOrganizer;
 
-  /// Update the existing component
-  update,
+  AttendeeDelegatedResult(this.requestForDelegatee, this.replyForOrganizer);
 }

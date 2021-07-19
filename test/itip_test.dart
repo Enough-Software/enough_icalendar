@@ -174,19 +174,17 @@ END:VCALENDAR
       // "A" accepts the changes from "B".  To accept a counter proposal, the
       //  "Organizer" sends a new event "REQUEST" with an incremented sequence
       //  number.
-      final accepted = iCalendar.update(method: Method.request);
-      expect(accepted.children, isNotEmpty);
-      event = accepted.children.first;
-      expect(event, isInstanceOf<VEvent>());
-      (event as VEvent).status = EventStatus.confirmed;
-      event.description =
-          'Discuss the Merits of the election results - changed to meet B\'s schedule';
-
+      final accepted = iCalendar.acceptCounter(
+          description:
+              'Discuss the Merits of the election results - changed to meet B\'s schedule');
+      event = accepted.event!;
       expect(accepted.method, Method.request);
       expect(event.sequence, 1);
       expect(event.status, EventStatus.confirmed);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
+      expect(event.description,
+          'Discuss the Merits of the election results - changed to meet B\'s schedule');
 
       // Instead, "A" rejects "B's" counter proposal.
       final declined = iCalendar.declineCounter(
@@ -229,12 +227,12 @@ END:VCALENDAR
       final original = VComponent.parse(input) as VCalendar;
 // "C" delegates the event to "E":
       // "C" responds to the "Organizer" "A":
-      final delegationReply = original.replyWithParticipantStatus(
-        ParticipantStatus.delegated,
-        attendeeEmail: 'c@example.com',
-        delegatedToEmail: 'e@example.com',
+      final delegationResult = original.delegate(
+        fromEmail: 'c@example.com',
+        toEmail: 'e@example.com',
       );
 
+      final delegationReply = delegationResult.replyForOrganizer;
       expect(delegationReply.method, Method.reply);
       var event = delegationReply.children.first;
       expect(event, isInstanceOf<VEvent>());
@@ -249,10 +247,7 @@ END:VCALENDAR
       // other properties are covered by components_test.dart
 
       // "Attendee" "C" delegates presence at the meeting to "E".
-      final delegated = original.delegate(
-        fromEmail: 'c@example.com',
-        toEmail: 'e@example.com',
-      );
+      final delegated = delegationResult.requestForDelegatee;
       expect(delegated.method, Method.request);
       event = delegated.children.first;
       expect(event, isInstanceOf<VEvent>());
@@ -439,24 +434,11 @@ END:VCALENDAR
       //  example below, the "STATUS" property is omitted.  This is used when
       //  the meeting itself is cancelled and not when the intent is to remove
       //  an "Attendee" from the event.
-//       var input = '''BEGIN:VCALENDAR
-// PRODID:-//Example/ExampleCalendarClient//EN
-// METHOD:CANCEL
-// VERSION:2.0
-// BEGIN:VEVENT
-// ORGANIZER:mailto:a@example.com
-// ATTENDEE:mailto:b@example.com
-// COMMENT:
-// UID:calsrv.example.com-873970198738777@example.com
-// DTSTAMP:19970613T193000Z
-// SEQUENCE:1
-// END:VEVENT
-// END:VCALENDAR
-// ''';
 
       final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
+METHOD:REQUEST
 BEGIN:VEVENT
 ORGANIZER:mailto:a@example.com
 ATTENDEE;CUTYPE=INDIVIDUAL:mailto:a@example.com
@@ -469,10 +451,11 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final original = VComponent.parse(input) as VCalendar;
-      final cancelled = original.cancelEventForAttendees(
+      final cancelledChanges = original.cancelEventForAttendees(
         cancelledAttendeeEmails: ['b@example.com', 'd@example.com'],
         comment: 'You\'re off the hook for this meeting',
       );
+      final cancelled = cancelledChanges.requestForCancelledAttendees;
       expect(cancelled.method, Method.cancel);
       var event = cancelled.children.first;
       expect(event, isInstanceOf<VEvent>());
@@ -484,42 +467,20 @@ END:VCALENDAR
       expect(event.attendees[1].email, 'd@example.com');
       // other properties are covered by components_test.dart
 
-      //  The updated master copy of the event is shown below.  The "Organizer"
+      //  The "Organizer"
       //  MAY resend the updated event to the remaining "Attendees".  Note that
-      //  "B" has been removed.
-//TODO should cancelEventForAttendees also create the updated event for the remaining participants?
-//       input = '''BEGIN:VCALENDAR
-// PRODID:-//Example/ExampleCalendarClient//EN
-// METHOD:REQUEST
-// VERSION:2.0
-// BEGIN:VEVENT
-// ORGANIZER:mailto:a@example.com
-// ATTENDEE;ROLE=CHAIR;PARTSTAT=ACCEPTED:mailto:a@example.com
-// ATTENDEE;CUTYPE=INDIVIDUAL:mailto:c@example.com
-// ATTENDEE;CUTYPE=INDIVIDUAL:mailto:d@example.com
-// ATTENDEE;CUTYPE=ROOM:mailto:cr_big@example.com
-// ATTENDEE;ROLE=NON-PARTICIPANT;
-//   RSVP=FALSE:mailto:e@example.com
-// DTSTAMP:19970611T190000Z
-// DTSTART:19970701T200000Z
-// DTEND:19970701T203000Z
-// SUMMARY:Phone Conference
-// UID:calsrv.example.com-873970198738777@example.com
-// SEQUENCE:2
-// STATUS:CONFIRMED
-// END:VEVENT
-// END:VCALENDAR
-// ''';
-//       iCalendar = VComponent.parse(input);
-//       expect(iCalendar, isInstanceOf<VCalendar>());
-//       expect((iCalendar as VCalendar).method, Method.request);
-//       event = iCalendar.children.first;
-//       expect(event, isInstanceOf<VEvent>());
-//       expect((event as VEvent).sequence, 2);
-//       expect(event.attendees.length, 5);
-//       expect(event.attendees[4].role, Role.nonParticpant);
-//       expect(event.attendees[4].rsvp, isFalse);
-//       expect(event.attendees[4].email, 'e@example.com');
+      //  "B" and "D" have been removed.
+      final updatedInvite = cancelledChanges.requestUpdateForGroup;
+      expect(updatedInvite.method, Method.request);
+      event = updatedInvite.event!;
+      expect(event.sequence, isNull);
+      expect(event.attendees.length, 4);
+      expect(event.attendees[1].role, Role.nonParticpant);
+      expect(event.attendees[1].rsvp, isFalse);
+      expect(event.attendees[1].email, 'b@example.com');
+      expect(event.attendees[3].role, Role.nonParticpant);
+      expect(event.attendees[3].rsvp, isFalse);
+      expect(event.attendees[3].email, 'd@example.com');
     });
 
     test('Replacing the Organizer', () {

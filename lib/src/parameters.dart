@@ -105,6 +105,13 @@ class UriParameter extends Parameter<Uri> {
     }
     return Uri.parse(textValue);
   }
+
+  static UriParameter? create(ParameterType type, Uri? value) {
+    if (value == null) {
+      return null;
+    }
+    return UriParameter.value(type, value);
+  }
 }
 
 /// Parameter or value that contains one or several URIs like `MEMBER`
@@ -114,6 +121,10 @@ class UriListParameter extends Parameter<List<Uri>> {
 
   UriListParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeUriList, parse(textValue));
+
+  UriListParameter.value(ParameterType type, List<Uri> value)
+      : super(
+            type, type.name!, renderUris(value), ValueType.typeUriList, value);
 
   static List<Uri> parse(final String textValue) {
     final runes = textValue.runes.toList();
@@ -153,6 +164,17 @@ class UriListParameter extends Parameter<List<Uri>> {
     }
     return result;
   }
+
+  static String renderUris(List<Uri> uris) {
+    return uris.map((uri) => '"$uri"').join(',');
+  }
+
+  static UriListParameter? create(ParameterType type, List<Uri>? value) {
+    if (value == null) {
+      return null;
+    }
+    return UriListParameter.value(type, value);
+  }
 }
 
 /// Parameter containing text
@@ -171,6 +193,13 @@ class TextParameter extends Parameter<String> {
     }
     return textValue;
   }
+
+  static TextParameter? create(ParameterType type, String? value) {
+    if (value == null) {
+      return null;
+    }
+    return TextParameter.value(type, value);
+  }
 }
 
 /// Parameter containing boolean values
@@ -185,6 +214,13 @@ class BooleanParameter extends Parameter<bool> {
 
   static bool parse(String textValue) {
     return (textValue == 'TRUE' || textValue == 'YES');
+  }
+
+  static BooleanParameter? create(ParameterType type, bool? value) {
+    if (value == null) {
+      return null;
+    }
+    return BooleanParameter.value(type, value);
   }
 }
 
@@ -216,6 +252,13 @@ class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
         return CalendarUserType.other;
     }
   }
+
+  static CalendarUserTypeParameter? create(CalendarUserType? value) {
+    if (value == null) {
+      return null;
+    }
+    return CalendarUserTypeParameter.value(value);
+  }
 }
 
 /// Parameter defining the status of a free busy property
@@ -224,6 +267,13 @@ class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
 
   FreeBusyTimeTypeParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeFreeBusy, parse(textValue));
+  FreeBusyTimeTypeParameter.value(FreeBusyTimeType value)
+      : super(
+            ParameterType.freeBusyTimeType,
+            ParameterType.freeBusyTimeType.name!,
+            value.name!,
+            ValueType.typeFreeBusy,
+            value);
 
   static FreeBusyTimeType parse(String textValue) {
     switch (textValue) {
@@ -238,6 +288,13 @@ class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
       default:
         return FreeBusyTimeType.other;
     }
+  }
+
+  static FreeBusyTimeTypeParameter? create(FreeBusyTimeType? value) {
+    if (value == null) {
+      return null;
+    }
+    return FreeBusyTimeTypeParameter.value(value);
   }
 }
 
@@ -278,6 +335,13 @@ class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
         return ParticipantStatus.other;
     }
   }
+
+  static ParticipantStatusParameter? create(ParticipantStatus? value) {
+    if (value == null) {
+      return null;
+    }
+    return ParticipantStatusParameter.value(value);
+  }
 }
 
 /// Parameter defining the range of a change
@@ -299,6 +363,9 @@ class RangeParameter extends Parameter<Range> {
 
   RangeParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeRange, parse(textValue));
+  RangeParameter.value(Range range)
+      : super(ParameterType.range, ParameterType.range.name!, range.name,
+            ValueType.typeRange, range);
 
   static Range parse(String textValue) {
     switch (textValue) {
@@ -307,6 +374,13 @@ class RangeParameter extends Parameter<Range> {
       default:
         throw FormatException('Invalid range: [$textValue]');
     }
+  }
+
+  static RangeParameter? create(Range? value) {
+    if (value == null) {
+      return null;
+    }
+    return RangeParameter.value(value);
   }
 }
 
@@ -338,6 +412,14 @@ class AlarmTriggerRelationshipParameter
     }
     throw FormatException('Invalid RELATED content [$textValue]');
   }
+
+  static AlarmTriggerRelationshipParameter? create(
+      AlarmTriggerRelationship? value) {
+    if (value == null) {
+      return null;
+    }
+    return AlarmTriggerRelationshipParameter.value(value);
+  }
 }
 
 /// Defines the relationship of the parameter's property
@@ -347,6 +429,14 @@ class RelationshipParameter extends Parameter<Relationship> {
   RelationshipParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeRelationship,
             parse(textValue));
+
+  RelationshipParameter.value(Relationship relationship)
+      : super(
+            ParameterType.relationshipType,
+            ParameterType.relationshipType.name!,
+            relationship.name!,
+            ValueType.typeRelationship,
+            relationship);
 
   static Relationship parse(String textValue) {
     switch (textValue) {
@@ -359,6 +449,13 @@ class RelationshipParameter extends Parameter<Relationship> {
       default:
         return Relationship.other;
     }
+  }
+
+  static RelationshipParameter? create(Relationship? value) {
+    if (value == null) {
+      return null;
+    }
+    return RelationshipParameter.value(value);
   }
 }
 
@@ -391,6 +488,13 @@ class ParticipantRoleParameter extends Parameter<Role> {
         return Role.other;
     }
   }
+
+  static ParticipantRoleParameter? create(Role? value) {
+    if (value == null) {
+      return null;
+    }
+    return ParticipantRoleParameter.value(value);
+  }
 }
 
 /// Defines the value type of the corresponding property.
@@ -401,6 +505,10 @@ class ValueParameter extends Parameter<ValueType> {
 
   ValueParameter(ParameterType type, String name, String textValue)
       : super(type, name, textValue, ValueType.typeValue, parse(textValue));
+
+  ValueParameter.value(ValueType type)
+      : super(ParameterType.value, ParameterType.value.name!, type.name!,
+            ValueType.typeValue, type);
 
   static ValueType parse(String content) {
     switch (content) {
@@ -435,6 +543,13 @@ class ValueParameter extends Parameter<ValueType> {
       default:
         return ValueType.other;
     }
+  }
+
+  static ValueParameter? create(ValueType? value) {
+    if (value == null) {
+      return null;
+    }
+    return ValueParameter.value(value);
   }
 }
 

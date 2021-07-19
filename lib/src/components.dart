@@ -470,7 +470,7 @@ class VCalendar extends VComponent {
   /// Organizers of an calendar event can cancel an event for attendees.
   /// You must either specify [cancelledAttendees] or [cancelledAttendeeEmails].
   /// Compare [cancelEvent] in case you want to cancel the whole event
-  VCalendar cancelEventForAttendees(
+  AttendeeCancelResult cancelEventForAttendees(
       {List<AttendeeProperty>? cancelledAttendees,
       List<String>? cancelledAttendeeEmails,
       String? comment}) {
@@ -478,13 +478,27 @@ class VCalendar extends VComponent {
         'You must specify either cancelledAttendees or cancelledAttendeeEmails');
     assert(!(cancelledAttendeeEmails != null && cancelledAttendees != null),
         'You must specify either cancelledAttendees or cancelledAttendeeEmails, but not both');
-    return update(
+    final attendeeChange = update(
       method: Method.cancel,
       comment: comment,
       attendeeFilter: (attendee) => cancelledAttendeeEmails != null
           ? cancelledAttendeeEmails.contains(attendee.email)
           : cancelledAttendees!.any((a) => a.uri == attendee.uri),
     );
+    final groupChange = copy() as VCalendar;
+    final event = groupChange.event;
+    if (event != null) {
+      final attendees = cancelledAttendeeEmails != null
+          ? event.attendees.where(
+              (attendee) => cancelledAttendeeEmails.contains(attendee.email))
+          : event.attendees.where((attendee) => cancelledAttendees!
+              .any((cancelled) => cancelled.uri == attendee.uri));
+      for (final attendee in attendees) {
+        attendee.rsvp = false;
+        attendee.role = Role.nonParticpant;
+      }
+    }
+    return AttendeeCancelResult(attendeeChange, groupChange);
   }
 
   /// Prepares an update of this calendar.
@@ -563,6 +577,8 @@ class VCalendar extends VComponent {
   /// Any other changes have to be done directly on the children of the returned VCalendar.
   /// Any attendee can propose a counter, for example with different time, location or attendees.
   /// The [method] is set to [Method.counter], the [VEvent.sequence] stays the same, but the [VEvent.timeStamp] is updated.
+  ///
+  /// Compare [declineCounter] for organizers to decline a counter proposal.
   VCalendar counter({
     String? comment,
     DateTime? start,
@@ -603,8 +619,10 @@ class VCalendar extends VComponent {
   ///
   /// An organizer can decline the counter proposal and optionally provide the reasoning in the [comment].
   /// When either the [attendee] or [attendeeEmail] is specified, only that attendee will be kept.
-  /// When the current [method] must be [Method.counter].
-  /// The [sequence] stays the same.
+  /// This calendar's [method] must be [Method.counter].
+  /// The [VEvent.sequence] stays the same.
+  ///
+  /// Compare [counter] for attendees to create a counter proposal.
   VCalendar declineCounter(
       {AttendeeProperty? attendee, String? attendeeEmail, String? comment}) {
     assert(method == Method.counter,
@@ -629,11 +647,31 @@ class VCalendar extends VComponent {
     return copied;
   }
 
+  /// Accepts a counter proposal.
+  ///
+  /// An organizer can accept the counter proposal and optionally provide the reasoning in the [comment].
+  /// The current [method] must be [Method.counter].
+  /// The [VEvent.sequence] stays the same.
+  ///
+  /// Compare [counter] for attendees to create a counter proposal.
+  /// Compare [declineCounter] for organizers to decline a counter proposal.
+  VCalendar acceptCounter({String? comment, String? description}) {
+    assert(method == Method.counter,
+        'The current method is not Method.counter but instead $method. Only counter proposals can be accepted with acceptCounter.');
+
+    return update(
+      method: Method.request,
+      eventStatus: EventStatus.confirmed,
+      comment: comment,
+      description: description,
+    );
+  }
+
   /// Delegates this calendar from the user with [fromEmail] to the user [toEmail] / [to].
   ///
   /// The optional parameters [rsvp] and [toStatus] are ignored when [to] is specified.
   /// Optionally explain the reason in the [comment].
-  VCalendar delegate({
+  AttendeeDelegatedResult delegate({
     required String fromEmail,
     String? toEmail,
     AttendeeProperty? to,
@@ -643,10 +681,10 @@ class VCalendar extends VComponent {
   }) {
     assert(!(toEmail == null && to == null),
         'Either to or toEmail must be specified.');
-    final copied = copy() as VCalendar;
-    copied.method = Method.request;
+    final forDelegatee = copy() as VCalendar;
+    forDelegatee.method = Method.request;
     final event =
-        copied.children.firstWhereOrNull((ev) => ev is VEvent) as VEvent?;
+        forDelegatee.children.firstWhereOrNull((ev) => ev is VEvent) as VEvent?;
     if (event != null) {
       if (comment != null) {
         event.comment = comment;
@@ -669,7 +707,12 @@ class VCalendar extends VComponent {
       event.removeAttendeeWithUri(to.uri);
       event.addAttendee(to);
     }
-    return copied;
+    final forOrganizer = replyWithParticipantStatus(
+      ParticipantStatus.delegated,
+      attendeeEmail: fromEmail,
+      delegatedToEmail: to!.email,
+    );
+    return AttendeeDelegatedResult(forDelegatee, forOrganizer);
   }
 
   @override
@@ -695,6 +738,7 @@ class VCalendar extends VComponent {
     String? timezoneId,
     DateTime? timeStamp,
     String? uid,
+    Method method = Method.request,
   }) {
     assert(organizer != null || organizerEmail != null,
         'Either organizer or organizerEmail needs to be specified.');
@@ -706,7 +750,8 @@ class VCalendar extends VComponent {
       ..calendarScale = calendarScale
       ..productId = productId
       ..version = '2.0'
-      ..timezoneId = timezoneId;
+      ..timezoneId = timezoneId
+      ..method = method;
     final event = VEvent(parent: calendar);
     calendar.children.add(event);
     organizer ??= OrganizerProperty.create(email: organizerEmail);
