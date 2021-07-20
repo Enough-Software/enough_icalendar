@@ -538,23 +538,24 @@ class AttendeeProperty extends UserProperty {
   /// Creates an attendee with the specified [attendeeUri] or [attendeeEmail].
   ///
   /// Any other parameters are optional.
-  static AttendeeProperty create(
-      {Uri? attendeeUri,
-      String? attendeeEmail,
-      ParticipantStatus? participantStatus,
-      Uri? delegatedToUri,
-      String? delegatedToEmail,
-      Uri? delegatedFromUri,
-      String? delegatedFromEmail,
-      Role? role,
-      bool? rsvp,
-      CalendarUserType? userType,
-      String? commonName,
-      Uri? alternateRepresentation,
-      Uri? directory}) {
-    assert(attendeeEmail != null || attendeeUri != null,
-        'Either the attendee\'s email or uri needs to be specified.');
-
+  static AttendeeProperty? create({
+    Uri? attendeeUri,
+    String? attendeeEmail,
+    ParticipantStatus? participantStatus,
+    Uri? delegatedToUri,
+    String? delegatedToEmail,
+    Uri? delegatedFromUri,
+    String? delegatedFromEmail,
+    Role? role,
+    bool? rsvp,
+    CalendarUserType? userType,
+    String? commonName,
+    Uri? alternateRepresentation,
+    Uri? directory,
+  }) {
+    if (attendeeEmail == null && attendeeUri == null) {
+      return null;
+    }
     attendeeUri ??= Uri.parse('mailto:$attendeeEmail');
     final prop = AttendeeProperty('$propertyName:$attendeeUri');
     if (participantStatus != null) {
@@ -622,6 +623,7 @@ class OrganizerProperty extends UserProperty {
     Uri? uri,
     Uri? sentBy,
     String? sentByEmail,
+    String? commonName,
   }) {
     if (email == null && uri == null) {
       return null;
@@ -634,6 +636,9 @@ class OrganizerProperty extends UserProperty {
     if (sentBy != null) {
       prop[ParameterType.sentBy] =
           UriParameter.value(ParameterType.sentBy, sentBy);
+    }
+    if (commonName != null) {
+      prop.commonName = commonName;
     }
     return prop;
   }

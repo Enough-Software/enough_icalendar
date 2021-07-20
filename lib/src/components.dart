@@ -368,11 +368,6 @@ class VCalendar extends VComponent {
           ?.textValue ??
       'GREGORIAN';
 
-  /// Convencience method for getting the first event child, if there is any:
-  VEvent? get event => children.firstWhereOrNull(
-          (component) => component.componentType == VComponentType.event)
-      as VEvent?;
-
   /// Sets the scale of the calendar
   set calendarScale(String? value) => setOrRemoveProperty(
       CalendarScaleProperty.propertyName, CalendarScaleProperty.create(value));
@@ -402,6 +397,57 @@ class VCalendar extends VComponent {
   set timezoneId(String? value) => setOrRemoveProperty(
       TextProperty.propertyNameXWrTimezone,
       TextProperty.create(TextProperty.propertyNameXWrTimezone, value));
+
+  /// Convencience getter for getting the first `VEVENT` child, if there is any:
+  VEvent? get event => children.firstWhereOrNull(
+          (component) => component.componentType == VComponentType.event)
+      as VEvent?;
+
+  /// Convencience getter for getting the first `VTODO` child, if there is any:
+  VTodo? get todo => children.firstWhereOrNull(
+      (component) => component.componentType == VComponentType.todo) as VTodo?;
+
+  /// Convencience getter for getting the first `VJOURNAL` child, if there is any:
+  VJournal? get journal => children.firstWhereOrNull(
+          (component) => component.componentType == VComponentType.journal)
+      as VJournal?;
+
+  /// Convencience getter for getting the first `VTIMEZONE` child, if there is any:
+  VTimezone? get timezone => children.firstWhereOrNull(
+          (component) => component.componentType == VComponentType.timezone)
+      as VTimezone?;
+
+  _UidMandatoryComponent? get _uidMandatoryComponent => children
+          .firstWhereOrNull((component) => component is _UidMandatoryComponent)
+      as _UidMandatoryComponent?;
+
+  _EventTodoJournalComponent? get _eventTodoJournalComponent =>
+      children.firstWhereOrNull(
+              (component) => component is _EventTodoJournalComponent)
+          as _EventTodoJournalComponent?;
+
+  /// Convenience getter for retrieving the UID of the first child that has a UID getter
+  String? get uid => _uidMandatoryComponent?.uid;
+
+  /// Convenience getter for retrieving the timestamp of the first child that has a timestamp getter
+  DateTime? get timeStamp => _uidMandatoryComponent?.timeStamp;
+
+  /// Convenience getter for retrieving the summary of the first child that has a summary getter
+  String? get summary => _eventTodoJournalComponent?.summary;
+
+  /// Convenience getter for retrieving the description of the first child that has a description getter
+  String? get description => _eventTodoJournalComponent?.description;
+
+  /// Convenience getter for retrieving the organizer of the first child that has an organizer getter
+  OrganizerProperty? get organizer => _eventTodoJournalComponent?.organizer;
+
+  /// Convenience getter for retrieving the attendees of the first child that has an attendees getter
+  List<AttendeeProperty>? get attendees =>
+      _eventTodoJournalComponent?.attendees;
+
+  /// Convenience getter for retrieving the attachments  of the first child that has an attachments getter
+  List<AttachmentProperty>? get attachments =>
+      _eventTodoJournalComponent?.attachments;
 
   @override
   bool get canReply =>
@@ -440,7 +486,7 @@ class VCalendar extends VComponent {
         participantStatus: participantStatus,
         delegatedToEmail: delegatedToEmail,
         delegatedFromUri: delegatedFrom,
-      );
+      )!;
     }
     for (final child in children) {
       if (child.canReply) {
@@ -542,7 +588,7 @@ class VCalendar extends VComponent {
       }
       if (addAttendeeEmails != null) {
         for (final email in addAttendeeEmails) {
-          event.addAttendee(AttendeeProperty.create(attendeeEmail: email));
+          event.addAttendee(AttendeeProperty.create(attendeeEmail: email)!);
         }
       }
       if (removeAttendees != null) {
@@ -696,14 +742,14 @@ class VCalendar extends VComponent {
           participantStatus: ParticipantStatus.delegated,
           delegatedToEmail: toEmail,
           delegatedToUri: to?.uri,
-        ),
+        )!,
       );
       to ??= AttendeeProperty.create(
         attendeeEmail: toEmail,
         participantStatus: toStatus,
         rsvp: rsvp,
         delegatedFromEmail: fromEmail,
-      );
+      )!;
       event.removeAttendeeWithUri(to.uri);
       event.addAttendee(to);
     }
@@ -769,12 +815,8 @@ class VCalendar extends VComponent {
       ..attendees = attendees ??
           attendeeEmails!
               .map((email) =>
-                  AttendeeProperty.create(attendeeEmail: email, rsvp: rsvp))
+                  AttendeeProperty.create(attendeeEmail: email, rsvp: rsvp)!)
               .toList();
-    final test = attendeeEmails!
-        .map((email) => AttendeeProperty.create(attendeeEmail: email))
-        .toList();
-    assert(test.isNotEmpty, 'unable to map attendees');
     return calendar;
   }
 

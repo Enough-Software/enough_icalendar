@@ -185,7 +185,15 @@ class TextParameter extends Parameter<String> {
       : super(type, name, textValue, ValueType.text, parse(textValue));
 
   TextParameter.value(ParameterType type, String value)
-      : super(type, type.name!, value, ValueType.text, value);
+      : super(
+            type, type.name!, _convertToSafeText(value), ValueType.text, value);
+
+  static String _convertToSafeText(String value) {
+    if (value.contains(';') || value.contains(',')) {
+      return '"$value"';
+    }
+    return value;
+  }
 
   static String parse(String textValue) {
     if (textValue.startsWith('"')) {
