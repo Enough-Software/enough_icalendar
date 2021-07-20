@@ -1,5 +1,6 @@
 # enough_icalendar
-iCalendar library in pure Dart. Fully compliant with the iCalendar standard [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545) and compliant to all VEvent functions of [iTIP / RFC 5546](https://datatracker.ietf.org/doc/html/rfc5546).
+iCalendar library in pure Dart to parse, generate and respond to iCal / ics invites. 
+Fully compliant with the iCalendar standard [RFC 5545](https://datatracker.ietf.org/doc/html/rfc5545) and compliant to all VEvent functions of [iTIP / RFC 5546](https://datatracker.ietf.org/doc/html/rfc5546).
 
 ## Installation
 Add this dependency your pubspec.yaml file:

@@ -1,3 +1,9 @@
+## 0.3.1
+- Fix bug in `VCalendar.createEvent`
+- Fix bug when adding a `TextParameter` with a value that contains a semicolon
+- Add convenience geters for summary, description, attendees, organizer, uid in `VCalendar`
+
+
 ## 0.3.0
 - Render `VCalendar`, `VEvent` instances, etc just by calling their `toString()` method
 - Set any properties
