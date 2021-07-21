@@ -292,6 +292,9 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 
 [tracker]: https://github.com/Enough-Software/enough_icalendar/issues
 
+## Related Projects
+* Check out [enough_mail_icalendar](https://pub.dev/packages/enough_mail_icalendar) for handling calendar invites in emails
+
 ## Null-Safety
 `enough_icalendar` is null-safe.
 
