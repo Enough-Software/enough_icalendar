@@ -242,6 +242,7 @@ class Property {
       case TextProperty.propertyNameTimezoneName:
       case TextProperty.propertyNameRelatedTo:
       case TextProperty.propertyNameXWrTimezone:
+      case TextProperty.propertyNameXTimezoneLocation:
         return TextProperty(definition);
       case DateTimeProperty.propertyNameCompleted:
       case DateTimeProperty.propertyNameDue:
@@ -303,6 +304,8 @@ class Property {
         return MethodProperty(definition);
       case RequestStatusProperty.propertyName:
         return RequestStatusProperty(definition);
+      case EventBusyStatusProperty.propertyName:
+        return EventBusyStatusProperty(definition);
       default:
         if (customParser != null) {
           final prop = customParser(name, definition);
@@ -453,7 +456,13 @@ class UserProperty extends UriProperty {
       ParameterType.calendarUserType, CalendarUserTypeParameter.create(value));
 
   /// Retrieve the email from this value
-  String? get email => uri.isScheme('MAILTO') ? uri.path : null;
+  String? get email => uri.isScheme('MAILTO')
+      ? uri.path
+      : getParameterValue<String>(ParameterType.email);
+
+  /// Sets the email as an additional parameter
+  set email(String? value) => setOrRemoveParameter(
+      ParameterType.email, TextParameter.create(ParameterType.email, value));
 }
 
 class AttendeeProperty extends UserProperty {
@@ -708,6 +717,13 @@ class AttachmentProperty extends Property {
   set encoding(String? value) => setOrRemoveParameter(ParameterType.encoding,
       TextParameter.create(ParameterType.encoding, value));
 
+  /// Retrieves the mime type / media type / format type like `image/png` as specified in the `FMTTYPE` parameter.
+  String? get filename => getParameterValue<String>(ParameterType.xFilename);
+
+  /// Sets the media type
+  set filename(String? value) => setOrRemoveParameter(ParameterType.xFilename,
+      TextParameter.create(ParameterType.xFilename, value));
+
   /// Checks if this contains binary data
   ///
   /// Compare [binary]
@@ -822,6 +838,9 @@ class TextProperty extends Property {
 
   /// `RELATED-TO`
   static const String propertyNameRelatedTo = 'RELATED-TO';
+
+  /// `X-LIC-LOCATION`, often the same as the `TZID`
+  static const String propertyNameXTimezoneLocation = 'X-LIC-LOCATION';
 
   /// Retrieve the language
   String? get language => this[ParameterType.language]?.textValue;
@@ -1302,5 +1321,40 @@ class RequestStatusProperty extends TextProperty {
       return null;
     }
     return RequestStatusProperty('$propertyName:$value');
+  }
+}
+
+class EventBusyStatusProperty extends Property {
+  /// `X-MICROSOFT-CDO-BUSYSTATUS`
+  static const String propertyName = 'X-MICROSOFT-CDO-BUSYSTATUS';
+
+  EventBusyStatusProperty(String definition)
+      : super(definition, ValueType.other,
+            parser: (property, textValue) => _parse(textValue));
+  EventBusyStatusProperty.value(EventBusyStatus value)
+      : this('$propertyName:${value.name}');
+
+  EventBusyStatus get eventBusyStatus => value as EventBusyStatus;
+
+  static EventBusyStatus _parse(String textValue) {
+    switch (textValue) {
+      case 'FREE':
+        return EventBusyStatus.free;
+      case 'TENTATIVE':
+        return EventBusyStatus.tentative;
+      case 'BUSY':
+        return EventBusyStatus.busy;
+      case 'OOF':
+        return EventBusyStatus.outOfOffice;
+    }
+    throw FormatException(
+        'Unable to parse value [$textValue] for X-MICROSOFT-CDO-BUSYSTATUS');
+  }
+
+  static EventBusyStatusProperty? create(EventBusyStatus? value) {
+    if (value == null) {
+      return null;
+    }
+    return EventBusyStatusProperty.value(value);
   }
 }

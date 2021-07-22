@@ -385,13 +385,15 @@ class VCalendar extends VComponent {
   set method(Method? value) => setOrRemoveProperty(
       MethodProperty.propertyName, MethodProperty.create(value));
 
-  /// Retrieves the global timezone ID like `America/New_York` or `Europe/Berlin` using the propriety but common `X-WR-TIMEZONE` property.
+  /// Retrieves the global timezone ID like `America/New_York` or `Europe/Berlin` of this calendar.
   ///
+  /// When no `X-WR-TIMEZONE` property is found, then a `VTimezone` child is searched and the ID is retrieved from there, if present.
   /// Any dates of subsequent components without explicit timezoneId should be interpreted according to this
   /// timezone ID. For caveats compare https://blog.jonudell.net/2011/10/17/x-wr-timezone-considered-harmful/
   String? get timezoneId =>
       getProperty<TextProperty>(TextProperty.propertyNameXWrTimezone)
-          ?.textValue;
+          ?.textValue ??
+      timezone?.timezoneId;
 
   /// Sets the `X-WR-TIMEZONE` property
   set timezoneId(String? value) => setOrRemoveProperty(
@@ -1230,6 +1232,18 @@ class VEvent extends _EventTodoJournalComponent {
   set status(EventStatus? value) => setOrRemoveProperty(
       StatusProperty.propertyName, StatusProperty.createEventStatus(value));
 
+  /// Gets the propriety busy status that attendees should use when accepting this event.
+  ///
+  /// Is retrieved from the `X-MICROSOFT-CDO-BUSYSTATUS` custom property.
+  EventBusyStatus? get busyStatus =>
+      getProperty<EventBusyStatusProperty>(EventBusyStatusProperty.propertyName)
+          ?.eventBusyStatus;
+
+  /// Sets the proprietary  `X-MICROSOFT-CDO-BUSYSTATUS` property.
+  set busyStatus(EventBusyStatus? value) => setOrRemoveProperty(
+      EventBusyStatusProperty.propertyName,
+      EventBusyStatusProperty.create(value));
+
   /// Retrieves the priority as a numeric value between 1 (highest) and 9 (lowest) priority.
   int? get priorityInt =>
       getProperty<PriorityProperty>(PriorityProperty.propertyName)?.intValue;
@@ -1455,6 +1469,16 @@ class VTimezone extends VComponent {
       DateTimeProperty.propertyNameLastModified,
       DateTimeProperty.create(
           DateTimeProperty.propertyNameLastModified, value));
+
+  /// Retrieves the location from the proprietary `X-LIC-LOCATION` property, if defined
+  String? get location =>
+      getProperty<TextProperty>(TextProperty.propertyNameXTimezoneLocation)
+          ?.text;
+
+  /// Sets the timezone location  using the proprietary `X-LIC-LOCATION` property.
+  set location(String? value) => setOrRemoveProperty(
+      TextProperty.propertyNameXTimezoneLocation,
+      TextProperty.create(TextProperty.propertyNameXTimezoneLocation, value));
 
   @override
   void checkValidity() {

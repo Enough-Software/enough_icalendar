@@ -1639,3 +1639,26 @@ class AttendeeDelegatedResult {
 
   AttendeeDelegatedResult(this.requestForDelegatee, this.replyForOrganizer);
 }
+
+/// Custom event busy status as defined by `X-MICROSOFT-CDO-BUSYSTATUS`
+enum EventBusyStatus {
+  free,
+  tentative,
+  busy,
+  outOfOffice,
+}
+
+extension ExtensionEventBusyStatus on EventBusyStatus {
+  String get name {
+    switch (this) {
+      case EventBusyStatus.free:
+        return 'FREE';
+      case EventBusyStatus.tentative:
+        return 'TENTATIVE';
+      case EventBusyStatus.busy:
+        return 'BUSY';
+      case EventBusyStatus.outOfOffice:
+        return 'OOF';
+    }
+  }
+}

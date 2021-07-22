@@ -81,6 +81,10 @@ abstract class Parameter<T> {
         return TextParameter(ParameterType.timezoneId, name, textValue);
       case 'VALUE':
         return ValueParameter(ParameterType.value, name, textValue);
+      case 'X-FILENAME':
+        return TextParameter(ParameterType.xFilename, name, textValue);
+      case 'EMAIL':
+        return TextParameter(ParameterType.email, name, textValue);
       default:
         print('Encountered unsupported parameter [$name]');
         return TextParameter(ParameterType.other, name, textValue);
@@ -623,6 +627,12 @@ enum ParameterType {
   /// `VALUE` property value data type, e.g. `BINARY` [ValueParameter]
   value,
 
+  /// `X-FILENAME` parameter, used for attachments [TextParameter]
+  xFilename,
+
+  /// `EMAIL` parameter, used for attendees [TextParameter]
+  email,
+
   /// Any other parameter type
   other,
 }
@@ -670,6 +680,10 @@ extension ExtensionParameterType on ParameterType {
         return 'TZID';
       case ParameterType.value:
         return 'VALUE';
+      case ParameterType.xFilename:
+        return 'X-FILENAME';
+      case ParameterType.email:
+        return 'EMAIL';
       case ParameterType.other:
         return null;
     }

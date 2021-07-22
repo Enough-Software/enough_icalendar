@@ -809,6 +809,82 @@ END:VCALENDAR''';
       expect(event.organizer!.email, 'sofortsupport@ticket.io');
       expect(event.organizer!.commonName, 'Covidzentrum Bremen');
     });
+
+    test('Real world 2', () {
+      final text =
+          '''BEGIN:VCALENDAR\r
+VERSION:2.0\r
+PRODID:-//Open-Xchange//7.10.3-Rev34//EN\r
+METHOD:REQUEST\r
+BEGIN:VTIMEZONE\r
+TZID:Europe/Rome\r
+LAST-MODIFIED:20201011T015911Z\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Europe/Rome\r
+X-LIC-LOCATION:Europe/Rome\r
+BEGIN:DAYLIGHT\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+DTSTART:19700329T020000\r
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+TZNAME:CET\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0100\r
+DTSTART:19701025T030000\r
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
+END:STANDARD\r
+END:VTIMEZONE\r
+BEGIN:VEVENT\r
+DTSTAMP:20210721T134636Z\r
+ATTENDEE;CN=The invited one;PARTSTAT=NEEDS-ACTION;CUTYPE=INDIVIDUAL;EMAIL=som\r
+ e.one@domain.com:mailto:some.one@domain.com\r
+ATTENDEE;CN=Mrs Organizer;PARTSTAT=ACCEPTED;CUTYPE=INDIVIDUAL;EMAIL=mrs.organ\r
+ izer@example.com:mailto:mrs.organizer@example.com\r
+CLASS:PUBLIC\r
+CREATED:20210721T134636Z\r
+DESCRIPTION:Hey\, here's the event description\, with some commas.\r
+DTEND;TZID=Europe/Rome:20210722T160000\r
+DTSTART;TZID=Europe/Rome:20210722T140000\r
+LAST-MODIFIED:20210721T134636Z\r
+LOCATION:When in Rome...\r
+ORGANIZER;CN=Mrs Organizer:mailto:mrs.organizer@example.com\r
+SEQUENCE:0\r
+SUMMARY:Example meeting\r
+TRANSP:OPAQUE\r
+UID:1dbfc3a9-a285-46ae-944a-15c3927ab7ac\r
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY\r
+END:VEVENT\r
+END:VCALENDAR\r
+''';
+      final calendar = VComponent.parse(text);
+      expect(calendar, isInstanceOf<VCalendar>());
+      expect((calendar as VCalendar).version, '2.0');
+      expect(calendar.isVersion2, isTrue);
+      expect(calendar.isGregorian, isTrue);
+      expect(calendar.productId, '-//Open-Xchange//7.10.3-Rev34//EN');
+      expect(calendar.timezoneId, 'Europe/Rome');
+      expect(calendar.children, isNotEmpty);
+      expect(calendar.children.length, 2);
+      final event = calendar.children[1];
+      expect(event, isInstanceOf<VEvent>());
+      expect((event as VEvent).summary, 'Example meeting');
+      expect(event.uid, '1dbfc3a9-a285-46ae-944a-15c3927ab7ac');
+      expect(event.classification, Classification.public);
+      expect(event.start, DateTime(2021, 07, 22, 14, 00, 00));
+      expect(event.end, DateTime(2021, 07, 22, 16, 00, 00));
+      expect(event.description,
+          'Hey, here\'s the event description, with some commas.');
+      expect(event.location, 'When in Rome...');
+      expect(event.organizer, isNotNull);
+      expect(
+          event.organizer!.uri, Uri.parse('MAILTO:mrs.organizer@example.com'));
+      expect(event.organizer!.email, 'mrs.organizer@example.com');
+      expect(event.organizer!.commonName, 'Mrs Organizer');
+      expect(event.busyStatus, EventBusyStatus.busy);
+      expect(calendar.timezone?.location, 'Europe/Rome');
+    });
   });
 
   group('Create Calendar Invites', () {
