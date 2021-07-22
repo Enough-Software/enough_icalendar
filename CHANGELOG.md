@@ -1,3 +1,14 @@
+## 0.4.0
+Support for additional properties and parameters.
+
+The following proprietry properties are now supported:
+- X-LIC-LOCATION
+- X-MICROSOFT-CDO-BUSYSTATUS
+
+The following parameters are now supported:
+- EMAIL (Attendee)
+- X-FILENAME (Attachment)
+
 ## 0.3.1
 - Fix bug in `VCalendar.createEvent`
 - Fix bug when adding a `TextParameter` with a value that contains a semicolon
