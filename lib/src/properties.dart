@@ -197,7 +197,7 @@ class Property {
       case ValueType.recurrence:
         return Recurrence.parse(textValue);
       case ValueType.text:
-        return textValue;
+        return TextProperty.parseText(textValue);
       case ValueType.time:
         return TimeOfDayWithSeconds.parse(textValue);
       case ValueType.uri:
@@ -805,6 +805,7 @@ class ClassificationProperty extends Property {
   }
 }
 
+/// Contains texts
 class TextProperty extends Property {
   /// `COMMENT`
   static const String propertyNameComment = 'COMMENT';
@@ -867,6 +868,8 @@ class TextProperty extends Property {
     if (value == null) {
       return null;
     }
+    value = value.replaceAll(',', '\\,');
+    value = value.replaceAll('\n', '\\n');
     final prop = TextProperty('$name:$value');
     if (language != null) {
       prop.setParameter(TextParameter.value(ParameterType.language, language));
@@ -876,6 +879,12 @@ class TextProperty extends Property {
           ParameterType.alternateRepresentation, alternateRepresentation));
     }
     return prop;
+  }
+
+  static String parseText(String textValue) {
+    textValue = textValue.replaceAll('\\,', ',');
+    textValue = textValue.replaceAll('\\n', '\n');
+    return textValue;
   }
 }
 

@@ -844,7 +844,7 @@ ATTENDEE;CN=Mrs Organizer;PARTSTAT=ACCEPTED;CUTYPE=INDIVIDUAL;EMAIL=mrs.organ\r
  izer@example.com:mailto:mrs.organizer@example.com\r
 CLASS:PUBLIC\r
 CREATED:20210721T134636Z\r
-DESCRIPTION:Hey\, here's the event description\, with some commas.\r
+DESCRIPTION:Hey\\, here's the event description\\, with\\nsome commas.\r
 DTEND;TZID=Europe/Rome:20210722T160000\r
 DTSTART;TZID=Europe/Rome:20210722T140000\r
 LAST-MODIFIED:20210721T134636Z\r
@@ -874,8 +874,9 @@ END:VCALENDAR\r
       expect(event.classification, Classification.public);
       expect(event.start, DateTime(2021, 07, 22, 14, 00, 00));
       expect(event.end, DateTime(2021, 07, 22, 16, 00, 00));
+      print(event.description);
       expect(event.description,
-          'Hey, here\'s the event description, with some commas.');
+          'Hey, here\'s the event description, with\nsome commas.');
       expect(event.location, 'When in Rome...');
       expect(event.organizer, isNotNull);
       expect(
