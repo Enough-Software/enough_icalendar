@@ -1,3 +1,11 @@
+## 0.5.0
+- Convert a recurrence rule to human readbable text using `recurrence.toHumanReadableText()`.
+  With a recurrence of `RRULE:FREQ=MONTHLY;INTERVAL=2;COUNT=10;BYDAY=1SU,-1SU`, `recurrence.toHumanReadableText()` results in 
+  `Every other month on the first & last Sunday, 10 times`, and `recurrence.toHumanReadableText(languageCode: 'de')` results in 
+  `Alle zwei Monate an dem ersten & letzten Sonntag, 10-mal`, for example.
+- Newlines and commas are escaped and de-escaped correctly in description and location fields.
+
+
 ## 0.4.0
 Support for additional properties and parameters.
 

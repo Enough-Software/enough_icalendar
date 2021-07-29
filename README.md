@@ -7,7 +7,7 @@ Add this dependency your pubspec.yaml file:
 
 ```
 dependencies:
-  enough_icalendar: ^0.3.0
+  enough_icalendar: ^0.5.0
 ```
 The latest version or `enough_icalendar` is [![enough_icalendar version](https://img.shields.io/pub/v/enough_icalendar.svg)](https://pub.dartlang.org/packages/enough_icalendar).
 
@@ -38,6 +38,7 @@ DTSTAMP:19970714T170000Z
 ORGANIZER;CN=John Doe:MAILTO:john.doe@example.com
 DTSTART:19970714T170000Z
 DTEND:19970715T035959Z
+RRULE:FREQ=YEARLY
 SUMMARY:Bastille Day Party
 GEO:48.85299;2.36885
 END:VEVENT
@@ -48,6 +49,9 @@ END:VCALENDAR''';
   print(event.summary); // Bastille Day Party
   print(event.start); // 1997-06-14 at 17:00
   print(event.end); // 1997-07-15 at 03:59:59
+  print(event.recurrenceRule?.toHumanReadableText()); // Annually
+  print(event.recurrenceRule
+      ?.toHumanReadableText(languageCode: 'de')); // Jährlich
   print(event.organizer?.commonName); // John Doe
   print(event.organizer?.email); // john.doe@example.com
   print(event.geoLocation?.latitude); // 48.85299
