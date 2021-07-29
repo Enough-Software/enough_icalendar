@@ -580,7 +580,7 @@ END:VCALENDAR
       expect(event.classification, Classification.public);
       expect(event.summary, 'Calendaring Interoperability Planning Meeting');
       expect(event.description,
-          'Discuss how we can test c&s interoperability\\nusing iCalendar and other IETF standards.');
+          'Discuss how we can test c&s interoperability\nusing iCalendar and other IETF standards.');
       expect(event.location, 'LDB Lobby');
       // ATTACH;FMTTYPE=application/postscript:ftp://example.com/pub/conf/bkgrnd.ps
       expect(event.attachments, isNotEmpty);

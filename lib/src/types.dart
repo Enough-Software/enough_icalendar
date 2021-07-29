@@ -1,4 +1,6 @@
 import 'package:enough_icalendar/enough_icalendar.dart';
+import 'package:enough_icalendar/src/text/encoder.dart';
+import 'package:enough_icalendar/src/text/l10n/l10n.dart';
 
 /// To explicitly specify the value type format for a property value.
 enum ValueType {
@@ -181,6 +183,9 @@ extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
         return 'YEARLY';
     }
   }
+
+  operator >(RecurrenceFrequency other) => this.index < other.index;
+  operator >=(RecurrenceFrequency other) => this.index <= other.index;
 }
 
 /// This value type is used to identify properties that contain a recurrence rule specification.
@@ -279,36 +284,82 @@ class Recurrence {
   /// Compare [byMinute]
   final List<int>? bySecond;
 
+  /// Checks if there is at least one [bySecond] modifier
+  ///
+  /// Compare [bySecond]
+  bool get hasBySecond => (bySecond?.isNotEmpty == true);
+
   /// `BYMINUTE` modifier / limiter for this Recurrence.
   ///
   /// Compare [bySecond] for details
   final List<int>? byMinute;
+
+  /// Checks if there is at least one [byMinute] modifier
+  ///
+  /// Compare [byMinute]
+  bool get hasByMinute => (byMinute?.isNotEmpty == true);
 
   /// `BYHOUR` modifier / limiter for this Recurrence.
   ///
   /// Compare [bySecond] for details
   final List<int>? byHour;
 
+  /// Checks if there is at least one [byHour] modifier
+  ///
+  /// Compare [byHour]
+  bool get hasByHour => (byHour?.isNotEmpty == true);
+
   /// `BYDAY` modifier / limiter for this Recurrence. 1 = Monday / DateTime.monday, 7 = Sunday / DateTime.sunday
   ///
   /// Compare [bySecond] for details
   final List<ByDayRule>? byWeekDay;
 
+  /// Checks if there is at least one [byWeekDay] modifier
+  ///
+  /// Compare [byWeekDay]
+  bool get hasByWeekDay => (byWeekDay?.isNotEmpty == true);
+
+  /// Checks if there is at least one by week day modifier with a weeks number set.
+  ///
+  /// Compare [hasByWeekDay], [byWeekDay]
+  bool get hasByWeekDayWithWeeks =>
+      hasByWeekDay && byWeekDay!.any((day) => (day.week != null));
+
   /// `BYMONTHDAY` modifier / limiter for this Recurrence.
   final List<int>? byMonthDay;
 
+  /// Checks if this rule has at least one byYearDay modifier
+  ///
+  /// Compare [byMonthDay]
+  bool get hasByMonthDay => byMonthDay?.isNotEmpty == true;
+
   /// `BYYEARDAY` modifier / limiter for this Recurrence.
   final List<int>? byYearDay;
+
+  /// Checks if this rule has at least one byYearDay modifier
+  ///
+  /// Compare [byYearDay]
+  bool get hasByYearDay => byYearDay?.isNotEmpty == true;
 
   /// `BYWEEKNO` modifier / limiter for this Recurrence.
   ///
   /// Compare [bySecond] for details
   final List<int>? byWeek;
 
+  /// Checks if this rule has at least one byWeek modifier
+  ///
+  /// Compare [byWeek]
+  bool get hasByWeek => byWeek?.isNotEmpty == true;
+
   /// `BYMONTH` modifier / limiter for this Recurrence.
   ///
   /// Compare [bySecond] for details
   final List<int>? byMonth;
+
+  /// Checks if this rule has at least one byMonth modifier
+  ///
+  /// Compare [byMonth]
+  bool get hasByMonth => byMonth?.isNotEmpty == true;
 
   /// BYSETPOS modifier / limiter for this Recurrence.
   ///
@@ -326,6 +377,11 @@ class Recurrence {
   /// `FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`
   final List<int>? bySetPos;
 
+  /// Checks if this rule has `BYSETPOST` rules
+  ///
+  /// Compare [bySetPos]
+  bool get hasBySetPos => (bySetPos?.isNotEmpty == true);
+
   final int? _startOfWorkWeek;
 
   /// The `WKST` rule part specifies the day on which the workweek starts, defaults to [DateTime.monday].
@@ -336,6 +392,22 @@ class Recurrence {
   /// in a YEARLY "RRULE" when a BYWEEKNO rule part is specified.  The
   /// default value is MO.
   int get startOfWorkWeek => _startOfWorkWeek ?? DateTime.monday;
+
+  /// Checks if this recurrence rule has any `BY-XXX` limiter/specifier.
+  bool get hasByLimiter =>
+      bySecond != null ||
+      byMinute != null ||
+      byHour != null ||
+      byWeekDay != null ||
+      byMonthDay != null ||
+      byYearDay != null ||
+      byWeek != null ||
+      byMonth != null ||
+      byYearDay != null ||
+      bySetPos != null;
+
+  /// Checks if this recurrence rule is limited, either by [count] or by [until].
+  bool get hasLimit => count != null || until != null;
 
   /// Creates a new Recurrence rule with the specified [frequency] and other optional settings.
   const Recurrence(
@@ -436,6 +508,25 @@ class Recurrence {
       buffer..write(';BYSETPOS=')..write(bySetPos!.join(','));
     }
     return buffer.toString();
+  }
+
+  /// Tries to convert this recurrence rule to human readable text
+  ///
+  /// When you specify the optional [startDate], the week day will be taken into account for recurrences with a weekly frequency.
+  /// You can specify the used [localization] directly, specify it via the [language] enum or set the [languageCode]. By default US American English is used.
+  /// For example `RRULE:FREQ=WEEKLY;COUNT=10` would be converted to `weekly, 10 times`, or when the start date falls on a Tuesday, `every Tuesday`, for example.
+  String toHumanReadableText(
+      {DateTime? startDate,
+      RruleL10n? localization,
+      SupportedLanguage? language,
+      String? languageCode}) {
+    final usedLocalization = localization ??
+        ((language != null)
+            ? RecurrenceRuleToTextEncoder.getForLanguage(language)
+            : RecurrenceRuleToTextEncoder.getForLanguageCode(
+                languageCode ?? 'en'));
+    final encoder = RecurrenceRuleToTextEncoder(usedLocalization);
+    return encoder.convert(this, startDate: startDate);
   }
 
   static String? _lastContent;
@@ -668,6 +759,11 @@ class ByDayRule {
   /// This value is relative to the DTSTART / DateTimeStart property
   final int? week;
 
+  /// Checks if this rule has a week number
+  ///
+  /// Compare [week]
+  bool get hasWeekNumber => (week != null);
+
   ByDayRule(this.weekday, {this.week});
 
   @override
@@ -712,6 +808,11 @@ class ByDayRule {
     }
     return buffer.toString();
   }
+}
+
+extension ExtensionOnByDayRuleIteration on Iterable<ByDayRule> {
+  bool get anyHasWeekNumber => any((rule) => rule.hasWeekNumber);
+  bool get noneHasWeekNumber => !anyHasWeekNumber;
 }
 
 class TimeOfDayWithSeconds {
