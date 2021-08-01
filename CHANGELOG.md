@@ -1,3 +1,6 @@
+## 0.6.0
+- Adds the `IsoDuration.toDuration()` conversion method
+
 ## 0.5.0
 - Convert a recurrence rule to human readbable text using `recurrence.toHumanReadableText()`.
   With a recurrence of `RRULE:FREQ=MONTHLY;INTERVAL=2;COUNT=10;BYDAY=1SU,-1SU`, `recurrence.toHumanReadableText()` results in 

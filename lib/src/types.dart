@@ -1202,6 +1202,17 @@ class IsoDuration {
     return buffer.toString();
   }
 
+  /// Converts this ISO duration to an approximate Dart duration.
+  ///
+  /// The `days` are converted by assuming 365 days per year and 30 days per month:  `days: years * 365 + months * 30 + weeks * 7 + days`
+  Duration toDuration() {
+    return Duration(
+        days: years * 365 + months * 30 + weeks * 7 + days,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds);
+  }
+
   /// Parses the given [textValue] into a duration.
   ///
   /// The formmat is defined as `P[n]Y[n]M[n]DT[n]H[n]M[n]S`

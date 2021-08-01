@@ -297,6 +297,7 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 [tracker]: https://github.com/Enough-Software/enough_icalendar/issues
 
 ## Related Projects
+* Use [enough_icalendar_export](https://pub.dev/packages/enough_icalendar_export) to export calendar invites to the native calendar
 * Check out [enough_mail_icalendar](https://pub.dev/packages/enough_mail_icalendar) for handling calendar invites in emails
 
 ## Null-Safety
