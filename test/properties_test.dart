@@ -81,6 +81,14 @@ void main() {
   });
 
   group('Indirect Property Instantiation', () {
+    test('UTC Start Date', () {
+      final prop = Property.parseProperty('DTSTART:20210803T080000Z');
+      expect(prop, isInstanceOf<DateTimeProperty>());
+      expect(prop.name, 'DTSTART');
+      expect(prop.textValue, '20210803T080000Z');
+      expect((prop as DateTimeProperty).dateTime.isUtc, isTrue);
+      expect(prop.dateTime, DateTime.utc(2021, 08, 03, 08, 00));
+    });
     test('GeoProperty', () {
       final prop = Property.parseProperty('GEO:37.386013;-122.082932');
       expect(prop, isInstanceOf<GeoProperty>());
@@ -105,7 +113,7 @@ void main() {
       expect(prop.rule.byMonth, isNotEmpty);
       expect(prop.rule.byMonth!.length, 1);
       expect(prop.rule.byMonth![0], 4);
-      expect(prop.rule.until, DateTime(1998, 04, 04, 07));
+      expect(prop.rule.until, DateTime.utc(1998, 04, 04, 07));
     });
 
     test('RRULE:FREQ=UNKNOWN;BYDAY=1SU;BYMONTH=4;UNTIL=19980404T070000Z', () {
@@ -150,7 +158,8 @@ void main() {
     expect(prop.periods, isNotNull);
     expect(prop.periods, isNotEmpty);
     expect(prop.periods.length, 1);
-    expect(prop.periods.first.startDate, DateTime(1997, 03, 08, 16, 00, 00));
+    expect(
+        prop.periods.first.startDate, DateTime.utc(1997, 03, 08, 16, 00, 00));
     expect(prop.periods.first.duration, IsoDuration(hours: 8, minutes: 30));
   });
 
@@ -162,9 +171,9 @@ void main() {
     expect((prop as FreeBusyProperty).freeBusyType, FreeBusyTimeType.free);
     expect(prop.periods, isNotEmpty);
     expect(prop.periods.length, 2);
-    expect(prop.periods[0].startDate, DateTime(1997, 03, 08, 16, 00, 00));
+    expect(prop.periods[0].startDate, DateTime.utc(1997, 03, 08, 16, 00, 00));
     expect(prop.periods[0].duration, IsoDuration(hours: 3));
-    expect(prop.periods[1].startDate, DateTime(1997, 03, 08, 20, 00, 00));
+    expect(prop.periods[1].startDate, DateTime.utc(1997, 03, 08, 20, 00, 00));
     expect(prop.periods[1].duration, IsoDuration(hours: 1));
   });
 
@@ -179,14 +188,14 @@ void main() {
     expect((prop as FreeBusyProperty).freeBusyType, FreeBusyTimeType.free);
     expect(prop.periods, isNotEmpty);
     expect(prop.periods.length, 3);
-    expect(prop.periods[0].startDate, DateTime(1997, 03, 08, 16, 00, 00));
+    expect(prop.periods[0].startDate, DateTime.utc(1997, 03, 08, 16, 00, 00));
     expect(prop.periods[0].duration, IsoDuration(hours: 3));
     expect(prop.periods[0].endDate, isNull);
-    expect(prop.periods[1].startDate, DateTime(1997, 03, 08, 20, 00, 00));
+    expect(prop.periods[1].startDate, DateTime.utc(1997, 03, 08, 20, 00, 00));
     expect(prop.periods[1].duration, IsoDuration(hours: 1));
     expect(prop.periods[0].endDate, isNull);
-    expect(prop.periods[2].startDate, DateTime(1997, 03, 08, 23, 00, 00));
+    expect(prop.periods[2].startDate, DateTime.utc(1997, 03, 08, 23, 00, 00));
     expect(prop.periods[2].duration, isNull);
-    expect(prop.periods[2].endDate, DateTime(1997, 03, 09, 00, 00, 00));
+    expect(prop.periods[2].endDate, DateTime.utc(1997, 03, 09, 00, 00, 00));
   });
 }

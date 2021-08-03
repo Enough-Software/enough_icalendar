@@ -153,7 +153,7 @@ class RruleL10nDe extends RruleL10n {
     DaysOfVariant daysOfVariant = DaysOfVariant.dayAndFrequency,
     InOnVariant variant = InOnVariant.simple,
   }) {
-    print('onDaysOfMonth days=$days, variant=$variant');
+    //print('onDaysOfMonth days=$days, variant=$variant');
     final suffix = {
       DaysOfVariant.simple: '',
       DaysOfVariant.day: ' Tag',

@@ -856,8 +856,8 @@ class TimeOfDayWithSeconds {
   }
 
   static TimeOfDayWithSeconds parse(String content) {
-    final hour = int.tryParse(content.substring(0, 2));
-    final minute = int.tryParse(content.substring(2, 4));
+    var hour = int.tryParse(content.substring(0, 2));
+    var minute = int.tryParse(content.substring(2, 4));
     final second = int.tryParse(content.substring(4, 6));
     if (hour == null || minute == null || second == null) {
       throw FormatException('Invalid time definition: $content');
@@ -969,6 +969,11 @@ class DateHelper {
     }
     final date = DateHelper.parseDate(content.substring(0, 4 + 2 + 2));
     final time = TimeOfDayWithSeconds.parse(content.substring(tIndex + 1));
+    final isUtc = content.endsWith('Z');
+    if (isUtc) {
+      return DateTime.utc(
+          date.year, date.month, date.day, time.hour, time.minute, time.second);
+    }
     return DateTime(
         date.year, date.month, date.day, time.hour, time.minute, time.second);
   }
@@ -997,6 +1002,9 @@ class DateHelper {
     renderDate(value, buffer);
     buffer.write('T');
     TimeOfDayWithSeconds.renderTime(value, buffer);
+    if (value.isUtc) {
+      buffer.write('Z');
+    }
     return buffer.toString();
   }
 }

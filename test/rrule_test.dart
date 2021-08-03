@@ -15,7 +15,7 @@ void main() {
       expect(ruleProp.rule.byMonth, isNotEmpty);
       expect(ruleProp.rule.byMonth!.length, 1);
       expect(ruleProp.rule.byMonth![0], 4);
-      expect(ruleProp.rule.until, DateTime(1998, 04, 04, 07));
+      expect(ruleProp.rule.until, DateTime.utc(1998, 04, 04, 07));
       expect(ruleProp.rule.toHumanReadableText(),
           'Annually on the first Sunday of the month in April, until Saturday, April 4, 1998');
       expect(ruleProp.rule.toHumanReadableText(languageCode: 'de'),
@@ -37,7 +37,7 @@ void main() {
           RecurrenceRuleProperty('RRULE:FREQ=DAILY;UNTIL=19971224T000000Z');
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.daily);
-      expect(ruleProp.rule.until, DateTime(1997, 12, 24, 00, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(1997, 12, 24, 00, 00, 00));
       expect(ruleProp.rule.toHumanReadableText(),
           'Daily, until Wednesday, December 24, 1997');
       expect(ruleProp.rule.toHumanReadableText(languageCode: 'de'),
@@ -74,7 +74,7 @@ void main() {
           'RRULE:FREQ=YEARLY;UNTIL=20000131T140000Z;BYMONTH=1;BYDAY=SU,MO,TU,WE,TH,FR,SA');
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
-      expect(ruleProp.rule.until, DateTime(2000, 01, 31, 14, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(2000, 01, 31, 14, 00, 00));
       expect(ruleProp.rule.byMonth, [1]);
       expect(ruleProp.rule.byWeekDay, [
         ByDayRule(DateTime.sunday),
@@ -97,7 +97,7 @@ void main() {
           'RRULE:FREQ=DAILY;UNTIL=20000131T140000Z;BYMONTH=1');
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.daily);
-      expect(ruleProp.rule.until, DateTime(2000, 01, 31, 14, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(2000, 01, 31, 14, 00, 00));
       expect(ruleProp.rule.byMonth, [1]);
       expect(ruleProp.rule.toHumanReadableText(),
           'Daily in January, until Monday, January 31, 2000');
@@ -126,7 +126,7 @@ void main() {
           RecurrenceRuleProperty('RRULE:FREQ=WEEKLY;UNTIL=19971224T000000Z');
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.weekly);
-      expect(ruleProp.rule.until, DateTime(1997, 12, 24, 00, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(1997, 12, 24, 00, 00, 00));
       expect(ruleProp.rule.toHumanReadableText(),
           'Weekly, until Wednesday, December 24, 1997');
       expect(
@@ -166,7 +166,7 @@ void main() {
           'RRULE:FREQ=WEEKLY;UNTIL=19971007T000000Z;WKST=SU;BYDAY=TU,TH');
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.weekly);
-      expect(ruleProp.rule.until, DateTime(1997, 10, 07, 00, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(1997, 10, 07, 00, 00, 00));
       expect(ruleProp.rule.startOfWorkWeek, DateTime.sunday);
       expect(ruleProp.rule.byWeekDay, [
         ByDayRule(DateTime.tuesday),
@@ -209,7 +209,7 @@ void main() {
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.weekly);
       expect(ruleProp.rule.interval, 2);
-      expect(ruleProp.rule.until, DateTime(1997, 12, 24, 00, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(1997, 12, 24, 00, 00, 00));
       expect(ruleProp.rule.startOfWorkWeek, DateTime.sunday);
       expect(ruleProp.rule.byWeekDay, [
         ByDayRule(DateTime.monday),
@@ -257,7 +257,7 @@ void main() {
           'RRULE:FREQ=MONTHLY;UNTIL=19971224T000000Z;BYDAY=1FR');
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
-      expect(ruleProp.rule.until, DateTime(1997, 12, 24, 00, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(1997, 12, 24, 00, 00, 00));
       expect(ruleProp.rule.byWeekDay, [
         ByDayRule(DateTime.friday, week: 1),
       ]);
@@ -547,7 +547,7 @@ void main() {
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.hourly);
       expect(ruleProp.rule.interval, 3);
-      expect(ruleProp.rule.until, DateTime(1997, 09, 02, 17, 00, 00));
+      expect(ruleProp.rule.until, DateTime.utc(1997, 09, 02, 17, 00, 00));
       expect(ruleProp.rule.toHumanReadableText(),
           'Every 3 hours, until Tuesday, September 2, 1997 5:00:00 PM');
       expect(ruleProp.rule.toHumanReadableText(languageCode: 'de'),

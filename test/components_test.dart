@@ -257,9 +257,9 @@ END:VCALENDAR''';
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary, 'Bastille Day Party');
       expect(event.uid, '19970610T172345Z-AF23B2@example.com');
-      expect(event.timeStamp, DateTime(1997, 06, 10, 17, 23, 45));
-      expect(event.start, DateTime(1997, 07, 14, 17, 00, 00));
-      expect(event.end, DateTime(1997, 07, 15, 04, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1997, 06, 10, 17, 23, 45));
+      expect(event.start, DateTime.utc(1997, 07, 14, 17, 00, 00));
+      expect(event.end, DateTime.utc(1997, 07, 15, 04, 00, 00));
     });
 
     test('Private event', () {
@@ -277,9 +277,9 @@ END:VEVENT''';
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary, 'Annual Employee Review');
       expect(event.uid, '19970901T130000Z-123401@example.com');
-      expect(event.timeStamp, DateTime(1997, 09, 01, 13, 00, 00));
-      expect(event.start, DateTime(1997, 09, 03, 16, 30, 00));
-      expect(event.end, DateTime(1997, 09, 03, 19, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1997, 09, 01, 13, 00, 00));
+      expect(event.start, DateTime.utc(1997, 09, 03, 16, 30, 00));
+      expect(event.end, DateTime.utc(1997, 09, 03, 19, 00, 00));
       expect(event.classification, Classification.private);
       expect(event.categories, ['BUSINESS', 'HUMAN RESOURCES']);
     });
@@ -302,9 +302,9 @@ END:VEVENT
       expect((event as VEvent).summary,
           'Laurel is in sensitivity awareness class.');
       expect(event.uid, '19970901T130000Z-123402@example.com');
-      expect(event.timeStamp, DateTime(1997, 09, 01, 13, 00, 00));
-      expect(event.start, DateTime(1997, 04, 01, 16, 30, 00));
-      expect(event.end, DateTime(1997, 04, 02, 1, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1997, 09, 01, 13, 00, 00));
+      expect(event.start, DateTime.utc(1997, 04, 01, 16, 30, 00));
+      expect(event.end, DateTime.utc(1997, 04, 02, 1, 00, 00));
       expect(event.classification, Classification.public);
       expect(event.categories, ['BUSINESS', 'HUMAN RESOURCES']);
       expect(event.timeTransparency, TimeTransparency.transparent);
@@ -327,7 +327,7 @@ END:VEVENT\r
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).summary, 'Our Blissful Anniversary');
       expect(event.uid, '19970901T130000Z-123403@example.com');
-      expect(event.timeStamp, DateTime(1997, 09, 01, 13, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1997, 09, 01, 13, 00, 00));
       expect(event.start, DateTime(1997, 11, 02));
       expect(event.classification, Classification.confidential);
       expect(event.categories, ['ANNIVERSARY', 'PERSONAL', 'SPECIAL OCCASION']);
@@ -352,7 +352,7 @@ END:VEVENT
       expect((event as VEvent).summary,
           'Festival International de Jazz de Montreal');
       expect(event.uid, '20070423T123432Z-541111@example.com');
-      expect(event.timeStamp, DateTime(2007, 04, 23, 12, 34, 32));
+      expect(event.timeStamp, DateTime.utc(2007, 04, 23, 12, 34, 32));
       expect(event.start, DateTime(2007, 06, 28));
       expect(event.end, DateTime(2007, 07, 09));
       expect(event.timeTransparency, TimeTransparency.transparent);
@@ -390,9 +390,9 @@ END:VCALENDAR\r
       final event = calendar.children.first;
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).uid, 'uid1@example.com');
-      expect(event.timeStamp, DateTime(1996, 07, 04, 12, 00, 00));
-      expect(event.start, DateTime(1996, 09, 18, 14, 30, 00));
-      expect(event.end, DateTime(1996, 09, 20, 22, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1996, 07, 04, 12, 00, 00));
+      expect(event.start, DateTime.utc(1996, 09, 18, 14, 30, 00));
+      expect(event.end, DateTime.utc(1996, 09, 20, 22, 00, 00));
       expect(event.categories, ['CONFERENCE']);
       expect(event.status, EventStatus.confirmed);
       expect(event.organizer?.email, 'jsmith@example.com');
@@ -434,9 +434,9 @@ END:VCALENDAR
       final event = calendar.children.first;
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).uid, 'uid1@example.com');
-      expect(event.timeStamp, DateTime(1996, 07, 04, 12, 00, 00));
-      expect(event.start, DateTime(1996, 09, 18, 14, 30, 00));
-      expect(event.end, DateTime(1996, 09, 20, 22, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1996, 07, 04, 12, 00, 00));
+      expect(event.start, DateTime.utc(1996, 09, 18, 14, 30, 00));
+      expect(event.end, DateTime.utc(1996, 09, 20, 22, 00, 00));
       expect(event.categories, ['CONFERENCE']);
       expect(event.status, EventStatus.confirmed);
       expect(event.organizer?.email, 'jsmith@example.com');
@@ -493,8 +493,8 @@ END:VCALENDAR
       final event = calendar.children[1];
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).uid, 'guid-1.example.com');
-      expect(event.timeStamp, DateTime(1998, 03, 09, 23, 10, 00));
-      expect(event.created, DateTime(1998, 03, 09, 13, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1998, 03, 09, 23, 10, 00));
+      expect(event.created, DateTime.utc(1998, 03, 09, 13, 00, 00));
       expect(event.start, DateTime(1998, 03, 12, 08, 30, 00));
       expect(event.end, DateTime(1998, 03, 12, 09, 30, 00));
       expect(event.location, '1CP Conference Room 4350');
@@ -569,9 +569,9 @@ END:VCALENDAR
       final event = calendar.children.first;
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).uid, 'uid3@example.com');
-      expect(event.timeStamp, DateTime(1997, 03, 24, 12, 00, 00));
-      expect(event.start, DateTime(1997, 03, 24, 12, 30, 00));
-      expect(event.end, DateTime(1997, 03, 24, 21, 00, 00));
+      expect(event.timeStamp, DateTime.utc(1997, 03, 24, 12, 00, 00));
+      expect(event.start, DateTime.utc(1997, 03, 24, 12, 30, 00));
+      expect(event.end, DateTime.utc(1997, 03, 24, 21, 00, 00));
       expect(event.organizer?.email, 'jdoe@example.com');
       expect(event.attendees.length, 1);
       expect(event.attendees[0].rsvp, isTrue);
@@ -601,7 +601,7 @@ SEQUENCE:2
 UID:uid4@example.com
 ORGANIZER:mailto:unclesam@example.com
 ATTENDEE;PARTSTAT=ACCEPTED:mailto:jqpublic@example.com
-DUE:19980415T000000
+DUE:19980415T000000Z
 STATUS:NEEDS-ACTION
 SUMMARY:Submit Income Taxes
 BEGIN:VALARM
@@ -626,7 +626,7 @@ END:VCALENDAR
       final todo = calendar.children.first;
       expect(todo, isInstanceOf<VTodo>());
       expect((todo as VTodo).uid, 'uid4@example.com');
-      expect(todo.timeStamp, DateTime(1998, 01, 30, 13, 45, 00));
+      expect(todo.timeStamp, DateTime.utc(1998, 01, 30, 13, 45, 00));
       expect(todo.sequence, 2);
       expect(todo.organizer?.email, 'unclesam@example.com');
       expect(todo.attendees.length, 1);
@@ -635,14 +635,14 @@ END:VCALENDAR
       expect(todo.attendees[0].email, 'jqpublic@example.com');
       expect(todo.summary, 'Submit Income Taxes');
       expect(todo.status, TodoStatus.needsAction);
-      expect(todo.due, DateTime(1998, 04, 15, 00, 00, 00));
+      expect(todo.due, DateTime.utc(1998, 04, 15, 00, 00, 00));
       expect(todo.children, isNotEmpty);
       expect(todo.children.length, 1);
       final alarm = todo.children.first;
       expect(alarm, isInstanceOf<VAlarm>());
       expect((alarm as VAlarm).componentType, VComponentType.alarm);
       expect(alarm.action, AlarmAction.audio);
-      expect(alarm.triggerDate, DateTime(1998, 04, 03, 12, 00, 00));
+      expect(alarm.triggerDate, DateTime.utc(1998, 04, 03, 12, 00, 00));
       expect(alarm.repeat, 4);
       expect(alarm.duration, IsoDuration(hours: 1));
       expect(alarm.attachments, isNotEmpty);
@@ -681,11 +681,11 @@ END:VCALENDAR
       final freebusy = calendar.children.first;
       expect(freebusy, isInstanceOf<VFreeBusy>());
       expect((freebusy as VFreeBusy).organizer?.email, 'jsmith@example.com');
-      expect(freebusy.timeStamp, DateTime(1997, 09, 01, 12, 00, 00));
+      expect(freebusy.timeStamp, DateTime.utc(1997, 09, 01, 12, 00, 00));
       expect(freebusy.uid, '19970901T115957Z-76A912@example.com');
       expect(freebusy.organizer?.email, 'jsmith@example.com');
-      expect(freebusy.start, DateTime(1998, 03, 13, 14, 17, 11));
-      expect(freebusy.end, DateTime(1998, 04, 10, 14, 17, 11));
+      expect(freebusy.start, DateTime.utc(1998, 03, 13, 14, 17, 11));
+      expect(freebusy.end, DateTime.utc(1998, 04, 10, 14, 17, 11));
       expect(freebusy.url,
           Uri.parse('http://www.example.com/calendar/busytime/jsmith.ifb'));
       expect(freebusy.freeBusyProperties, isNotEmpty);
@@ -693,21 +693,21 @@ END:VCALENDAR
       expect(freebusy.freeBusyProperties[0].periods, isNotEmpty);
       expect(freebusy.freeBusyProperties[0].periods.length, 1);
       expect(freebusy.freeBusyProperties[0].periods[0].startDate,
-          DateTime(1998, 03, 14, 23, 30, 00));
+          DateTime.utc(1998, 03, 14, 23, 30, 00));
       expect(freebusy.freeBusyProperties[0].periods[0].endDate,
-          DateTime(1998, 03, 15, 00, 30, 00));
+          DateTime.utc(1998, 03, 15, 00, 30, 00));
       expect(
           freebusy.freeBusyProperties[0].freeBusyType, FreeBusyTimeType.busy);
       expect(freebusy.freeBusyProperties[1].periods.length, 1);
       expect(freebusy.freeBusyProperties[1].periods[0].startDate,
-          DateTime(1998, 03, 16, 15, 30, 00));
+          DateTime.utc(1998, 03, 16, 15, 30, 00));
       expect(freebusy.freeBusyProperties[1].periods[0].endDate,
-          DateTime(1998, 03, 16, 16, 30, 00));
+          DateTime.utc(1998, 03, 16, 16, 30, 00));
       expect(freebusy.freeBusyProperties[2].periods.length, 1);
       expect(freebusy.freeBusyProperties[2].periods[0].startDate,
-          DateTime(1998, 03, 18, 03, 00, 00));
+          DateTime.utc(1998, 03, 18, 03, 00, 00));
       expect(freebusy.freeBusyProperties[2].periods[0].endDate,
-          DateTime(1998, 03, 18, 04, 00, 00));
+          DateTime.utc(1998, 03, 18, 04, 00, 00));
     });
 
     test('free busy example', () {
@@ -747,7 +747,7 @@ END:VCALENDAR\r
       final journal = calendar.children.first;
       expect(journal, isInstanceOf<VJournal>());
       expect((journal as VJournal).uid, 'uid5@example.com');
-      expect(journal.timeStamp, DateTime(1997, 03, 24, 12, 00, 00));
+      expect(journal.timeStamp, DateTime.utc(1997, 03, 24, 12, 00, 00));
       expect(journal.organizer?.email, 'jsmith@example.com');
       expect(journal.classification, Classification.public);
       expect(journal.status, JournalStatus.draft);
@@ -914,6 +914,50 @@ END:VCALENDAR\r
       expect(event, isInstanceOf<VEvent>());
       expect((event as VEvent).start, DateTime(2021, 07, 21, 10, 00));
       expect(event.end, DateTime(2021, 07, 21, 11, 00));
+      expect(event.location, 'Big meeting room');
+      expect(event.url, Uri.parse('https://enough.de'));
+      expect(event.summary, 'Discussion');
+      expect(event.description,
+          'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?');
+      expect(event.attendees, isNotEmpty);
+      expect(event.attendees.length, 3);
+      expect(event.attendees[0].rsvp, isTrue);
+      expect(event.attendees[0].email, 'a@example.com');
+      expect(event.attendees[1].rsvp, isTrue);
+      expect(event.attendees[1].email, 'b@example.com');
+      expect(event.attendees[2].rsvp, isTrue);
+      expect(event.attendees[2].email, 'c@example.com');
+      expect(event.organizer, isNotNull);
+      expect(event.organizer?.email, 'a@example.com');
+    });
+
+    test('Simple event with UTC timing', () {
+      final invite = VCalendar.createEvent(
+        organizerEmail: 'a@example.com',
+        attendeeEmails: ['a@example.com', 'b@example.com', 'c@example.com'],
+        rsvp: true,
+        start: DateTime.utc(2021, 07, 21, 10, 00),
+        end: DateTime.utc(2021, 07, 21, 11, 00),
+        location: 'Big meeting room',
+        url: Uri.parse('https://enough.de'),
+        summary: 'Discussion',
+        description:
+            'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?',
+        productId: 'enough_icalendar/v1',
+      );
+      // print(invite);
+      invite.checkValidity();
+      expect(invite.isVersion2, isTrue);
+      expect(invite.isGregorian, isTrue);
+      expect(invite.productId, 'enough_icalendar/v1');
+      expect(invite.children, isNotEmpty);
+      final event = invite.children.first;
+      event.checkValidity();
+      expect(event, isInstanceOf<VEvent>());
+      expect((event as VEvent).start, DateTime.utc(2021, 07, 21, 10, 00));
+      expect(event['DTSTART']?.textValue, '20210721T100000Z');
+      expect(event.end, DateTime.utc(2021, 07, 21, 11, 00));
+      expect(event['DTEND']?.textValue, '20210721T110000Z');
       expect(event.location, 'Big meeting room');
       expect(event.url, Uri.parse('https://enough.de'));
       expect(event.summary, 'Discussion');
