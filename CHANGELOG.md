@@ -1,3 +1,6 @@
+## 0.7.0
+- Uses UTC date times when encountering UTC DateTime values. To get the local time, call `toLocal()`, e.g. `final localStartTime = event.start!.toLocal();`
+
 ## 0.6.0
 - Adds the `IsoDuration.toDuration()` conversion method
 
