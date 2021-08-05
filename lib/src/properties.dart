@@ -257,6 +257,8 @@ class Property {
       case IntegerProperty.propertyNameSequence:
       case IntegerProperty.propertyNameRepeat:
         return IntegerProperty(definition);
+      case BooleanProperty.propertyNameAllDayEvent:
+        return BooleanProperty(definition);
       case CalendarScaleProperty.propertyName:
         return CalendarScaleProperty(definition);
       case UtfOffsetProperty.propertyNameTimezoneOffsetFrom:
@@ -950,6 +952,22 @@ class IntegerProperty extends Property {
       return null;
     }
     return IntegerProperty('$name:$value');
+  }
+}
+
+class BooleanProperty extends Property {
+  /// `X-MICROSOFT-CDO-ALLDAYEVENT`
+  static const String propertyNameAllDayEvent = 'X-MICROSOFT-CDO-ALLDAYEVENT';
+
+  bool get boolValue => value as bool;
+
+  BooleanProperty(String definition) : super(definition, ValueType.boolean);
+
+  static BooleanProperty? create(String name, bool? value) {
+    if (value == null) {
+      return null;
+    }
+    return BooleanProperty('$name:${value ? 'TRUE' : 'FALSE'}');
   }
 }
 

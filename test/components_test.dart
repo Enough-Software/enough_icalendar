@@ -262,6 +262,36 @@ END:VCALENDAR''';
       expect(event.end, DateTime.utc(1997, 07, 15, 04, 00, 00));
     });
 
+    test('Calendar with full day event', () {
+      final text =
+          '''BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+BEGIN:VEVENT
+UID:19970610T172345Z-AF23B2@example.com
+DTSTAMP:19970610T172345Z
+DTSTART:19970714T000000Z
+DURATION:P1D
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+SUMMARY:Bastille Day Party
+END:VEVENT
+END:VCALENDAR''';
+      final calendar = VComponent.parse(text);
+      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar.children, isNotEmpty);
+      expect(calendar.children.length, 1);
+      expect(calendar.version, '2.0');
+      expect(calendar.productId, '-//hacksw/handcal//NONSGML v1.0//EN');
+      final event = calendar.children.first;
+      expect(event, isInstanceOf<VEvent>());
+      expect((event as VEvent).summary, 'Bastille Day Party');
+      expect(event.uid, '19970610T172345Z-AF23B2@example.com');
+      expect(event.timeStamp, DateTime.utc(1997, 06, 10, 17, 23, 45));
+      expect(event.start, DateTime.utc(1997, 07, 14, 00, 00, 00));
+      expect(event.duration, IsoDuration(days: 1));
+      expect(event.isAllDayEvent, isTrue);
+    });
+
     test('Private event', () {
       final text =
           '''BEGIN:VEVENT
@@ -958,6 +988,52 @@ END:VCALENDAR\r
       expect(event['DTSTART']?.textValue, '20210721T100000Z');
       expect(event.end, DateTime.utc(2021, 07, 21, 11, 00));
       expect(event['DTEND']?.textValue, '20210721T110000Z');
+      expect(event.location, 'Big meeting room');
+      expect(event.url, Uri.parse('https://enough.de'));
+      expect(event.summary, 'Discussion');
+      expect(event.description,
+          'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?');
+      expect(event.attendees, isNotEmpty);
+      expect(event.attendees.length, 3);
+      expect(event.attendees[0].rsvp, isTrue);
+      expect(event.attendees[0].email, 'a@example.com');
+      expect(event.attendees[1].rsvp, isTrue);
+      expect(event.attendees[1].email, 'b@example.com');
+      expect(event.attendees[2].rsvp, isTrue);
+      expect(event.attendees[2].email, 'c@example.com');
+      expect(event.organizer, isNotNull);
+      expect(event.organizer?.email, 'a@example.com');
+    });
+
+    test('Full day event with UTC timing', () {
+      final invite = VCalendar.createEvent(
+        organizerEmail: 'a@example.com',
+        attendeeEmails: ['a@example.com', 'b@example.com', 'c@example.com'],
+        rsvp: true,
+        start: DateTime.utc(2021, 07, 21, 0, 00),
+        duration: IsoDuration(days: 1),
+        isAllDayEvent: true,
+        location: 'Big meeting room',
+        url: Uri.parse('https://enough.de'),
+        summary: 'Discussion',
+        description:
+            'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?',
+        productId: 'enough_icalendar/v1',
+      );
+      // print(invite);
+      invite.checkValidity();
+      expect(invite.isVersion2, isTrue);
+      expect(invite.isGregorian, isTrue);
+      expect(invite.productId, 'enough_icalendar/v1');
+      expect(invite.children, isNotEmpty);
+      final event = invite.children.first;
+      event.checkValidity();
+      expect(event, isInstanceOf<VEvent>());
+      expect((event as VEvent).start, DateTime.utc(2021, 07, 21, 0, 00));
+      expect(event['DTSTART']?.textValue, '20210721T000000Z');
+      expect(event.end, isNull);
+      expect(event.duration, IsoDuration(days: 1));
+      expect(event.isAllDayEvent, isTrue);
       expect(event.location, 'Big meeting room');
       expect(event.url, Uri.parse('https://enough.de'));
       expect(event.summary, 'Discussion');

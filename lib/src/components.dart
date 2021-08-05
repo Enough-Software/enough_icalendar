@@ -789,6 +789,7 @@ class VCalendar extends VComponent {
     String? timezoneId,
     DateTime? timeStamp,
     String? uid,
+    bool? isAllDayEvent,
     Method method = Method.request,
   }) {
     assert(organizer != null || organizerEmail != null,
@@ -814,7 +815,8 @@ class VCalendar extends VComponent {
       ..summary = summary
       ..description = description
       ..location = location
-      ..url = url;
+      ..url = url
+      ..isAllDayEvent = isAllDayEvent;
     if (attendees != null) {
       event.attendees = attendees;
     } else if (attendeeEmails != null) {
@@ -1272,6 +1274,18 @@ class VEvent extends _EventTodoJournalComponent {
   set resource(String? value) => setOrRemoveProperty(
       TextProperty.propertyNameResources,
       TextProperty.create(TextProperty.propertyNameResources, value));
+
+  /// Checks if this event is an all-day event using the proprietary `X-MICROSOFT-CDO-ALLDAYEVENT` property.
+  bool? get isAllDayEvent =>
+      getProperty<BooleanProperty>(BooleanProperty.propertyNameAllDayEvent)
+          ?.boolValue;
+
+  /// Sets if this event is an all-day event using the proprietary `X-MICROSOFT-CDO-ALLDAYEVENT` property.
+  ///
+  /// Note that no other changes are done even when the given [value] is `true`, ie neither [start], nor [end] nor [duration] is changed.
+  set isAllDayEvent(bool? value) => setOrRemoveProperty(
+      BooleanProperty.propertyNameAllDayEvent,
+      BooleanProperty.create(BooleanProperty.propertyNameAllDayEvent, value));
   // @override
   // void checkValidity() {
   //   super.checkValidity();
