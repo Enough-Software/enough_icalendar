@@ -768,6 +768,9 @@ class VCalendar extends VComponent {
     return VCalendar(parent: parent);
   }
 
+  /// Creates an event from the specified [organizer] resp. [organizerEmail] on the given [start] datetime and either the [end] or [duration].
+  ///
+  /// Any other settings are optional.
   static VCalendar createEvent({
     String? organizerEmail,
     OrganizerProperty? organizer,
@@ -790,8 +793,6 @@ class VCalendar extends VComponent {
   }) {
     assert(organizer != null || organizerEmail != null,
         'Either organizer or organizerEmail needs to be specified.');
-    assert(attendees != null || attendeeEmails != null,
-        'Either attendees or attendeeEmails needs to be specified.');
     assert(end != null || duration != null,
         'Either end or duration must be specified.');
     final calendar = VCalendar()
@@ -813,12 +814,15 @@ class VCalendar extends VComponent {
       ..summary = summary
       ..description = description
       ..location = location
-      ..url = url
-      ..attendees = attendees ??
-          attendeeEmails!
-              .map((email) =>
-                  AttendeeProperty.create(attendeeEmail: email, rsvp: rsvp)!)
-              .toList();
+      ..url = url;
+    if (attendees != null) {
+      event.attendees = attendees;
+    } else if (attendeeEmails != null) {
+      event.attendees = attendeeEmails
+          .map((email) =>
+              AttendeeProperty.create(attendeeEmail: email, rsvp: rsvp)!)
+          .toList();
+    }
     return calendar;
   }
 
