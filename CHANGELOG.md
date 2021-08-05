@@ -1,3 +1,7 @@
+## 0.8.0
+- Support `X-MICROSOFT-CDO-ALLDAYEVENT` property, access it via `VEvent.isAllDayEvent`
+- Attendees are now optional when creating an event
+
 ## 0.7.0
 - Uses UTC date times when encountering UTC DateTime values. To get the local time, call `toLocal()`, e.g. `final localStartTime = event.start!.toLocal();`
 
