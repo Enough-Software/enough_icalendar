@@ -188,6 +188,12 @@ extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
   operator >=(RecurrenceFrequency other) => this.index <= other.index;
 }
 
+/// Specifies optional atrributes of a [Recurrence] rule.
+///
+///
+/// Compare [Recurrence.copyWithout]
+enum RecurrenceAttribute { interval, count, until, startOfWeek }
+
 /// This value type is used to identify properties that contain a recurrence rule specification.
 class Recurrence {
   /// The `FREQ` rule part identifies the type of recurrence rule.
@@ -427,6 +433,134 @@ class Recurrence {
     this.bySetPos,
   })  : _interval = interval,
         _startOfWorkWeek = startOfWorkWeek;
+
+  /// Copies this recurrence rule with the given attributes.
+  ///
+  /// Set [copyByRules] to `false` to not copy any by-rules. This defaults to `true`, meaning by rules are copied by default.
+  /// Set [copyUntil] to `false` to not copy the until attribute. This defaults to `true`, meaning the until attribute is copied by default.
+  Recurrence copyWith({
+    RecurrenceFrequency? frequency,
+    DateTime? until,
+    int? count,
+    int? interval,
+    List<int>? bySecond,
+    List<int>? byMinute,
+    List<int>? byHour,
+    List<ByDayRule>? byWeekDay,
+    List<int>? byYearDay,
+    List<int>? byWeek,
+    List<int>? byMonth,
+    List<int>? byMonthDay,
+    int? startOfWorkWeek,
+    List<int>? bySetPos,
+    bool copyByRules = true,
+    bool copyUntil = true,
+  }) {
+    if (!copyByRules) {
+      return Recurrence(
+        frequency ?? this.frequency,
+        until: until ?? (copyUntil ? this.until : null),
+        count: count ?? this.count,
+        interval: interval ?? _interval,
+        startOfWorkWeek: startOfWorkWeek ?? this._startOfWorkWeek,
+        bySecond: bySecond,
+        byMinute: byMinute,
+        byHour: byHour,
+        byWeekDay: byWeekDay,
+        byMonthDay: byMonthDay,
+        byYearDay: byYearDay,
+        byWeek: byWeek,
+        byMonth: byMonth,
+        bySetPos: bySetPos,
+      );
+    }
+    return Recurrence(
+      frequency ?? this.frequency,
+      until: until ?? (copyUntil ? this.until : null),
+      count: count ?? this.count,
+      interval: interval ?? _interval,
+      startOfWorkWeek: startOfWorkWeek ?? this._startOfWorkWeek,
+      bySecond: bySecond ?? this.bySecond,
+      byMinute: byMinute ?? this.byMinute,
+      byHour: byHour ?? this.byHour,
+      byWeekDay: byWeekDay ?? this.byWeekDay,
+      byMonthDay: byMonthDay ?? this.byMonthDay,
+      byYearDay: byYearDay ?? this.byYearDay,
+      byWeek: byWeek ?? this.byWeek,
+      byMonth: byMonth ?? this.byMonth,
+      bySetPos: bySetPos ?? this.bySetPos,
+    );
+  }
+
+  /// Copies this recurrence rule without the specified [attribute].
+  Recurrence copyWithout(RecurrenceAttribute attribute) {
+    switch (attribute) {
+      case RecurrenceAttribute.interval:
+        return Recurrence(
+          frequency,
+          until: until,
+          count: count,
+          startOfWorkWeek: startOfWorkWeek,
+          bySecond: bySecond,
+          byMinute: byMinute,
+          byHour: byHour,
+          byWeekDay: byWeekDay,
+          byMonthDay: byMonthDay,
+          byYearDay: byYearDay,
+          byWeek: byWeek,
+          byMonth: byMonth,
+          bySetPos: bySetPos,
+        );
+      case RecurrenceAttribute.count:
+        return Recurrence(
+          frequency,
+          until: until,
+          interval: interval,
+          startOfWorkWeek: startOfWorkWeek,
+          bySecond: bySecond,
+          byMinute: byMinute,
+          byHour: byHour,
+          byWeekDay: byWeekDay,
+          byMonthDay: byMonthDay,
+          byYearDay: byYearDay,
+          byWeek: byWeek,
+          byMonth: byMonth,
+          bySetPos: bySetPos,
+        );
+      case RecurrenceAttribute.until:
+        return Recurrence(
+          frequency,
+          count: count,
+          interval: interval,
+          startOfWorkWeek: startOfWorkWeek,
+          bySecond: bySecond,
+          byMinute: byMinute,
+          byHour: byHour,
+          byWeekDay: byWeekDay,
+          byMonthDay: byMonthDay,
+          byYearDay: byYearDay,
+          byWeek: byWeek,
+          byMonth: byMonth,
+          bySetPos: bySetPos,
+        );
+      case RecurrenceAttribute.startOfWeek:
+        return Recurrence(
+          frequency,
+          until: until,
+          count: count,
+          interval: interval,
+          bySecond: bySecond,
+          byMinute: byMinute,
+          byHour: byHour,
+          byWeekDay: byWeekDay,
+          byMonthDay: byMonthDay,
+          byYearDay: byYearDay,
+          byWeek: byWeek,
+          byMonth: byMonth,
+          bySetPos: bySetPos,
+        );
+    }
+  }
 
   @override
   int get hashCode =>
@@ -675,7 +809,7 @@ class Recurrence {
         final week = int.tryParse(weekText);
         if (week == null || week == 0 || week > 53 || week < -53) {
           throw FormatException(
-              'Invalid week $weekText in BYDAY rule part $text in RECUR $content');
+              'Invalid week "$weekText" in BYDAY rule part "$text" in RECUR "$content"');
         }
         final dayText = text.substring(text.length - 2);
         final day = _weekdaysByName[dayText];
@@ -756,7 +890,7 @@ class ByDayRule {
 
   /// The week, e.g. 1 for first week, 2 for the second week, -1 for the last week, -2 for the second last week, etc
   ///
-  /// This value is relative to the DTSTART / DateTimeStart property
+  /// This value is relative to the DTSTART / DateTimeStart's month property
   final int? week;
 
   /// Checks if this rule has a week number
@@ -777,34 +911,33 @@ class ByDayRule {
   @override
   String toString() {
     final buffer = StringBuffer();
+    if (week != null) {
+      buffer.write(week);
+    }
     switch (weekday) {
       case DateTime.monday:
-        buffer.write('Monday');
+        buffer.write('MO');
         break;
       case DateTime.tuesday:
-        buffer.write('Tuesday');
+        buffer.write('TU');
         break;
       case DateTime.wednesday:
-        buffer.write('Wednesday');
+        buffer.write('WE');
         break;
       case DateTime.thursday:
-        buffer.write('Thursday');
+        buffer.write('TH');
         break;
       case DateTime.friday:
-        buffer.write('Friday');
+        buffer.write('FR');
         break;
       case DateTime.saturday:
-        buffer.write('Saturday');
+        buffer.write('SA');
         break;
       case DateTime.sunday:
-        buffer.write('Sunday');
+        buffer.write('SU');
         break;
       default:
-        buffer..write('Invalid day ')..write(weekday);
-        break;
-    }
-    if (week != null) {
-      buffer..write(' in week ')..write(week);
+        throw FormatException('Invalid day $weekday - must be between 1 and 7');
     }
     return buffer.toString();
   }
@@ -1213,12 +1346,33 @@ class IsoDuration {
   /// Converts this ISO duration to an approximate Dart duration.
   ///
   /// The `days` are converted by assuming 365 days per year and 30 days per month:  `days: years * 365 + months * 30 + weeks * 7 + days`
+  /// Compare [addTo] for a better handling of this duration.
   Duration toDuration() {
     return Duration(
         days: years * 365 + months * 30 + weeks * 7 + days,
         hours: hours,
         minutes: minutes,
         seconds: seconds);
+  }
+
+  /// Adds this duration to the given [input] DateTime.
+  ///
+  /// This is adding this duration precisely and is better than [toDuration] in most cases.
+  DateTime addTo(DateTime input) {
+    int y = input.year + years;
+    int m = input.month + months;
+    while (m > 12) {
+      y++;
+      m -= 12;
+    }
+    final intermediate = DateTime(y, m, input.day, input.hour, input.minute,
+        input.second, input.millisecond, input.microsecond);
+    final duration = Duration(
+        days: weeks * 7 + days,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds);
+    return intermediate.add(duration);
   }
 
   /// Parses the given [textValue] into a duration.
