@@ -1273,9 +1273,10 @@ class IsoDuration {
   });
 
   static _DurationSection _parseSection(
-      String content, int startIndex, String designatur) {
+      String content, int startIndex, String designatur,
+      {int maxIndex = -1}) {
     final index = content.indexOf(designatur, startIndex);
-    if (index == -1) {
+    if (index == -1 || (maxIndex != -1 && index > maxIndex)) {
       return _DurationSection(0, startIndex);
     }
     var text = content.substring(startIndex, index);
@@ -1395,10 +1396,12 @@ class IsoDuration {
     var years = 0, months = 0, weeks = 0, days = 0;
     var startIndex = 1;
     if (!textValue.startsWith('PT')) {
+      final timeIndex = textValue.indexOf('T');
       final yearsResult = _parseSection(textValue, startIndex, 'Y');
       startIndex = yearsResult.index;
       years = yearsResult.result;
-      final monthsResult = _parseSection(textValue, startIndex, 'M');
+      final monthsResult = _parseSection(textValue, startIndex, 'M',
+          maxIndex: timeIndex); // M can also stand for minutes after the T
       startIndex = monthsResult.index;
       months = monthsResult.result;
       final weeksResult = _parseSection(textValue, startIndex, 'W');
