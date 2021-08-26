@@ -243,6 +243,7 @@ class Property {
       case TextProperty.propertyNameRelatedTo:
       case TextProperty.propertyNameXWrTimezone:
       case TextProperty.propertyNameXTimezoneLocation:
+      case TextProperty.propertyNameXCalendarName:
         return TextProperty(definition);
       case DateTimeProperty.propertyNameCompleted:
       case DateTimeProperty.propertyNameDue:
@@ -844,6 +845,9 @@ class TextProperty extends Property {
 
   /// `X-LIC-LOCATION`, often the same as the `TZID`
   static const String propertyNameXTimezoneLocation = 'X-LIC-LOCATION';
+
+  /// `X-WR-CALNAME` calendar name property
+  static const String propertyNameXCalendarName = 'X-WR-CALNAME';
 
   /// Retrieve the language
   String? get language => this[ParameterType.language]?.textValue;

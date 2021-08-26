@@ -400,6 +400,16 @@ class VCalendar extends VComponent {
       TextProperty.propertyNameXWrTimezone,
       TextProperty.create(TextProperty.propertyNameXWrTimezone, value));
 
+  /// Retrieves the calendar name like `US Holidays` of this calendar if it has been set.
+  String? get calendarName =>
+      getProperty<TextProperty>(TextProperty.propertyNameXCalendarName)
+          ?.textValue;
+
+  /// Sets the `X-WR-CALNAME` property
+  set calendarName(String? value) => setOrRemoveProperty(
+      TextProperty.propertyNameXCalendarName,
+      TextProperty.create(TextProperty.propertyNameXCalendarName, value));
+
   /// Convencience getter for getting the first `VEVENT` child, if there is any:
   VEvent? get event => children.firstWhereOrNull(
           (component) => component.componentType == VComponentType.event)
