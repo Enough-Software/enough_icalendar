@@ -160,6 +160,7 @@ abstract class VComponent {
   /// The [text] can either contain `\r\n` (`CRLF`) or `\n` linebreaks, when both linebreak types are present in the [text], `CRLF` linebreaks are assumed.
   /// Folded lines are unfolded automatically.
   /// When you have a custom line delimiter, use [parseLines] instead.
+  /// Define the [customParser] if you want to support specific properties. Note that unknown properties will be made available with [getProperty], e.g. `final value = component.getProperty('X-NAME')?.textValue;`
   static VComponent parse(String text,
       {Property? Function(String name, String definition)? customParser}) {
     final containsStandardCompliantLineBreaks = text.contains('\r\n');
@@ -173,13 +174,14 @@ abstract class VComponent {
     if (lines.isEmpty) {
       throw FormatException('Invalid input: [$text]');
     }
-    return parseLines(lines);
+    return parseLines(lines, customParser: customParser);
   }
 
   /// Parses the component from the specified text [lines].
   ///
   /// Compare [parse] for details.
-  static VComponent parseLines(List<String> lines) {
+  static VComponent parseLines(List<String> lines,
+      {Property? Function(String name, String definition)? customParser}) {
     VComponent root = _createComponent(lines.first);
     VComponent current = root;
     for (var i = 1; i < lines.length; i++) {
@@ -199,7 +201,8 @@ abstract class VComponent {
           current = parent;
         }
       } else {
-        final property = Property.parseProperty(line);
+        final property =
+            Property.parseProperty(line, customParser: customParser);
         current.properties.add(property);
       }
     }
