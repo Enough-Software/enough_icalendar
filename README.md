@@ -7,7 +7,7 @@ Add this dependency your pubspec.yaml file:
 
 ```
 dependencies:
-  enough_icalendar: ^0.8.0
+  enough_icalendar: ^0.10.0
 ```
 The latest version or `enough_icalendar` is [![enough_icalendar version](https://img.shields.io/pub/v/enough_icalendar.svg)](https://pub.dartlang.org/packages/enough_icalendar).
 

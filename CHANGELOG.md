@@ -1,3 +1,7 @@
+## 0.10.0
+- Forward `customParser` argument correctly, in case you need to support further properties directly/
+
+
 ## 0.9.0
 - Fix duration parsing [#2](https://github.com/Enough-Software/enough_icalendar/issues/2)
 - Support `X-WR-CALNAME` property, use VCalendar.calendarName to get/set it [#3](https://github.com/Enough-Software/enough_icalendar/issues/3)
