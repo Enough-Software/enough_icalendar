@@ -1,5 +1,8 @@
+## 0.11.0
+- support `X-MICROSOFT-SKYPETEAMSMEETINGURL` property directly.
+
 ## 0.10.0
-- Forward `customParser` argument correctly, in case you need to support further properties directly/
+- Forward `customParser` argument correctly, in case you need to support further properties directly
 
 
 ## 0.9.0
