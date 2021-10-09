@@ -244,6 +244,8 @@ UID:19970610T172345Z-AF23B2@example.com
 DTSTAMP:19970610T172345Z
 DTSTART:19970714T170000Z
 DTEND:19970715T040000Z
+X-MICROSOFT-SKYPETEAMSMEETINGURL:https://teams.microsoft.com/l/meetup-join/2SDKJKJKSD%40thread.v2/0?context=%7b
+ %22Tid%22%3a%22bc74e59c-5fa3-4157-9c37-6232986d11a62%22%2c%22Oid%22%3a%22d41e3f0d-b888-4978-bd06-17f697e563aa%22%7d
 SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCALENDAR''';
@@ -260,6 +262,8 @@ END:VCALENDAR''';
       expect(event.timeStamp, DateTime.utc(1997, 06, 10, 17, 23, 45));
       expect(event.start, DateTime.utc(1997, 07, 14, 17, 00, 00));
       expect(event.end, DateTime.utc(1997, 07, 15, 04, 00, 00));
+      expect(event.microsoftTeamsMeetingUrl,
+          'https://teams.microsoft.com/l/meetup-join/2SDKJKJKSD%40thread.v2/0?context=%7b%22Tid%22%3a%22bc74e59c-5fa3-4157-9c37-6232986d11a62%22%2c%22Oid%22%3a%22d41e3f0d-b888-4978-bd06-17f697e563aa%22%7d');
     });
 
     test('Calendar with full day event', () {
@@ -904,7 +908,7 @@ END:VCALENDAR\r
       expect(event.classification, Classification.public);
       expect(event.start, DateTime(2021, 07, 22, 14, 00, 00));
       expect(event.end, DateTime(2021, 07, 22, 16, 00, 00));
-      print(event.description);
+      //print(event.description);
       expect(event.description,
           'Hey, here\'s the event description, with\nsome commas.');
       expect(event.location, 'When in Rome...');

@@ -257,7 +257,9 @@ abstract class VComponent {
         } else if (!containsStandardCompliantLineBreaks &&
             !current.contains(':')) {
           // this can happen when the description or similiar fields also contain \n linebreaks
-          buffer..write('\n')..write(current.trimLeft());
+          buffer
+            ..write('\n')
+            ..write(current.trimLeft());
           if (i == input.length - 1) {
             output.add(buffer.toString());
           }
@@ -311,14 +313,20 @@ abstract class VComponent {
   }
 
   void render(StringBuffer buffer) {
-    buffer..write('BEGIN:')..write(name)..write('\r\n');
+    buffer
+      ..write('BEGIN:')
+      ..write(name)
+      ..write('\r\n');
     for (final property in properties) {
       buffer.write(property.toString());
     }
     for (final component in children) {
       component.render(buffer);
     }
-    buffer..write('END:')..write(name)..write('\r\n');
+    buffer
+      ..write('END:')
+      ..write(name)
+      ..write('\r\n');
   }
 
   @override
@@ -881,7 +889,9 @@ class VCalendar extends VComponent {
       }
       domain ??= 'enough.de';
     }
-    buffer..write('@')..write(domain);
+    buffer
+      ..write('@')
+      ..write(domain);
     return buffer.toString();
   }
 }
@@ -1299,6 +1309,18 @@ class VEvent extends _EventTodoJournalComponent {
   set isAllDayEvent(bool? value) => setOrRemoveProperty(
       BooleanProperty.propertyNameAllDayEvent,
       BooleanProperty.create(BooleanProperty.propertyNameAllDayEvent, value));
+
+  /// Retrieves the teams meeting URL for this event when the `X-MICROSOFT-SKYPETEAMSMEETINGURL` property is set.
+  String? get microsoftTeamsMeetingUrl => getProperty<TextProperty>(
+          TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl)
+      ?.text;
+
+  /// Sets the teams meeting URL for this event using the proprietary `X-MICROSOFT-SKYPETEAMSMEETINGURL` property.
+  set microsoftTeamsMeetingUrl(String? value) => setOrRemoveProperty(
+      TextProperty.propertyNameResources,
+      TextProperty.create(
+          TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl, value));
+
   // @override
   // void checkValidity() {
   //   super.checkValidity();

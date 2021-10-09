@@ -244,6 +244,7 @@ class Property {
       case TextProperty.propertyNameXWrTimezone:
       case TextProperty.propertyNameXTimezoneLocation:
       case TextProperty.propertyNameXCalendarName:
+      case TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl:
         return TextProperty(definition);
       case DateTimeProperty.propertyNameCompleted:
       case DateTimeProperty.propertyNameDue:
@@ -333,7 +334,9 @@ class Property {
           ..write(parameter.textValue);
       }
     }
-    buffer..write(':')..write(textValue);
+    buffer
+      ..write(':')
+      ..write(textValue);
   }
 
   @override
@@ -345,7 +348,9 @@ class Property {
       final definition = buffer.toString();
       final wrappedBuffer = StringBuffer();
       var startIndex = 72;
-      wrappedBuffer..write(definition.substring(0, startIndex))..write('\r\n');
+      wrappedBuffer
+        ..write(definition.substring(0, startIndex))
+        ..write('\r\n');
       while (startIndex < definition.length - 73) {
         wrappedBuffer
           ..write(' ')
@@ -848,6 +853,10 @@ class TextProperty extends Property {
 
   /// `X-WR-CALNAME` calendar name property
   static const String propertyNameXCalendarName = 'X-WR-CALNAME';
+
+  /// `X-MICROSOFT-SKYPETEAMSMEETINGURL` meeting URL property
+  static const String propertyNameXMicrosoftSkypeTeamsMeetingUrl =
+      'X-MICROSOFT-SKYPETEAMSMEETINGURL';
 
   /// Retrieve the language
   String? get language => this[ParameterType.language]?.textValue;
