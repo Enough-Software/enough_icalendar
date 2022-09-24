@@ -1538,10 +1538,10 @@ class VTimezone extends VComponent {
   void checkValidity() {
     super.checkValidity();
     checkMandatoryProperty(TextProperty.propertyNameTimezoneId);
-    if (children.length < 2) {
-      throw FormatException(
-          'A valid VTIMEZONE requires at least one STANDARD and one DAYLIGHT sub-component');
-    }
+    // if (children.length < 2) {
+    //   throw FormatException(
+    //       'A valid VTIMEZONE requires at least one STANDARD and one DAYLIGHT sub-component');
+    // }
     var numberOfStandardChildren = 0, numberOfDaylightChildren = 0;
     for (final phase in children) {
       if (phase.componentType == VComponentType.timezonePhaseStandard) {
@@ -1550,10 +1550,10 @@ class VTimezone extends VComponent {
         numberOfDaylightChildren++;
       }
     }
-    if (numberOfStandardChildren == 0 || numberOfDaylightChildren == 0) {
-      throw FormatException(
-          'A valid VTIMEZONE requires at least one STANDARD and one DAYLIGHT sub-component');
-    }
+    // if (numberOfStandardChildren == 0 || numberOfDaylightChildren == 0) {
+    //   throw FormatException(
+    //       'A valid VTIMEZONE requires at least one STANDARD and one DAYLIGHT sub-component');
+    // }
   }
 
   @override
