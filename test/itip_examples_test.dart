@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:enough_icalendar/enough_icalendar.dart';
 
 // examples taken from https://datatracker.ietf.org/doc/html/rfc5546#section-4
