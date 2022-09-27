@@ -2,10 +2,14 @@ import 'parameters.dart';
 import 'types.dart';
 import 'util.dart';
 
+/// Defines an iCalendar property
 class Property {
-  Property(this.definition, ValueType defaultValueType,
-      {dynamic Function(Property property, String textValue)? parser})
-      : name = _getName(definition),
+  /// Creates a new [Property]
+  Property(
+    this.definition,
+    ValueType defaultValueType, {
+    dynamic Function(Property property, String textValue)? parser,
+  })  : name = _getName(definition),
         textValue = _getTextContent(definition),
         parameters = _parseParameters(definition) {
     if (parser != null) {
@@ -30,18 +34,28 @@ class Property {
   /// Additional parameters for this property, e.g. `{'TZID' : TextValueType('America/New_York')}}
   final Map<String, Parameter> parameters;
 
+  /// Parses this property.
+  ///
+  /// The default implementation does not support parsing and
+  /// throws a [FormatException]
   dynamic parse(String textValue) {
     throw FormatException(
-        'Implement parse to allow custom value in property: $definition');
+      'Implement parse to allow custom value in property: $definition',
+    );
   }
 
+  /// Retrieves the parameter with the given [type]
   Parameter? operator [](ParameterType type) => parameters[type.name];
 
+  //// Sets the parameter [value] for the given [type]
   operator []=(ParameterType type, Parameter value) =>
       parameters[value.name] = value;
 
+  /// Sets the parameter [value]
   void setParameter(Parameter value) => parameters[value.name] = value;
 
+  /// Sets the parameter when [value] is not null
+  /// and removes the parameter when [value] is null.
   void setOrRemoveParameter(ParameterType type, Parameter? value) {
     if (value == null) {
       parameters.remove(type.name);
@@ -50,8 +64,9 @@ class Property {
     }
   }
 
-  T? getParameterValue<T>(ParameterType param) =>
-      parameters[param.name]?.value as T?;
+  /// Retrieves the parameter value for [type]
+  T? getParameterValue<T>(ParameterType type) =>
+      parameters[type.name]?.value as T?;
 
   static String? _lastContent;
   static List<int>? _lastRunes;

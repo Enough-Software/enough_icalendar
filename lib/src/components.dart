@@ -157,12 +157,15 @@ abstract class VComponent {
   /// Parses the component from the specified [text].
   ///
   /// When succeeding, this returns a [VCalendar], [VEvent] or similar component as defined by the given [text].
-  /// The [text] can either contain `\r\n` (`CRLF`) or `\n` linebreaks, when both linebreak types are present in the [text], `CRLF` linebreaks are assumed.
+  ///
+  /// The [text] can either contain `\r\n` (`CRLF`) or `\n` line-breaks, when both line-break types are present in the [text], `CRLF` line-breaks are assumed.
   /// Folded lines are unfolded automatically.
   /// When you have a custom line delimiter, use [parseLines] instead.
   /// Define the [customParser] if you want to support specific properties. Note that unknown properties will be made available with [getProperty], e.g. `final value = component.getProperty('X-NAME')?.textValue;`
-  static VComponent parse(String text,
-      {Property? Function(String name, String definition)? customParser}) {
+  static VComponent parse(
+    String text, {
+    Property? Function(String name, String definition)? customParser,
+  }) {
     final containsStandardCompliantLineBreaks = text.contains('\r\n');
     final foldedLines = containsStandardCompliantLineBreaks
         ? text.split('\r\n')
@@ -239,10 +242,13 @@ abstract class VComponent {
 
   /// Unfolds the given [input] lines
   ///
-  /// When [containsStandardCompliantLineBreaks] is not the default `true`, then extra care is taken
-  /// to re-include lines that have been split in error.
-  static List<String> unfold(List<String> input,
-      {bool containsStandardCompliantLineBreaks = true}) {
+  /// When [containsStandardCompliantLineBreaks] is not the default `true`,
+  /// some care is taken to re-include lines that may have been
+  /// split in error, however this is not perfect.
+  static List<String> unfold(
+    List<String> input, {
+    bool containsStandardCompliantLineBreaks = true,
+  }) {
     final output = <String>[];
     StringBuffer? buffer;
     for (var i = 0; i < input.length; i++) {
@@ -256,7 +262,7 @@ abstract class VComponent {
           continue;
         } else if (!containsStandardCompliantLineBreaks &&
             !current.contains(':')) {
-          // this can happen when the description or similiar fields also contain \n linebreaks
+          // this can happen when the description or similar fields also contain \n line-breaks
           buffer
             ..write('\n')
             ..write(current.trimLeft());
@@ -1537,9 +1543,9 @@ class VTimezone extends VComponent {
   void checkValidity() {
     super.checkValidity();
     checkMandatoryProperty(TextProperty.propertyNameTimezoneId);
-    if (children.length < 2) {
+    if (children.length == 0) {
       throw FormatException(
-          'A valid VTIMEZONE requires at least one STANDARD and one DAYLIGHT sub-component');
+          'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component');
     }
     var numberOfStandardChildren = 0, numberOfDaylightChildren = 0;
     for (final phase in children) {
@@ -1549,9 +1555,9 @@ class VTimezone extends VComponent {
         numberOfDaylightChildren++;
       }
     }
-    if (numberOfStandardChildren == 0 || numberOfDaylightChildren == 0) {
+    if (numberOfStandardChildren == 0 && numberOfDaylightChildren == 0) {
       throw FormatException(
-          'A valid VTIMEZONE requires at least one STANDARD and one DAYLIGHT sub-component');
+          'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component');
     }
   }
 
