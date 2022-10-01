@@ -1,3 +1,8 @@
+## 0.12.0
+- Thanks to [martingeorgiu](https://github.com/martingeorgiu) for the following great changes:
+  - support Apple format by not requiring a standard and a daylight for every timezone
+  - remove Flutter dependency
+
 ## 0.11.0
 - support `X-MICROSOFT-SKYPETEAMSMEETINGURL` property directly.
 
