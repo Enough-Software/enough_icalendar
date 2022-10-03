@@ -204,6 +204,7 @@ abstract class VComponent {
           current = parent;
         }
       } else {
+        if (line.trim().isEmpty) continue;
         final property =
             Property.parseProperty(line, customParser: customParser);
         current.properties.add(property);
