@@ -15,22 +15,21 @@ DTSTART:19970714T170000Z
 DTEND:19970715T040000Z
 SUMMARY:Bastille Day Party
 END:VEVENT
-END:VCALENDAR'''
-              .split('\n');
+END:VCALENDAR''';
       final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
-      expect(output.length, input.length);
+      final inputLines = input.split('\n');
+      expect(output.length, inputLines.length);
       for (var i = 0; i < output.length; i++) {
-        expect(output[i], input[i]);
+        expect(output[i], inputLines[i]);
       }
     });
 
-    test('Unfold line spread accross 3 lines', () {
+    test('Unfold line spread across 3 lines', () {
       final input =
           '''DESCRIPTION:This is a lo
  ng description 
-       that exists on a long line.'''
-              .split('\n');
+       that exists on a long line.''';
       final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
       expect(output.length, 1);
@@ -51,13 +50,13 @@ DTEND:19970715T040000Z
 SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCA
- LENDAR'''
-              .split('\n');
+ LENDAR''';
       final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
-      expect(output.length, input.length - 1);
+      final inputLines = input.split('\n');
+      expect(output.length, inputLines.length - 1);
       for (var i = 0; i < output.length - 1; i++) {
-        expect(output[i], input[i]);
+        expect(output[i], inputLines[i]);
       }
       expect(output.last, 'END:VCALENDAR');
     });
@@ -75,13 +74,13 @@ DTSTART:19970714T170000Z
 DTEND:19970715T040000Z
 SUMMARY:Bastille Day Party
 END:VEVENT
-END:VCALENDAR'''
-              .split('\n');
+END:VCALENDAR''';
       final output = VComponent.unfold(input);
       expect(output, isNotEmpty);
-      expect(output.length, input.length - 1);
+      final inputLines = input.split('\n');
+      expect(output.length, inputLines.length - 1);
       for (var i = 1; i < output.length; i++) {
-        expect(output[i], input[i + 1]);
+        expect(output[i], inputLines[i + 1]);
       }
       expect(output.first, 'BEGIN:VCALENDAR');
     });
@@ -105,8 +104,7 @@ SUMMARY:Bastille
   ty
 END:VEVE
  NT
-END:VCALENDAR'''
-              .split('\n');
+END:VCALENDAR''';
       final output = VComponent.unfold(input);
       final expected =
           '''BEGIN:VCALENDAR
@@ -147,8 +145,7 @@ DESCRIPTION:Networld+Interop Conference
  Atlanta\\, Georgia
 END:VEVENT
 END:VCALENDAR
-'''
-              .split('\n');
+''';
       final output = VComponent.unfold(input);
       final expected =
           '''BEGIN:VCALENDAR
@@ -199,8 +196,7 @@ ATTACH;FMTTYPE=application/postscript:ftp://example.com/pub/
   conf/bkgrnd.ps
 END:VEVENT
 END:VCALENDAR
-'''
-              .split('\n');
+''';
       final output = VComponent.unfold(input);
       final expected =
           '''BEGIN:VCALENDAR
@@ -250,13 +246,13 @@ SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCALENDAR''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       expect(calendar.version, '2.0');
       expect(calendar.productId, '-//hacksw/handcal//NONSGML v1.0//EN');
       final event = calendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary, 'Bastille Day Party');
       expect(event.uid, '19970610T172345Z-AF23B2@example.com');
       expect(event.timeStamp, DateTime.utc(1997, 06, 10, 17, 23, 45));
@@ -281,13 +277,13 @@ SUMMARY:Bastille Day Party
 END:VEVENT
 END:VCALENDAR''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       expect(calendar.version, '2.0');
       expect(calendar.productId, '-//hacksw/handcal//NONSGML v1.0//EN');
       final event = calendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary, 'Bastille Day Party');
       expect(event.uid, '19970610T172345Z-AF23B2@example.com');
       expect(event.timeStamp, DateTime.utc(1997, 06, 10, 17, 23, 45));
@@ -308,7 +304,7 @@ CLASS:PRIVATE
 CATEGORIES:BUSINESS,HUMAN RESOURCES
 END:VEVENT''';
       final event = VComponent.parse(text);
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary, 'Annual Employee Review');
       expect(event.uid, '19970901T130000Z-123401@example.com');
       expect(event.timeStamp, DateTime.utc(1997, 09, 01, 13, 00, 00));
@@ -332,7 +328,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 ''';
       final event = VComponent.parse(text);
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary,
           'Laurel is in sensitivity awareness class.');
       expect(event.uid, '19970901T130000Z-123402@example.com');
@@ -358,7 +354,7 @@ RRULE:FREQ=YEARLY\r
 END:VEVENT\r
 ''';
       final event = VComponent.parse(text);
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary, 'Our Blissful Anniversary');
       expect(event.uid, '19970901T130000Z-123403@example.com');
       expect(event.timeStamp, DateTime.utc(1997, 09, 01, 13, 00, 00));
@@ -382,7 +378,7 @@ TRANSP:TRANSPARENT
 END:VEVENT
 ''';
       final event = VComponent.parse(text);
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary,
           'Festival International de Jazz de Montreal');
       expect(event.uid, '20070423T123432Z-541111@example.com');
@@ -414,7 +410,7 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN');
       expect(calendar.version, '2.0');
@@ -422,7 +418,7 @@ END:VCALENDAR\r
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final event = calendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).uid, 'uid1@example.com');
       expect(event.timeStamp, DateTime.utc(1996, 07, 04, 12, 00, 00));
       expect(event.start, DateTime.utc(1996, 09, 18, 14, 30, 00));
@@ -451,14 +447,14 @@ DTEND:19960920T220000Z
 STATUS:CONFIRMED
 CATEGORIES:CONFERENCE
 SUMMARY:Networld+Interop Conference
-DESCRIPTION:Networld+Interop Conference 
+DESCRIPTION:"Networld+Interop Conference 
   and Exhibit\nAtlanta World Congress Center\n
- Atlanta\, Georgia
+ Atlanta\, Georgia"
 END:VEVENT
 END:VCALENDAR
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN');
       expect(calendar.version, '2.0');
@@ -466,7 +462,7 @@ END:VCALENDAR
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final event = calendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).uid, 'uid1@example.com');
       expect(event.timeStamp, DateTime.utc(1996, 07, 04, 12, 00, 00));
       expect(event.start, DateTime.utc(1996, 09, 18, 14, 30, 00));
@@ -476,7 +472,7 @@ END:VCALENDAR
       expect(event.organizer?.email, 'jsmith@example.com');
       expect(event.summary, 'Networld+Interop Conference');
       expect(event.description,
-          'Networld+Interop Conference and Exhibit\nAtlanta World Congress Center\nAtlanta, Georgia');
+          '"Networld+Interop Conference and Exhibit\nAtlanta World Congress Center\nAtlanta, Georgia"');
     });
 
     test('group-scheduled meeting with VTIMEZONE', () {
@@ -517,7 +513,7 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//RDU Software//NONSGML HandCal//EN');
       expect(calendar.version, '2.0');
@@ -525,7 +521,7 @@ END:VCALENDAR
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 2);
       final event = calendar.children[1];
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).uid, 'guid-1.example.com');
       expect(event.timeStamp, DateTime.utc(1998, 03, 09, 23, 10, 00));
       expect(event.created, DateTime.utc(1998, 03, 09, 13, 00, 00));
@@ -544,12 +540,12 @@ END:VCALENDAR
       expect(attendee.userType, CalendarUserType.group);
       expect(attendee.email, 'employee-A@example.com');
       final timezone = calendar.children.first;
-      expect(timezone, isInstanceOf<VTimezone>());
+      expect(timezone, isA<VTimezone>());
       expect((timezone as VTimezone).timezoneId, 'America/New_York');
       expect(timezone.children, isNotEmpty);
       expect(timezone.children.length, 2);
       var phase = timezone.children.first;
-      expect(phase, isInstanceOf<VTimezonePhase>());
+      expect(phase, isA<VTimezonePhase>());
       expect(phase.name, 'STANDARD');
       expect(phase.componentType, VComponentType.timezonePhaseStandard);
       expect((phase as VTimezonePhase).timezoneName, 'EST');
@@ -557,7 +553,7 @@ END:VCALENDAR
       expect(phase.from, UtcOffset.value(offsetHour: -4, offsetMinute: 0));
       expect(phase.to, UtcOffset.value(offsetHour: -5, offsetMinute: 0));
       phase = timezone.children[1];
-      expect(phase, isInstanceOf<VTimezonePhase>());
+      expect(phase, isA<VTimezonePhase>());
       expect(phase.name, 'DAYLIGHT');
       expect(phase.componentType, VComponentType.timezonePhaseDaylight);
       expect((phase as VTimezonePhase).timezoneName, 'EDT');
@@ -592,7 +588,7 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//ABC Corporation//NONSGML My Product//EN');
       expect(calendar.version, '2.0');
@@ -601,7 +597,7 @@ END:VCALENDAR
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final event = calendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).uid, 'uid3@example.com');
       expect(event.timeStamp, DateTime.utc(1997, 03, 24, 12, 00, 00));
       expect(event.start, DateTime.utc(1997, 03, 24, 12, 30, 00));
@@ -650,7 +646,7 @@ END:VTODO
 END:VCALENDAR
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//ABC Corporation//NONSGML My Product//EN');
       expect(calendar.version, '2.0');
@@ -658,7 +654,7 @@ END:VCALENDAR
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final todo = calendar.children.first;
-      expect(todo, isInstanceOf<VTodo>());
+      expect(todo, isA<VTodo>());
       expect((todo as VTodo).uid, 'uid4@example.com');
       expect(todo.timeStamp, DateTime.utc(1998, 01, 30, 13, 45, 00));
       expect(todo.sequence, 2);
@@ -673,7 +669,7 @@ END:VCALENDAR
       expect(todo.children, isNotEmpty);
       expect(todo.children.length, 1);
       final alarm = todo.children.first;
-      expect(alarm, isInstanceOf<VAlarm>());
+      expect(alarm, isA<VAlarm>());
       expect((alarm as VAlarm).componentType, VComponentType.alarm);
       expect(alarm.action, AlarmAction.audio);
       expect(alarm.triggerDate, DateTime.utc(1998, 04, 03, 12, 00, 00));
@@ -705,7 +701,7 @@ END:VFREEBUSY
 END:VCALENDAR
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//RDU Software//NONSGML HandCal//EN');
       expect(calendar.version, '2.0');
@@ -713,7 +709,7 @@ END:VCALENDAR
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final freebusy = calendar.children.first;
-      expect(freebusy, isInstanceOf<VFreeBusy>());
+      expect(freebusy, isA<VFreeBusy>());
       expect((freebusy as VFreeBusy).organizer?.email, 'jsmith@example.com');
       expect(freebusy.timeStamp, DateTime.utc(1997, 09, 01, 12, 00, 00));
       expect(freebusy.uid, '19970901T115957Z-76A912@example.com');
@@ -771,7 +767,7 @@ END:VJOURNAL\r
 END:VCALENDAR\r
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).productId,
           '-//ABC Corporation//NONSGML My Product//EN');
       expect(calendar.version, '2.0');
@@ -779,7 +775,7 @@ END:VCALENDAR\r
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final journal = calendar.children.first;
-      expect(journal, isInstanceOf<VJournal>());
+      expect(journal, isA<VJournal>());
       expect((journal as VJournal).uid, 'uid5@example.com');
       expect(journal.timeStamp, DateTime.utc(1997, 03, 24, 12, 00, 00));
       expect(journal.organizer?.email, 'jsmith@example.com');
@@ -818,7 +814,7 @@ ORGANIZER;CN="Covidzentrum Bremen":MAILTO:sofortsupport@ticket.io
 END:VEVENT
 END:VCALENDAR''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).version, '2.0');
       expect(calendar.isVersion2, isTrue);
       expect(calendar.calendarScale, 'GREGORIAN');
@@ -828,7 +824,7 @@ END:VCALENDAR''';
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 1);
       final event = calendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect(
           (event as VEvent).summary, 'Kostenloser Antigen-Schnelltest Bremen');
       expect(event.uid, 'ticketioa7a690b342c3a9fdbc20206572744d64');
@@ -893,7 +889,7 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       final calendar = VComponent.parse(text);
-      expect(calendar, isInstanceOf<VCalendar>());
+      expect(calendar, isA<VCalendar>());
       expect((calendar as VCalendar).version, '2.0');
       expect(calendar.isVersion2, isTrue);
       expect(calendar.isGregorian, isTrue);
@@ -902,7 +898,7 @@ END:VCALENDAR\r
       expect(calendar.children, isNotEmpty);
       expect(calendar.children.length, 2);
       final event = calendar.children[1];
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).summary, 'Example meeting');
       expect(event.uid, '1dbfc3a9-a285-46ae-944a-15c3927ab7ac');
       expect(event.classification, Classification.public);
@@ -945,7 +941,7 @@ END:VCALENDAR\r
       expect(invite.children, isNotEmpty);
       final event = invite.children.first;
       event.checkValidity();
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).start, DateTime(2021, 07, 21, 10, 00));
       expect(event.end, DateTime(2021, 07, 21, 11, 00));
       expect(event.location, 'Big meeting room');
@@ -987,7 +983,7 @@ END:VCALENDAR\r
       expect(invite.children, isNotEmpty);
       final event = invite.children.first;
       event.checkValidity();
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).start, DateTime.utc(2021, 07, 21, 10, 00));
       expect(event['DTSTART']?.textValue, '20210721T100000Z');
       expect(event.end, DateTime.utc(2021, 07, 21, 11, 00));
@@ -1032,7 +1028,7 @@ END:VCALENDAR\r
       expect(invite.children, isNotEmpty);
       final event = invite.children.first;
       event.checkValidity();
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).start, DateTime.utc(2021, 07, 21, 0, 00));
       expect(event['DTSTART']?.textValue, '20210721T000000Z');
       expect(event.end, isNull);

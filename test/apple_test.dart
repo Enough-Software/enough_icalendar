@@ -1,6 +1,7 @@
 import 'package:enough_icalendar/enough_icalendar.dart';
 import 'package:test/test.dart';
 
+// cSpell:disable
 void main() {
   test('unwrap X-Apple-Structured-Location', () {
     const input =
@@ -15,30 +16,22 @@ void main() {
  06408928;X-TITLE="Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34
  /4, 119 00 Prague, Czechia":geo:50.091106,14.401799''';
     final lines = VComponent.unfold(
-      input.split('\n'),
-      containsStandardCompliantLineBreaks: false,
+      input,
     );
     expect(lines.length, 1);
     expect(lines.first, _expectedUnfoldedLines[6]);
   });
 
   test('unwrap Apple Location', () {
-    const input = [
-      'LOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia'
-    ];
-    final lines = VComponent.unfold(
-      input,
-      containsStandardCompliantLineBreaks: true,
-    );
+    const input =
+        'LOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia\r\n';
+    final lines = VComponent.unfold(input);
     expect(lines, isNotEmpty);
-    expect(lines.first, input.first);
+    expect(lines.first, input.split('\r\n').first);
   });
 
-  test('Unwrap Apple iCalendar (unix style line ending)', () {
-    final lines = VComponent.unfold(
-      _iCalendarTestData.split('\r\n'),
-      containsStandardCompliantLineBreaks: true,
-    );
+  test('Unwrap Apple iCalendar (standard-compliant line ending)', () {
+    final lines = VComponent.unfold(_iCalendarTestDataOne);
     expect(lines[0], _expectedUnfoldedLines[0]);
     expect(lines[1], _expectedUnfoldedLines[1]);
     expect(lines[2], _expectedUnfoldedLines[2]);
@@ -47,8 +40,21 @@ void main() {
     expect(lines[9], _expectedUnfoldedLines[9]);
     expect(lines, _expectedUnfoldedLines);
   });
-  test('Parse apple VCalendar', () {
-    final iCalendar = VComponent.parse(_iCalendarTestData);
+  test('Parse apple VCalendar (test data one)', () {
+    final iCalendar = VComponent.parse(_iCalendarTestDataOne);
+    expect(iCalendar, isA<VCalendar>());
+    expect((iCalendar as VCalendar).calendarName, 'Test1');
+    expect(iCalendar.event, isNotNull);
+    final event = iCalendar.event!;
+    expect(event.start, DateTime(2022, 09, 29, 19, 30, 00));
+    expect(
+        event['DTEND']?[ParameterType.timezoneId]?.textValue, 'Europe/Prague');
+    expect(event.location,
+        'Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia');
+  });
+
+  test('Parse apple VCalendar (test data two)', () {
+    final iCalendar = VComponent.parse(_iCalendarTestDataTwo);
     expect(iCalendar, isA<VCalendar>());
     expect((iCalendar as VCalendar).calendarName, 'Test1');
     expect(iCalendar.event, isNotNull);
@@ -61,7 +67,7 @@ void main() {
   });
 }
 
-const _iCalendarTestData = '''BEGIN:VCALENDAR\r
+const _iCalendarTestDataOne = '''BEGIN:VCALENDAR\r
 VERSION:2.0\r
 X-WR-CALNAME:Test1\r
 X-APPLE-CALENDAR-COLOR:#0E61B9FF\r
@@ -417,3 +423,220 @@ const _expectedUnfoldedLines = [
   'END:VTIMEZONE',
   'END:VCALENDAR',
 ];
+
+const _iCalendarTestDataTwo = '''
+BEGIN:VCALENDAR\r
+VERSION:2.0\r
+X-WR-CALNAME:Test1\r
+X-APPLE-CALENDAR-COLOR:#0E61B9FF\r
+BEGIN:VEVENT\r
+DTEND;TZID=Europe/Prague:20220929T203000\r
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-MAPKIT-HANDLE=CAES6gIIrk0Qx\r
+ ofi3Z/fmujjARoSCVbY+FypC0lAEQAAAKi4zSxAIpgBCgdDemVjaGlhEgJDWhoGUHJhZ3VlK\r
+ gZQcmFndWUyBlByYWd1ZToGMTE5IDAwQghQcmFndWUgMVIcbsOhbcSbc3TDrSBVIHN2YXTDq\r
+ WhvIEppxZnDrVoEMzQvNGIhbsOhbcSbc3TDrSBVIHN2YXTDqWhvIEppxZnDrSAzNC80cg1Qc\r
+ mFndWUgQ2FzdGxligEIUHJhZ3VlIDEqDlByYcW+c2vDvSBocmFkMg1QcmFndWUgQ2FzdGxlM\r
+ iFuw6FtxJtzdMOtIFUgc3ZhdMOpaG8gSmnFmcOtIDM0LzQyDTExOSAwMCBQcmFndWUyB0N6Z\r
+ WNoaWE4L1ABWk0KJQjGh+Ldn9+a6OMBEhIJVtj4XKkLSUARAAAAqLjNLEAYrk2QAwGiHyMIx\r
+ ofi3Z/fmujjARoWCg5QcmHFvnNrw70gaHJhZBAAKgJlbg==;X-APPLE-RADIUS=141.29459\r
+ 06408928;X-TITLE="Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34\r
+ /4, 119 00 Prague, Czechia":geo:50.091106,14.401799\r
+UID:3D2BE59F-AA5C-47C7-AB54-E795D97A69FF\r
+DTSTAMP:20220927T091115Z\r
+LOCATION:Pražský hrad\nPrague Castle\, náměstí U svatého Jiří 34/4\, 119 \r
+ 00 Prague\, Czechia\r
+SEQUENCE:1\r
+SUMMARY:Test Event\r
+LAST-MODIFIED:20220927T091110Z\r
+CREATED:20220927T091056Z\r
+DTSTART;TZID=Europe/Prague:20220929T193000\r
+END:VEVENT\r
+BEGIN:VEVENT\r
+CREATED:20191123T145645Z\r
+DESCRIPTION:Spojení z Madlina do Smíchovské nádraží\, today 5:13 PM - 5:4\r
+ 8 PM\, celkem 35 min.\n\nBus 151\n- Madlina 5:13 PM\n- Českomoravská 5:2\r
+ 9 PM\n\nMetro B\n- Českomoravská 5:31 PM\n- Smíchovské nádraží 5:47 PM\n\r
+ \r
+DTEND;TZID=Europe/Prague:20191123T174750\r
+DTSTAMP:20191123T145646Z\r
+DTSTART;TZID=Europe/Prague:20191123T171300\r
+LAST-MODIFIED:20191123T145645Z\r
+SEQUENCE:0\r
+SUMMARY:Spojení do Smíchovské nádraží\r
+UID:2FA34E24-0273-4624-B069-7BCCEEB787A0\r
+URL;VALUE=URI:\r
+END:VEVENT\r
+BEGIN:VEVENT\r
+CREATED:20190716T192120Z\r
+DTEND;TZID=Europe/Prague:20190718T190000\r
+DTSTAMP:20190716T192121Z\r
+DTSTART;TZID=Europe/Prague:20190717T225000\r
+LAST-MODIFIED:20190716T192120Z\r
+LOCATION:Žďár nad Sázavou\r
+SEQUENCE:0\r
+SUMMARY:Ryby\r
+UID:C5993E2C-6D8F-43AB-BFD4-6B06F1DD7B12\r
+URL;VALUE=URI:\r
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=;X-APPLE-MAPKIT-HANDLE=CA\r
+ ESnQEI2TIQ7ozU+9KznOkyGhIJxeOiWkTISEARan6h7NLfL0AiQwoHQ3plY2hpYRICQ1oaCF\r
+ Z5c29jaW5hKhTFvcSPw6FyIG5hZCBTw6F6YXZvdTIUxb3Ej8OhciBuYWQgU8OhemF2b3UqFM\r
+ W9xI/DoXIgbmFkIFPDoXphdm91MhTFvcSPw6FyIG5hZCBTw6F6YXZvdTIHQ3plY2hpYTgQ;X\r
+ -APPLE-RADIUS=7658.66149510276;X-APPLE-REFERENCEFRAME=0;X-TITLE=null:":g\r
+ eo:49.564586,15.937156\r
+END:VEVENT\r
+BEGIN:VTIMEZONE\r
+TZID:Europe/Prague\r
+X-LIC-LOCATION:Europe/Prague\r
+BEGIN:STANDARD\r
+DTSTART:18500101T000000\r
+RDATE:18500101T000000\r
+TZNAME:PMT\r
+TZOFFSETFROM:+005744\r
+TZOFFSETTO:+005744\r
+END:STANDARD\r
+BEGIN:STANDARD\r
+DTSTART:18911001T000000\r
+RDATE:18911001T000000\r
+TZNAME:CEST\r
+TZOFFSETFROM:+005744\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:DAYLIGHT\r
+DTSTART:19160430T230000\r
+RDATE:19160430T230000\r
+RDATE:19400401T020000\r
+RDATE:19430329T020000\r
+RDATE:19460506T020000\r
+RDATE:19490409T020000\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+DTSTART:19161001T010000\r
+RDATE:19161001T010000\r
+RDATE:19421102T030000\r
+RDATE:19431004T030000\r
+RDATE:19441002T030000\r
+RDATE:19451001T030000\r
+RDATE:19461006T030000\r
+TZNAME:CET\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:DAYLIGHT\r
+DTSTART:19170416T020000\r
+RRULE:FREQ=YEARLY;UNTIL=19180415T010000Z;BYMONTH=4;BYDAY=3MO\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+DTSTART:19170917T030000\r
+RRULE:FREQ=YEARLY;UNTIL=19180916T010000Z;BYMONTH=9;BYDAY=3MO\r
+TZNAME:CET\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:DAYLIGHT\r
+DTSTART:19440403T020000\r
+RRULE:FREQ=YEARLY;UNTIL=19450402T010000Z;BYMONTH=4;BYDAY=1MO\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:DAYLIGHT\r
+DTSTART:19450509T000000\r
+RDATE:19450509T000000\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:DAYLIGHT\r
+DTSTART:19461201T030000\r
+RDATE:19461201T030000\r
+TZNAME:GMT\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0000\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+DTSTART:19470223T020000\r
+RDATE:19470223T020000\r
+TZNAME:CET\r
+TZOFFSETFROM:+0000\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:DAYLIGHT\r
+DTSTART:19470420T020000\r
+RRULE:FREQ=YEARLY;UNTIL=19480418T010000Z;BYMONTH=4;BYDAY=3SU\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+DTSTART:19471005T030000\r
+RRULE:FREQ=YEARLY;UNTIL=19491002T010000Z;BYMONTH=10;BYDAY=1SU\r
+TZNAME:CET\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:STANDARD\r
+DTSTART:19790101T000000\r
+RDATE:19790101T000000\r
+TZNAME:CET\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:DAYLIGHT\r
+DTSTART:19790401T020000\r
+RRULE:FREQ=YEARLY;UNTIL=19800406T010000Z;BYMONTH=4;BYDAY=1SU\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+DTSTART:19790930T030000\r
+RRULE:FREQ=YEARLY;UNTIL=19950924T010000Z;BYMONTH=9;BYDAY=-1SU\r
+TZNAME:CET\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+BEGIN:DAYLIGHT\r
+DTSTART:19810329T020000\r
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r
+TZNAME:CEST\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0200\r
+END:DAYLIGHT\r
+BEGIN:STANDARD\r
+DTSTART:19961027T030000\r
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
+TZNAME:CET\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+END:VTIMEZONE\r
+BEGIN:VTIMEZONE\r
+TZID:GMT+0200\r
+X-LIC-LOCATION:GMT+0200\r
+BEGIN:STANDARD\r
+DTSTART:18000101T020000\r
+RDATE:18000101T020000\r
+TZNAME:+02\r
+TZOFFSETFROM:+0200\r
+TZOFFSETTO:+0200\r
+END:STANDARD\r
+END:VTIMEZONE\r
+BEGIN:VTIMEZONE\r
+TZID:GMT+0100\r
+X-LIC-LOCATION:GMT+0100\r
+BEGIN:STANDARD\r
+DTSTART:18000101T010000\r
+RDATE:18000101T010000\r
+TZNAME:+01\r
+TZOFFSETFROM:+0100\r
+TZOFFSETTO:+0100\r
+END:STANDARD\r
+END:VTIMEZONE\r
+END:VCALENDAR\r
+''';

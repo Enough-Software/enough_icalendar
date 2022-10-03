@@ -5,7 +5,8 @@ import 'package:enough_icalendar/enough_icalendar.dart';
 void main() {
   group('VEVENT Examples', () {
     test('A Minimal Published Event', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 METHOD:PUBLISH
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
@@ -18,13 +19,14 @@ UID:0981234-1234234-23@example.com
 END:VEVENT
 END:VCALENDAR''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.publish);
       // other properties are covered by components_test.dart
     });
 
     test('Changing a Published Event', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 METHOD:PUBLISH
 VERSION:2.0
 PRODID:-//Example/ExampleCalendarClient//EN
@@ -39,14 +41,15 @@ SUMMARY:ST. PAUL SAINTS -VS- DULUTH-SUPERIOR DUKES
 END:VEVENT
 END:VCALENDAR''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.publish);
       expect((iCalendar.children.first as VEvent).sequence, 1);
       // other properties are covered by components_test.dart
     });
 
     test('Changing a Published Event', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 METHOD:CANCEL
 VERSION:2.0
 PRODID:-//Example/ExampleCalendarClient//EN
@@ -60,14 +63,15 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.cancel);
       expect((iCalendar.children.first as VEvent).sequence, 2);
       // other properties are covered by components_test.dart
     });
 
     test('A Rich Published Event', () {
-      final input = '''BEGIN:VCALENDAR\r
+      final input =
+          '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:PUBLISH\r
 CALSCALE:GREGORIAN\r
@@ -122,14 +126,15 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.publish);
       expect((iCalendar.children[1] as VEvent).sequence, 3);
       // other properties are covered by components_test.dart
     });
 
     test('Anniversaries or Events Attached to Entire Days', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:PUBLISH
 VERSION:2.0
@@ -144,14 +149,15 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.publish);
       // expect((iCalendar.children.first as VEvent).sequence, 2);
       // other properties are covered by components_test.dart
     });
 
     test('A Group Event Request', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -174,10 +180,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       final event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 6);
@@ -195,7 +201,8 @@ END:VCALENDAR
     });
 
     test('Reply to a Group Event Request', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REPLY
 VERSION:2.0
@@ -210,10 +217,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.reply);
       final event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 1);
@@ -225,7 +232,8 @@ END:VCALENDAR
     });
 
     test('Update an Event', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -249,10 +257,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       final event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 6);
@@ -264,7 +272,8 @@ END:VCALENDAR
       //  to "A" to change the time and location.
 
       // "A" sends the following "REQUEST":
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -285,10 +294,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
@@ -298,7 +307,8 @@ END:VCALENDAR
       //  "B" uses the "COMMENT" property to communicate a rationale for the
       //  change.  Note that the "SEQUENCE" property is not incremented on a
       //  "COUNTER".
-      input = '''BEGIN:VCALENDAR
+      input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:COUNTER
 VERSION:2.0
@@ -313,17 +323,17 @@ DTSTAMP:19970612T190000Z
 SUMMARY:Discuss the Merits of the election results
 LOCATION:Blue Conference Room
 COMMENT:This time works much better and I think the big conference 
-  room is too big
+ room is too big
 UID:calsrv.example.com-873970198738777a@example.com
 SEQUENCE:0
 END:VEVENT
 END:VCALENDAR
 ''';
       iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.counter);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.comment,
           'This time works much better and I think the big conference room is too big');
@@ -334,7 +344,8 @@ END:VCALENDAR
       //  "Organizer" sends a new event "REQUEST" with an incremented sequence
       //  number.
 
-      input = '''BEGIN:VCALENDAR
+      input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -356,17 +367,18 @@ END:VEVENT
 END:VCALENDAR''';
 
       iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.confirmed);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
 
       // Instead, "A" rejects "B's" counter proposal.
-      input = '''BEGIN:VCALENDAR
+      input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:DECLINECOUNTER
 VERSION:2.0
@@ -381,10 +393,10 @@ END:VEVENT
 END:VCALENDAR''';
 
       iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.declineCounter);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 1);
@@ -395,14 +407,15 @@ END:VCALENDAR''';
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
 
       // "C" responds to the "Organizer" "A":
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REPLY
 VERSION:2.0
 BEGIN:VEVENT
 ORGANIZER:mailto:a@example.com
 ATTENDEE;PARTSTAT=DELEGATED;DELEGATED-
-  TO="mailto:e@example.com":mailto:c@example.com
+ TO="mailto:e@example.com":mailto:c@example.com
 UID:calsrv.example.com-873970198738777@example.com
 SEQUENCE:0
 REQUEST-STATUS:2.0;Success
@@ -411,10 +424,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.reply);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
@@ -426,16 +439,17 @@ END:VCALENDAR
       // other properties are covered by components_test.dart
 
       // "Attendee" "C" delegates presence at the meeting to "E".
-      input = '''BEGIN:VCALENDAR\r
+      input =
+          '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REQUEST\r
 VERSION:2.0\r
 BEGIN:VEVENT\r
 ORGANIZER:mailto:a@example.com\r
 ATTENDEE;PARTSTAT=DELEGATED;DELEGATED-\r
-  TO="mailto:e@example.com":mailto:c@example.com\r
+ TO="mailto:e@example.com":mailto:c@example.com\r
 ATTENDEE;RSVP=TRUE;\r
-  DELEGATED-FROM="mailto:c@example.com":mailto:e@example.com\r
+ DELEGATED-FROM="mailto:c@example.com":mailto:e@example.com\r
 DTSTART:19970701T180000Z\r
 DTEND:19970701T200000Z\r
 SUMMARY:Phone Conference\r
@@ -447,10 +461,10 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 2);
@@ -472,7 +486,8 @@ END:VCALENDAR\r
       // To accept a delegated meeting, the delegate, "E", sends the following
       //  message to "A" and "C".
 
-      var input = '''BEGIN:VCALENDAR\r
+      var input =
+          '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REPLY\r
 VERSION:2.0\r
@@ -490,10 +505,10 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.reply);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
@@ -516,7 +531,8 @@ END:VCALENDAR\r
       // "E" responds to "A" and "C".  Note the use of the "COMMENT" property
       //  "E" uses to indicate why the delegation was declined.
 
-      var input = '''BEGIN:VCALENDAR\r
+      var input =
+          '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REPLY\r
 VERSION:2.0\r
@@ -535,10 +551,10 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.reply);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
@@ -559,7 +575,8 @@ END:VCALENDAR\r
       //  express the fact that the item was delegated in the "COMMENT"
       //  property.
 
-      input = '''BEGIN:VCALENDAR\r
+      input =
+          '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REQUEST\r
 VERSION:2.0\r
@@ -580,10 +597,10 @@ END:VEVENT\r
 END:VCALENDAR\r
 ''';
       iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
@@ -611,7 +628,8 @@ END:VCALENDAR\r
       //  message) MUST be ignored.
 
       // This example shows how "A" cancels the event.
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:CANCEL
 VERSION:2.0
@@ -630,10 +648,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.cancel);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.cancelled);
       expect(
@@ -651,7 +669,8 @@ END:VCALENDAR
       //  example below, the "STATUS" property is omitted.  This is used when
       //  the meeting itself is cancelled and not when the intent is to remove
       //  an "Attendee" from the event.
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:CANCEL
 VERSION:2.0
@@ -666,10 +685,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.cancel);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.comment, 'You\'re off the hook for this meeting');
       // other properties are covered by components_test.dart
@@ -678,7 +697,8 @@ END:VCALENDAR
       //  MAY resend the updated event to the remaining "Attendees".  Note that
       //  "B" has been removed.
 
-      input = '''BEGIN:VCALENDAR
+      input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -701,10 +721,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 2);
       expect(event.attendees.length, 5);
       expect(event.attendees[4].role, Role.nonParticpant);
@@ -728,7 +748,8 @@ END:VCALENDAR
 
       //  This is the message "B" sends to "C" and "D".
 
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -749,10 +770,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.confirmed);
       expect(event.attendees.length, 3);

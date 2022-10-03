@@ -83,7 +83,7 @@ void main() {
   group('Indirect Property Instantiation', () {
     test('UTC Start Date', () {
       final prop = Property.parseProperty('DTSTART:20210803T080000Z');
-      expect(prop, isInstanceOf<DateTimeProperty>());
+      expect(prop, isA<DateTimeProperty>());
       expect(prop.name, 'DTSTART');
       expect(prop.textValue, '20210803T080000Z');
       expect((prop as DateTimeProperty).dateTime.isUtc, isTrue);
@@ -91,7 +91,7 @@ void main() {
     });
     test('GeoProperty', () {
       final prop = Property.parseProperty('GEO:37.386013;-122.082932');
-      expect(prop, isInstanceOf<GeoProperty>());
+      expect(prop, isA<GeoProperty>());
       expect(prop.name, 'GEO');
       expect(prop.textValue, '37.386013;-122.082932');
       expect((prop as GeoProperty).location.latitude, 37.386013);
@@ -101,7 +101,7 @@ void main() {
     test('RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4;UNTIL=19980404T070000Z', () {
       final prop = Property.parseProperty(
           'RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4;UNTIL=19980404T070000Z');
-      expect(prop, isInstanceOf<RecurrenceRuleProperty>());
+      expect(prop, isA<RecurrenceRuleProperty>());
 
       expect(prop.name, 'RRULE');
       expect((prop as RecurrenceRuleProperty).rule.frequency,
@@ -139,7 +139,7 @@ void main() {
         () {
       final prop = Property.parseProperty(
           'ATTENDEE;RSVP=TRUE;ROLE=REQ-PARTICIPANT:mailto:jsmith@example.com');
-      expect(prop, isInstanceOf<AttendeeProperty>());
+      expect(prop, isA<AttendeeProperty>());
       expect(prop.name, 'ATTENDEE');
       expect((prop as AttendeeProperty).rsvp, isTrue);
       expect(prop.role, Role.requiredParticipant);

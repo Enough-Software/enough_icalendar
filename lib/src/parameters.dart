@@ -104,10 +104,14 @@ class UriParameter extends Parameter<Uri> {
       : super(type, type.name!, '"$value"', ValueType.uri, value);
 
   static Uri parse(String textValue) {
-    if (textValue.startsWith('"')) {
-      textValue = textValue.substring(1, textValue.length - 1);
+    var usedValue = textValue;
+    if (usedValue.startsWith('"')) {
+      usedValue = usedValue.substring(1, usedValue.length - 1);
     }
-    return Uri.parse(textValue);
+    if (usedValue.startsWith(':')) {
+      usedValue = usedValue.substring(1);
+    }
+    return Uri.parse(usedValue);
   }
 
   static UriParameter? create(ParameterType type, Uri? value) {

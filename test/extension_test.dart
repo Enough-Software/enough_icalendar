@@ -3,7 +3,8 @@ import 'package:enough_icalendar/enough_icalendar.dart';
 
 void main() {
   test('Calendar simple', () {
-    final text = '''BEGIN:VCALENDAR
+    final text =
+        '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 X-XXX-NUMBER:123
@@ -21,10 +22,9 @@ END:VCALENDAR''';
         return IntegerProperty(definition);
       }
     });
-    expect(calendar, isInstanceOf<VCalendar>());
+    expect(calendar, isA<VCalendar>());
     expect(calendar.children, isNotEmpty);
-    expect(
-        calendar.getProperty('X-XXX-NUMBER'), isInstanceOf<IntegerProperty>());
+    expect(calendar.getProperty('X-XXX-NUMBER'), isA<IntegerProperty>());
     expect(
         calendar.getProperty<IntegerProperty>('X-XXX-NUMBER')?.intValue, 123);
   });

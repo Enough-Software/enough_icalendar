@@ -5,6 +5,8 @@ import 'package:enough_icalendar/enough_icalendar.dart';
 import 'properties.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 
+import 'util.dart';
+
 /// The type of the component, convenient for switch cases
 enum VComponentType {
   calendar,
@@ -166,14 +168,7 @@ abstract class VComponent {
     String text, {
     Property? Function(String name, String definition)? customParser,
   }) {
-    final containsStandardCompliantLineBreaks = text.contains('\r\n');
-    final foldedLines = containsStandardCompliantLineBreaks
-        ? text.split('\r\n')
-        : text.split('\n');
-    final lines = unfold(
-      foldedLines,
-      containsStandardCompliantLineBreaks: containsStandardCompliantLineBreaks,
-    );
+    final lines = unfold(text);
     if (lines.isEmpty) {
       throw FormatException('Invalid input: [$text]');
     }
@@ -240,32 +235,62 @@ abstract class VComponent {
     }
   }
 
-  /// Unfolds the given [input] lines
-  ///
-  /// When [containsStandardCompliantLineBreaks] is not the default `true`,
-  /// some care is taken to re-include lines that may have been
-  /// split in error, however this is not perfect.
+  /// Unfolds the given [input] text, usually with lines separated by `\r\n`
   static List<String> unfold(
-    List<String> input, {
-    bool containsStandardCompliantLineBreaks = true,
-  }) {
+    String input,
+  ) {
+    final containsStandardCompliantLineBreaks = input.contains('\r\n');
+    if (containsStandardCompliantLineBreaks) {
+      return unfoldStandardCompliantLines(input.split('\r\n'));
+    }
+    final output = <String>[];
+    var buffer = StringBuffer();
+    final ascii = input.runes.toList();
+    bool isInQuote = false;
+    for (int i = 0; i < ascii.length; i++) {
+      final rune = ascii[i];
+      if (rune == Rune.runeLineFeed) {
+        if (i < ascii.length - 1 &&
+            (ascii[i + 1] == Rune.runeSpace || ascii[i + 1] == Rune.runeTab)) {
+          // this line-break must be ignored:
+          i++;
+          while (i < ascii.length - 1 &&
+              (ascii[i + 1] == Rune.runeSpace ||
+                  ascii[i + 1] == Rune.runeTab)) {
+            i++;
+          }
+          continue;
+        }
+        if (!isInQuote) {
+          // this marks the end of the current line:
+          if (buffer.isNotEmpty) {
+            output.add(buffer.toString());
+            buffer = StringBuffer();
+          }
+          continue;
+        }
+      } else if (rune == Rune.runeDoubleQuote) {
+        isInQuote = !isInQuote;
+      }
+      buffer.writeCharCode(rune);
+    }
+    if (buffer.isNotEmpty) {
+      output.add(buffer.toString());
+    }
+    return output;
+  }
+
+  /// Unfolds the given [input] lines, originally separated by `\r\n`
+  static List<String> unfoldStandardCompliantLines(
+    List<String> input,
+  ) {
     final output = <String>[];
     StringBuffer? buffer;
     for (var i = 0; i < input.length; i++) {
       final current = input[i];
       if (buffer != null) {
-        if (current.startsWithWhiteSpace() && current.length > 1) {
+        if (current.startsWithWhiteSpace()) {
           buffer.write(current.trimLeft());
-          if (i == input.length - 1) {
-            output.add(buffer.toString());
-          }
-          continue;
-        } else if (!containsStandardCompliantLineBreaks &&
-            !current.contains(':')) {
-          // this can happen when the description or similar fields also contain \n line-breaks
-          buffer
-            ..write('\n')
-            ..write(current.trimLeft());
           if (i == input.length - 1) {
             output.add(buffer.toString());
           }
@@ -276,6 +301,7 @@ abstract class VComponent {
           buffer = null;
         }
       }
+
       if (i < input.length - 1) {
         final next = input[i + 1];
         if (next.startsWithWhiteSpace()) {
@@ -302,8 +328,8 @@ abstract class VComponent {
 
   /// Checks if this component can reply in its current state
   ///
-  /// Subclasses have to implement this, wenn replies should be possible.
-  /// Compare [reply] which needs to be overriden, too.
+  /// Subclasses have to implement this, when replies should be possible.
+  /// Compare [reply] which needs to be overridden, too.
   bool get canReply => false;
 
   /// Creates a reply for this component.

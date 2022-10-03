@@ -6,7 +6,8 @@ import 'package:collection/collection.dart' show IterableExtension;
 void main() {
   group('VEVENT', () {
     test('Reply to a Group Event Request', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -29,7 +30,7 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       expect(iCalendar.canReply, isTrue);
       final originalEvent = iCalendar.children.first as VEvent;
@@ -40,7 +41,7 @@ END:VCALENDAR
       expect(reply.method, Method.reply);
       expect(reply.version, '2.0');
       expect(reply.children, isNotEmpty);
-      expect(reply.children.first, isInstanceOf<VEvent>());
+      expect(reply.children.first, isA<VEvent>());
       final event = reply.children.first as VEvent;
       event.checkValidity();
       expect(event.uid, originalEvent.uid);
@@ -55,7 +56,7 @@ END:VCALENDAR
       expect((parsed as VCalendar).method, Method.reply);
       expect(parsed.version, '2.0');
       expect(parsed.children, isNotEmpty);
-      expect(parsed.children.first, isInstanceOf<VEvent>());
+      expect(parsed.children.first, isA<VEvent>());
       final parsedEvent = parsed.children.first as VEvent;
       expect(parsedEvent.uid, originalEvent.uid);
       expect(parsedEvent.sequence, originalEvent.sequence);
@@ -69,7 +70,8 @@ END:VCALENDAR
     });
 
     test('Update an Event', () {
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -93,22 +95,22 @@ END:VEVENT
 END:VCALENDAR
 ''';
       final iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 6);
       // now update it it:
       var update = iCalendar.update();
-      expect(update, isInstanceOf<VCalendar>());
+      expect(update, isA<VCalendar>());
       expect(update.method, Method.request);
       expect(update.version, '2.0');
       expect(update.productId, '-//Example/ExampleCalendarClient//EN');
       expect(update.children, isNotEmpty);
       event = update.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 2); // increased to 2
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 6);
@@ -119,7 +121,8 @@ END:VCALENDAR
       //  to "A" to change the time and location.
 
       // "A" sends the following "REQUEST":
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -140,10 +143,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
@@ -162,7 +165,7 @@ END:VCALENDAR
       );
       expect(iCalendar.method, Method.counter);
       event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.comment,
           'This time works much better and I think the big conference room is too big');
@@ -193,7 +196,7 @@ END:VCALENDAR
       expect(declined.method, Method.declineCounter);
       expect(declined.children, isNotEmpty);
       event = declined.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).attendees, isNotEmpty);
       expect(event.attendees.length, 1);
       expect(event.attendees.first.email, 'b@example.com');
@@ -203,7 +206,8 @@ END:VCALENDAR
 
     test('Delegating an Event', () {
       // "A" sends a "REQUEST" to "B" and "C".
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -235,7 +239,7 @@ END:VCALENDAR
       final delegationReply = delegationResult.replyForOrganizer;
       expect(delegationReply.method, Method.reply);
       var event = delegationReply.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
@@ -250,7 +254,7 @@ END:VCALENDAR
       final delegated = delegationResult.requestForDelegatee;
       expect(delegated.method, Method.request);
       event = delegated.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       final attendees = event.attendees;
       expect(attendees, isNotEmpty);
@@ -273,7 +277,8 @@ END:VCALENDAR
 
     test('Delegate Accepts the Meeting', () {
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -306,18 +311,18 @@ END:VCALENDAR
       );
       expect(accepted.method, Method.reply);
       var event = accepted.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
-      final delagatee =
+      final delegatee =
           event.attendees.firstWhereOrNull((a) => a.email == 'e@example.com');
-      expect(delagatee, isNotNull);
+      expect(delegatee, isNotNull);
 
-      expect(delagatee!.participantStatus, ParticipantStatus.accepted);
-      expect(delagatee.email, 'e@example.com');
-      expect(delagatee.delegatedFrom, Uri.parse('mailto:c@example.com'));
-      expect(delagatee.delegatedFromEmail, 'c@example.com');
+      expect(delegatee!.participantStatus, ParticipantStatus.accepted);
+      expect(delegatee.email, 'e@example.com');
+      expect(delegatee.delegatedFrom, Uri.parse('mailto:c@example.com'));
+      expect(delegatee.delegatedFromEmail, 'c@example.com');
       // Usually only the accepting participant is listed, so I am keeping this different from the example
       final delegator =
           event.attendees.firstWhereOrNull((a) => a.email == 'c@example.com');
@@ -332,7 +337,8 @@ END:VCALENDAR
 
     test('Delegate Declines the Meeting', () {
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -366,7 +372,7 @@ END:VCALENDAR
       );
       expect(declined.method, Method.reply);
       var event = declined.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
@@ -396,7 +402,8 @@ END:VCALENDAR
       //  message) MUST be ignored.
 
       // This example shows how "A" cancels the event.
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 BEGIN:VEVENT
@@ -416,7 +423,7 @@ END:VCALENDAR
       );
       expect(cancelled.method, Method.cancel);
       var event = cancelled.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.cancelled);
       expect(
@@ -435,7 +442,8 @@ END:VCALENDAR
       //  the meeting itself is cancelled and not when the intent is to remove
       //  an "Attendee" from the event.
 
-      final input = '''BEGIN:VCALENDAR
+      final input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -458,7 +466,7 @@ END:VCALENDAR
       final cancelled = cancelledChanges.requestForCancelledAttendees;
       expect(cancelled.method, Method.cancel);
       var event = cancelled.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.comment, 'You\'re off the hook for this meeting');
       expect(event.attendees, isNotEmpty);
@@ -500,7 +508,8 @@ END:VCALENDAR
 
       //  This is the message "B" sends to "C" and "D".
 
-      var input = '''BEGIN:VCALENDAR
+      var input =
+          '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -521,10 +530,10 @@ END:VEVENT
 END:VCALENDAR
 ''';
       var iCalendar = VComponent.parse(input);
-      expect(iCalendar, isInstanceOf<VCalendar>());
+      expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
       var event = iCalendar.children.first;
-      expect(event, isInstanceOf<VEvent>());
+      expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.confirmed);
       expect(event.attendees.length, 3);
