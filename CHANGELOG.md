@@ -1,3 +1,6 @@
+## 0.13.0
+- Again, thanks to [martingeorgiu](https://github.com/martingeorgiu) the support for parsing Apple-originating iCalendar invites has been improved.
+
 ## 0.12.0
 - Thanks to [martingeorgiu](https://github.com/martingeorgiu) for the following great changes:
   - support Apple format by not requiring a standard and a daylight for every timezone
