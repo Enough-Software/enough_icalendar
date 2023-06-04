@@ -13,7 +13,7 @@ void main() {
 }
 
 void parse() {
-  final text = '''BEGIN:VCALENDAR
+  const text = '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
@@ -237,7 +237,7 @@ void declineCounter(VCalendar counterProposal) {
   final declined = counterProposal.declineCounter(
       attendeeEmail: 'b@example.com',
       comment: 'Sorry, but we have to stick to the original schedule');
-  print('\Declined counter proposal:');
+  print('Declined counter proposal:');
   print(declined);
   // prints this:
   //

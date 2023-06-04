@@ -8,7 +8,7 @@ class RruleL10nEn extends RruleL10n {
 
   static RruleL10nEn create() {
     initializeDateFormatting('en');
-    return RruleL10nEn._();
+    return const RruleL10nEn._();
   }
 
   @override
@@ -55,7 +55,7 @@ class RruleL10nEn extends RruleL10n {
         case 2:
           return 'Every other $singular';
         default:
-          return 'Every ${ordinal(interval)} ${singular}';
+          return 'Every ${ordinal(interval)} $singular';
       }
     }
 

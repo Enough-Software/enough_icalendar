@@ -1,12 +1,12 @@
-import 'package:test/test.dart';
-import 'package:enough_icalendar/enough_icalendar.dart';
 import 'package:collection/collection.dart' show IterableExtension;
+import 'package:enough_icalendar/enough_icalendar.dart';
+import 'package:test/test.dart';
 
 // examples taken from https://datatracker.ietf.org/doc/html/rfc5546#section-4
 void main() {
   group('VEVENT', () {
     test('Reply to a Group Event Request', () {
-      final input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -69,7 +69,7 @@ END:VCALENDAR
     });
 
     test('Update an Event', () {
-      final input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -101,7 +101,7 @@ END:VCALENDAR
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 6);
       // now update it it:
-      var update = iCalendar.update();
+      final update = iCalendar.update();
       expect(update, isA<VCalendar>());
       expect(update.method, Method.request);
       expect(update.version, '2.0');
@@ -119,7 +119,7 @@ END:VCALENDAR
       //  to "A" to change the time and location.
 
       // "A" sends the following "REQUEST":
-      var input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -203,7 +203,7 @@ END:VCALENDAR
 
     test('Delegating an Event', () {
       // "A" sends a "REQUEST" to "B" and "C".
-      var input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -273,7 +273,7 @@ END:VCALENDAR
 
     test('Delegate Accepts the Meeting', () {
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
-      final input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -305,7 +305,7 @@ END:VCALENDAR
         attendeeEmail: 'e@example.com',
       );
       expect(accepted.method, Method.reply);
-      var event = accepted.children.first;
+      final event = accepted.children.first;
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
@@ -332,7 +332,7 @@ END:VCALENDAR
 
     test('Delegate Declines the Meeting', () {
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
-      final input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -365,7 +365,7 @@ END:VCALENDAR
         comment: 'Sorry, I will be out of town at that time.',
       );
       expect(declined.method, Method.reply);
-      var event = declined.children.first;
+      final event = declined.children.first;
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
@@ -396,7 +396,7 @@ END:VCALENDAR
       //  message) MUST be ignored.
 
       // This example shows how "A" cancels the event.
-      final input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 BEGIN:VEVENT
@@ -415,7 +415,7 @@ END:VCALENDAR
         comment: 'Mr. B cannot attend.  It\'s raining.  Lets cancel.',
       );
       expect(cancelled.method, Method.cancel);
-      var event = cancelled.children.first;
+      final event = cancelled.children.first;
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.cancelled);
@@ -435,7 +435,7 @@ END:VCALENDAR
       //  the meeting itself is cancelled and not when the intent is to remove
       //  an "Attendee" from the event.
 
-      final input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -500,7 +500,7 @@ END:VCALENDAR
 
       //  This is the message "B" sends to "C" and "D".
 
-      var input = '''BEGIN:VCALENDAR
+      const input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -520,10 +520,10 @@ STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR
 ''';
-      var iCalendar = VComponent.parse(input);
+      final iCalendar = VComponent.parse(input);
       expect(iCalendar, isA<VCalendar>());
       expect((iCalendar as VCalendar).method, Method.request);
-      var event = iCalendar.children.first;
+      final event = iCalendar.children.first;
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.confirmed);

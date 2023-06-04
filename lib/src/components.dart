@@ -1,10 +1,8 @@
 import 'dart:math';
 
-import 'package:enough_icalendar/enough_icalendar.dart';
-
-import 'properties.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 
+import '../enough_icalendar.dart';
 import 'util.dart';
 
 /// The type of the component, convenient for switch cases
@@ -25,6 +23,9 @@ enum VComponentType {
 
 /// Common properties
 abstract class VComponent {
+
+  VComponent(this.name, [this.parent])
+      : componentType = _getComponentType(name);
   /// The type of the component, convenient for switch cases
   final VComponentType componentType;
 
@@ -39,9 +40,6 @@ abstract class VComponent {
 
   /// The children of this component, empty when there a no children
   final List<VComponent> children = <VComponent>[];
-
-  VComponent(this.name, [this.parent])
-      : componentType = _getComponentType(name);
 
   static VComponentType _getComponentType(String name) {
     switch (name) {
@@ -180,8 +178,8 @@ abstract class VComponent {
   /// Compare [parse] for details.
   static VComponent parseLines(List<String> lines,
       {Property? Function(String name, String definition)? customParser}) {
-    VComponent root = _createComponent(lines.first);
-    VComponent current = root;
+    final var root = _createComponent(lines.first);
+    var current = root;
     for (var i = 1; i < lines.length; i++) {
       final line = lines[i];
       if (line.startsWith('BEGIN:')) {
@@ -393,17 +391,15 @@ abstract class VComponent {
 }
 
 extension WhiteSpaceDetector on String {
-  bool startsWithWhiteSpace() {
-    return startsWith(' ') || startsWith('\t');
-  }
+  bool startsWithWhiteSpace() => startsWith(' ') || startsWith('\t');
 }
 
 /// Contains a `VCALENDAR` component
 ///
 /// The VCalendar is a parent component for others components such as [VEvent], [VTodo] or [VJournal]
 class VCalendar extends VComponent {
-  static const String componentName = 'VCALENDAR';
   VCalendar({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VCALENDAR';
 
   /// Retrieves the scale of the calendar, typically `GREGORIAN`
   ///
@@ -560,13 +556,11 @@ class VCalendar extends VComponent {
   ///
   /// Organizers of an calendar event can cancel an event.
   /// Compare [cancelEventForAttendees] when the event should only be cancelled for some attendees
-  VCalendar cancelEvent({String? comment}) {
-    return update(
+  VCalendar cancelEvent({String? comment}) => update(
       method: Method.cancel,
       comment: comment,
       eventStatus: EventStatus.cancelled,
     );
-  }
 
   /// Cancels this VCalendar event for the specified [cancelledAttendees].
   ///
@@ -819,20 +813,17 @@ class VCalendar extends VComponent {
   }
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VCalendar(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VCalendar(parent: parent);
 
   /// Creates an event from the specified [organizer] resp. [organizerEmail] on the given [start] datetime and either the [end] or [duration].
   ///
   /// Any other settings are optional.
   static VCalendar createEvent({
-    String? organizerEmail,
+    required DateTime start, String? organizerEmail,
     OrganizerProperty? organizer,
     List<String>? attendeeEmails,
     List<AttendeeProperty>? attendees,
     bool? rsvp,
-    required DateTime start,
     DateTime? end,
     IsoDuration? duration,
     String? location,
@@ -888,10 +879,10 @@ class VCalendar extends VComponent {
   /// Specify [length] when a different length than 18 characters should be used.
   /// This can be used as a UID, for example.
   static String _createRandomId({int length = 18, StringBuffer? buffer}) {
-    final characters =
+    const characters =
         '0123456789_abcdefghijklmnopqrstuvwxyz-ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     final characterRunes = characters.runes.toList();
-    final max = characters.length;
+    const max = characters.length;
     final random = Random(DateTime.now().millisecondsSinceEpoch);
     buffer ??= StringBuffer();
     for (var count = length; count > 0; count--) {
@@ -987,9 +978,7 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
   }
 
   /// Removes the given [attachment] returning `true` when the attachment was found
-  bool removeAttachment(AttachmentProperty attachment) {
-    return properties.remove(attachment);
-  }
+  bool removeAttachment(AttachmentProperty attachment) => properties.remove(attachment);
 
   /// Removes the attachment with the given [uri], returning it when it was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
@@ -1051,9 +1040,7 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
   }
 
   /// Removes the given [attendee] returning `true` when the attendee was found
-  bool removeAttendee(AttendeeProperty attendee) {
-    return properties.remove(attendee);
-  }
+  bool removeAttendee(AttendeeProperty attendee) => properties.remove(attendee);
 
   /// Removes the attendee with the given [uri], returning it when it was found.
   AttendeeProperty? removeAttendeeWithUri(Uri uri) {
@@ -1209,8 +1196,8 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
 /// Contains information about an event.
 class VEvent extends _EventTodoJournalComponent {
-  static const String componentName = 'VEVENT';
   VEvent({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VEVENT';
 
   /// Tries to the timezone ID like `America/New_York` or `Europe/Berlin` from `DTSTART` property.
   String? get timezoneId {
@@ -1390,14 +1377,12 @@ class VEvent extends _EventTodoJournalComponent {
   }
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VEvent(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VEvent(parent: parent);
 }
 
 class VTodo extends _EventTodoJournalComponent {
-  static const String componentName = 'VTODO';
   VTodo({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VTODO';
 
   /// The status of this todo
   TodoStatus get status =>
@@ -1501,14 +1486,12 @@ class VTodo extends _EventTodoJournalComponent {
       TextProperty.create(TextProperty.propertyNameResources, value));
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VTodo(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VTodo(parent: parent);
 }
 
 class VJournal extends _EventTodoJournalComponent {
-  static const String componentName = 'VJOURNAL';
   VJournal({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VJOURNAL';
 
   /// The status of this journal entry
   JournalStatus get status =>
@@ -1520,14 +1503,12 @@ class VJournal extends _EventTodoJournalComponent {
       StatusProperty.propertyName, StatusProperty.createJournalStatus(value));
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VJournal(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VJournal(parent: parent);
 }
 
 class VTimezone extends VComponent {
-  static const String componentName = 'VTIMEZONE';
   VTimezone({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VTIMEZONE';
 
   /// Retrieves the ID such as `America/New_York` or `Europe/Berlin`
   String get timezoneId =>
@@ -1571,8 +1552,8 @@ class VTimezone extends VComponent {
   void checkValidity() {
     super.checkValidity();
     checkMandatoryProperty(TextProperty.propertyNameTimezoneId);
-    if (children.length == 0) {
-      throw FormatException(
+    if (children.isEmpty) {
+      throw const FormatException(
           'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component');
     }
     var numberOfStandardChildren = 0, numberOfDaylightChildren = 0;
@@ -1584,24 +1565,22 @@ class VTimezone extends VComponent {
       }
     }
     if (numberOfStandardChildren == 0 && numberOfDaylightChildren == 0) {
-      throw FormatException(
+      throw const FormatException(
           'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component');
     }
   }
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VTimezone(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VTimezone(parent: parent);
 }
 
 /// Contains the standard or daylight timezone subcomponent
 class VTimezonePhase extends VComponent {
-  static const String componentNameStandard = 'STANDARD';
-  static const String componentNameDaylight = 'DAYLIGHT';
 
   VTimezonePhase(String componentName, {required VTimezone parent})
       : super(componentName, parent);
+  static const String componentNameStandard = 'STANDARD';
+  static const String componentNameDaylight = 'DAYLIGHT';
 
   /// Gets the start datetime of this phase
   DateTime get start =>
@@ -1702,15 +1681,13 @@ class VTimezonePhase extends VComponent {
   }
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VTimezonePhase(name, parent: parent as VTimezone);
-  }
+  VComponent instantiate({VComponent? parent}) => VTimezonePhase(name, parent: parent as VTimezone);
 }
 
 /// Contains an alarm definition with a trigger ([triggerDate] or [triggerRelativeDuration]) and an [action].
 class VAlarm extends VComponent {
-  static const String componentName = 'VALARM';
   VAlarm({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VALARM';
 
   /// Retrieves the date of the trigger.
   ///
@@ -1803,9 +1780,7 @@ class VAlarm extends VComponent {
   }
 
   /// Removes the given [attachment] returning `true` when the attachment was found
-  bool removeAttachment(AttachmentProperty attachment) {
-    return properties.remove(attachment);
-  }
+  bool removeAttachment(AttachmentProperty attachment) => properties.remove(attachment);
 
   /// Removes the attachment with the given [uri], returning it when it was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
@@ -1849,9 +1824,7 @@ class VAlarm extends VComponent {
   }
 
   /// Removes the given [attendee] returning `true` when the attendee was found
-  bool removeAttendee(AttendeeProperty attendee) {
-    return properties.remove(attendee);
-  }
+  bool removeAttendee(AttendeeProperty attendee) => properties.remove(attendee);
 
   /// Removes the attendee with the given [uri], returning it when it was found.
   AttendeeProperty? removeAttendeeWithUri(Uri uri) {
@@ -1881,15 +1854,13 @@ class VAlarm extends VComponent {
   }
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VAlarm(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VAlarm(parent: parent);
 }
 
 /// Provides information about free and busy times of a particular user
 class VFreeBusy extends _UidMandatoryComponent {
-  static const String componentName = 'VFREEBUSY';
   VFreeBusy({VComponent? parent}) : super(componentName, parent);
+  static const String componentName = 'VFREEBUSY';
 
   /// Retrieves the list of free busy entries
   List<FreeBusyProperty> get freeBusyProperties =>
@@ -1967,9 +1938,7 @@ class VFreeBusy extends _UidMandatoryComponent {
   }
 
   /// Removes the given [attendee] returning `true` when the attendee was found
-  bool removeAttendee(AttendeeProperty attendee) {
-    return properties.remove(attendee);
-  }
+  bool removeAttendee(AttendeeProperty attendee) => properties.remove(attendee);
 
   /// Removes the attendee with the given [uri], returning it when it was found.
   AttendeeProperty? removeAttendeeWithUri(Uri uri) {
@@ -2000,7 +1969,5 @@ class VFreeBusy extends _UidMandatoryComponent {
       setOrRemoveProperty(OrganizerProperty.propertyName, value);
 
   @override
-  VComponent instantiate({VComponent? parent}) {
-    return VFreeBusy(parent: parent);
-  }
+  VComponent instantiate({VComponent? parent}) => VFreeBusy(parent: parent);
 }

@@ -1,6 +1,6 @@
-import 'package:enough_icalendar/enough_icalendar.dart';
-import 'package:enough_icalendar/src/text/encoder.dart';
-import 'package:enough_icalendar/src/text/l10n/l10n.dart';
+import '../enough_icalendar.dart';
+import 'text/encoder.dart';
+import 'text/l10n/l10n.dart';
 
 /// To explicitly specify the value type format for a property value.
 enum ValueType {
@@ -184,8 +184,8 @@ extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
     }
   }
 
-  operator >(RecurrenceFrequency other) => this.index < other.index;
-  operator >=(RecurrenceFrequency other) => this.index <= other.index;
+  bool operator >(RecurrenceFrequency other) => index < other.index;
+  bool operator >=(RecurrenceFrequency other) => index <= other.index;
 }
 
 /// Specifies optional atrributes of a [Recurrence] rule.
@@ -196,6 +196,25 @@ enum RecurrenceAttribute { interval, count, until, startOfWeek }
 
 /// This value type is used to identify properties that contain a recurrence rule specification.
 class Recurrence {
+
+  /// Creates a new Recurrence rule with the specified [frequency] and other optional settings.
+  const Recurrence(
+    this.frequency, {
+    this.until,
+    this.count,
+    int? interval,
+    this.bySecond,
+    this.byMinute,
+    this.byHour,
+    this.byWeekDay,
+    this.byYearDay,
+    this.byWeek,
+    this.byMonth,
+    this.byMonthDay,
+    int? startOfWorkWeek,
+    this.bySetPos,
+  })  : _interval = interval,
+        _startOfWorkWeek = startOfWorkWeek;
   /// The `FREQ` rule part identifies the type of recurrence rule.
   ///
   /// This rule part MUST be specified in the recurrence rule.  Valid values
@@ -293,7 +312,7 @@ class Recurrence {
   /// Checks if there is at least one [bySecond] modifier
   ///
   /// Compare [bySecond]
-  bool get hasBySecond => (bySecond?.isNotEmpty == true);
+  bool get hasBySecond => bySecond?.isNotEmpty == true;
 
   /// `BYMINUTE` modifier / limiter for this Recurrence.
   ///
@@ -303,7 +322,7 @@ class Recurrence {
   /// Checks if there is at least one [byMinute] modifier
   ///
   /// Compare [byMinute]
-  bool get hasByMinute => (byMinute?.isNotEmpty == true);
+  bool get hasByMinute => byMinute?.isNotEmpty == true;
 
   /// `BYHOUR` modifier / limiter for this Recurrence.
   ///
@@ -313,7 +332,7 @@ class Recurrence {
   /// Checks if there is at least one [byHour] modifier
   ///
   /// Compare [byHour]
-  bool get hasByHour => (byHour?.isNotEmpty == true);
+  bool get hasByHour => byHour?.isNotEmpty == true;
 
   /// `BYDAY` modifier / limiter for this Recurrence. 1 = Monday / DateTime.monday, 7 = Sunday / DateTime.sunday
   ///
@@ -323,13 +342,13 @@ class Recurrence {
   /// Checks if there is at least one [byWeekDay] modifier
   ///
   /// Compare [byWeekDay]
-  bool get hasByWeekDay => (byWeekDay?.isNotEmpty == true);
+  bool get hasByWeekDay => byWeekDay?.isNotEmpty == true;
 
   /// Checks if there is at least one by week day modifier with a weeks number set.
   ///
   /// Compare [hasByWeekDay], [byWeekDay]
   bool get hasByWeekDayWithWeeks =>
-      hasByWeekDay && byWeekDay!.any((day) => (day.week != null));
+      hasByWeekDay && byWeekDay!.any((day) => day.week != null);
 
   /// `BYMONTHDAY` modifier / limiter for this Recurrence.
   final List<int>? byMonthDay;
@@ -386,7 +405,7 @@ class Recurrence {
   /// Checks if this rule has `BYSETPOST` rules
   ///
   /// Compare [bySetPos]
-  bool get hasBySetPos => (bySetPos?.isNotEmpty == true);
+  bool get hasBySetPos => bySetPos?.isNotEmpty == true;
 
   final int? _startOfWorkWeek;
 
@@ -414,25 +433,6 @@ class Recurrence {
 
   /// Checks if this recurrence rule is limited, either by [count] or by [until].
   bool get hasLimit => count != null || until != null;
-
-  /// Creates a new Recurrence rule with the specified [frequency] and other optional settings.
-  const Recurrence(
-    this.frequency, {
-    this.until,
-    this.count,
-    int? interval,
-    this.bySecond,
-    this.byMinute,
-    this.byHour,
-    this.byWeekDay,
-    this.byYearDay,
-    this.byWeek,
-    this.byMonth,
-    this.byMonthDay,
-    int? startOfWorkWeek,
-    this.bySetPos,
-  })  : _interval = interval,
-        _startOfWorkWeek = startOfWorkWeek;
 
   /// Copies this recurrence rule with the given attributes.
   ///
@@ -462,7 +462,7 @@ class Recurrence {
         until: until ?? (copyUntil ? this.until : null),
         count: count ?? this.count,
         interval: interval ?? _interval,
-        startOfWorkWeek: startOfWorkWeek ?? this._startOfWorkWeek,
+        startOfWorkWeek: startOfWorkWeek ?? _startOfWorkWeek,
         bySecond: bySecond,
         byMinute: byMinute,
         byHour: byHour,
@@ -479,7 +479,7 @@ class Recurrence {
       until: until ?? (copyUntil ? this.until : null),
       count: count ?? this.count,
       interval: interval ?? _interval,
-      startOfWorkWeek: startOfWorkWeek ?? this._startOfWorkWeek,
+      startOfWorkWeek: startOfWorkWeek ?? _startOfWorkWeek,
       bySecond: bySecond ?? this.bySecond,
       byMinute: byMinute ?? this.byMinute,
       byHour: byHour ?? this.byHour,
@@ -580,7 +580,7 @@ class Recurrence {
       (bySetPos?.length ?? 0);
 
   @override
-  operator ==(Object other) =>
+  bool operator ==(Object other) =>
       other is Recurrence &&
       other.frequency == frequency &&
       other.until == until &&
@@ -604,7 +604,7 @@ class Recurrence {
       ..write('FREQ=')
       ..write(frequency.name);
     if (until != null) {
-      buffer..write(';UNTIL=');
+      buffer.write(';UNTIL=');
       DateHelper.renderDate(until!, buffer);
     }
     if (count != null) {
@@ -911,6 +911,8 @@ class Recurrence {
 
 /// Contains BYDAY weekday rules
 class ByDayRule {
+
+  ByDayRule(this.weekday, {this.week});
   /// Weekday 1 = Monday / DateTime.monday, 7 = Sunday / DateTime.sunday
   final int weekday;
 
@@ -922,17 +924,13 @@ class ByDayRule {
   /// Checks if this rule has a week number
   ///
   /// Compare [week]
-  bool get hasWeekNumber => (week != null);
-
-  ByDayRule(this.weekday, {this.week});
+  bool get hasWeekNumber => week != null;
 
   @override
   int get hashCode => weekday + (week ?? 0) * 10;
 
   @override
-  bool operator ==(Object other) {
-    return other is ByDayRule && other.weekday == weekday && other.week == week;
-  }
+  bool operator ==(Object other) => other is ByDayRule && other.weekday == weekday && other.week == week;
 
   @override
   String toString() {
@@ -975,18 +973,18 @@ extension ExtensionOnByDayRuleIteration on Iterable<ByDayRule> {
 }
 
 class TimeOfDayWithSeconds {
-  final int hour;
-  final int minute;
-  final int second;
 
   TimeOfDayWithSeconds(
       {required this.hour, required this.minute, required this.second});
+  final int hour;
+  final int minute;
+  final int second;
 
   @override
   int get hashCode => hour + minute * 60 + second * 60 * 60;
 
   @override
-  operator ==(Object other) =>
+  bool operator ==(Object other) =>
       other is TimeOfDayWithSeconds &&
       other.hour == hour &&
       other.minute == minute &&
@@ -1015,8 +1013,8 @@ class TimeOfDayWithSeconds {
   }
 
   static TimeOfDayWithSeconds parse(String content) {
-    var hour = int.tryParse(content.substring(0, 2));
-    var minute = int.tryParse(content.substring(2, 4));
+    final hour = int.tryParse(content.substring(0, 2));
+    final minute = int.tryParse(content.substring(2, 4));
     final second = int.tryParse(content.substring(4, 6));
     if (hour == null || minute == null || second == null) {
       throw FormatException('Invalid time definition: $content');
@@ -1042,14 +1040,14 @@ class TimeOfDayWithSeconds {
 
 /// This value type is used to identify properties that contain an offset from UTC to local time.
 class UtcOffset {
-  final int offsetHour;
-  final int offsetMinute;
 
   UtcOffset(String content)
       : offsetHour = _parseHour(content),
         offsetMinute = _parseMinute(content);
 
   UtcOffset.value({required this.offsetHour, required this.offsetMinute});
+  final int offsetHour;
+  final int offsetMinute;
 
   @override
   String toString() {
@@ -1073,11 +1071,9 @@ class UtcOffset {
   int get hashCode => offsetHour + (offsetMinute * 60);
 
   @override
-  bool operator ==(Object other) {
-    return other is UtcOffset &&
+  bool operator ==(Object other) => other is UtcOffset &&
         other.offsetHour == offsetHour &&
         other.offsetMinute == offsetMinute;
-  }
 
   static int _parseHour(String content) {
     if (content.length < 5) {
@@ -1169,14 +1165,14 @@ class DateHelper {
 }
 
 class DateTimeOrDuration {
-  final DateTime? dateTime;
-  final IsoDuration? duration;
 
   DateTimeOrDuration(this.dateTime, this.duration)
       : assert(dateTime != null || duration != null,
             'Either duration or dateTime must be set'),
         assert(!(duration != null && dateTime != null),
             'Either duration or dateTime must be set, but not both');
+  final DateTime? dateTime;
+  final IsoDuration? duration;
 
   @override
   String toString() {
@@ -1206,6 +1202,16 @@ class DateTimeOrDuration {
 
 /// Contains a precise period of time.
 class Period {
+
+  Period(this.startDate, {this.duration, this.endDate})
+      : assert(duration != null || endDate != null,
+            'Either duration or endDate must be set.'),
+        assert(!(duration != null && endDate != null),
+            'Not both duration and endDate can be set at the same time.');
+  Period.text(String content)
+      : startDate = _parseStartDate(content),
+        endDate = _parseEndDate(content),
+        duration = _parseDuration(content);
   /// The startdate
   final DateTime startDate;
 
@@ -1218,16 +1224,6 @@ class Period {
   ///
   /// Either the [duration] or the [enddate] will be defined.
   final DateTime? endDate;
-
-  Period(this.startDate, {this.duration, this.endDate})
-      : assert(duration != null || endDate != null,
-            'Either duration or endDate must be set.'),
-        assert(!(duration != null && endDate != null),
-            'Not both duration and endDate can be set at the same time.');
-  Period.text(String content)
-      : startDate = _parseStartDate(content),
-        endDate = _parseEndDate(content),
-        duration = _parseDuration(content);
 
   static int _getSeparatorIndex(String content) {
     final separatorIndex = content.indexOf('/');
@@ -1271,21 +1267,13 @@ class Period {
 }
 
 class _DurationSection {
+  _DurationSection(this.result, this.index);
   final int result;
   final int index;
-  _DurationSection(this.result, this.index);
 }
 
 /// ISO 8601 compliant duration
 class IsoDuration {
-  final int years;
-  final int months;
-  final int weeks;
-  final int days;
-  final int hours;
-  final int minutes;
-  final int seconds;
-  final bool isNegativeDuration;
 
   IsoDuration({
     this.years = 0,
@@ -1297,6 +1285,14 @@ class IsoDuration {
     this.seconds = 0,
     this.isNegativeDuration = false,
   });
+  final int years;
+  final int months;
+  final int weeks;
+  final int days;
+  final int hours;
+  final int minutes;
+  final int seconds;
+  final bool isNegativeDuration;
 
   static _DurationSection _parseSection(
       String content, int startIndex, String designatur,
@@ -1327,8 +1323,7 @@ class IsoDuration {
       seconds * 600;
 
   @override
-  bool operator ==(Object other) {
-    return other is IsoDuration &&
+  bool operator ==(Object other) => other is IsoDuration &&
         other.years == years &&
         other.months == months &&
         other.weeks == weeks &&
@@ -1336,7 +1331,6 @@ class IsoDuration {
         other.hours == hours &&
         other.minutes == minutes &&
         other.seconds == seconds;
-  }
 
   @override
   String toString() {
@@ -1382,20 +1376,18 @@ class IsoDuration {
   ///
   /// The `days` are converted by assuming 365 days per year and 30 days per month:  `days: years * 365 + months * 30 + weeks * 7 + days`
   /// Compare [addTo] for a better handling of this duration.
-  Duration toDuration() {
-    return Duration(
+  Duration toDuration() => Duration(
         days: years * 365 + months * 30 + weeks * 7 + days,
         hours: hours,
         minutes: minutes,
         seconds: seconds);
-  }
 
   /// Adds this duration to the given [input] DateTime.
   ///
   /// This is adding this duration precisely and is better than [toDuration] in most cases.
   DateTime addTo(DateTime input) {
-    int y = input.year + years;
-    int m = input.month + months;
+    var y = input.year + years;
+    var m = input.month + months;
     while (m > 12) {
       y++;
       m -= 12;
@@ -1750,6 +1742,9 @@ extension ExtensionAlarmAction on AlarmAction {
 
 /// Contains all relevant binary information
 class Binary {
+
+  Binary(
+      {required this.value, required this.mediaType, required this.encoding});
   /// The data in textual form
   final String value;
 
@@ -1758,17 +1753,14 @@ class Binary {
 
   /// The encoding type like `BASE64`
   final String? encoding;
-
-  Binary(
-      {required this.value, required this.mediaType, required this.encoding});
 }
 
 /// Provides access to a geolocation
 class GeoLocation {
-  final double latitude;
-  final double longitude;
 
   GeoLocation(this.latitude, this.longitude);
+  final double latitude;
+  final double longitude;
 
   @override
   String toString() {
@@ -1933,26 +1925,26 @@ extension ExtensionTimeTransparency on TimeTransparency {
 /// Example for this is to cancel an event for one or several attendees.
 /// Compare [VCalendar.cancelEventForAttendees]
 class AttendeeCancelResult {
+
+  const AttendeeCancelResult(
+      this.requestForCancelledAttendees, this.requestUpdateForGroup);
   /// The request / info for attendees for which the participation was cancelled:
   final VCalendar requestForCancelledAttendees;
   // The request / update into for the remaining attendees:
   final VCalendar requestUpdateForGroup;
-
-  const AttendeeCancelResult(
-      this.requestForCancelledAttendees, this.requestUpdateForGroup);
 }
 
 /// Wraps delegation requests
 ///
 /// Compare [VCalendar.delegate]
 class AttendeeDelegatedResult {
+
+  AttendeeDelegatedResult(this.requestForDelegatee, this.replyForOrganizer);
   /// The request for the attendee to which the particaption should be delegated:
   final VCalendar requestForDelegatee;
 
   /// The reply with the information for the organizer
   final VCalendar replyForOrganizer;
-
-  AttendeeDelegatedResult(this.requestForDelegatee, this.replyForOrganizer);
 }
 
 /// Custom event busy status as defined by `X-MICROSOFT-CDO-BUSYSTATUS`

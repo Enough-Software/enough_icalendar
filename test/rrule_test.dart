@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
 import 'package:enough_icalendar/enough_icalendar.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('Valid RRULE', () {

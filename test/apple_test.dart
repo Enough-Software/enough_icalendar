@@ -85,8 +85,8 @@ X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-MAPKIT-HANDLE=CAES6gIIrk0Qx\r
  /4, 119 00 Prague, Czechia":geo:50.091106,14.401799\r
 UID:3D2BE59F-AA5C-47C7-AB54-E795D97A69FF\r
 DTSTAMP:20220927T091115Z\r
-LOCATION:Pražský hrad\nPrague Castle\, náměstí U svatého Jiří 34/4\, 119 \r
- 00 Prague\, Czechia\r
+LOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 \r
+ 00 Prague, Czechia\r
 SEQUENCE:1\r
 SUMMARY:Test Event\r
 LAST-MODIFIED:20220927T091110Z\r
@@ -260,7 +260,7 @@ const _expectedUnfoldedLines = [
   'X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-MAPKIT-HANDLE=CAES6gIIrk0Qxofi3Z/fmujjARoSCVbY+FypC0lAEQAAAKi4zSxAIpgBCgdDemVjaGlhEgJDWhoGUHJhZ3VlKgZQcmFndWUyBlByYWd1ZToGMTE5IDAwQghQcmFndWUgMVIcbsOhbcSbc3TDrSBVIHN2YXTDqWhvIEppxZnDrVoEMzQvNGIhbsOhbcSbc3TDrSBVIHN2YXTDqWhvIEppxZnDrSAzNC80cg1QcmFndWUgQ2FzdGxligEIUHJhZ3VlIDEqDlByYcW+c2vDvSBocmFkMg1QcmFndWUgQ2FzdGxlMiFuw6FtxJtzdMOtIFUgc3ZhdMOpaG8gSmnFmcOtIDM0LzQyDTExOSAwMCBQcmFndWUyB0N6ZWNoaWE4L1ABWk0KJQjGh+Ldn9+a6OMBEhIJVtj4XKkLSUARAAAAqLjNLEAYrk2QAwGiHyMIxofi3Z/fmujjARoWCg5QcmHFvnNrw70gaHJhZBAAKgJlbg==;X-APPLE-RADIUS=141.2945906408928;X-TITLE="Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia":geo:50.091106,14.401799',
   'UID:3D2BE59F-AA5C-47C7-AB54-E795D97A69FF',
   'DTSTAMP:20220927T091115Z',
-  'LOCATION:Pražský hrad\nPrague Castle\, náměstí U svatého Jiří 34/4\, 119 00 Prague\, Czechia',
+  'LOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia',
   'SEQUENCE:1',
   'SUMMARY:Test Event',
   'LAST-MODIFIED:20220927T091110Z',
@@ -443,8 +443,8 @@ X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-APPLE-MAPKIT-HANDLE=CAES6gIIrk0Qx\r
  /4, 119 00 Prague, Czechia":geo:50.091106,14.401799\r
 UID:3D2BE59F-AA5C-47C7-AB54-E795D97A69FF\r
 DTSTAMP:20220927T091115Z\r
-LOCATION:Pražský hrad\nPrague Castle\, náměstí U svatého Jiří 34/4\, 119 \r
- 00 Prague\, Czechia\r
+LOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 \r
+ 00 Prague, Czechia\r
 SEQUENCE:1\r
 SUMMARY:Test Event\r
 LAST-MODIFIED:20220927T091110Z\r
@@ -453,8 +453,8 @@ DTSTART;TZID=Europe/Prague:20220929T193000\r
 END:VEVENT\r
 BEGIN:VEVENT\r
 CREATED:20191123T145645Z\r
-DESCRIPTION:Spojení z Madlina do Smíchovské nádraží\, today 5:13 PM - 5:4\r
- 8 PM\, celkem 35 min.\n\nBus 151\n- Madlina 5:13 PM\n- Českomoravská 5:2\r
+DESCRIPTION:Spojení z Madlina do Smíchovské nádraží, today 5:13 PM - 5:4\r
+ 8 PM, celkem 35 min.\n\nBus 151\n- Madlina 5:13 PM\n- Českomoravská 5:2\r
  9 PM\n\nMetro B\n- Českomoravská 5:31 PM\n- Smíchovské nádraží 5:47 PM\n\r
  \r
 DTEND;TZID=Europe/Prague:20191123T174750\r

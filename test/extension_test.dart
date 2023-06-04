@@ -1,9 +1,9 @@
-import 'package:test/test.dart';
 import 'package:enough_icalendar/enough_icalendar.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('Calendar simple', () {
-    final text =
+    const text =
         '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -21,6 +21,7 @@ END:VCALENDAR''';
       if (name == 'X-XXX-NUMBER') {
         return IntegerProperty(definition);
       }
+      return null;
     });
     expect(calendar, isA<VCalendar>());
     expect(calendar.children, isNotEmpty);

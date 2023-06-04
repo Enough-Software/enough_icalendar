@@ -1,10 +1,10 @@
-import 'package:test/test.dart';
 import 'package:enough_icalendar/enough_icalendar.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('Fold Tests', () {
     test('No folding', () {
-      final input =
+      const input =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -26,7 +26,7 @@ END:VCALENDAR''';
     });
 
     test('Unfold line spread across 3 lines', () {
-      final input =
+      const input =
           '''DESCRIPTION:This is a lo
  ng description 
        that exists on a long line.''';
@@ -38,7 +38,7 @@ END:VCALENDAR''';
     });
 
     test('Last line folded', () {
-      final input =
+      const input =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -62,7 +62,7 @@ END:VCA
     });
 
     test('First line folded', () {
-      final input =
+      const input =
           '''BEGI
  N:VCALENDAR
 VERSION:2.0
@@ -86,7 +86,7 @@ END:VCALENDAR''';
     });
 
     test('Some lines folded', () {
-      final input =
+      const input =
           '''BEGI
  N:VCALENDAR
 VERSION:2.0
@@ -127,7 +127,7 @@ END:VCALENDAR'''
     });
 
     test('Some lines folded 2', () {
-      final input =
+      const input =
           '''BEGIN:VCALENDAR
 PRODID:-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN
 VERSION:2.0
@@ -173,7 +173,7 @@ END:VCALENDAR
     });
 
     test('Some lines folded with LF linebreks in properties', () {
-      final input =
+      const input =
           '''BEGIN:VCALENDAR
 METHOD:xyz
 VERSION:2.0
@@ -231,7 +231,7 @@ END:VCALENDAR
 
   group('Calendar Tests', () {
     test('Calendar simple - unix linebreaks', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -263,7 +263,7 @@ END:VCALENDAR''';
     });
 
     test('Calendar with full day event', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -293,7 +293,7 @@ END:VCALENDAR''';
     });
 
     test('Private event', () {
-      final text =
+      const text =
           '''BEGIN:VEVENT
 UID:19970901T130000Z-123401@example.com
 DTSTAMP:19970901T130000Z
@@ -315,7 +315,7 @@ END:VEVENT''';
     });
 
     test('Transparent event', () {
-      final text =
+      const text =
           '''BEGIN:VEVENT
 UID:19970901T130000Z-123402@example.com
 DTSTAMP:19970901T130000Z
@@ -341,7 +341,7 @@ END:VEVENT
     });
 
     test('Recurrent event - yearly', () {
-      final text =
+      const text =
           '''BEGIN:VEVENT\r
 UID:19970901T130000Z-123403@example.com\r
 DTSTAMP:19970901T130000Z\r
@@ -367,7 +367,7 @@ END:VEVENT\r
     });
 
     test('Day ending', () {
-      final text =
+      const text =
           '''BEGIN:VEVENT
 UID:20070423T123432Z-541111@example.com
 DTSTAMP:20070423T123432Z
@@ -390,7 +390,7 @@ END:VEVENT
     });
 
     test('three-day conference example with CRLF line breaks', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR\r
 PRODID:-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN\r
 VERSION:2.0\r
@@ -405,7 +405,7 @@ CATEGORIES:CONFERENCE\r
 SUMMARY:Networld+Interop Conference\r
 DESCRIPTION:Networld+Interop Conference \r
   and Exhibit\nAtlanta World Congress Center\n\r
- Atlanta\, Georgia\r
+ Atlanta, Georgia\r
 END:VEVENT\r
 END:VCALENDAR\r
 ''';
@@ -434,7 +434,7 @@ END:VCALENDAR\r
     test(
         'three-day conference example with LF line breaks and LF breaks in DESCRIPTION',
         () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 PRODID:-//xyz Corp//NONSGML PDA Calendar Version 1.0//EN
 VERSION:2.0
@@ -449,7 +449,7 @@ CATEGORIES:CONFERENCE
 SUMMARY:Networld+Interop Conference
 DESCRIPTION:"Networld+Interop Conference 
   and Exhibit\nAtlanta World Congress Center\n
- Atlanta\, Georgia"
+ Atlanta, Georgia"
 END:VEVENT
 END:VCALENDAR
 ''';
@@ -476,7 +476,7 @@ END:VCALENDAR
     });
 
     test('group-scheduled meeting with VTIMEZONE', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 PRODID:-//RDU Software//NONSGML HandCal//EN
 VERSION:2.0
@@ -563,7 +563,7 @@ END:VCALENDAR
     });
 
     test('with attachments and sequence', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 METHOD:PUBLISH
 VERSION:2.0
@@ -621,7 +621,7 @@ END:VCALENDAR
     });
 
     test('Todo with audio alarm', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//ABC Corporation//NONSGML My Product//EN
@@ -683,7 +683,7 @@ END:VCALENDAR
     });
 
     test('journal example', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//RDU Software//NONSGML HandCal//EN
@@ -741,7 +741,7 @@ END:VCALENDAR
     });
 
     test('free busy example', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR\r
 VERSION:2.0\r
 PRODID:-//ABC Corporation//NONSGML My Product//EN\r
@@ -756,7 +756,7 @@ DESCRIPTION:Project xyz Review Meeting Minutes\n\r
  Agenda\n1. Review of project version 1.0 requirements.\n2. \r
   Definition \r
  of project processes.\n3. Review of project schedule.\n\r
- Participants: John Smith\, Jane Doe\, Jim Dandy\n-It was \r
+ Participants: John Smith, Jane Doe, Jim Dandy\n-It was \r
   decided that the requirements need to be signed off by \r
   product marketing.\n-Project processes were accepted.\n\r
  -Project schedule needs to account for scheduled holidays \r
@@ -787,7 +787,7 @@ END:VCALENDAR\r
 1. Review of project version 1.0 requirements.
 2. Definition of project processes.
 3. Review of project schedule.
-Participants: John Smith\, Jane Doe\, Jim Dandy\n-It was decided that the requirements need to be signed off by product marketing.
+Participants: John Smith, Jane Doe, Jim Dandy\n-It was decided that the requirements need to be signed off by product marketing.
 -Project processes were accepted.
 -Project schedule needs to account for scheduled holidays and employee vacation time. Check with HR for specific dates.
 -New schedule will be distributed by Friday.
@@ -795,7 +795,7 @@ Participants: John Smith\, Jane Doe\, Jim Dandy\n-It was decided that the requir
     });
 
     test('Real world 1', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:http://ticket.io/
@@ -841,7 +841,7 @@ END:VCALENDAR''';
     });
 
     test('Real world 2', () {
-      final text =
+      const text =
           '''BEGIN:VCALENDAR\r
 VERSION:2.0\r
 PRODID:-//Open-Xchange//7.10.3-Rev34//EN\r

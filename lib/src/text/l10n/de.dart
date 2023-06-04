@@ -8,7 +8,7 @@ class RruleL10nDe extends RruleL10n {
 
   static RruleL10nDe create() {
     initializeDateFormatting('de');
-    return RruleL10nDe._();
+    return const RruleL10nDe._();
   }
 
   @override
@@ -23,7 +23,7 @@ class RruleL10nDe extends RruleL10n {
         case 2:
           return 'Alle zwei $plural';
         default:
-          return 'Alle $interval ${plural}';
+          return 'Alle $interval $plural';
       }
     }
 
@@ -54,7 +54,7 @@ class RruleL10nDe extends RruleL10n {
         case 2:
           return 'Jeden zweiten $singular';
         default:
-          return 'Jeden ${ordinal(interval)} ${singular}';
+          return 'Jeden ${ordinal(interval)} $singular';
       }
     }
 
@@ -74,8 +74,6 @@ class RruleL10nDe extends RruleL10n {
         return ', einmal';
       case 2:
         return ', zweimal';
-      case 2:
-        return ', dreimal';
       default:
         return ', $count-mal';
     }
@@ -124,7 +122,7 @@ class RruleL10nDe extends RruleL10n {
 
     final frequencyString =
         frequency == DaysOfWeekFrequency.monthly ? 'Monats' : 'Jahres';
-    final suffix = indicateFrequency ? ' des ${frequencyString}' : '';
+    final suffix = indicateFrequency ? ' des $frequencyString' : '';
     return '${_onVariant(variant, useDativ: !days.contains('em '))} $days$suffix';
   }
 
@@ -221,22 +219,22 @@ class RruleL10nDe extends RruleL10n {
       if (n == 1 && isSingleItem) {
         string = 'ersten';
       } else {
-        string = '${n}.';
+        string = '$n.';
       }
     } else if (n % 10 == 2 && n % 100 != 12) {
       if (n == 2 && isSingleItem) {
         string = 'zweiten';
       } else {
-        string = '${n}.';
+        string = '$n.';
       }
     } else if (n % 10 == 3 && n % 100 != 13) {
       if (n == 3 && isSingleItem) {
         string = 'dritten';
       } else {
-        string = '${n}.';
+        string = '$n.';
       }
     } else {
-      string = '${n}.';
+      string = '$n.';
     }
 
     return number < 0 ? '$string-letzten' : string;

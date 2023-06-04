@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
-import 'package:enough_icalendar/enough_icalendar.dart';
-import 'package:enough_icalendar/src/text/l10n/de.dart';
+import '../../enough_icalendar.dart';
+import 'l10n/de.dart';
 
 import 'l10n/l10n.dart';
 
@@ -13,6 +13,8 @@ enum SupportedLanguage { en, de }
 ///
 /// Compare [Recurrence.toHumanReadableText]
 class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
+
+  const RecurrenceRuleToTextEncoder(this.l10n);
   /// Retrieves the localozation for the specified supported [language]
   static RruleL10n getForLanguage(SupportedLanguage language) {
     switch (language) {
@@ -26,14 +28,12 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
   /// Retrieves the localozation for the specified [languageCode], when supported.
   ///
   /// By defaul the English localization is returned.
-  static getForLanguageCode(String languageCode) {
+  static RruleL10n getForLanguageCode(String languageCode) {
     if (languageCode.startsWith('de')) {
       return RruleL10nDe.create();
     }
     return RruleL10nEn.create();
   }
-
-  const RecurrenceRuleToTextEncoder(this.l10n);
 
   final RruleL10n l10n;
 
@@ -45,9 +45,9 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
     if (startDate != null &&
         input.frequency == RecurrenceFrequency.weekly &&
         !input.hasByLimiter) {
-      output..write(l10n.weeklyOnWeekday(startDate, input.interval));
+      output.write(l10n.weeklyOnWeekday(startDate, input.interval));
     } else {
-      output..write(frequencyIntervalString);
+      output.write(frequencyIntervalString);
     }
     if (input.frequency > RecurrenceFrequency.daily) {
       assert(
@@ -482,7 +482,7 @@ extension on Iterable<ByDayRule> {
         raw,
         startIndex,
         i,
-        (day, {bool isSingleItem = false}) {
+        (day, {isSingleItem = false}) {
           var string = l10n.dayOfWeek(day);
           if (addEveryPrefix && !addedEveryPrefix && day == startValue) {
             string = '${l10n.everyXDaysOfWeekPrefix}$string';
@@ -534,9 +534,7 @@ extension on Iterable<ByDayRule> {
 
     // If no inner (short) conjunction is used, we can simply use the short
     // variant instead of the long one.
-    final atMostOneWeekDayPerOccurrence = every((entry) {
-      return where((e) => e.week == entry.week).length == 1;
-    });
+    final atMostOneWeekDayPerOccurrence = every((entry) => where((e) => e.week == entry.week).length == 1);
 
     return l10n.list(
       strings,

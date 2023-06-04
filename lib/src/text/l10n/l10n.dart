@@ -46,11 +46,9 @@ abstract class RruleL10n {
   String get everydayString;
   String get weekdaysString;
   String get everyXDaysOfWeekPrefix;
-  String dayOfWeek(int dayOfWeek) {
-    return formatWithIntl(
+  String dayOfWeek(int dayOfWeek) => formatWithIntl(
       () => DateFormat().dateSymbols.WEEKDAYS[dayOfWeek % 7],
     );
-  }
 
   String nthDaysOfWeek(Iterable<int> occurrences, String daysOfWeek);
 
@@ -69,9 +67,8 @@ abstract class RruleL10n {
   static String defaultList(
     List<String> items, {
     required String two,
-    String start = ', ',
+    required String end, String start = ', ',
     String middle = ', ',
-    required String end,
   }) {
     switch (items.length) {
       case 0:
