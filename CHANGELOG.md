@@ -1,3 +1,6 @@
+## 0.14.0
+- Ensure compatibility with Flutter 3.10 - with thanks to [hurkanugur](https://github.com/hurkanugur)!
+
 ## 0.13.0
 - Again, thanks to [martingeorgiu](https://github.com/martingeorgiu) the support for parsing Apple-originating iCalendar invites has been improved.
 
