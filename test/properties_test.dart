@@ -5,7 +5,8 @@ void main() {
   group('Direct Property Instantiation', () {
     test('OrganizerProperty', () {
       final prop = OrganizerProperty(
-          'ORGANIZER;CN="Covidzentrum Bremen":MAILTO:sofortsupport@ticket.io');
+        'ORGANIZER;CN="Covidzentrum Bremen":MAILTO:sofortsupport@ticket.io',
+      );
       expect(prop.name, 'ORGANIZER');
       expect(prop.textValue, 'MAILTO:sofortsupport@ticket.io');
       expect(prop.value, Uri.parse('MAILTO:sofortsupport@ticket.io'));

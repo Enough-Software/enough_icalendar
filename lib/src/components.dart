@@ -23,9 +23,9 @@ enum VComponentType {
 
 /// Common properties
 abstract class VComponent {
-
   VComponent(this.name, [this.parent])
       : componentType = _getComponentType(name);
+
   /// The type of the component, convenient for switch cases
   final VComponentType componentType;
 
@@ -170,15 +170,18 @@ abstract class VComponent {
     if (lines.isEmpty) {
       throw FormatException('Invalid input: [$text]');
     }
+
     return parseLines(lines, customParser: customParser);
   }
 
   /// Parses the component from the specified text [lines].
   ///
   /// Compare [parse] for details.
-  static VComponent parseLines(List<String> lines,
-      {Property? Function(String name, String definition)? customParser}) {
-    final var root = _createComponent(lines.first);
+  static VComponent parseLines(
+    List<String> lines, {
+    Property? Function(String name, String definition)? customParser,
+  }) {
+    final root = _createComponent(lines.first);
     var current = root;
     for (var i = 1; i < lines.length; i++) {
       final line = lines[i];
@@ -557,10 +560,10 @@ class VCalendar extends VComponent {
   /// Organizers of an calendar event can cancel an event.
   /// Compare [cancelEventForAttendees] when the event should only be cancelled for some attendees
   VCalendar cancelEvent({String? comment}) => update(
-      method: Method.cancel,
-      comment: comment,
-      eventStatus: EventStatus.cancelled,
-    );
+        method: Method.cancel,
+        comment: comment,
+        eventStatus: EventStatus.cancelled,
+      );
 
   /// Cancels this VCalendar event for the specified [cancelledAttendees].
   ///
@@ -819,7 +822,8 @@ class VCalendar extends VComponent {
   ///
   /// Any other settings are optional.
   static VCalendar createEvent({
-    required DateTime start, String? organizerEmail,
+    required DateTime start,
+    String? organizerEmail,
     OrganizerProperty? organizer,
     List<String>? attendeeEmails,
     List<AttendeeProperty>? attendees,
@@ -978,7 +982,8 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
   }
 
   /// Removes the given [attachment] returning `true` when the attachment was found
-  bool removeAttachment(AttachmentProperty attachment) => properties.remove(attachment);
+  bool removeAttachment(AttachmentProperty attachment) =>
+      properties.remove(attachment);
 
   /// Removes the attachment with the given [uri], returning it when it was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
@@ -1271,8 +1276,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the time transparency
   set timeTransparency(TimeTransparency? value) => setOrRemoveProperty(
-      TimeTransparencyProperty.propertyName,
-      TimeTransparencyProperty.create(value));
+        TimeTransparencyProperty.propertyName,
+        TimeTransparencyProperty.create(value),
+      );
 
   /// Retrieves the status of this event
   EventStatus? get status =>
@@ -1280,7 +1286,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the status
   set status(EventStatus? value) => setOrRemoveProperty(
-      StatusProperty.propertyName, StatusProperty.createEventStatus(value));
+        StatusProperty.propertyName,
+        StatusProperty.createEventStatus(value),
+      );
 
   /// Gets the propriety busy status that attendees should use when accepting this event.
   ///
@@ -1576,7 +1584,6 @@ class VTimezone extends VComponent {
 
 /// Contains the standard or daylight timezone subcomponent
 class VTimezonePhase extends VComponent {
-
   VTimezonePhase(String componentName, {required VTimezone parent})
       : super(componentName, parent);
   static const String componentNameStandard = 'STANDARD';
@@ -1681,7 +1688,8 @@ class VTimezonePhase extends VComponent {
   }
 
   @override
-  VComponent instantiate({VComponent? parent}) => VTimezonePhase(name, parent: parent as VTimezone);
+  VComponent instantiate({VComponent? parent}) =>
+      VTimezonePhase(name, parent: parent as VTimezone);
 }
 
 /// Contains an alarm definition with a trigger ([triggerDate] or [triggerRelativeDuration]) and an [action].
@@ -1780,7 +1788,8 @@ class VAlarm extends VComponent {
   }
 
   /// Removes the given [attachment] returning `true` when the attachment was found
-  bool removeAttachment(AttachmentProperty attachment) => properties.remove(attachment);
+  bool removeAttachment(AttachmentProperty attachment) =>
+      properties.remove(attachment);
 
   /// Removes the attachment with the given [uri], returning it when it was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
