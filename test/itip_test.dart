@@ -6,8 +6,7 @@ import 'package:collection/collection.dart' show IterableExtension;
 void main() {
   group('VEVENT', () {
     test('Reply to a Group Event Request', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -70,8 +69,7 @@ END:VCALENDAR
     });
 
     test('Update an Event', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -121,8 +119,7 @@ END:VCALENDAR
       //  to "A" to change the time and location.
 
       // "A" sends the following "REQUEST":
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -206,8 +203,7 @@ END:VCALENDAR
 
     test('Delegating an Event', () {
       // "A" sends a "REQUEST" to "B" and "C".
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -277,8 +273,7 @@ END:VCALENDAR
 
     test('Delegate Accepts the Meeting', () {
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -337,8 +332,7 @@ END:VCALENDAR
 
     test('Delegate Declines the Meeting', () {
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -402,8 +396,7 @@ END:VCALENDAR
       //  message) MUST be ignored.
 
       // This example shows how "A" cancels the event.
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 BEGIN:VEVENT
@@ -442,8 +435,7 @@ END:VCALENDAR
       //  the meeting itself is cancelled and not when the intent is to remove
       //  an "Attendee" from the event.
 
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
 METHOD:REQUEST
@@ -483,10 +475,10 @@ END:VCALENDAR
       event = updatedInvite.event!;
       expect(event.sequence, isNull);
       expect(event.attendees.length, 4);
-      expect(event.attendees[1].role, Role.nonParticpant);
+      expect(event.attendees[1].role, Role.nonParticipant);
       expect(event.attendees[1].rsvp, isFalse);
       expect(event.attendees[1].email, 'b@example.com');
-      expect(event.attendees[3].role, Role.nonParticpant);
+      expect(event.attendees[3].role, Role.nonParticipant);
       expect(event.attendees[3].rsvp, isFalse);
       expect(event.attendees[3].email, 'd@example.com');
     });
@@ -508,8 +500,7 @@ END:VCALENDAR
 
       //  This is the message "B" sends to "C" and "D".
 
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0

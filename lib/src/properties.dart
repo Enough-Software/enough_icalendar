@@ -45,10 +45,10 @@ class Property {
   }
 
   /// Retrieves the parameter with the given [type]
-  Parameter? operator [](ParameterType type) => parameters[type.name];
+  Parameter? operator [](ParameterType type) => parameters[type.typeName];
 
-  //// Sets the parameter [value] for the given [type]
-  operator []=(ParameterType type, Parameter value) =>
+  /// Sets the parameter [value] for the given [type]
+  void operator []=(ParameterType type, Parameter value) =>
       parameters[value.name] = value;
 
   /// Sets the parameter [value]
@@ -58,15 +58,15 @@ class Property {
   /// and removes the parameter when [value] is null.
   void setOrRemoveParameter(ParameterType type, Parameter? value) {
     if (value == null) {
-      parameters.remove(type.name);
+      parameters.remove(type.typeName);
     } else {
-      parameters[type.name!] = value;
+      parameters[type.typeName!] = value;
     }
   }
 
   /// Retrieves the parameter value for [type]
   T? getParameterValue<T>(ParameterType type) =>
-      parameters[type.name]?.value as T?;
+      parameters[type.typeName]?.value as T?;
 
   static String? _lastContent;
   static List<int>? _lastRunes;
@@ -448,15 +448,18 @@ class UserProperty extends UriProperty {
 
   /// Sets the common name associated with this calendar user
   set commonName(String? value) => setOrRemoveParameter(
-      ParameterType.commonName,
-      TextParameter.create(ParameterType.commonName, value));
+        ParameterType.commonName,
+        TextParameter.create(ParameterType.commonName.typeName ?? '', value),
+      );
 
   /// Gets the directory link, for example an LDAP URI
   Uri? get directory => getParameterValue<Uri>(ParameterType.directory);
 
   /// Sets the directory
-  set directory(Uri? value) => setOrRemoveParameter(ParameterType.directory,
-      UriParameter.create(ParameterType.directory, value));
+  set directory(Uri? value) => setOrRemoveParameter(
+        ParameterType.directory,
+        UriParameter.create(ParameterType.directory.typeName ?? '', value),
+      );
 
   /// Gets the alternative representation, e.g. a link to a VCARD
   Uri? get alternateRepresentation =>
@@ -464,8 +467,12 @@ class UserProperty extends UriProperty {
 
   /// Sets the alternative representation
   set alternateRepresentation(Uri? value) => setOrRemoveParameter(
-      ParameterType.alternateRepresentation,
-      UriParameter.create(ParameterType.alternateRepresentation, value));
+        ParameterType.alternateRepresentation,
+        UriParameter.create(
+          ParameterType.alternateRepresentation.typeName ?? '',
+          value,
+        ),
+      );
 
   /// Retrieves the type of the user.
   ///
@@ -476,7 +483,12 @@ class UserProperty extends UriProperty {
 
   /// Set the type of the user
   set userType(CalendarUserType? value) => setOrRemoveParameter(
-      ParameterType.calendarUserType, CalendarUserTypeParameter.create(value));
+        ParameterType.calendarUserType,
+        CalendarUserTypeParameter.create(
+          ParameterType.calendarUserType.typeName ?? '',
+          value,
+        ),
+      );
 
   /// Retrieve the email from this value
   String? get email => uri.isScheme('MAILTO')
@@ -485,10 +497,16 @@ class UserProperty extends UriProperty {
 
   /// Sets the email as an additional parameter
   set email(String? value) => setOrRemoveParameter(
-      ParameterType.email, TextParameter.create(ParameterType.email, value));
+        ParameterType.email,
+        TextParameter.create(ParameterType.email.typeName ?? '', value),
+      );
 }
 
+/// Describes an attendee
 class AttendeeProperty extends UserProperty {
+  /// Creates a new [AttendeeProperty]
+  AttendeeProperty(String definition) : super(definition);
+
   /// `ATTENDEE`
   static const String propertyName = 'ATTENDEE';
 
@@ -502,7 +520,9 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the rsvp request value
   set rsvp(bool? value) => setOrRemoveParameter(
-      ParameterType.rsvp, BooleanParameter.create(ParameterType.rsvp, value));
+        ParameterType.rsvp,
+        BooleanParameter.create(ParameterType.rsvp.typeName ?? '', value),
+      );
 
   /// Gets the role of this participant, defaults to [Role.requiredParticipant]
   Role get role =>
@@ -511,7 +531,12 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the role of this participant
   set role(Role? value) => setOrRemoveParameter(
-      ParameterType.participantRole, ParticipantRoleParameter.create(value));
+        ParameterType.participantRole,
+        ParticipantRoleParameter.create(
+          ParameterType.participantRole.typeName ?? '',
+          value,
+        ),
+      );
 
   /// Gets the participant status of this attendee
   ///
@@ -521,22 +546,31 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the participant status
   set participantStatus(ParticipantStatus? value) => setOrRemoveParameter(
-      ParameterType.participantStatus,
-      ParticipantStatusParameter.create(value));
+        ParameterType.participantStatus,
+        ParticipantStatusParameter.create(
+          ParameterType.participantStatus.typeName ?? '',
+          value,
+        ),
+      );
 
-  /// Retrieves the URI of the the user that this attendee has delegated the event or task to
+  /// Retrieves the URI of the the user that this attendee has delegated the
+  /// event or task to
   Uri? get delegatedTo => getParameterValue<Uri>(ParameterType.delegateTo);
 
   /// Sets the delegatedTo URI
-  set delegatedTo(Uri? value) => setOrRemoveParameter(ParameterType.delegateTo,
-      UriParameter.create(ParameterType.delegateTo, value));
+  set delegatedTo(Uri? value) => setOrRemoveParameter(
+        ParameterType.delegateTo,
+        UriParameter.create(ParameterType.delegateTo.typeName ?? '', value),
+      );
 
-  /// Retrieves the email of the the user that this attendee has delegated the event or task to
+  /// Retrieves the email of the the user that this attendee has delegated the
+  /// event or task to
   String? get delegatedToEmail {
     final uri = delegatedTo;
     if (uri == null || !uri.isScheme('MAILTO')) {
       return null;
     }
+
     return uri.path;
   }
 
@@ -544,15 +578,18 @@ class AttendeeProperty extends UserProperty {
   set delegatedToEmail(String? value) =>
       delegatedTo = value == null ? null : Uri.parse('mailto:$value');
 
-  /// Retrieves the URI of the the user that this attendee has delegated the event or task from
+  /// Retrieves the URI of the the user that this attendee has delegated the
+  /// event or task from
   Uri? get delegatedFrom => getParameterValue<Uri>(ParameterType.delegateFrom);
 
   /// Sets the delegatedFrom URI
   set delegatedFrom(Uri? value) => setOrRemoveParameter(
-      ParameterType.delegateFrom,
-      UriParameter.create(ParameterType.delegateTo, value));
+        ParameterType.delegateFrom,
+        UriParameter.create(ParameterType.delegateTo.typeName ?? '', value),
+      );
 
-  /// Retrieves the email of the the user that this attendee has delegated the event or task from
+  /// Retrieves the email of the the user that this attendee has delegated the
+  /// event or task from
   String? get delegatedFromEmail {
     final uri = delegatedFrom;
     if (uri == null || !uri.isScheme('MAILTO')) {
@@ -564,8 +601,6 @@ class AttendeeProperty extends UserProperty {
   /// Sets the delegatedFromEmail, will generate a delegatedFromUri
   set delegatedFromEmail(String? value) =>
       delegatedFrom = value == null ? null : Uri.parse('mailto:$value');
-
-  AttendeeProperty(String definition) : super(definition);
 
   /// Creates an attendee with the specified [attendeeUri] or [attendeeEmail].
   ///
@@ -591,54 +626,75 @@ class AttendeeProperty extends UserProperty {
     attendeeUri ??= Uri.parse('mailto:$attendeeEmail');
     final prop = AttendeeProperty('$propertyName:$attendeeUri');
     if (participantStatus != null) {
-      prop[ParameterType.participantStatus] =
-          ParticipantStatusParameter.value(participantStatus);
+      prop[ParameterType.participantStatus] = ParticipantStatusParameter.value(
+        ParameterType.participantStatus.typeName ?? '',
+        participantStatus,
+      );
     }
     if (delegatedToEmail != null) {
       delegatedToUri = Uri.parse('mailto:$delegatedToEmail');
     }
     if (delegatedToUri != null) {
-      prop[ParameterType.delegateTo] =
-          UriParameter.value(ParameterType.delegateTo, delegatedToUri);
+      prop[ParameterType.delegateTo] = UriParameter.value(
+        ParameterType.delegateTo.typeName ?? '',
+        delegatedToUri,
+      );
     }
     if (delegatedFromEmail != null) {
       delegatedFromUri = Uri.parse('mailto:$delegatedFromEmail');
     }
     if (delegatedFromUri != null) {
-      prop[ParameterType.delegateFrom] =
-          UriParameter.value(ParameterType.delegateFrom, delegatedFromUri);
+      prop[ParameterType.delegateFrom] = UriParameter.value(
+        ParameterType.delegateFrom.typeName ?? '',
+        delegatedFromUri,
+      );
     }
     if (role != null) {
-      prop[ParameterType.participantRole] =
-          ParticipantRoleParameter.value(role);
+      prop[ParameterType.participantRole] = ParticipantRoleParameter.value(
+        ParameterType.participantRole.typeName ?? '',
+        role,
+      );
     }
     if (rsvp != null) {
       prop[ParameterType.rsvp] =
-          BooleanParameter.value(ParameterType.rsvp, rsvp);
+          BooleanParameter.value(ParameterType.rsvp.typeName ?? '', rsvp);
     }
     if (userType != null) {
-      prop[ParameterType.calendarUserType] =
-          CalendarUserTypeParameter.value(userType);
+      prop[ParameterType.calendarUserType] = CalendarUserTypeParameter.value(
+        ParameterType.calendarUserType.typeName ?? '',
+        userType,
+      );
     }
     if (commonName != null) {
-      prop[ParameterType.commonName] =
-          TextParameter.value(ParameterType.commonName, commonName);
+      prop[ParameterType.commonName] = TextParameter.value(
+        ParameterType.commonName.typeName ?? '',
+        commonName,
+      );
     }
     if (alternateRepresentation != null) {
       prop[ParameterType.alternateRepresentation] = UriParameter.value(
-          ParameterType.alternateRepresentation, alternateRepresentation);
+        ParameterType.alternateRepresentation.typeName ?? '',
+        alternateRepresentation,
+      );
     }
     if (directory != null) {
       prop[ParameterType.directory] =
-          UriParameter.value(ParameterType.directory, directory);
+          UriParameter.value(ParameterType.directory.typeName ?? '', directory);
     }
+
     return prop;
   }
 }
 
+/// Defines the organizer of a meeting
 class OrganizerProperty extends UserProperty {
+  /// Creates a new [OrganizerProperty]
+  OrganizerProperty(String definition) : super(definition);
+
   /// `ORGANIZER`
   static const String propertyName = 'ORGANIZER';
+
+  /// Retrieves the link to the organizer, e.g. a mailto-link
   Uri get organizer => uri;
 
   /// Gets the sender of this organizer
@@ -646,10 +702,11 @@ class OrganizerProperty extends UserProperty {
 
   /// Sets the sender of this organizer
   set sentBy(Uri? value) => setOrRemoveParameter(
-      ParameterType.sentBy, UriParameter.create(ParameterType.sentBy, value));
+        ParameterType.sentBy,
+        UriParameter.create(ParameterType.sentBy.typeName ?? '', value),
+      );
 
-  OrganizerProperty(String definition) : super(definition);
-
+  /// Creates a new [OrganizerProperty]
   static OrganizerProperty? create({
     String? email,
     Uri? uri,
@@ -667,25 +724,32 @@ class OrganizerProperty extends UserProperty {
     }
     if (sentBy != null) {
       prop[ParameterType.sentBy] =
-          UriParameter.value(ParameterType.sentBy, sentBy);
+          UriParameter.value(ParameterType.sentBy.typeName ?? '', sentBy);
     }
     if (commonName != null) {
       prop.commonName = commonName;
     }
+
     return prop;
   }
 }
 
+/// Defines a geo position
 class GeoProperty extends Property {
-  /// `GEO`
-  static const String propertyName = 'GEO';
-
-  GeoLocation get location => value as GeoLocation;
+  /// Creates a new [GeoProperty]
   GeoProperty(String definition) : super(definition, ValueType.other);
 
+  /// Creates a new [GeoProperty] based on the given [location]
   GeoProperty.value(GeoLocation location)
       : this('GEO:${location.latitude};${location.longitude}');
 
+  /// `GEO`
+  static const String propertyName = 'GEO';
+
+  /// Retrieves the geo location
+  GeoLocation get location => value as GeoLocation;
+
+  /// Pareses the given textual representation
   GeoLocation parse(String content) {
     final semicolonIndex = content.indexOf(';');
     if (semicolonIndex == -1) {
@@ -695,21 +759,28 @@ class GeoProperty extends Property {
     final latitude = double.tryParse(latitudeText);
     if (latitude == null) {
       throw FormatException(
-          'Invalid GEO property - unable to parse latitude value $latitudeText in  $content');
+        'Invalid GEO property - unable to parse latitude value '
+        '$latitudeText in  $content',
+      );
     }
     final longitudeText = content.substring(semicolonIndex + 1);
     final longitude = double.tryParse(longitudeText);
     if (longitude == null) {
       throw FormatException(
-          'Invalid GEO property - unable to parse longitude value $longitudeText in  $content');
+        'Invalid GEO property - unable to parse longitude value '
+        '$longitudeText in  $content',
+      );
     }
+
     return GeoLocation(latitude, longitude);
   }
 
+  /// Creates a new [GeoProperty]
   static GeoProperty? create(GeoLocation? value) {
     if (value == null) {
       return null;
     }
+
     return GeoProperty('$propertyName:$value');
   }
 }
@@ -729,7 +800,7 @@ class AttachmentProperty extends Property {
 
   /// Sets the media type
   set mediaType(String? value) => setOrRemoveParameter(ParameterType.formatType,
-      TextParameter.create(ParameterType.formatType, value));
+      TextParameter.create(ParameterType.formatType.typeName ?? '', value));
 
   /// Retrieves the encoding such as `BASE64`, only relevant when the content is binary
   ///
@@ -737,15 +808,19 @@ class AttachmentProperty extends Property {
   String? get encoding => getParameterValue<String>(ParameterType.encoding);
 
   /// Sets the encoding
-  set encoding(String? value) => setOrRemoveParameter(ParameterType.encoding,
-      TextParameter.create(ParameterType.encoding, value));
+  set encoding(String? value) => setOrRemoveParameter(
+        ParameterType.encoding,
+        TextParameter.create(ParameterType.encoding.typeName ?? '', value),
+      );
 
   /// Retrieves the mime type / media type / format type like `image/png` as specified in the `FMTTYPE` parameter.
   String? get filename => getParameterValue<String>(ParameterType.xFilename);
 
   /// Sets the media type
-  set filename(String? value) => setOrRemoveParameter(ParameterType.xFilename,
-      TextParameter.create(ParameterType.xFilename, value));
+  set filename(String? value) => setOrRemoveParameter(
+        ParameterType.xFilename,
+        TextParameter.create(ParameterType.xFilename.typeName ?? '', value),
+      );
 
   /// Checks if this contains binary data
   ///
@@ -877,8 +952,10 @@ class TextProperty extends Property {
   String? get language => this[ParameterType.language]?.textValue;
 
   /// Sets the language
-  set language(String? value) => setOrRemoveParameter(ParameterType.language,
-      TextParameter.create(ParameterType.language, value));
+  set language(String? value) => setOrRemoveParameter(
+        ParameterType.language,
+        TextParameter.create(ParameterType.language.typeName ?? '', value),
+      );
 
   /// Gets a link to an alternative representation
   Uri? get alternateRepresentation =>
@@ -886,8 +963,10 @@ class TextProperty extends Property {
 
   /// Sets a link to an alternative representation
   set alternateRepresentation(Uri? value) => setOrRemoveParameter(
-      ParameterType.alternateRepresentation,
-      UriParameter.create(ParameterType.alternateRepresentation, value));
+        ParameterType.alternateRepresentation,
+        UriParameter.create(
+            ParameterType.alternateRepresentation.typeName ?? '', value),
+      );
 
   String get text => value as String;
 
@@ -902,11 +981,17 @@ class TextProperty extends Property {
     value = value.replaceAll('\n', '\\n');
     final prop = TextProperty('$name:$value');
     if (language != null) {
-      prop.setParameter(TextParameter.value(ParameterType.language, language));
+      prop.setParameter(
+        TextParameter.value(ParameterType.language.typeName ?? '', language),
+      );
     }
     if (alternateRepresentation != null) {
-      prop.setParameter(UriParameter.value(
-          ParameterType.alternateRepresentation, alternateRepresentation));
+      prop.setParameter(
+        UriParameter.value(
+          ParameterType.alternateRepresentation.typeName ?? '',
+          alternateRepresentation,
+        ),
+      );
     }
     return prop;
   }
@@ -1031,21 +1116,27 @@ class DateTimeProperty extends Property {
 
   /// Set the timezone ID
   set timezoneId(String? value) => setOrRemoveParameter(
-      ParameterType.timezoneId,
-      TextParameter.create(ParameterType.timezoneId, value));
+        ParameterType.timezoneId,
+        TextParameter.create(ParameterType.timezoneId.typeName ?? '', value),
+      );
 
   DateTimeProperty(String definition) : super(definition, ValueType.dateTime);
 
-  static DateTimeProperty? create(String name, DateTime? value,
-      {String? timeZoneId}) {
+  static DateTimeProperty? create(
+    String name,
+    DateTime? value, {
+    String? timeZoneId,
+  }) {
     if (value == null) {
       return null;
     }
     final prop =
         DateTimeProperty('$name:${DateHelper.toDateTimeString(value)}');
     if (timeZoneId != null) {
-      prop[ParameterType.timezoneId] =
-          TextParameter.value(ParameterType.timezoneId, timeZoneId);
+      prop[ParameterType.timezoneId] = TextParameter.value(
+        ParameterType.timezoneId.typeName ?? '',
+        timeZoneId,
+      );
     }
     return prop;
   }
@@ -1105,7 +1196,12 @@ class FreeBusyProperty extends Property {
 
   /// Sets the type
   set freeBusyType(FreeBusyTimeType? value) => setOrRemoveParameter(
-      ParameterType.freeBusyTimeType, FreeBusyTimeTypeParameter.create(value));
+        ParameterType.freeBusyTimeType,
+        FreeBusyTimeTypeParameter.create(
+          ParameterType.freeBusyTimeType.typeName ?? '',
+          value,
+        ),
+      );
 
   List<Period> get periods => value as List<Period>;
 
@@ -1270,7 +1366,11 @@ class RecurrenceDateProperty extends Property {
   }
 }
 
+/// Defines an alarm trigger
 class TriggerProperty extends Property {
+  /// Creates a new [TriggerProperty]
+  TriggerProperty(String definition) : super(definition, ValueType.duration);
+
   /// `TRIGGER`
   static const String propertyName = 'TRIGGER';
 
@@ -1280,18 +1380,23 @@ class TriggerProperty extends Property {
   /// Does the trigger relate to the start or the end of the enclosing VEvent?
   AlarmTriggerRelationship get triggerRelation =>
       getParameterValue<AlarmTriggerRelationship>(
-          ParameterType.alarmTriggerRelationship) ??
+        ParameterType.alarmTriggerRelationship,
+      ) ??
       AlarmTriggerRelationship.start;
 
   /// Sets the trigger relation
   set triggerRelation(AlarmTriggerRelationship? value) => setOrRemoveParameter(
-      ParameterType.alarmTriggerRelationship,
-      AlarmTriggerRelationshipParameter.create(value));
+        ParameterType.alarmTriggerRelationship,
+        AlarmTriggerRelationshipParameter.create(
+          ParameterType.alarmTriggerRelationship.typeName ?? '',
+          value,
+        ),
+      );
 
-  TriggerProperty(String definition) : super(definition, ValueType.duration);
-
-  static TriggerProperty? createWithDateTime(DateTime? value,
-      {AlarmTriggerRelationship? relation}) {
+  static TriggerProperty? createWithDateTime(
+    DateTime? value, {
+    AlarmTriggerRelationship? relation,
+  }) {
     if (value == null) {
       return null;
     }
@@ -1299,8 +1404,12 @@ class TriggerProperty extends Property {
         TriggerProperty('$propertyName:${DateHelper.toDateTimeString(value)}');
     if (relation != null) {
       prop[ParameterType.alarmTriggerRelationship] =
-          AlarmTriggerRelationshipParameter.value(relation);
+          AlarmTriggerRelationshipParameter.value(
+        ParameterType.alarmTriggerRelationship.typeName ?? '',
+        relation,
+      );
     }
+
     return prop;
   }
 
@@ -1312,8 +1421,12 @@ class TriggerProperty extends Property {
     final prop = TriggerProperty('$propertyName;VALUE=DURATION:$value');
     if (relation != null) {
       prop[ParameterType.alarmTriggerRelationship] =
-          AlarmTriggerRelationshipParameter.value(relation);
+          AlarmTriggerRelationshipParameter.value(
+        ParameterType.alarmTriggerRelationship.typeName ?? '',
+        relation,
+      );
     }
+
     return prop;
   }
 }

@@ -34,7 +34,7 @@ enum ValueType {
 }
 
 extension ExtensionValueType on ValueType {
-  String? get name {
+  String? get typeName {
     switch (this) {
       case ValueType.binary:
         return 'BINARY';
@@ -600,46 +600,72 @@ class Recurrence {
   @override
   String toString() {
     final buffer = StringBuffer();
-    buffer..write('FREQ=')..write(frequency.name);
+    buffer
+      ..write('FREQ=')
+      ..write(frequency.name);
     if (until != null) {
       buffer..write(';UNTIL=');
       DateHelper.renderDate(until!, buffer);
     }
     if (count != null) {
-      buffer..write(';COUNT=')..write(count);
+      buffer
+        ..write(';COUNT=')
+        ..write(count);
     }
     if (_interval != null) {
-      buffer..write(';INTERVAL=')..write(interval);
+      buffer
+        ..write(';INTERVAL=')
+        ..write(interval);
     }
     if (bySecond != null) {
-      buffer..write(';BYSECOND=')..write(bySecond!.join(','));
+      buffer
+        ..write(';BYSECOND=')
+        ..write(bySecond!.join(','));
     }
     if (byMinute != null) {
-      buffer..write(';BYMINUTE=')..write(byMinute!.join(','));
+      buffer
+        ..write(';BYMINUTE=')
+        ..write(byMinute!.join(','));
     }
     if (byHour != null) {
-      buffer..write(';BYHOUR=')..write(byHour!.join(','));
+      buffer
+        ..write(';BYHOUR=')
+        ..write(byHour!.join(','));
     }
     if (byWeekDay != null) {
-      buffer..write(';BYDAY=')..write(byWeekDay!.join(','));
+      buffer
+        ..write(';BYDAY=')
+        ..write(byWeekDay!.join(','));
     }
     if (byMonthDay != null) {
-      buffer..write(';BYMONTHDAY=')..write(byMonthDay!.join(','));
+      buffer
+        ..write(';BYMONTHDAY=')
+        ..write(byMonthDay!.join(','));
     }
     if (byYearDay != null) {
-      buffer..write(';BYYEARDAY=')..write(byYearDay!.join(','));
+      buffer
+        ..write(';BYYEARDAY=')
+        ..write(byYearDay!.join(','));
     }
     if (byWeek != null) {
-      buffer..write(';BYWEEK=')..write(byWeek!.join(','));
+      buffer
+        ..write(';BYWEEK=')
+        ..write(byWeek!.join(','));
     }
     if (byMonth != null) {
-      buffer..write(';BYMONTH=')..write(byMonth!.join(','));
+      buffer
+        ..write(';BYMONTH=')
+        ..write(byMonth!.join(','));
     }
     if (_startOfWorkWeek != null) {
-      buffer..write(';WKST')..write(_startOfWorkWeek);
+      buffer
+        ..write(';WKST')
+        ..write(_startOfWorkWeek);
     }
     if (bySetPos != null) {
-      buffer..write(';BYSETPOS=')..write(bySetPos!.join(','));
+      buffer
+        ..write(';BYSETPOS=')
+        ..write(bySetPos!.join(','));
     }
     return buffer.toString();
   }
@@ -1320,16 +1346,24 @@ class IsoDuration {
     }
     buffer.write('P');
     if (years != 0) {
-      buffer..write(years)..write('Y');
+      buffer
+        ..write(years)
+        ..write('Y');
     }
     if (months != 0) {
-      buffer..write(months)..write('M');
+      buffer
+        ..write(months)
+        ..write('M');
     }
     if (weeks != 0) {
-      buffer..write(weeks)..write('W');
+      buffer
+        ..write(weeks)
+        ..write('W');
     }
     if (days != 0) {
-      buffer..write(days)..write('D');
+      buffer
+        ..write(days)
+        ..write('D');
     }
     if (hours != 0 || minutes != 0 || seconds != 0 || buffer.length == 1) {
       buffer.write('T');
@@ -1442,8 +1476,10 @@ class IsoDuration {
 /// Compare [ParameterType.freeBusyTimeType], [FreeBusyType]
 enum FreeBusyTimeType { free, busy, busyUnavailable, busyTentative, other }
 
+/// Extends the [FreeBusyTimeType]
 extension ExtensionFreeBusyValue on FreeBusyTimeType {
-  String? get name {
+  /// Retrieves the type's name
+  String? get typeName {
     switch (this) {
       case FreeBusyTimeType.free:
         return 'FREE';
@@ -1462,8 +1498,10 @@ extension ExtensionFreeBusyValue on FreeBusyTimeType {
 /// The type of a user
 enum CalendarUserType { individual, group, resource, room, unknown, other }
 
+/// Extends [CalendarUserType]
 extension ExtensionCommonCalendarUserTypeValue on CalendarUserType {
-  String? get name {
+  /// Retrieves the type name that corresponds to this enum value
+  String? get typeName {
     switch (this) {
       case CalendarUserType.individual:
         return 'INDIVIDUAL';
@@ -1493,7 +1531,7 @@ enum AlarmTriggerRelationship {
 }
 
 extension ExtensionAlarmTriggerRelationship on AlarmTriggerRelationship {
-  String? get name {
+  String? get typeName {
     switch (this) {
       case AlarmTriggerRelationship.start:
         return 'START';
@@ -1519,7 +1557,7 @@ enum Relationship {
 }
 
 extension ExtensionRelationship on Relationship {
-  String? get name {
+  String? get typeName {
     switch (this) {
       case Relationship.parent:
         return 'PARENT';
@@ -1545,14 +1583,14 @@ enum Role {
   optionalParticipant,
 
   /// Indicates a participant who is copied for information purposes only
-  nonParticpant,
+  nonParticipant,
 
   /// Other
   other
 }
 
 extension ExtensionRole on Role {
-  String? get name {
+  String? get typeName {
     switch (this) {
       case Role.chair:
         return 'CHAIR';
@@ -1560,7 +1598,7 @@ extension ExtensionRole on Role {
         return 'REQ-PARTICIPANT';
       case Role.optionalParticipant:
         return 'OPT-PARTICIPANT';
-      case Role.nonParticpant:
+      case Role.nonParticipant:
         return 'NON-PARTICIPANT';
       case Role.other:
         return null;
@@ -1623,7 +1661,7 @@ enum ParticipantStatus {
 }
 
 extension ExtensionParticpantStatus on ParticipantStatus {
-  String? get name {
+  String? get typeName {
     switch (this) {
       case ParticipantStatus.needsAction:
         return 'NEEDS-ACTION';

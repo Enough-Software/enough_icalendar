@@ -1,3 +1,4 @@
+/// Defines commonly used runes
 class Rune {
   Rune._();
 

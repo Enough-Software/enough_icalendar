@@ -23,7 +23,7 @@ enum VComponentType {
   other
 }
 
-/// Commmon properties
+/// Common properties
 abstract class VComponent {
   /// The type of the component, convenient for switch cases
   final VComponentType componentType;
@@ -247,8 +247,8 @@ abstract class VComponent {
     final output = <String>[];
     var buffer = StringBuffer();
     final ascii = input.runes.toList();
-    bool isInQuote = false;
-    for (int i = 0; i < ascii.length; i++) {
+    var isInQuote = false;
+    for (var i = 0; i < ascii.length; i++) {
       final rune = ascii[i];
       if (rune == Rune.runeLineFeed) {
         if (i < ascii.length - 1 &&
@@ -278,6 +278,7 @@ abstract class VComponent {
     if (buffer.isNotEmpty) {
       output.add(buffer.toString());
     }
+
     return output;
   }
 
@@ -597,7 +598,7 @@ class VCalendar extends VComponent {
               .any((cancelled) => cancelled.uri == attendee.uri));
       for (final attendee in attendees) {
         attendee.rsvp = false;
-        attendee.role = Role.nonParticpant;
+        attendee.role = Role.nonParticipant;
       }
     }
     return AttendeeCancelResult(attendeeChange, groupChange);

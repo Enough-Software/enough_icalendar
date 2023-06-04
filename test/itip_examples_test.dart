@@ -5,8 +5,7 @@ import 'package:enough_icalendar/enough_icalendar.dart';
 void main() {
   group('VEVENT Examples', () {
     test('A Minimal Published Event', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 METHOD:PUBLISH
 PRODID:-//Example/ExampleCalendarClient//EN
 VERSION:2.0
@@ -25,8 +24,7 @@ END:VCALENDAR''';
     });
 
     test('Changing a Published Event', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 METHOD:PUBLISH
 VERSION:2.0
 PRODID:-//Example/ExampleCalendarClient//EN
@@ -48,8 +46,7 @@ END:VCALENDAR''';
     });
 
     test('Changing a Published Event', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 METHOD:CANCEL
 VERSION:2.0
 PRODID:-//Example/ExampleCalendarClient//EN
@@ -70,8 +67,7 @@ END:VCALENDAR
     });
 
     test('A Rich Published Event', () {
-      final input =
-          '''BEGIN:VCALENDAR\r
+      final input = '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:PUBLISH\r
 CALSCALE:GREGORIAN\r
@@ -133,8 +129,7 @@ END:VCALENDAR\r
     });
 
     test('Anniversaries or Events Attached to Entire Days', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:PUBLISH
 VERSION:2.0
@@ -156,8 +151,7 @@ END:VCALENDAR
     });
 
     test('A Group Event Request', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -195,14 +189,13 @@ END:VCALENDAR
       expect(event.attendees[4].role, Role.requiredParticipant);
       expect(event.attendees[4].userType, CalendarUserType.room);
       expect(event.attendees[4].rsvp, false);
-      expect(event.attendees[5].role, Role.nonParticpant);
+      expect(event.attendees[5].role, Role.nonParticipant);
       expect(event.attendees[5].rsvp, false);
       // other properties are covered by components_test.dart
     });
 
     test('Reply to a Group Event Request', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REPLY
 VERSION:2.0
@@ -232,8 +225,7 @@ END:VCALENDAR
     });
 
     test('Update an Event', () {
-      final input =
-          '''BEGIN:VCALENDAR
+      final input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -272,8 +264,7 @@ END:VCALENDAR
       //  to "A" to change the time and location.
 
       // "A" sends the following "REQUEST":
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -307,8 +298,7 @@ END:VCALENDAR
       //  "B" uses the "COMMENT" property to communicate a rationale for the
       //  change.  Note that the "SEQUENCE" property is not incremented on a
       //  "COUNTER".
-      input =
-          '''BEGIN:VCALENDAR
+      input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:COUNTER
 VERSION:2.0
@@ -344,8 +334,7 @@ END:VCALENDAR
       //  "Organizer" sends a new event "REQUEST" with an incremented sequence
       //  number.
 
-      input =
-          '''BEGIN:VCALENDAR
+      input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -377,8 +366,7 @@ END:VCALENDAR''';
       expect(event.attendees.length, 3);
 
       // Instead, "A" rejects "B's" counter proposal.
-      input =
-          '''BEGIN:VCALENDAR
+      input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:DECLINECOUNTER
 VERSION:2.0
@@ -407,8 +395,7 @@ END:VCALENDAR''';
       // "A" sends a "REQUEST" to "B" and "C".  "C" delegates the event to "E"
 
       // "C" responds to the "Organizer" "A":
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REPLY
 VERSION:2.0
@@ -439,8 +426,7 @@ END:VCALENDAR
       // other properties are covered by components_test.dart
 
       // "Attendee" "C" delegates presence at the meeting to "E".
-      input =
-          '''BEGIN:VCALENDAR\r
+      input = '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REQUEST\r
 VERSION:2.0\r
@@ -486,8 +472,7 @@ END:VCALENDAR\r
       // To accept a delegated meeting, the delegate, "E", sends the following
       //  message to "A" and "C".
 
-      var input =
-          '''BEGIN:VCALENDAR\r
+      var input = '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REPLY\r
 VERSION:2.0\r
@@ -531,8 +516,7 @@ END:VCALENDAR\r
       // "E" responds to "A" and "C".  Note the use of the "COMMENT" property
       //  "E" uses to indicate why the delegation was declined.
 
-      var input =
-          '''BEGIN:VCALENDAR\r
+      var input = '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REPLY\r
 VERSION:2.0\r
@@ -575,8 +559,7 @@ END:VCALENDAR\r
       //  express the fact that the item was delegated in the "COMMENT"
       //  property.
 
-      input =
-          '''BEGIN:VCALENDAR\r
+      input = '''BEGIN:VCALENDAR\r
 PRODID:-//Example/ExampleCalendarClient//EN\r
 METHOD:REQUEST\r
 VERSION:2.0\r
@@ -628,8 +611,7 @@ END:VCALENDAR\r
       //  message) MUST be ignored.
 
       // This example shows how "A" cancels the event.
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:CANCEL
 VERSION:2.0
@@ -669,8 +651,7 @@ END:VCALENDAR
       //  example below, the "STATUS" property is omitted.  This is used when
       //  the meeting itself is cancelled and not when the intent is to remove
       //  an "Attendee" from the event.
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:CANCEL
 VERSION:2.0
@@ -697,8 +678,7 @@ END:VCALENDAR
       //  MAY resend the updated event to the remaining "Attendees".  Note that
       //  "B" has been removed.
 
-      input =
-          '''BEGIN:VCALENDAR
+      input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0
@@ -727,7 +707,7 @@ END:VCALENDAR
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 2);
       expect(event.attendees.length, 5);
-      expect(event.attendees[4].role, Role.nonParticpant);
+      expect(event.attendees[4].role, Role.nonParticipant);
       expect(event.attendees[4].rsvp, isFalse);
       expect(event.attendees[4].email, 'e@example.com');
     });
@@ -748,8 +728,7 @@ END:VCALENDAR
 
       //  This is the message "B" sends to "C" and "D".
 
-      var input =
-          '''BEGIN:VCALENDAR
+      var input = '''BEGIN:VCALENDAR
 PRODID:-//Example/ExampleCalendarClient//EN
 METHOD:REQUEST
 VERSION:2.0

@@ -6,8 +6,8 @@ import 'util.dart';
 ///
 /// In contrast to properties, the type of a parameter is always predefined.
 abstract class Parameter<T> {
-  /// the standard type or ParameterType.other
-  final ParameterType type;
+  /// Creates a new parameter
+  Parameter(this.name, this.textValue, this.value);
 
   /// the name of this parameter
   final String name;
@@ -18,91 +18,87 @@ abstract class Parameter<T> {
   /// The parsed value
   final T value;
 
-  /// The type of the value
-  final ValueType valueType;
-
-  /// Creates a new parameter
-  Parameter(this.type, this.name, this.textValue, this.valueType, this.value);
-
   /// Parses the given [definition] and generates a corresponding Parameter.
   static Parameter parse(String definition) {
     final splitIndex = definition.indexOf('=');
     if (splitIndex == -1) {
       throw FormatException(
-          'No equals sign (=) found in parameter [$definition]');
+        'No equals sign (=) found in parameter [$definition]',
+      );
     }
     final name = definition.substring(0, splitIndex);
     final textValue = definition.substring(splitIndex + 1);
     switch (name) {
       case 'ALTREP':
         return UriParameter(
-            ParameterType.alternateRepresentation, name, textValue);
+          name,
+          textValue,
+        );
       case 'CN':
-        return TextParameter(ParameterType.commonName, name, textValue);
+        return TextParameter(name, textValue);
       case 'CUTYPE':
-        return CalendarUserTypeParameter(
-            ParameterType.calendarUserType, name, textValue);
+        return CalendarUserTypeParameter(name, textValue);
       case 'DELEGATED-FROM':
-        return UriParameter(ParameterType.delegateFrom, name, textValue);
+        return UriParameter(name, textValue);
       case 'DELEGATED-TO':
-        return UriParameter(ParameterType.delegateTo, name, textValue);
+        return UriParameter(name, textValue);
       case 'DIR':
-        return UriParameter(ParameterType.directory, name, textValue);
+        return UriParameter(name, textValue);
       case 'ENCODING':
-        return TextParameter(ParameterType.encoding, name, textValue);
+        return TextParameter(name, textValue);
       case 'FMTTYPE':
-        return TextParameter(ParameterType.formatType, name, textValue);
+        return TextParameter(name, textValue);
       case 'FBTYPE':
         return FreeBusyTimeTypeParameter(
-            ParameterType.freeBusyTimeType, name, textValue);
+          name,
+          textValue,
+        );
       case 'LANGUAGE':
-        return TextParameter(ParameterType.language, name, textValue);
+        return TextParameter(name, textValue);
       case 'MEMBER':
-        return UriListParameter(ParameterType.member, name, textValue);
+        return UriListParameter(name, textValue);
       case 'PARTSTAT':
-        return ParticipantStatusParameter(
-            ParameterType.participantStatus, name, textValue);
+        return ParticipantStatusParameter(name, textValue);
       case 'RANGE':
-        return RangeParameter(ParameterType.range, name, textValue);
+        return RangeParameter(name, textValue);
       case 'RELATED':
-        return AlarmTriggerRelationshipParameter(
-            ParameterType.alarmTriggerRelationship, name, textValue);
+        return AlarmTriggerRelationshipParameter(name, textValue);
       case 'RELTYPE':
-        return RelationshipParameter(
-            ParameterType.relationshipType, name, textValue);
+        return RelationshipParameter(name, textValue);
       case 'ROLE':
-        return ParticipantRoleParameter(
-            ParameterType.participantRole, name, textValue);
+        return ParticipantRoleParameter(name, textValue);
       case 'RSVP':
-        return BooleanParameter(ParameterType.rsvp, name, textValue);
+        return BooleanParameter(name, textValue);
       case 'SENT-BY':
-        return UriParameter(ParameterType.sentBy, name, textValue);
+        return UriParameter(name, textValue);
       case 'TZID':
-        return TextParameter(ParameterType.timezoneId, name, textValue);
+        return TextParameter(name, textValue);
       case 'VALUE':
-        return ValueParameter(ParameterType.value, name, textValue);
+        return ValueParameter(name, textValue);
       case 'X-FILENAME':
-        return TextParameter(ParameterType.xFilename, name, textValue);
+        return TextParameter(name, textValue);
       case 'EMAIL':
-        return TextParameter(ParameterType.email, name, textValue);
+        return TextParameter(name, textValue);
       default:
         print('Encountered unsupported parameter [$name]');
-        return TextParameter(ParameterType.other, name, textValue);
+        return TextParameter(name, textValue);
     }
   }
 }
 
 /// Parameter that contain an URI like `ALTREP`
 class UriParameter extends Parameter<Uri> {
+  /// Creates a new [UriParameter]
+  UriParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [UriParameter]
+  UriParameter.value(String name, Uri value) : super(name, '"$value"', value);
+
   /// Retrieves the value as Uri
   Uri get uri => value;
 
-  UriParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.uri, parse(textValue));
-
-  UriParameter.value(ParameterType type, Uri value)
-      : super(type, type.name!, '"$value"', ValueType.uri, value);
-
+  /// Parses the given [textValue] as an URI
   static Uri parse(String textValue) {
     var usedValue = textValue;
     if (usedValue.startsWith('"')) {
@@ -111,29 +107,34 @@ class UriParameter extends Parameter<Uri> {
     if (usedValue.startsWith(':')) {
       usedValue = usedValue.substring(1);
     }
+
     return Uri.parse(usedValue);
   }
 
-  static UriParameter? create(ParameterType type, Uri? value) {
+  /// Creates a new [UriParameter] when the [value] is not null
+  static UriParameter? create(String name, Uri? value) {
     if (value == null) {
       return null;
     }
-    return UriParameter.value(type, value);
+
+    return UriParameter.value(name, value);
   }
 }
 
 /// Parameter or value that contains one or several URIs like `MEMBER`
 class UriListParameter extends Parameter<List<Uri>> {
+  /// Creates a new [UriListParameter]
+  UriListParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [UriListParameter]
+  UriListParameter.value(String name, List<Uri> value)
+      : super(name, renderUris(value), value);
+
   /// Retrieves the value as Uri
   List<Uri> get uris => value;
 
-  UriListParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeUriList, parse(textValue));
-
-  UriListParameter.value(ParameterType type, List<Uri> value)
-      : super(
-            type, type.name!, renderUris(value), ValueType.typeUriList, value);
-
+  /// Parses the given [textValue]
   static List<Uri> parse(final String textValue) {
     final runes = textValue.runes.toList();
     final result = <Uri>[];
@@ -170,88 +171,104 @@ class UriListParameter extends Parameter<List<Uri>> {
         }
       }
     }
+
     return result;
   }
 
-  static String renderUris(List<Uri> uris) {
-    return uris.map((uri) => '"$uri"').join(',');
-  }
+  /// Encodes the given [uris]
+  static String renderUris(List<Uri> uris) =>
+      uris.map((uri) => '"$uri"').join(',');
 
-  static UriListParameter? create(ParameterType type, List<Uri>? value) {
+  /// Creates a new [UriListParameter] when the [value] is not null
+  static UriListParameter? create(String name, List<Uri>? value) {
     if (value == null) {
       return null;
     }
-    return UriListParameter.value(type, value);
+
+    return UriListParameter.value(name, value);
   }
 }
 
 /// Parameter containing text
 class TextParameter extends Parameter<String> {
+  /// Creates a new [TextParameter]
+  TextParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [TextParameter]
+  TextParameter.value(String name, String value)
+      : super(name, _convertToSafeText(value), value);
+
+  /// Retrieves the text
   String get text => value;
-
-  TextParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.text, parse(textValue));
-
-  TextParameter.value(ParameterType type, String value)
-      : super(
-            type, type.name!, _convertToSafeText(value), ValueType.text, value);
 
   static String _convertToSafeText(String value) {
     if (value.contains(';') || value.contains(',')) {
       return '"$value"';
     }
+
     return value;
   }
 
+  /// Parses the [textValue]
   static String parse(String textValue) {
     if (textValue.startsWith('"')) {
-      textValue = textValue.substring(1, textValue.length - 1);
+      return textValue.substring(1, textValue.length - 1);
     }
+
     return textValue;
   }
 
-  static TextParameter? create(ParameterType type, String? value) {
+  /// Creates a new [TextParameter] when the [value] is not null
+  static TextParameter? create(String name, String? value) {
     if (value == null) {
       return null;
     }
-    return TextParameter.value(type, value);
+
+    return TextParameter.value(name, value);
   }
 }
 
 /// Parameter containing boolean values
 class BooleanParameter extends Parameter<bool> {
+  /// Creates a new [BooleanParameter]
+  BooleanParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [BooleanParameter]
+  // ignore: avoid_positional_boolean_parameters
+  BooleanParameter.value(String name, bool value)
+      : super(name, value ? 'TRUE' : 'FALSE', value);
+
+  /// Retrieves the value
   bool get boolValue => value;
 
-  BooleanParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.boolean, parse(textValue));
-  BooleanParameter.value(ParameterType type, bool value)
-      : super(type, type.name!, value ? 'TRUE' : 'FALSE', ValueType.boolean,
-            value);
+  /// Parses the [textValue]
+  static bool parse(String textValue) =>
+      textValue == 'TRUE' || textValue == 'YES';
 
-  static bool parse(String textValue) {
-    return (textValue == 'TRUE' || textValue == 'YES');
-  }
-
-  static BooleanParameter? create(ParameterType type, bool? value) {
+  /// Creates a new [BooleanParameter] when the [value] is not null
+  // ignore: avoid_positional_boolean_parameters
+  static BooleanParameter? create(String name, bool? value) {
     if (value == null) {
       return null;
     }
-    return BooleanParameter.value(type, value);
+
+    return BooleanParameter.value(name, value);
   }
 }
 
 /// Parameter defining the type of calendar user
 class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
-  CalendarUserTypeParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.other, parse(textValue));
-  CalendarUserTypeParameter.value(CalendarUserType value)
-      : super(
-            ParameterType.calendarUserType,
-            ParameterType.calendarUserType.name!,
-            value.name!,
-            ValueType.other,
-            value);
+  /// Creates a new [CalendarUserTypeParameter]
+  CalendarUserTypeParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
 
+  /// Creates a new [CalendarUserTypeParameter]
+  CalendarUserTypeParameter.value(String name, CalendarUserType value)
+      : super(name, value.typeName ?? '', value);
+
+  /// Parses the given [textValue]
   static CalendarUserType parse(String textValue) {
     switch (textValue) {
       case 'INDIVIDUAL':
@@ -269,28 +286,33 @@ class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
     }
   }
 
-  static CalendarUserTypeParameter? create(CalendarUserType? value) {
+  /// Creates a new [CalendarUserTypeParameter] when the [value] is not null
+  static CalendarUserTypeParameter? create(
+    String name,
+    CalendarUserType? value,
+  ) {
     if (value == null) {
       return null;
     }
-    return CalendarUserTypeParameter.value(value);
+
+    return CalendarUserTypeParameter.value(name, value);
   }
 }
 
 /// Parameter defining the status of a free busy property
 class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
+  /// Creates a new [FreeBusyTimeTypeParameter]
+  FreeBusyTimeTypeParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [FreeBusyTimeTypeParameter]
+  FreeBusyTimeTypeParameter.value(String name, FreeBusyTimeType value)
+      : super(name, value.typeName ?? '', value);
+
+  /// Gets the value
   FreeBusyTimeType get timeType => value;
 
-  FreeBusyTimeTypeParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeFreeBusy, parse(textValue));
-  FreeBusyTimeTypeParameter.value(FreeBusyTimeType value)
-      : super(
-            ParameterType.freeBusyTimeType,
-            ParameterType.freeBusyTimeType.name!,
-            value.name!,
-            ValueType.typeFreeBusy,
-            value);
-
+  /// Parses the given [textValue]
   static FreeBusyTimeType parse(String textValue) {
     switch (textValue) {
       case 'FREE':
@@ -306,29 +328,37 @@ class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
     }
   }
 
-  static FreeBusyTimeTypeParameter? create(FreeBusyTimeType? value) {
+  /// Creates a new [FreeBusyTimeTypeParameter] when the [value] is not null
+  static FreeBusyTimeTypeParameter? create(
+    String name,
+    FreeBusyTimeType? value,
+  ) {
     if (value == null) {
       return null;
     }
-    return FreeBusyTimeTypeParameter.value(value);
+
+    return FreeBusyTimeTypeParameter.value(name, value);
   }
 }
 
-/// Parameter definining the participant status
+/// Parameter defining the participant status
 class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
+  /// Creates a new [ParticipantStatusParameter]
+  ParticipantStatusParameter(String name, String textValue)
+      : super(
+          name,
+          textValue,
+          parse(textValue),
+        );
+
+  /// Creates a new [ParticipantStatusParameter]
+  ParticipantStatusParameter.value(String name, ParticipantStatus status)
+      : super(name, status.typeName ?? '', status);
+
+  /// Retrieves the value
   ParticipantStatus get status => value;
 
-  ParticipantStatusParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeParticipantStatus,
-            parse(textValue));
-  ParticipantStatusParameter.value(ParticipantStatus status)
-      : super(
-            ParameterType.participantStatus,
-            ParameterType.participantStatus.name!,
-            status.name!,
-            ValueType.typeParticipantStatus,
-            status);
-
+  /// Parses the given [textValue]
   static ParticipantStatus parse(String textValue) {
     switch (textValue) {
       case 'NEEDS-ACTION':
@@ -352,11 +382,16 @@ class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
     }
   }
 
-  static ParticipantStatusParameter? create(ParticipantStatus? value) {
+  /// Creates a new [ParticipantStatusParameter] when the [value] is not null
+  static ParticipantStatusParameter? create(
+    String name,
+    ParticipantStatus? value,
+  ) {
     if (value == null) {
       return null;
     }
-    return ParticipantStatusParameter.value(value);
+
+    return ParticipantStatusParameter.value(name, value);
   }
 }
 
@@ -374,15 +409,21 @@ class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
 /// The value "THISANDPRIOR" is deprecated by this revision of
 /// iCalendar and MUST NOT be generated by applications.
 class RangeParameter extends Parameter<Range> {
+  /// Creates a new [RangeParameter]
+  RangeParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [RangeParameter]
+  RangeParameter.value(String name, Range range)
+      : super(name, range.name, range);
+
+  /// Retrieves the range
   Range get range => value;
+
+  /// Checks is this range affects the current subsequent instances
   bool get isThisAndFuture => range == Range.thisAndFuture;
 
-  RangeParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeRange, parse(textValue));
-  RangeParameter.value(Range range)
-      : super(ParameterType.range, ParameterType.range.name!, range.name,
-            ValueType.typeRange, range);
-
+  /// Parses the given [textValue]
   static Range parse(String textValue) {
     switch (textValue) {
       case 'THISANDFUTURE':
@@ -392,33 +433,36 @@ class RangeParameter extends Parameter<Range> {
     }
   }
 
-  static RangeParameter? create(Range? value) {
+  /// Creates a new [RangeParameter] when the [value] is not null
+  static RangeParameter? create(String name, Range? value) {
     if (value == null) {
       return null;
     }
-    return RangeParameter.value(value);
+
+    return RangeParameter.value(name, value);
   }
 }
 
-/// Specifies the relationship of the alarm trigger with respect to the start or end of the calendar component.
+/// Specifies the relationship of the alarm trigger with respect to the start
+/// or end of the calendar component.
 ///
 /// Example is the `RELATED` parameter.
 class AlarmTriggerRelationshipParameter
     extends Parameter<AlarmTriggerRelationship> {
+  /// Creates a new [AlarmTriggerRelationshipParameter]
+  AlarmTriggerRelationshipParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [AlarmTriggerRelationshipParameter]
+  AlarmTriggerRelationshipParameter.value(
+    String name,
+    AlarmTriggerRelationship relation,
+  ) : super(name, relation.typeName ?? '', relation);
+
+  /// Gets the value
   AlarmTriggerRelationship get relationship => value;
 
-  AlarmTriggerRelationshipParameter(
-      ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeAlarmTriggerRelationship,
-            parse(textValue));
-  AlarmTriggerRelationshipParameter.value(AlarmTriggerRelationship relation)
-      : super(
-            ParameterType.alarmTriggerRelationship,
-            ParameterType.alarmTriggerRelationship.name!,
-            relation.name!,
-            ValueType.typeAlarmTriggerRelationship,
-            relation);
-
+  /// Parses the given [textValue]
   static AlarmTriggerRelationship parse(String textValue) {
     switch (textValue) {
       case 'START':
@@ -429,31 +473,34 @@ class AlarmTriggerRelationshipParameter
     throw FormatException('Invalid RELATED content [$textValue]');
   }
 
+  /// Creates a new [AlarmTriggerRelationshipParameter] when the [value]
+  /// is not null
   static AlarmTriggerRelationshipParameter? create(
-      AlarmTriggerRelationship? value) {
+    String name,
+    AlarmTriggerRelationship? value,
+  ) {
     if (value == null) {
       return null;
     }
-    return AlarmTriggerRelationshipParameter.value(value);
+
+    return AlarmTriggerRelationshipParameter.value(name, value);
   }
 }
 
 /// Defines the relationship of the parameter's property
 class RelationshipParameter extends Parameter<Relationship> {
+  /// Creates a new [RelationshipParameter]
+  RelationshipParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [RelationshipParameter]
+  RelationshipParameter.value(String name, Relationship relationship)
+      : super(name, relationship.typeName ?? '', relationship);
+
+  /// Gets the value
   Relationship get relationship => value;
 
-  RelationshipParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeRelationship,
-            parse(textValue));
-
-  RelationshipParameter.value(Relationship relationship)
-      : super(
-            ParameterType.relationshipType,
-            ParameterType.relationshipType.name!,
-            relationship.name!,
-            ValueType.typeRelationship,
-            relationship);
-
+  /// Parses the given [textValue]
   static Relationship parse(String textValue) {
     switch (textValue) {
       case 'PARENT':
@@ -467,31 +514,32 @@ class RelationshipParameter extends Parameter<Relationship> {
     }
   }
 
-  static RelationshipParameter? create(Relationship? value) {
+  /// Creates a new [RelationshipParameter] when the [value] is not null
+  static RelationshipParameter? create(String name, Relationship? value) {
     if (value == null) {
       return null;
     }
-    return RelationshipParameter.value(value);
+
+    return RelationshipParameter.value(name, value);
   }
 }
 
 /// Defines the role of a given user
 class ParticipantRoleParameter extends Parameter<Role> {
+  /// Creates a new [ParticipantRoleParameter]
+  ParticipantRoleParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [ParticipantRoleParameter]
+  ParticipantRoleParameter.value(String name, Role role)
+      : super(name, role.typeName ?? '', role);
+
+  /// Gets the value
   Role get role => value;
 
-  ParticipantRoleParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeRole, parse(textValue));
-
-  ParticipantRoleParameter.value(Role role)
-      : super(
-            ParameterType.participantRole,
-            ParameterType.participantRole.name!,
-            role.name!,
-            ValueType.typeRole,
-            role);
-
-  static Role parse(String content) {
-    switch (content) {
+  /// Parses the given [textValue]
+  static Role parse(String textValue) {
+    switch (textValue) {
       case 'CHAIR':
         return Role.chair;
       case 'REQ-PARTICIPANT':
@@ -499,17 +547,19 @@ class ParticipantRoleParameter extends Parameter<Role> {
       case 'OPT-PARTICIPANT':
         return Role.optionalParticipant;
       case 'NON-PARTICIPANT':
-        return Role.nonParticpant;
+        return Role.nonParticipant;
       default:
         return Role.other;
     }
   }
 
-  static ParticipantRoleParameter? create(Role? value) {
+  /// Creates a new [ParticipantRoleParameter] when the [value] is not null
+  static ParticipantRoleParameter? create(String name, Role? value) {
     if (value == null) {
       return null;
     }
-    return ParticipantRoleParameter.value(value);
+
+    return ParticipantRoleParameter.value(name, value);
   }
 }
 
@@ -517,17 +567,20 @@ class ParticipantRoleParameter extends Parameter<Role> {
 ///
 /// With this mechanism a single property can have different value types.
 class ValueParameter extends Parameter<ValueType> {
+  /// Creates a new [ValueParameter]
+  ValueParameter(String name, String textValue)
+      : super(name, textValue, parse(textValue));
+
+  /// Creates a new [ValueParameter]
+  ValueParameter.value(String name, ValueType type)
+      : super(name, type.typeName ?? '', type);
+
+  /// Retrieves the value type
   ValueType get valueType => value;
 
-  ValueParameter(ParameterType type, String name, String textValue)
-      : super(type, name, textValue, ValueType.typeValue, parse(textValue));
-
-  ValueParameter.value(ValueType type)
-      : super(ParameterType.value, ParameterType.value.name!, type.name!,
-            ValueType.typeValue, type);
-
-  static ValueType parse(String content) {
-    switch (content) {
+  /// Parses the given [textValue]
+  static ValueType parse(String textValue) {
+    switch (textValue) {
       case 'BINARY':
         return ValueType.binary;
       case 'BOOLEAN':
@@ -561,11 +614,13 @@ class ValueParameter extends Parameter<ValueType> {
     }
   }
 
-  static ValueParameter? create(ValueType? value) {
+  /// Creates a new [ValueParameter] when the [value] is not null
+  static ValueParameter? create(String name, ValueType? value) {
     if (value == null) {
       return null;
     }
-    return ValueParameter.value(value);
+
+    return ValueParameter.value(name, value);
   }
 }
 
@@ -583,7 +638,7 @@ enum ParameterType {
   /// `DELEGATED-FROM` delegator [UriParameter]
   delegateFrom,
 
-  /// `DELEGATED-TO` delgatee [UriParameter]
+  /// `DELEGATED-TO` delegatee [UriParameter]
   delegateTo,
 
   /// `DIR` directory [UriParameter]
@@ -641,8 +696,10 @@ enum ParameterType {
   other,
 }
 
+/// Extends [ParameterType] with helpful functions
 extension ExtensionParameterType on ParameterType {
-  String? get name {
+  /// Retrieves the corresponding name
+  String? get typeName {
     switch (this) {
       case ParameterType.alternateRepresentation:
         return 'ALTREP';
