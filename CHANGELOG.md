@@ -1,3 +1,6 @@
+## 0.15.0
+- Fix export of WKST attribute of a RRULE [#10](https://github.com/Enough-Software/enough_icalendar/issues/10) with thanks to [tgrushka](https://github.com/tgrushka)!
+
 ## 0.14.0
 - Ensure compatibility with Flutter 3.10 - with thanks to [hurkanugur](https://github.com/hurkanugur)!
 
