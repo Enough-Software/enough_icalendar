@@ -12,11 +12,9 @@ class Property {
   })  : name = _getName(definition),
         textValue = _getTextContent(definition),
         parameters = _parseParameters(definition) {
-    if (parser != null) {
-      value = parser(this, textValue);
-    } else {
-      value = _parsePropertyValue(this, defaultValueType);
-    }
+    value = parser != null
+        ? parser(this, textValue)
+        : _parsePropertyValue(this, defaultValueType);
   }
 
   /// The value of this property
@@ -401,9 +399,9 @@ class Property {
 }
 
 class RecurrenceRuleProperty extends Property {
-
   RecurrenceRuleProperty(String definition)
       : super(definition, ValueType.other);
+
   /// `RRULE`
   static const String propertyName = 'RRULE';
   Recurrence get rule => value as Recurrence;
@@ -415,12 +413,14 @@ class RecurrenceRuleProperty extends Property {
     if (value == null) {
       return null;
     }
+
     return RecurrenceRuleProperty('$propertyName:$value');
   }
 }
 
 class UriProperty extends Property {
   UriProperty(String definition) : super(definition, ValueType.uri);
+
   /// `TZURL`
   static const String propertyNameTimezoneUrl = 'TZURL';
 
@@ -438,7 +438,8 @@ class UriProperty extends Property {
 }
 
 class UserProperty extends UriProperty {
-  UserProperty(String definition) : super(definition);
+  UserProperty(super.definition);
+
   /// `CONTACT`
   static const String propertyNameContact = 'CONTACT';
 
@@ -504,7 +505,7 @@ class UserProperty extends UriProperty {
 /// Describes an attendee
 class AttendeeProperty extends UserProperty {
   /// Creates a new [AttendeeProperty]
-  AttendeeProperty(String definition) : super(definition);
+  AttendeeProperty(super.definition);
 
   /// `ATTENDEE`
   static const String propertyName = 'ATTENDEE';
@@ -688,7 +689,7 @@ class AttendeeProperty extends UserProperty {
 /// Defines the organizer of a meeting
 class OrganizerProperty extends UserProperty {
   /// Creates a new [OrganizerProperty]
-  OrganizerProperty(String definition) : super(definition);
+  OrganizerProperty(super.definition);
 
   /// `ORGANIZER`
   static const String propertyName = 'ORGANIZER';
@@ -786,8 +787,8 @@ class GeoProperty extends Property {
 }
 
 class AttachmentProperty extends Property {
-
   AttachmentProperty(String content) : super(content, ValueType.uri);
+
   /// `ATTACH`
   static const String propertyName = 'ATTACH';
 
@@ -831,8 +832,8 @@ class AttachmentProperty extends Property {
 }
 
 class CalendarScaleProperty extends Property {
-
   CalendarScaleProperty(String definition) : super(definition, ValueType.text);
+
   /// `CALSCALE`
   static const String propertyName = 'CALSCALE';
   bool get isGregorianCalendar => textValue == 'GREGORIAN';
@@ -846,8 +847,8 @@ class CalendarScaleProperty extends Property {
 }
 
 class VersionProperty extends Property {
-
   VersionProperty(String definition) : super(definition, ValueType.text);
+
   /// `VERSION`
   static const String propertyName = 'VERSION';
 
@@ -862,8 +863,8 @@ class VersionProperty extends Property {
 }
 
 class CategoriesProperty extends Property {
-
   CategoriesProperty(String definition) : super(definition, ValueType.text);
+
   /// `CATEGORIES`
   static const String propertyName = 'CATEGORIES';
 
@@ -883,9 +884,9 @@ class CategoriesProperty extends Property {
 }
 
 class ClassificationProperty extends Property {
-
   ClassificationProperty(String definition)
       : super(definition, ValueType.typeClassification);
+
   /// `CLASS`
   static const String propertyName = 'CLASS';
 
@@ -905,8 +906,8 @@ class ClassificationProperty extends Property {
 
 /// Contains texts
 class TextProperty extends Property {
-
   TextProperty(String definition) : super(definition, ValueType.text);
+
   /// `COMMENT`
   static const String propertyNameComment = 'COMMENT';
 
@@ -1004,9 +1005,9 @@ class TextProperty extends Property {
 }
 
 class MethodProperty extends Property {
-
   MethodProperty(String definition)
       : super(definition, ValueType.text, parser: _parse);
+
   /// `METHOD`
   static const String propertyName = 'METHOD';
 
@@ -1047,8 +1048,8 @@ class MethodProperty extends Property {
 }
 
 class IntegerProperty extends Property {
-
   IntegerProperty(String definition) : super(definition, ValueType.integer);
+
   /// `PERCENT-COMPLETE`
   static const String propertyNamePercentComplete = 'PERCENT-COMPLETE';
 
@@ -1069,8 +1070,8 @@ class IntegerProperty extends Property {
 }
 
 class BooleanProperty extends Property {
-
   BooleanProperty(String definition) : super(definition, ValueType.boolean);
+
   /// `X-MICROSOFT-CDO-ALLDAYEVENT`
   static const String propertyNameAllDayEvent = 'X-MICROSOFT-CDO-ALLDAYEVENT';
 
@@ -1085,8 +1086,8 @@ class BooleanProperty extends Property {
 }
 
 class DateTimeProperty extends Property {
-
   DateTimeProperty(String definition) : super(definition, ValueType.dateTime);
+
   /// `COMPLETED`
   static const String propertyNameCompleted = 'COMPLETED';
 
@@ -1143,8 +1144,8 @@ class DateTimeProperty extends Property {
 }
 
 class DurationProperty extends Property {
-
   DurationProperty(String definition) : super(definition, ValueType.duration);
+
   /// `DURATION`
   static const String propertyName = 'DURATION';
 
@@ -1159,7 +1160,6 @@ class DurationProperty extends Property {
 }
 
 class PeriodProperty extends Property {
-
   PeriodProperty(String definition) : super(definition, ValueType.period);
   //static const String propertyNameFreeBusy = 'FREEBUSY';
 
@@ -1167,8 +1167,8 @@ class PeriodProperty extends Property {
 }
 
 class UtfOffsetProperty extends Property {
-
   UtfOffsetProperty(String definition) : super(definition, ValueType.utcOffset);
+
   /// `TZOFFSETFROM`
   static const String propertyNameTimezoneOffsetFrom = 'TZOFFSETFROM';
 
@@ -1186,8 +1186,8 @@ class UtfOffsetProperty extends Property {
 }
 
 class FreeBusyProperty extends Property {
-
   FreeBusyProperty(String definition) : super(definition, ValueType.periodList);
+
   /// `FREEBUSY`
   static const String propertyName = 'FREEBUSY';
 
@@ -1209,8 +1209,8 @@ class FreeBusyProperty extends Property {
 }
 
 class PriorityProperty extends IntegerProperty {
+  PriorityProperty(super.definition);
 
-  PriorityProperty(String definition) : super(definition);
   /// `PRIORITY`
   static const String propertyName = 'PRIORITY';
 
@@ -1240,8 +1240,8 @@ class PriorityProperty extends IntegerProperty {
 }
 
 class StatusProperty extends TextProperty {
+  StatusProperty(super.definition);
 
-  StatusProperty(String definition) : super(definition);
   /// `STATUS`
   static const String propertyName = 'STATUS';
 
@@ -1313,8 +1313,8 @@ class StatusProperty extends TextProperty {
 
 /// This property defines whether or not an event is transparent to busy time searches.
 class TimeTransparencyProperty extends TextProperty {
+  TimeTransparencyProperty(super.definition);
 
-  TimeTransparencyProperty(String definition) : super(definition);
   /// `TRANSP`
   static const String propertyName = 'TRANSP';
 
@@ -1340,9 +1340,9 @@ class TimeTransparencyProperty extends TextProperty {
 }
 
 class RecurrenceDateProperty extends Property {
-
   RecurrenceDateProperty(String definition)
       : super(definition, ValueType.typeDateTimeList);
+
   /// `RDATE`
   static const String propertyNameRDate = 'RDATE';
 
@@ -1432,8 +1432,8 @@ class TriggerProperty extends Property {
 }
 
 class ActionProperty extends TextProperty {
+  ActionProperty(super.definition);
 
-  ActionProperty(String definition) : super(definition);
   /// `ACTION`
   static const String propertyName = 'ACTION';
 
@@ -1476,8 +1476,8 @@ class ActionProperty extends TextProperty {
 }
 
 class RequestStatusProperty extends TextProperty {
+  RequestStatusProperty(super.definition);
 
-  RequestStatusProperty(String definition) : super(definition);
   /// `REQUEST-STATUS`
   static const String propertyName = 'REQUEST-STATUS';
 
@@ -1493,12 +1493,12 @@ class RequestStatusProperty extends TextProperty {
 }
 
 class EventBusyStatusProperty extends Property {
-
   EventBusyStatusProperty(String definition)
       : super(definition, ValueType.other,
             parser: (property, textValue) => _parse(textValue));
   EventBusyStatusProperty.value(EventBusyStatus value)
       : this('$propertyName:${value.name}');
+
   /// `X-MICROSOFT-CDO-BUSYSTATUS`
   static const String propertyName = 'X-MICROSOFT-CDO-BUSYSTATUS';
 

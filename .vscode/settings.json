@@ -1,14 +1,27 @@
 {
     "cSpell.words": [
         "ALTREP",
+        "BYDAY",
+        "BYHOUR",
+        "BYMINUTE",
+        "BYMONTHDAY",
+        "BYSECOND",
+        "BYSETPOS",
+        "BYWEEK",
+        "BYWEEKNO",
+        "BYYEARDAY",
         "CUTYPE",
+        "DTSTART",
         "FBTYPE",
         "FMTTYPE",
         "icalendar",
         "PARTSTAT",
         "RELTYPE",
+        "RRULE",
         "THISANDFUTURE",
         "THISANDPRIOR",
-        "TZID"
+        "TZID",
+        "VCALENDAR",
+        "WKST"
     ]
 }

@@ -63,7 +63,10 @@ abstract class VComponent {
         return VComponentType.freeBusy;
     }
     print(
-        'Warning: Component not registered: $name (in Component._getComponentType)');
+      'Warning: Component not registered: $name '
+      '(in Component._getComponentType)',
+    );
+
     return VComponentType.other;
   }
 
@@ -73,9 +76,12 @@ abstract class VComponent {
 
   /// Sets the version of this calendar, typically `2.0`
   set version(String? value) => setOrRemoveProperty(
-      VersionProperty.propertyName, VersionProperty.create(value));
+        VersionProperty.propertyName,
+        VersionProperty.create(value),
+      );
 
-  /// Checks if this version is `2.0`, which is assumed to be true unless a different version is specified.
+  /// Checks if this version is `2.0`, which is assumed to be true unless a
+  /// different version is specified.
   bool get isVersion2 =>
       getProperty<VersionProperty>(VersionProperty.propertyName)?.isVersion2 ??
       true;
@@ -87,12 +93,14 @@ abstract class VComponent {
 
   /// Sets the product ID
   set productId(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameProductIdentifier,
-      TextProperty.create(TextProperty.propertyNameProductIdentifier, value));
+        TextProperty.propertyNameProductIdentifier,
+        TextProperty.create(TextProperty.propertyNameProductIdentifier, value),
+      );
 
   /// Classes can implement this to check the validity.
   ///
-  /// If the component missed required information, throw a [FormatException] with details.
+  /// If the component missed required information, throw a [FormatException]
+  /// with details.
   void checkValidity() {}
 
   /// Retrieves all properties with the name [propertyName]
@@ -115,24 +123,32 @@ abstract class VComponent {
   Property? operator [](final String propertyName) =>
       properties.firstWhereOrNull((prop) => prop.name == propertyName);
 
-  /// Sets the property [property], replacing other properties with the given [propertyName] first.
+  /// Sets the property [property], replacing other properties with the given
+  /// [propertyName] first.
   operator []=(final String propertyName, final Property property) {
-    properties.removeWhere((prop) => prop.name == propertyName);
-    properties.add(property);
+    properties
+      ..removeWhere((prop) => prop.name == propertyName)
+      ..add(property);
   }
 
-  /// Sets the property [property], replacing other properties with the [property.name] first.
+  /// Sets the property [property], replacing other properties with the
+  /// [property.name] first.
   void setProperty(final Property property) => this[property.name] = property;
 
-  /// Sets the given [props] by first removing any properties with the given [propertyName].
+  /// Sets the given [props] by first removing any properties with the
+  /// given [propertyName].
   void setProperties(final String propertyName, final List<Property> props) {
-    properties.removeWhere((prop) => prop.name == propertyName);
-    properties.addAll(props);
+    properties
+      ..removeWhere((prop) => prop.name == propertyName)
+      ..addAll(props);
   }
 
-  /// Sets the given [property] when it is not null and otherwises removes the property with the given [propertyName].
+  /// Sets the given [property] when it is not null and otherwise removes
+  /// the property with the given [propertyName].
   void setOrRemoveProperty(
-      final String propertyName, final Property? property) {
+    final String propertyName,
+    final Property? property,
+  ) {
     if (property != null) {
       setProperty(property);
     } else {
@@ -142,7 +158,9 @@ abstract class VComponent {
 
   /// Sets or removes the given [props] with the given [propertyName]
   void setOrRemoveProperties(
-      final String propertyName, final List<Property>? props) {
+    final String propertyName,
+    final List<Property>? props,
+  ) {
     if (props != null) {
       setProperties(propertyName, props);
     } else {
@@ -156,12 +174,20 @@ abstract class VComponent {
 
   /// Parses the component from the specified [text].
   ///
-  /// When succeeding, this returns a [VCalendar], [VEvent] or similar component as defined by the given [text].
+  /// When succeeding, this returns a [VCalendar], [VEvent] or similar
+  /// component as defined by the given [text].
   ///
-  /// The [text] can either contain `\r\n` (`CRLF`) or `\n` line-breaks, when both line-break types are present in the [text], `CRLF` line-breaks are assumed.
+  /// The [text] can either contain `\r\n` (`CRLF`) or `\n` line-breaks, when
+  /// both line-break types are present in the [text], `CRLF` line-breaks
+  /// are assumed.
+  ///
   /// Folded lines are unfolded automatically.
+  ///
   /// When you have a custom line delimiter, use [parseLines] instead.
-  /// Define the [customParser] if you want to support specific properties. Note that unknown properties will be made available with [getProperty], e.g. `final value = component.getProperty('X-NAME')?.textValue;`
+  ///
+  /// Define the [customParser] if you want to support specific properties.
+  /// Note that unknown properties will be made available with [getProperty],
+  /// e.g. `final value = component.getProperty('X-NAME')?.textValue;`
   static VComponent parse(
     String text, {
     Property? Function(String name, String definition)? customParser,
@@ -219,11 +245,27 @@ abstract class VComponent {
       case 'BEGIN:VTIMEZONE':
         return VTimezone(parent: parent);
       case 'BEGIN:STANDARD':
-        return VTimezonePhase(VTimezonePhase.componentNameStandard,
-            parent: parent as VTimezone);
+        if (parent is! VTimezone) {
+          throw StateError(
+            'BEGIN:STANDARD: VTimezonePhase can only be a '
+            'child of VTimezone',
+          );
+        }
+        return VTimezonePhase(
+          VTimezonePhase.componentNameStandard,
+          parent: parent,
+        );
       case 'BEGIN:DAYLIGHT':
-        return VTimezonePhase(VTimezonePhase.componentNameDaylight,
-            parent: parent as VTimezone);
+        if (parent is! VTimezone) {
+          throw StateError(
+            'BEGIN:DAYLIGHT: VTimezonePhase can only be a '
+            'child of VTimezone',
+          );
+        }
+        return VTimezonePhase(
+          VTimezonePhase.componentNameDaylight,
+          parent: parent,
+        );
       case 'BEGIN:VTODO':
         return VTodo(parent: parent);
       case 'BEGIN:VJOURNAL':
@@ -523,10 +565,10 @@ class VCalendar extends VComponent {
   }) {
     assert(attendee != null || attendeeEmail != null,
         'Either [attendee] or [attendeeEmail] must be specified.');
-    final reply = VCalendar();
-    reply.productId = productId;
-    reply.version = '2.0';
-    reply.method = Method.reply;
+    final reply = VCalendar()
+      ..productId = productId
+      ..version = '2.0'
+      ..method = Method.reply;
     // check if this attendee was delegated:
     if (attendee == null) {
       Uri? delegatedFrom;
@@ -542,7 +584,10 @@ class VCalendar extends VComponent {
         participantStatus: participantStatus,
         delegatedToEmail: delegatedToEmail,
         delegatedFromUri: delegatedFrom,
-      )!;
+      );
+      if (attendee == null) {
+        throw StateError('Unable to create attendee for $attendeeEmail');
+      }
     }
     for (final child in children) {
       if (child.canReply) {
@@ -552,13 +597,16 @@ class VCalendar extends VComponent {
         break;
       }
     }
+
     return reply;
   }
 
   /// Cancels this VCalendar event.
   ///
   /// Organizers of an calendar event can cancel an event.
-  /// Compare [cancelEventForAttendees] when the event should only be cancelled for some attendees
+  ///
+  /// Compare [cancelEventForAttendees] when the event should
+  /// only be cancelled for some attendees
   VCalendar cancelEvent({String? comment}) => update(
         method: Method.cancel,
         comment: comment,
@@ -570,14 +618,20 @@ class VCalendar extends VComponent {
   /// Organizers of an calendar event can cancel an event for attendees.
   /// You must either specify [cancelledAttendees] or [cancelledAttendeeEmails].
   /// Compare [cancelEvent] in case you want to cancel the whole event
-  AttendeeCancelResult cancelEventForAttendees(
-      {List<AttendeeProperty>? cancelledAttendees,
-      List<String>? cancelledAttendeeEmails,
-      String? comment}) {
-    assert(cancelledAttendeeEmails != null || cancelledAttendees != null,
-        'You must specify either cancelledAttendees or cancelledAttendeeEmails');
-    assert(!(cancelledAttendeeEmails != null && cancelledAttendees != null),
-        'You must specify either cancelledAttendees or cancelledAttendeeEmails, but not both');
+  AttendeeCancelResult cancelEventForAttendees({
+    List<AttendeeProperty>? cancelledAttendees,
+    List<String>? cancelledAttendeeEmails,
+    String? comment,
+  }) {
+    assert(
+      cancelledAttendeeEmails != null || cancelledAttendees != null,
+      'You must specify either cancelledAttendees or cancelledAttendeeEmails',
+    );
+    assert(
+      !(cancelledAttendeeEmails != null && cancelledAttendees != null),
+      'You must specify either cancelledAttendees or '
+      'cancelledAttendeeEmails, but not both',
+    );
     final attendeeChange = update(
       method: Method.cancel,
       comment: comment,
@@ -590,21 +644,29 @@ class VCalendar extends VComponent {
     if (event != null) {
       final attendees = cancelledAttendeeEmails != null
           ? event.attendees.where(
-              (attendee) => cancelledAttendeeEmails.contains(attendee.email))
-          : event.attendees.where((attendee) => cancelledAttendees!
-              .any((cancelled) => cancelled.uri == attendee.uri));
+              (attendee) => cancelledAttendeeEmails.contains(attendee.email),
+            )
+          : event.attendees.where(
+              (attendee) => cancelledAttendees!
+                  .any((cancelled) => cancelled.uri == attendee.uri),
+            );
       for (final attendee in attendees) {
-        attendee.rsvp = false;
-        attendee.role = Role.nonParticipant;
+        attendee
+          ..rsvp = false
+          ..role = Role.nonParticipant;
       }
     }
+
     return AttendeeCancelResult(attendeeChange, groupChange);
   }
 
   /// Prepares an update of this calendar.
   ///
   /// An organizer can use this to send an updated version around.
-  /// Creates a copy with an updated [VEvent.timeStamp], an increased [VEvent.sequence] and the [method] set to [Method.request].
+  ///
+  /// Creates a copy with an updated [VEvent.timeStamp], an increased
+  /// [VEvent.sequence] and the [method] set to [Method.request].
+  ///
   /// All parameters are optional and are applied as a convenience.
   VCalendar update({
     Method? method,
@@ -613,7 +675,7 @@ class VCalendar extends VComponent {
     List<AttendeeProperty>? addAttendees,
     List<String>? addAttendeeEmails,
     List<AttendeeProperty>? removeAttendees,
-    List<String>? removeAttendesEmails,
+    List<String>? removeAttendeesEmails,
     bool Function(AttendeeProperty)? attendeeFilter,
     String? description,
   }) {
@@ -625,12 +687,9 @@ class VCalendar extends VComponent {
         copied.children.firstWhereOrNull((ev) => ev is VEvent) as VEvent?;
     if (event != null) {
       final sequence = event.sequence;
-      if (sequence != null) {
-        event.sequence = sequence + 1;
-      } else {
-        event.sequence = 1;
-      }
-      event.timeStamp = DateTime.now();
+      event
+        ..sequence = sequence != null ? sequence + 1 : 1
+        ..timeStamp = DateTime.now();
       if (eventStatus != null) {
         event.status = eventStatus;
       }
@@ -650,10 +709,8 @@ class VCalendar extends VComponent {
           event.removeAttendeeWithUri(prop.uri);
         }
       }
-      if (removeAttendesEmails != null) {
-        for (final email in removeAttendesEmails) {
-          event.removeAttendeeWithEmail(email);
-        }
+      if (removeAttendeesEmails != null) {
+        removeAttendeesEmails.forEach(event.removeAttendeeWithEmail);
       }
       if (attendeeFilter != null) {
         final attendees = event.attendees;
@@ -667,6 +724,7 @@ class VCalendar extends VComponent {
         event.description = description;
       }
     }
+
     return copied;
   }
 
@@ -687,8 +745,7 @@ class VCalendar extends VComponent {
     String? location,
     String? description,
   }) {
-    final copied = copy() as VCalendar;
-    copied.method = Method.counter;
+    final copied = copy() as VCalendar..method = Method.counter;
     final event =
         copied.children.firstWhereOrNull((ev) => ev is VEvent) as VEvent?;
     if (event != null) {
@@ -712,24 +769,35 @@ class VCalendar extends VComponent {
         event.description = description;
       }
     }
+
     return copied;
   }
 
   /// Declines a counter proposal.
   ///
-  /// An organizer can decline the counter proposal and optionally provide the reasoning in the [comment].
-  /// When either the [attendee] or [attendeeEmail] is specified, only that attendee will be kept.
+  /// An organizer can decline the counter proposal and optionally provide
+  /// the reasoning in the [comment].
+  ///
+  /// When either the [attendee] or [attendeeEmail] is specified,
+  /// only that attendee will be kept.
+  ///
   /// This calendar's [method] must be [Method.counter].
+  ///
   /// The [VEvent.sequence] stays the same.
   ///
   /// Compare [counter] for attendees to create a counter proposal.
-  VCalendar declineCounter(
-      {AttendeeProperty? attendee, String? attendeeEmail, String? comment}) {
-    assert(method == Method.counter,
-        'The current method is not Method.counter but instead $method. Only counter proposals can be declined.');
+  VCalendar declineCounter({
+    AttendeeProperty? attendee,
+    String? attendeeEmail,
+    String? comment,
+  }) {
+    assert(
+      method == Method.counter,
+      'The current method is not Method.counter but instead $method. '
+      'Only counter proposals can be declined.',
+    );
 
-    final copied = copy() as VCalendar;
-    copied.method = Method.declineCounter;
+    final copied = copy() as VCalendar..method = Method.declineCounter;
     final event =
         copied.children.firstWhereOrNull((ev) => ev is VEvent) as VEvent?;
     if (event != null) {
@@ -741,9 +809,11 @@ class VCalendar extends VComponent {
       }
       if (attendeeEmail != null) {
         event.properties.removeWhere(
-            (p) => p is AttendeeProperty && p.email != attendeeEmail);
+          (p) => p is AttendeeProperty && p.email != attendeeEmail,
+        );
       }
     }
+
     return copied;
   }
 
@@ -926,8 +996,7 @@ class VCalendar extends VComponent {
 }
 
 abstract class _UidMandatoryComponent extends VComponent {
-  _UidMandatoryComponent(String name, [VComponent? parent])
-      : super(name, parent);
+  _UidMandatoryComponent(super.name, [super.parent]);
 
   /// Retrieves the UID identifying this calendar component
   String get uid => this[TextProperty.propertyNameUid]!.textValue;
@@ -954,8 +1023,7 @@ abstract class _UidMandatoryComponent extends VComponent {
 }
 
 abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
-  _EventTodoJournalComponent(String name, VComponent? parent)
-      : super(name, parent);
+  _EventTodoJournalComponent(super.name, super.parent);
 
   /// This property defines the access classification for a calendar component
   Classification? get classification =>
@@ -1689,7 +1757,7 @@ class VTimezonePhase extends VComponent {
 
   @override
   VComponent instantiate({VComponent? parent}) =>
-      VTimezonePhase(name, parent: parent as VTimezone);
+      VTimezonePhase(name, parent: parent! as VTimezone);
 }
 
 /// Contains an alarm definition with a trigger ([triggerDate] or [triggerRelativeDuration]) and an [action].

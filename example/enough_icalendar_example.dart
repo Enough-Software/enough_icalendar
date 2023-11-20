@@ -32,8 +32,10 @@ END:VCALENDAR''';
   // In this case I am sure it's a VCalendar, so I can cast it directly:
   final icalendar = VComponent.parse(text) as VCalendar;
   print(icalendar.productId);
-  // I'm sure that this calendar contains an event:
-  final event = icalendar.event!;
+  final event = icalendar.event;
+  if (event == null) {
+    return;
+  }
   print(event.summary); // Bastille Day Party
   print(event.start); // 1997-06-14 at 17:00
   print(event.end); // 1997-07-15 at 03:59:59
