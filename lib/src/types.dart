@@ -188,16 +188,17 @@ extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
   bool operator >=(RecurrenceFrequency other) => index <= other.index;
 }
 
-/// Specifies optional atrributes of a [Recurrence] rule.
+/// Specifies optional attributes of a [Recurrence] rule.
 ///
 ///
 /// Compare [Recurrence.copyWithout]
 enum RecurrenceAttribute { interval, count, until, startOfWeek }
 
-/// This value type is used to identify properties that contain a recurrence rule specification.
+/// This value type is used to identify properties that contain a
+/// recurrence rule specification.
 class Recurrence {
-
-  /// Creates a new Recurrence rule with the specified [frequency] and other optional settings.
+  /// Creates a new [Recurrence] rule with the specified [frequency] and
+  /// other optional settings.
   const Recurrence(
     this.frequency, {
     this.until,
@@ -215,6 +216,7 @@ class Recurrence {
     this.bySetPos,
   })  : _interval = interval,
         _startOfWorkWeek = startOfWorkWeek;
+
   /// The `FREQ` rule part identifies the type of recurrence rule.
   ///
   /// This rule part MUST be specified in the recurrence rule.  Valid values
@@ -255,7 +257,8 @@ class Recurrence {
 
   final int? _interval;
 
-  /// The `INTERVAL` rule part contains a positive integer representing at which intervals the recurrence rule repeats.
+  /// The `INTERVAL` rule part contains a positive integer representing at which
+  /// intervals the recurrence rule repeats.
   ///
   /// The default value is
   /// "1", meaning every second for a SECONDLY rule, every minute for a
@@ -334,9 +337,9 @@ class Recurrence {
   /// Compare [byHour]
   bool get hasByHour => byHour?.isNotEmpty == true;
 
-  /// `BYDAY` modifier / limiter for this Recurrence. 1 = Monday / DateTime.monday, 7 = Sunday / DateTime.sunday
+  /// `BYDAY` modifier / limiter for this Recurrence.
   ///
-  /// Compare [bySecond] for details
+  /// Compare [bySecond] and [ByDayRule] for details
   final List<ByDayRule>? byWeekDay;
 
   /// Checks if there is at least one [byWeekDay] modifier
@@ -344,7 +347,8 @@ class Recurrence {
   /// Compare [byWeekDay]
   bool get hasByWeekDay => byWeekDay?.isNotEmpty == true;
 
-  /// Checks if there is at least one by week day modifier with a weeks number set.
+  /// Checks if there is at least one by week day modifier with a
+  /// weeks number set.
   ///
   /// Compare [hasByWeekDay], [byWeekDay]
   bool get hasByWeekDayWithWeeks =>
@@ -402,14 +406,15 @@ class Recurrence {
   /// `FREQ=MONTHLY;BYDAY=MO,TU,WE,TH,FR;BYSETPOS=-1`
   final List<int>? bySetPos;
 
-  /// Checks if this rule has `BYSETPOST` rules
+  /// Checks if this rule has `BYSETPOS` rules
   ///
   /// Compare [bySetPos]
   bool get hasBySetPos => bySetPos?.isNotEmpty == true;
 
   final int? _startOfWorkWeek;
 
-  /// The `WKST` rule part specifies the day on which the workweek starts, defaults to [DateTime.monday].
+  /// The `WKST` rule part specifies the day on which the workweek starts,
+  /// defaults to [DateTime.monday].
   ///
   /// Valid values are MO, TU, WE, TH, FR, SA, and SU.  This is
   /// significant when a WEEKLY "RRULE" has an interval greater than 1,
@@ -431,13 +436,17 @@ class Recurrence {
       byYearDay != null ||
       bySetPos != null;
 
-  /// Checks if this recurrence rule is limited, either by [count] or by [until].
+  /// Checks if this recurrence rule is limited,
+  /// either by [count] or by [until].
   bool get hasLimit => count != null || until != null;
 
   /// Copies this recurrence rule with the given attributes.
   ///
-  /// Set [copyByRules] to `false` to not copy any by-rules. This defaults to `true`, meaning by rules are copied by default.
-  /// Set [copyUntil] to `false` to not copy the until attribute. This defaults to `true`, meaning the until attribute is copied by default.
+  /// Set [copyByRules] to `false` to not copy any by-rules.
+  /// This defaults to `true`, meaning by rules are copied by default.
+  ///
+  /// Set [copyUntil] to `false` to not copy the until attribute.
+  /// This defaults to `true`, meaning the until attribute is copied by default.
   Recurrence copyWith({
     RecurrenceFrequency? frequency,
     DateTime? until,
@@ -474,6 +483,7 @@ class Recurrence {
         bySetPos: bySetPos,
       );
     }
+
     return Recurrence(
       frequency ?? this.frequency,
       until: until ?? (copyUntil ? this.until : null),
@@ -599,13 +609,13 @@ class Recurrence {
 
   @override
   String toString() {
-    final buffer = StringBuffer();
-    buffer
+    final buffer = StringBuffer()
       ..write('FREQ=')
       ..write(frequency.name);
+    final until = this.until;
     if (until != null) {
       buffer.write(';UNTIL=');
-      DateHelper.renderDate(until!, buffer);
+      DateHelper.renderDate(until, buffer);
     }
     if (count != null) {
       buffer
@@ -617,56 +627,68 @@ class Recurrence {
         ..write(';INTERVAL=')
         ..write(interval);
     }
+    final bySecond = this.bySecond;
     if (bySecond != null) {
       buffer
         ..write(';BYSECOND=')
-        ..write(bySecond!.join(','));
+        ..write(bySecond.join(','));
     }
+    final byMinute = this.byMinute;
     if (byMinute != null) {
       buffer
         ..write(';BYMINUTE=')
-        ..write(byMinute!.join(','));
+        ..write(byMinute.join(','));
     }
+    final byHour = this.byHour;
     if (byHour != null) {
       buffer
         ..write(';BYHOUR=')
-        ..write(byHour!.join(','));
+        ..write(byHour.join(','));
     }
+    final byWeekDay = this.byWeekDay;
     if (byWeekDay != null) {
       buffer
         ..write(';BYDAY=')
-        ..write(byWeekDay!.join(','));
+        ..write(byWeekDay.join(','));
     }
+    final byMonthDay = this.byMonthDay;
     if (byMonthDay != null) {
       buffer
         ..write(';BYMONTHDAY=')
-        ..write(byMonthDay!.join(','));
+        ..write(byMonthDay.join(','));
     }
+    final byYearDay = this.byYearDay;
     if (byYearDay != null) {
       buffer
         ..write(';BYYEARDAY=')
-        ..write(byYearDay!.join(','));
+        ..write(byYearDay.join(','));
     }
+    final byWeek = this.byWeek;
     if (byWeek != null) {
       buffer
         ..write(';BYWEEK=')
-        ..write(byWeek!.join(','));
+        ..write(byWeek.join(','));
     }
+    final byMonth = this.byMonth;
     if (byMonth != null) {
       buffer
         ..write(';BYMONTH=')
-        ..write(byMonth!.join(','));
+        ..write(byMonth.join(','));
     }
-    if (_startOfWorkWeek != null) {
+    final startOfWorkWeek = _startOfWorkWeek;
+    if (startOfWorkWeek != null) {
+      final days = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
       buffer
-        ..write(';WKST')
-        ..write(_startOfWorkWeek);
+        ..write(';WKST=')
+        ..write(days[startOfWorkWeek - 1]);
     }
+    final bySetPos = this.bySetPos;
     if (bySetPos != null) {
       buffer
         ..write(';BYSETPOS=')
-        ..write(bySetPos!.join(','));
+        ..write(bySetPos.join(','));
     }
+
     return buffer.toString();
   }
 
@@ -742,6 +764,7 @@ class Recurrence {
     if (until.contains('T')) {
       return DateHelper.parseDateTime(until);
     }
+
     return DateHelper.parseDate(until);
   }
 
@@ -754,6 +777,7 @@ class Recurrence {
     if (value == null) {
       throw FormatException('Invalid $fieldName $text in RECUR $content');
     }
+
     return value;
   }
 
@@ -767,12 +791,17 @@ class Recurrence {
     if (listText == null) {
       return null;
     }
+
     return listText.split(',');
   }
 
   static List<int>? _parseIntList(
-      String content, String fieldName, int allowedMin, int allowedMax,
-      [int? disallowedValue]) {
+    String content,
+    String fieldName,
+    int allowedMin,
+    int allowedMax, [
+    int? disallowedValue,
+  ]) {
     final texts = _parseStringList(content, fieldName);
     if (texts == null) {
       return null;
@@ -785,13 +814,15 @@ class Recurrence {
           value > allowedMax ||
           value == disallowedValue) {
         throw FormatException(
-            'Invalid $fieldName: part $text invalid in RECUR $content');
+          'Invalid $fieldName: part $text invalid in RECUR $content',
+        );
       }
       result.add(value);
     }
     if (result.isEmpty) {
       throw FormatException('Invalid $fieldName: empty in RECUR $content');
     }
+
     return result;
   }
 
@@ -835,17 +866,22 @@ class Recurrence {
         final week = int.tryParse(weekText);
         if (week == null || week == 0 || week > 53 || week < -53) {
           throw FormatException(
-              'Invalid week "$weekText" in BYDAY rule part "$text" in RECUR "$content"');
+            'Invalid week "$weekText" in BYDAY rule part "$text" '
+            'in RECUR "$content"',
+          );
         }
         final dayText = text.substring(text.length - 2);
         final day = _weekdaysByName[dayText];
         if (day == null) {
           throw FormatException(
-              'Invalid weekday $dayText in BYDAY rule part $text in RECUR $content');
+            'Invalid weekday $dayText in BYDAY rule part $text '
+            'in RECUR $content',
+          );
         }
         result.add(ByDayRule(day, week: week));
       }
     }
+
     return result;
   }
 
@@ -872,16 +908,20 @@ class Recurrence {
     final weekday = _weekdaysByName[startOfWorkWeekText];
     if (weekday == null) {
       throw FormatException(
-          'Invalid weekday $startOfWorkWeekText in WKST part of RECUR $content');
+        'Invalid weekday $startOfWorkWeekText in WKST part '
+        'of RECUR $content',
+      );
     }
+
     return weekday;
   }
 
+  /// Parses the [Recurrence] role from the given [content].
   static Recurrence parse(String content) {
     final frequency = _parseFrequency(content);
     final until = _parseUntil(content);
     final count = _parseCount(content);
-    final interval = _parseInterval(content) ?? 1;
+    final interval = _parseInterval(content);
     final bySecond = _parseBySecond(content);
     final byMinute = _parseByMinute(content);
     final byHour = _parseByHour(content);
@@ -891,32 +931,37 @@ class Recurrence {
     final byWeek = _parseByWeek(content);
     final byMonth = _parseByMonth(content);
     final bySetPos = _parseBySetPos(content);
-    final startOfWorkWeek = _parseWorkWeekStart(content) ?? DateTime.monday;
-    return Recurrence(frequency,
-        until: until,
-        count: count,
-        interval: interval,
-        bySecond: bySecond,
-        byMinute: byMinute,
-        byHour: byHour,
-        byWeekDay: byWeekDay,
-        byMonthDay: byMonthDay,
-        byYearDay: byYearDay,
-        byWeek: byWeek,
-        byMonth: byMonth,
-        bySetPos: bySetPos,
-        startOfWorkWeek: startOfWorkWeek);
+    final startOfWorkWeek = _parseWorkWeekStart(content);
+
+    return Recurrence(
+      frequency,
+      until: until,
+      count: count,
+      interval: interval,
+      bySecond: bySecond,
+      byMinute: byMinute,
+      byHour: byHour,
+      byWeekDay: byWeekDay,
+      byMonthDay: byMonthDay,
+      byYearDay: byYearDay,
+      byWeek: byWeek,
+      byMonth: byMonth,
+      bySetPos: bySetPos,
+      startOfWorkWeek: startOfWorkWeek,
+    );
   }
 }
 
 /// Contains BYDAY weekday rules
 class ByDayRule {
+  /// Creates a new BYDAY rule
+  const ByDayRule(this.weekday, {this.week});
 
-  ByDayRule(this.weekday, {this.week});
   /// Weekday 1 = Monday / DateTime.monday, 7 = Sunday / DateTime.sunday
   final int weekday;
 
-  /// The week, e.g. 1 for first week, 2 for the second week, -1 for the last week, -2 for the second last week, etc
+  /// The week, e.g. 1 for first week, 2 for the second week, -1 for the
+  /// last week, -2 for the second last week, etc
   ///
   /// This value is relative to the DTSTART / DateTimeStart's month property
   final int? week;
@@ -930,7 +975,8 @@ class ByDayRule {
   int get hashCode => weekday + (week ?? 0) * 10;
 
   @override
-  bool operator ==(Object other) => other is ByDayRule && other.weekday == weekday && other.week == week;
+  bool operator ==(Object other) =>
+      other is ByDayRule && other.weekday == weekday && other.week == week;
 
   @override
   String toString() {
@@ -963,6 +1009,7 @@ class ByDayRule {
       default:
         throw FormatException('Invalid day $weekday - must be between 1 and 7');
     }
+
     return buffer.toString();
   }
 }
@@ -973,7 +1020,6 @@ extension ExtensionOnByDayRuleIteration on Iterable<ByDayRule> {
 }
 
 class TimeOfDayWithSeconds {
-
   TimeOfDayWithSeconds(
       {required this.hour, required this.minute, required this.second});
   final int hour;
@@ -1040,7 +1086,6 @@ class TimeOfDayWithSeconds {
 
 /// This value type is used to identify properties that contain an offset from UTC to local time.
 class UtcOffset {
-
   UtcOffset(String content)
       : offsetHour = _parseHour(content),
         offsetMinute = _parseMinute(content);
@@ -1071,9 +1116,10 @@ class UtcOffset {
   int get hashCode => offsetHour + (offsetMinute * 60);
 
   @override
-  bool operator ==(Object other) => other is UtcOffset &&
-        other.offsetHour == offsetHour &&
-        other.offsetMinute == offsetMinute;
+  bool operator ==(Object other) =>
+      other is UtcOffset &&
+      other.offsetHour == offsetHour &&
+      other.offsetMinute == offsetMinute;
 
   static int _parseHour(String content) {
     if (content.length < 5) {
@@ -1165,7 +1211,6 @@ class DateHelper {
 }
 
 class DateTimeOrDuration {
-
   DateTimeOrDuration(this.dateTime, this.duration)
       : assert(dateTime != null || duration != null,
             'Either duration or dateTime must be set'),
@@ -1202,7 +1247,6 @@ class DateTimeOrDuration {
 
 /// Contains a precise period of time.
 class Period {
-
   Period(this.startDate, {this.duration, this.endDate})
       : assert(duration != null || endDate != null,
             'Either duration or endDate must be set.'),
@@ -1212,6 +1256,7 @@ class Period {
       : startDate = _parseStartDate(content),
         endDate = _parseEndDate(content),
         duration = _parseDuration(content);
+
   /// The startdate
   final DateTime startDate;
 
@@ -1274,7 +1319,6 @@ class _DurationSection {
 
 /// ISO 8601 compliant duration
 class IsoDuration {
-
   IsoDuration({
     this.years = 0,
     this.months = 0,
@@ -1323,14 +1367,15 @@ class IsoDuration {
       seconds * 600;
 
   @override
-  bool operator ==(Object other) => other is IsoDuration &&
-        other.years == years &&
-        other.months == months &&
-        other.weeks == weeks &&
-        other.days == days &&
-        other.hours == hours &&
-        other.minutes == minutes &&
-        other.seconds == seconds;
+  bool operator ==(Object other) =>
+      other is IsoDuration &&
+      other.years == years &&
+      other.months == months &&
+      other.weeks == weeks &&
+      other.days == days &&
+      other.hours == hours &&
+      other.minutes == minutes &&
+      other.seconds == seconds;
 
   @override
   String toString() {
@@ -1377,10 +1422,10 @@ class IsoDuration {
   /// The `days` are converted by assuming 365 days per year and 30 days per month:  `days: years * 365 + months * 30 + weeks * 7 + days`
   /// Compare [addTo] for a better handling of this duration.
   Duration toDuration() => Duration(
-        days: years * 365 + months * 30 + weeks * 7 + days,
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds);
+      days: years * 365 + months * 30 + weeks * 7 + days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds);
 
   /// Adds this duration to the given [input] DateTime.
   ///
@@ -1742,9 +1787,9 @@ extension ExtensionAlarmAction on AlarmAction {
 
 /// Contains all relevant binary information
 class Binary {
-
   Binary(
       {required this.value, required this.mediaType, required this.encoding});
+
   /// The data in textual form
   final String value;
 
@@ -1757,7 +1802,6 @@ class Binary {
 
 /// Provides access to a geolocation
 class GeoLocation {
-
   GeoLocation(this.latitude, this.longitude);
   final double latitude;
   final double longitude;
@@ -1925,9 +1969,9 @@ extension ExtensionTimeTransparency on TimeTransparency {
 /// Example for this is to cancel an event for one or several attendees.
 /// Compare [VCalendar.cancelEventForAttendees]
 class AttendeeCancelResult {
-
   const AttendeeCancelResult(
       this.requestForCancelledAttendees, this.requestUpdateForGroup);
+
   /// The request / info for attendees for which the participation was cancelled:
   final VCalendar requestForCancelledAttendees;
   // The request / update into for the remaining attendees:
@@ -1938,8 +1982,8 @@ class AttendeeCancelResult {
 ///
 /// Compare [VCalendar.delegate]
 class AttendeeDelegatedResult {
-
   AttendeeDelegatedResult(this.requestForDelegatee, this.replyForOrganizer);
+
   /// The request for the attendee to which the particaption should be delegated:
   final VCalendar requestForDelegatee;
 
