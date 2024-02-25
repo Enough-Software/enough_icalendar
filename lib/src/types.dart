@@ -1315,6 +1315,7 @@ class Period {
     if (!endText.startsWith('P')) {
       return null;
     }
+
     return IsoDuration.parse(endText);
   }
 
@@ -1322,6 +1323,7 @@ class Period {
     final startDate = _parseStartDate(textValue);
     final duration = _parseDuration(textValue);
     final endDate = _parseEndDate(textValue);
+
     return Period(startDate, duration: duration, endDate: endDate);
   }
 }
@@ -1354,8 +1356,11 @@ class IsoDuration {
   final bool isNegativeDuration;
 
   static _DurationSection _parseSection(
-      String content, int startIndex, String designatur,
-      {int maxIndex = -1}) {
+    String content,
+    int startIndex,
+    String designatur, {
+    int maxIndex = -1,
+  }) {
     final index = content.indexOf(designatur, startIndex);
     if (index == -1 || (maxIndex != -1 && index > maxIndex)) {
       return _DurationSection(0, startIndex);
@@ -1368,6 +1373,7 @@ class IsoDuration {
     if (parsed == null) {
       throw FormatException('Invalid duration: $content (for part [$text])');
     }
+
     return _DurationSection(parsed, index + 1);
   }
 
@@ -1437,10 +1443,11 @@ class IsoDuration {
   /// The `days` are converted by assuming 365 days per year and 30 days per month:  `days: years * 365 + months * 30 + weeks * 7 + days`
   /// Compare [addTo] for a better handling of this duration.
   Duration toDuration() => Duration(
-      days: years * 365 + months * 30 + weeks * 7 + days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds);
+        days: years * 365 + months * 30 + weeks * 7 + days,
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds,
+      );
 
   /// Adds this duration to the given [input] DateTime.
   ///
@@ -1455,10 +1462,12 @@ class IsoDuration {
     final intermediate = DateTime(y, m, input.day, input.hour, input.minute,
         input.second, input.millisecond, input.microsecond);
     final duration = Duration(
-        days: weeks * 7 + days,
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds);
+      days: weeks * 7 + days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+    );
+
     return intermediate.add(duration);
   }
 
@@ -1509,6 +1518,34 @@ class IsoDuration {
       final secondsResult = _parseSection(textValue, startIndex, 'S');
       seconds = secondsResult.result;
     }
+
+    return IsoDuration(
+      years: years,
+      months: months,
+      weeks: weeks,
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+      isNegativeDuration: isNegativeDuration,
+    );
+  }
+}
+
+/// Allows to handle durations
+extension DurationExtension on Duration {
+  /// Converts this duration to an ISO 8601 compliant duration.
+  IsoDuration toIso() {
+    final isNegativeDuration = isNegative;
+
+    // Convert the absolute value of each duration component
+    final years = inDays ~/ 365;
+    final months = (inDays % 365) ~/ 30;
+    final weeks = ((inDays % 365) % 30) ~/ 7;
+    final days = ((inDays % 365) % 30) % 7;
+    final hours = inHours % 24;
+    final minutes = inMinutes % 60;
+    final seconds = inSeconds % 60;
 
     return IsoDuration(
       years: years,
