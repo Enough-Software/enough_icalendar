@@ -315,7 +315,7 @@ class Recurrence {
   /// Checks if there is at least one [bySecond] modifier
   ///
   /// Compare [bySecond]
-  bool get hasBySecond => bySecond?.isNotEmpty == true;
+  bool get hasBySecond => bySecond?.isNotEmpty ?? false;
 
   /// `BYMINUTE` modifier / limiter for this Recurrence.
   ///
@@ -325,7 +325,7 @@ class Recurrence {
   /// Checks if there is at least one [byMinute] modifier
   ///
   /// Compare [byMinute]
-  bool get hasByMinute => byMinute?.isNotEmpty == true;
+  bool get hasByMinute => byMinute?.isNotEmpty ?? false;
 
   /// `BYHOUR` modifier / limiter for this Recurrence.
   ///
@@ -345,14 +345,17 @@ class Recurrence {
   /// Checks if there is at least one [byWeekDay] modifier
   ///
   /// Compare [byWeekDay]
-  bool get hasByWeekDay => byWeekDay?.isNotEmpty == true;
+  bool get hasByWeekDay => byWeekDay?.isNotEmpty ?? false;
 
   /// Checks if there is at least one by week day modifier with a
   /// weeks number set.
   ///
   /// Compare [hasByWeekDay], [byWeekDay]
-  bool get hasByWeekDayWithWeeks =>
-      hasByWeekDay && byWeekDay!.any((day) => day.week != null);
+  bool get hasByWeekDayWithWeeks {
+    final byWeekDay = this.byWeekDay;
+
+    return byWeekDay != null && byWeekDay.any((day) => day.week != null);
+  }
 
   /// `BYMONTHDAY` modifier / limiter for this Recurrence.
   final List<int>? byMonthDay;
@@ -694,28 +697,39 @@ class Recurrence {
 
   /// Tries to convert this recurrence rule to human readable text
   ///
-  /// When you specify the optional [startDate], the week day will be taken into account for recurrences with a weekly frequency.
-  /// You can specify the used [localization] directly, specify it via the [language] enum or set the [languageCode]. By default US American English is used.
-  /// For example `RRULE:FREQ=WEEKLY;COUNT=10` would be converted to `weekly, 10 times`, or when the start date falls on a Tuesday, `every Tuesday`, for example.
-  String toHumanReadableText(
-      {DateTime? startDate,
-      RruleL10n? localization,
-      SupportedLanguage? language,
-      String? languageCode}) {
+  /// When you specify the optional [startDate], the week day will be
+  /// taken into account for recurrences with a weekly frequency.
+  ///
+  /// You can specify the used [localization] directly, specify it via the
+  /// [language] enum or set the [languageCode].
+  /// By default US American English is used.
+  ///
+  /// For example
+  /// `RRULE:FREQ=WEEKLY;COUNT=10` would be converted to
+  /// `weekly, 10 times`, or when the start date falls on a Tuesday,
+  /// `every Tuesday`, for example.
+  String toHumanReadableText({
+    DateTime? startDate,
+    RruleL10n? localization,
+    SupportedLanguage? language,
+    String? languageCode,
+  }) {
     final usedLocalization = localization ??
         ((language != null)
             ? RecurrenceRuleToTextEncoder.getForLanguage(language)
             : RecurrenceRuleToTextEncoder.getForLanguageCode(
                 languageCode ?? 'en'));
     final encoder = RecurrenceRuleToTextEncoder(usedLocalization);
+
     return encoder.convert(this, startDate: startDate);
   }
 
   static String? _lastContent;
   static Map<String, String>? _lastResult;
   static Map<String, String> _split(String content) {
-    if (content == _lastContent) {
-      return _lastResult!;
+    final lastResult = _lastResult;
+    if (content == _lastContent && lastResult != null) {
+      return lastResult;
     }
     final result = <String, String>{};
     final pairs = content.split(';');
@@ -1221,11 +1235,11 @@ class DateTimeOrDuration {
 
   @override
   String toString() {
-    if (dateTime != null) {
-      return DateHelper.toDateTimeString(dateTime!);
-    } else {
-      return duration!.toString();
-    }
+    final dateTime = this.dateTime;
+
+    return dateTime != null
+        ? DateHelper.toDateTimeString(dateTime)
+        : duration?.toString() ?? '';
   }
 
   static DateTimeOrDuration parse(String textValue, ValueType type) {
@@ -1820,23 +1834,23 @@ class GeoLocation {
 ///
 /// Compare https://datatracker.ietf.org/doc/html/rfc5546
 enum Method {
-  /// Post notification of an event / free-busy timeslot / todo / journal.
+  // Post notification of an event / free-busy timeslot / `todo` / journal.
   ///
-  /// Used primarily as a method of advertising the existence of an event / todo / journal / timeslot.
+  // Used primarily as a method of advertising the existence of an event / `todo` / journal / timeslot.
   ///
   /// Applicable for [VEvent], [VFreeBusy], [VTodo], [VJournal]
   publish,
 
-  /// Make a request for an event, ask for free-busy timeslots, assign a todo.
+  // Make a request for an event, ask for free-busy timeslots, assign a `todo`.
   ///
   /// This is an explicit invitation to one or more Attendees.
-  /// Requests are also used to update or change an existing event / todo.
+  // Requests are also used to update or change an existing event / `todo`.
   /// Clients that cannot handle REQUEST MAY degrade the event to view it as a PUBLISH.
   ///
   /// Applicable for [VEvent], [VFreeBusy], [VTodo]
   request,
 
-  /// Reply to an event / free-busy / todo request.
+  // Reply to an event / free-busy / `todo` request.
   ///
   /// Event attendees may set their status (PARTSTAT) to ACCEPTED, DECLINED, TENTATIVE, or DELEGATED.
   /// Todo attendees MAY set PARTSTAT to ACCEPTED, DECLINED, TENTATIVE, DELEGATED, PARTIAL, and COMPLETED.
@@ -1845,17 +1859,17 @@ enum Method {
   /// Compare [ParticipantStatus]
   reply,
 
-  /// Add one or more instances to an existing event / todo / journal.
+  // Add one or more instances to an existing event / `todo` / journal.
   ///
   /// Applicable for [VEvent], [VTodo], [VJournal]
   add,
 
-  /// Cancel one or more instances of an existing event / todo / journal.
+  // Cancel one or more instances of an existing event / `todo` / journal.
   ///
   /// Applicable for [VEvent], [VTodo], [VJournal]
   cancel,
 
-  /// A request is sent to an Organizer by an Attendee asking for the latest version of an event / todo to be resent to the requester.
+  // A request is sent to an Organizer by an Attendee asking for the latest version of an event / `todo` to be resent to the requester.
   ///
   /// Applicable for [VEvent], [VTodo]
   refresh,

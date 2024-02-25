@@ -753,7 +753,7 @@ void main() {
       expect(ruleProp.rule.frequency, RecurrenceFrequency.daily);
       expect(ruleProp.rule.byHour, [9, 10, 11, 12, 13, 14, 15, 16]);
       expect(ruleProp.rule.byMinute, [0, 20, 40]);
-      // TODO adapt test case when BYHOUR and BYMINUTE are supported
+      // TODOadapt test case when BYHOUR and BYMINUTE are supported
       expect(ruleProp.rule.toHumanReadableText(), 'Daily');
       expect(ruleProp.rule.toHumanReadableText(languageCode: 'de'), 'Täglich');
     });

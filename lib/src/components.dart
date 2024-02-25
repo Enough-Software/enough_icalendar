@@ -637,7 +637,7 @@ class VCalendar extends VComponent {
       comment: comment,
       attendeeFilter: (attendee) => cancelledAttendeeEmails != null
           ? cancelledAttendeeEmails.contains(attendee.email)
-          : cancelledAttendees!.any((a) => a.uri == attendee.uri),
+          : cancelledAttendees?.any((a) => a.uri == attendee.uri) ?? false,
     );
     final groupChange = copy() as VCalendar;
     final event = groupChange.event;
@@ -647,8 +647,10 @@ class VCalendar extends VComponent {
               (attendee) => cancelledAttendeeEmails.contains(attendee.email),
             )
           : event.attendees.where(
-              (attendee) => cancelledAttendees!
-                  .any((cancelled) => cancelled.uri == attendee.uri),
+              (attendee) =>
+                  cancelledAttendees
+                      ?.any((cancelled) => cancelled.uri == attendee.uri) ??
+                  false,
             );
       for (final attendee in attendees) {
         attendee
@@ -1207,11 +1209,11 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
           RecurrenceDateProperty.create(
               RecurrenceDateProperty.propertyNameExDate, value));
 
-  /// Retrieves the UID of a related event, todo or journal.
+  // Retrieves the UID of a related event, `todo` or journal.
   String? get relatedTo =>
       getProperty<TextProperty>(TextProperty.propertyNameRelatedTo)?.text;
 
-  /// Sets the UID of the related event, todo or journal
+  // Sets the UID of the related event, `todo` or journal
   set relatedTo(String? value) => setOrRemoveProperty(
       TextProperty.propertyNameRelatedTo,
       TextProperty.create(TextProperty.propertyNameRelatedTo, value));
@@ -1460,7 +1462,7 @@ class VTodo extends _EventTodoJournalComponent {
   VTodo({VComponent? parent}) : super(componentName, parent);
   static const String componentName = 'VTODO';
 
-  /// The status of this todo
+  // The status of this `todo`
   TodoStatus get status =>
       getProperty<StatusProperty>(StatusProperty.propertyName)?.todoStatus ??
       TodoStatus.unknown;

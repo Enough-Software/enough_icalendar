@@ -3,13 +3,20 @@ description: iCalendar library to parse, generate and respond to iCal / ics
   invites. Fully compliant with RFC 5545 (iCalendar) and RFC 5546 (iTIP).
 version: 0.15.0
 homepage: https://github.com/Enough-Software/enough_icalendar
+topics: 
+ - icalendar
+ - ics
+ - ical
+ - rfc5545
+ - rfc5546
+ - itip
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
 
 dependencies:
   collection: ^1.17.1
-  intl: ^0.18.0
+  intl: ^0.19.0
 
 dev_dependencies:
   dart_code_metrics: ^5.6.0

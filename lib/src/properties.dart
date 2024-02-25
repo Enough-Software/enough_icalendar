@@ -58,7 +58,7 @@ class Property {
     if (value == null) {
       parameters.remove(type.typeName);
     } else {
-      parameters[type.typeName!] = value;
+      parameters[type.typeName ?? ''] = value;
     }
   }
 
@@ -73,8 +73,10 @@ class Property {
       _getIndex(content, searchNameEndIndex: false);
 
   static int _getIndex(String content, {bool searchNameEndIndex = true}) {
-    final runes =
-        content == _lastContent ? _lastRunes! : content.runes.toList();
+    final lastRunes = _lastRunes;
+    final runes = content == _lastContent && lastRunes != null
+        ? lastRunes
+        : content.runes.toList();
     var isInQuote = false;
     var isLastBackSlash = false;
     int? index;
