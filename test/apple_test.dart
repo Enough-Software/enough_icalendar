@@ -24,7 +24,7 @@ void main() {
 
   test('unwrap Apple Location', () {
     const input =
-        'LOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia\r\n';
+        'BEGIN:VEVENT\r\nLOCATION:Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia\r\n';
     final lines = VComponent.unfold(input);
     expect(lines, isNotEmpty);
     expect(lines.first, input.split('\r\n').first);

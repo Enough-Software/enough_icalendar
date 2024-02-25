@@ -211,27 +211,35 @@ abstract class VComponent {
     var current = root;
     for (var i = 1; i < lines.length; i++) {
       final line = lines[i];
-      if (line.startsWith('BEGIN:')) {
-        final child = _createComponent(line, parent: current);
-        current.children.add(child);
-        current = child;
-      } else if (line.startsWith('END:')) {
-        final expected = 'END:${current.name}';
-        if (line != expected) {
-          throw FormatException('Received [$line] but expected [$expected]');
+      try {
+        if (line.startsWith('BEGIN:')) {
+          final child = _createComponent(line, parent: current);
+          current.children.add(child);
+          current = child;
+        } else if (line.startsWith('END:')) {
+          final expected = 'END:${current.name}';
+          if (line != expected) {
+            throw FormatException('Received [$line] but expected [$expected]');
+          }
+          current.checkValidity();
+          final parent = current.parent;
+          if (parent != null) {
+            current = parent;
+          }
+        } else {
+          if (line.trim().isEmpty) {
+            continue;
+          }
+          final property =
+              Property.parseProperty(line, customParser: customParser);
+          current.properties.add(property);
         }
-        current.checkValidity();
-        final parent = current.parent;
-        if (parent != null) {
-          current = parent;
-        }
-      } else {
-        if (line.trim().isEmpty) continue;
-        final property =
-            Property.parseProperty(line, customParser: customParser);
-        current.properties.add(property);
+      } on FormatException catch (e) {
+        print('Error parsing line $i: "$line"');
+        rethrow;
       }
     }
+
     return root;
   }
 
@@ -275,7 +283,7 @@ abstract class VComponent {
       case 'BEGIN:VFREEBUSY':
         return VFreeBusy(parent: parent);
       default:
-        throw FormatException('Unknown component: $line');
+        throw FormatException('Unknown component: "$line"');
     }
   }
 
@@ -283,13 +291,33 @@ abstract class VComponent {
   static List<String> unfold(
     String input,
   ) {
-    final containsStandardCompliantLineBreaks = input.contains('\r\n');
-    if (containsStandardCompliantLineBreaks) {
-      return unfoldStandardCompliantLines(input.split('\r\n'));
+    _UnfoldData getUnfoldData(String input) {
+      final firstStandardLineBreak = input.indexOf('\r\n');
+      final firstUnixLineBreak = input.indexOf('\n');
+
+      if (firstStandardLineBreak != -1 &&
+          (firstUnixLineBreak == -1 ||
+              firstStandardLineBreak < firstUnixLineBreak)) {
+        return _UnfoldData(input, hasStandardLineBreaks: true);
+      }
+
+      if (firstStandardLineBreak != -1 && firstUnixLineBreak != -1) {
+        return _UnfoldData(
+          input.replaceAll('\r\n', '\n'),
+          hasStandardLineBreaks: false,
+        );
+      }
+
+      return _UnfoldData(input, hasStandardLineBreaks: false);
+    }
+
+    final data = getUnfoldData(input);
+    if (data.hasStandardLineBreaks) {
+      return unfoldStandardCompliantLines(data.input.split('\r\n'));
     }
     final output = <String>[];
     var buffer = StringBuffer();
-    final ascii = input.runes.toList();
+    final ascii = data.input.runes.toList();
     var isInQuote = false;
     for (var i = 0; i < ascii.length; i++) {
       final rune = ascii[i];
@@ -2049,4 +2077,11 @@ class VFreeBusy extends _UidMandatoryComponent {
 
   @override
   VComponent instantiate({VComponent? parent}) => VFreeBusy(parent: parent);
+}
+
+class _UnfoldData {
+  _UnfoldData(this.input, {required this.hasStandardLineBreaks});
+
+  final String input;
+  final bool hasStandardLineBreaks;
 }

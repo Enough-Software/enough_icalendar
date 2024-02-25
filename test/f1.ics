@@ -1,0 +1,4529 @@
+BEGIN:VCALENDAR
+PRODID:-//E-DIARY//E-DIARY 1.0//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-WR-CALNAME:Formula 1
+X-Built-On-Cache-Miss:true
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Monaco
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240524T113000Z
+DTEND:20240524T123000Z
+SUMMARY:🏎 FORMULA 1 GRAND PRIX DE MONACO 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b20
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgKx/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgKF/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgKP/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgL1/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgLb/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgLj/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgLp/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgLy/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ LR/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgM4/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgMG/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Monaco
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240524T150000Z
+DTEND:20240524T160000Z
+SUMMARY:🏎 FORMULA 1 GRAND PRIX DE MONACO 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b21
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgN3/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgNd/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgNr/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgNC/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgNL/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgNS/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgP3/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgPc/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ Pn/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgPv/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgQ1/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Monaco
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240525T140000Z
+DTEND:20240525T150000Z
+SUMMARY:⏱️ FORMULA 1 GRAND PRIX DE MONACO 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b23
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgSL/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgSV/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgT3/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgT9/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgTj/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgTt/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgTz/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgTM/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ TX/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgV6/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgVC/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Australia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240324T040000Z
+DTEND:20240324T060000Z
+SUMMARY:🏁 FORMULA 1 AUSTRALIAN GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b15
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgdg/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgdv/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgdG/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgdR/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgdY/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgf9/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgfn/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgfy/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ fL/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgfX/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdggw/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Netherlands
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240824T093000Z
+DTEND:20240824T103000Z
+SUMMARY:🏎 FORMULA 1 DUTCH GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b1d
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgBC/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgBP/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgBY/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgCb/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgCn/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgCz/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgCM/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgCX/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ D7/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgDh/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgDT/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Netherlands
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240824T130000Z
+DTEND:20240824T140000Z
+SUMMARY:⏱️ FORMULA 1 DUTCH GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b1e
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgF3/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgFb/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgFl/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgFw/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgFG/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgFR/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgG4/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgGc/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ Gm/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgGw/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgHl/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Netherlands
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240825T130000Z
+DTEND:20240825T150000Z
+SUMMARY:🏁 FORMULA 1 DUTCH GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b1f
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgHC/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgHL/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgHS/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgJ3/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgJ9/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgJk/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgJt/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgJG/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ JQ/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgJZ/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgKm/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Spain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240623T130000Z
+DTEND:20240623T150000Z
+SUMMARY:🏁 FORMULA 1 GRAN PREMIO DE ESPAÑA 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b46
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkmX/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkn5/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdknj/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkns/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdknS/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkp1/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkp6/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkpd/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ pp/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkpy/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkpZ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240831T140000Z
+DTEND:20240831T150000Z
+SUMMARY:⏱️ FORMULA 1 GRAN PREMIO D’ITALIA 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b32
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdhz4/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdhzg/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdhzn/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdhzv/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdhzH/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdhzN/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdhzY/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdhB6/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ Bh/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdhBm/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdhBS/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240901T130000Z
+DTEND:20240901T150000Z
+SUMMARY:🏁 FORMULA 1 GRAN PREMIO D’ITALIA 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b33
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdhC3/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdhCc/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdhCm/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdhCv/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdhCB/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdhCK/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdhCS/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdhCZ/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ D8/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdhDp/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdhF6/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Austria
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240629
+DTEND;VALUE=DATE:20240630
+SUMMARY:🏁 FORMULA 1 AUSTRIAN GRAND PRIX 2024 - Sprint Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b2c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhhZ/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhjb/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhjk/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhjt/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhjC/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhjM/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhjW/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ k6/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhkh/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhky/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhl4/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:China
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240419
+DTEND;VALUE=DATE:20240420
+SUMMARY:🏎 FORMULA 1 CHINESE GRAND PRIX 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e5026018aff
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdf6R/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdf71/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdf79/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdf7n/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdf7x/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdf7J/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdf7R/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ 82/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf8b/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdf8j/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdf8T/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:China
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240420
+DTEND;VALUE=DATE:20240421
+SUMMARY:🏁 FORMULA 1 CHINESE GRAND PRIX 2024 - Sprint Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e107842e6ad
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdf1V/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdf23/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdf2d/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdf2p/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdf2v/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdf2F/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdf2M/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ 2V/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf37/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdf3h/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdf3Y/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:China
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240421
+DTEND;VALUE=DATE:20240422
+SUMMARY:🏁 FORMULA 1 CHINESE GRAND PRIX 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e5026018b01
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdfcl/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdfcv/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdfcD/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdfcN/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdfd1/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdfdb/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdfdn/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ dB/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfdM/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfdY/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdffp/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Hungary
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240719T113000Z
+DTEND:20240719T123000Z
+SUMMARY:🏎 FORMULA 1 HUNGARIAN GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e5026018b02
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdffG/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdffN/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdffY/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfg8/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfgq/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfgF/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfgN/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfgV/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ h6/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfhh/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfhS/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Hungary
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240719T150000Z
+DTEND:20240719T160000Z
+SUMMARY:🏎 FORMULA 1 HUNGARIAN GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e5026018b03
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfj5/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfjd/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfjn/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfjC/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfjR/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfkf/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfkt/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfkD/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ kR/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfl1/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdflD/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Hungary
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240720T103000Z
+DTEND:20240720T113000Z
+SUMMARY:🏎 FORMULA 1 HUNGARIAN GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b04
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdflT/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfmc/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfmj/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfmt/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfmG/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfmS/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfnW/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfp5/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ pd/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfpw/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfpY/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Hungary
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240720T140000Z
+DTEND:20240720T150000Z
+SUMMARY:⏱️ FORMULA 1 HUNGARIAN GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b05
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfqc/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfqk/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfqt/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfqF/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfqR/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfr3/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfrf/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfrm/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ rB/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfrN/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfst/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Hungary
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240721T130000Z
+DTEND:20240721T150000Z
+SUMMARY:🏁 FORMULA 1 HUNGARIAN GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b06
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfsH/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfsP/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdft6/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdftf/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdftm/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdftw/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdftM/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdftT/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ v6/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfvh/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfvX/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Singapore
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240920T093000Z
+DTEND:20240920T103000Z
+SUMMARY:🏎 FORMULA 1 SINGAPORE GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b07
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfw8/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfwk/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfwx/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfwF/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfx5/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfxf/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfxq/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfxF/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ xR/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfy4/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfyD/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Singapore
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240920T130000Z
+DTEND:20240920T140000Z
+SUMMARY:🏎 FORMULA 1 SINGAPORE GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b08
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfyS/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfz3/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfzd/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfzp/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfzB/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfzL/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfzW/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfB7/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ Bk/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfBw/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfC7/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Singapore
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240921T093000Z
+DTEND:20240921T103000Z
+SUMMARY:🏎 FORMULA 1 SINGAPORE GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b09
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfCp/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfCy/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfCK/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfCW/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfD7/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfDh/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfDq/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfDG/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ DR/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfF2/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfFC/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Singapore
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240921T130000Z
+DTEND:20240921T140000Z
+SUMMARY:⏱️ FORMULA 1 SINGAPORE GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b0a
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfFR/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfFY/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfG9/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfGn/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfGy/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfGL/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfGW/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfH5/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ Hj/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfHv/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfJm/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Singapore
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240922T120000Z
+DTEND:20240922T140000Z
+SUMMARY:🏁 FORMULA 1 SINGAPORE GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b0b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdfJv/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdfJB/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdfJW/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdfK3/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdfKc/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdfKq/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdfKx/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdfKR/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf
+ KZ/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdfLc/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdfLQ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Qatar
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241129
+DTEND;VALUE=DATE:20241130
+SUMMARY:🏎 FORMULA 1 QATAR GRAND PRIX 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b0c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdfM6/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdfMl/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdfMv/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdfMG/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdfMP/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdfMV/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdfN7/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ Nc/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfNk/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfNs/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdfNV/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Qatar
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241130
+DTEND;VALUE=DATE:20241201
+SUMMARY:🏁 FORMULA 1 QATAR GRAND PRIX 2024 - Sprint Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b0f
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdfTM/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdfTX/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdfV7/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdfVk/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdfVw/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdfVK/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdfVW/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ W5/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfWg/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfWt/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdfX7/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Qatar
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241201
+DTEND;VALUE=DATE:20241202
+SUMMARY:🏁 FORMULA 1 QATAR GRAND PRIX 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b10
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdfXt/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdfXG/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdfXQ/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdfY3/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdfYd/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdfYs/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdfYD/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ YN/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfZk/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfZv/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdg14/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Australia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240322T013000Z
+DTEND:20240322T023000Z
+SUMMARY:🏎 FORMULA 1 AUSTRALIAN GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b11
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdg1k/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdg1w/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdg1L/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdg2T/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdg31/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdg39/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdg3x/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdg3K/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ 3Y/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdg49/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdg4P/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Australia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240322T050000Z
+DTEND:20240322T060000Z
+SUMMARY:🏎 FORMULA 1 AUSTRALIAN GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b12
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdg56/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdg5h/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdg5r/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdg5H/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdg5S/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdg65/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdg6w/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdg6M/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ 6S/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdg71/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdg7s/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Australia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240323T013000Z
+DTEND:20240323T023000Z
+SUMMARY:🏎 FORMULA 1 AUSTRALIAN GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b13
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdg7K/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdg7Y/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdg89/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdg8j/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdg8q/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdg8B/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdg8P/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdg8X/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ 97/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdg9l/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdg9Q/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Australia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240323T050000Z
+DTEND:20240323T060000Z
+SUMMARY:⏱️ FORMULA 1 AUSTRALIAN GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b14
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgb6/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgbb/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgbr/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgbz/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgbK/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgbT/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgc5/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgcc/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ cl/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgcx/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgd5/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Japan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240405T023000Z
+DTEND:20240405T033000Z
+SUMMARY:🏎 FORMULA 1 JAPANESE GRAND PRIX 2024  - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b16
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdggR/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgh1/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgh9/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdghl/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdghw/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdghG/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdghR/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgj2/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ jb/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgjp/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgk1/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Japan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240405T060000Z
+DTEND:20240405T070000Z
+SUMMARY:🏎 FORMULA 1 JAPANESE GRAND PRIX 2024  - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b17
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgkl/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgkw/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgkH/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgkX/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgl4/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdglk/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdglw/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdglJ/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ lS/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgm1/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgmz/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Japan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240406T023000Z
+DTEND:20240406T033000Z
+SUMMARY:🏎 FORMULA 1 JAPANESE GRAND PRIX 2024  - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b18
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgmQ/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgn1/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgnb/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgnl/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgny/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgnF/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgnQ/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgp1/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ pb/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgpw/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgq3/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Japan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240406T060000Z
+DTEND:20240406T070000Z
+SUMMARY:⏱️ FORMULA 1 JAPANESE GRAND PRIX 2024  - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b19
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgqh/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgqr/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgqD/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgqQ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgr1/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgr6/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgrk/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgry/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ rL/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgrR/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgsp/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Japan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240407T050000Z
+DTEND:20240407T070000Z
+SUMMARY:🏁 FORMULA 1 JAPANESE GRAND PRIX 2024  - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b1a
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgsF/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgsQ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgt2/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgtc/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgtm/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgts/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgtD/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgtM/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ tY/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgvd/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgvN/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Netherlands
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240823T103000Z
+DTEND:20240823T113000Z
+SUMMARY:🏎 FORMULA 1 DUTCH GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b1b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgvZ/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgwb/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgwm/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgww/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgwH/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgwQ/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgwZ/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgx8/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ xm/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgxx/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgy9/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Netherlands
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240823T140000Z
+DTEND:20240823T150000Z
+SUMMARY:🏎 FORMULA 1 DUTCH GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b1c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgyl/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgyt/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgyF/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgyP/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgyZ/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgz7/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgzh/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgzq/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ zx/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgzK/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgBn/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Monaco
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240525T103000Z
+DTEND:20240525T113000Z
+SUMMARY:🏎 FORMULA 1 GRAND PRIX DE MONACO 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b22
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgQc/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgQm/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgQv/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgQF/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgQN/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgQY/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgR7/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgRj/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ Rr/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgRF/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgSw/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Monaco
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240526T130000Z
+DTEND:20240526T150000Z
+SUMMARY:🏁 FORMULA 1 GRAND PRIX DE MONACO 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b24
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgVP/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgVT/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgW3/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgWb/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgWj/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgWv/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgWC/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgWK/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ WR/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgX3/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdgXB/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Canada
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240607T173000Z
+DTEND:20240607T183000Z
+SUMMARY:🏎 FORMULA 1 GRAND PRIX DU CANADA 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b25
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdgXR/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdgY2/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdgYb/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdgYm/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdgYt/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdgYD/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdgYP/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdgZd/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdg
+ Zp/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdgZB/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdh1K/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Canada
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240607T210000Z
+DTEND:20240607T220000Z
+SUMMARY:🏎 FORMULA 1 GRAND PRIX DU CANADA 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b26
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdh1V/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdh2k/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdh2v/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdh2G/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdh2R/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdh31/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdh3c/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdh3p/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ 3z/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdh3K/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdh4g/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Canada
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240608T163000Z
+DTEND:20240608T173000Z
+SUMMARY:🏎 FORMULA 1 GRAND PRIX DU CANADA 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b27
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdh4t/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdh4B/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdh4K/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdh4W/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdh54/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdh59/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdh5l/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdh5t/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ 5D/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdh5P/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdh6q/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Canada
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240608T200000Z
+DTEND:20240608T210000Z
+SUMMARY:⏱️ FORMULA 1 GRAND PRIX DU CANADA 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b28
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdh6H/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdh6N/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdh6Y/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdh7b/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdh7f/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdh7p/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdh7w/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdh7G/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ 7S/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdh82/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdh8H/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Canada
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240609T180000Z
+DTEND:20240609T200000Z
+SUMMARY:🏁 FORMULA 1 GRAND PRIX DU CANADA 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b29
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdh8W/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdh96/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdh9j/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdh9r/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdh9D/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdh9Q/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdhb2/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdhbd/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ bm/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdhbv/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdhc6/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240831T103000Z
+DTEND:20240831T113000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO D’ITALIA 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b31
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdhwP/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdhx1/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdhx9/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdhxj/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdhxt/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdhxD/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdhxQ/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdhy1/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ yc/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdhyr/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdhyT/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Austria
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240628
+DTEND;VALUE=DATE:20240629
+SUMMARY:🏎 FORMULA 1 AUSTRIAN GRAND PRIX 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b2a
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhck/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhcw/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhcC/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhcL/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhcV/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhd5/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhdd/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ dn/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhdv/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhdF/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhfj/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Austria
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240630
+DTEND;VALUE=DATE:20240701
+SUMMARY:🏁 FORMULA 1 AUSTRIAN GRAND PRIX 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b2e
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhp4/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhp9/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhpn/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhpx/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhpH/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhpT/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhq4/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ qg/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhqp/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhqC/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhr8/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240830T113000Z
+DTEND:20240830T123000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO D’ITALIA 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b2f
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdhrq/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdhry/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdhrG/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdhrM/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdhrS/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdhs2/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdhsc/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdhsq/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ sB/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdhsM/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdht9/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240830T150000Z
+DTEND:20240830T160000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO D’ITALIA 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b30
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdhtj/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdhtr/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdhtJ/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdhtR/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdhv2/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdhv8/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdhvh/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdhvs/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdh
+ vD/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdhvM/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdhwC/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241018
+DTEND;VALUE=DATE:20241019
+SUMMARY:🏎 FORMULA 1 UNITED STATES GRAND PRIX 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b34
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhFh/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhFp/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhFx/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhFH/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhFP/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhFX/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhG3/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ Gc/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhGm/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhGs/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhGX/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241019
+DTEND;VALUE=DATE:20241020
+SUMMARY:🏁 FORMULA 1 UNITED STATES GRAND PRIX 2024 - Sprint Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b0
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhKC/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhKZ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhL8/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhLk/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhLt/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhLD/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhLR/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ M3/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhMc/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhMr/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhN2/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241020
+DTEND;VALUE=DATE:20241021
+SUMMARY:🏁 FORMULA 1 UNITED STATES GRAND PRIX 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b2
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhQC/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhQQ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhQX/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhR9/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhRk/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhRv/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhRJ/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ RR/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhS3/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhS9/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhSx/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240503
+DTEND;VALUE=DATE:20240504
+SUMMARY:🏎 FORMULA 1 MIAMI GRAND PRIX 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b3
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhSR/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhT1/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhT8/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhTj/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhTp/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhTB/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhTM/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ TV/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhVg/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhVp/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhVV/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240504
+DTEND;VALUE=DATE:20240505
+SUMMARY:🏁 FORMULA 1 MIAMI GRAND PRIX 2024 - Sprint Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b5
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhYc/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhYm/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhYw/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhYJ/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhYS/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhZ9/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhZj/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ Zv/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhZF/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhZM/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdj1k/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20240505
+DTEND;VALUE=DATE:20240506
+SUMMARY:🏁 FORMULA 1 MIAMI GRAND PRIX 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b7
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdj3H/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdj3R/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdj3Z/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdj48/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdj4l/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdj4t/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdj4B/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ 4N/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj4Y/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdj59/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdj5J/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Saudi Arabia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240307T133000Z
+DTEND:20240307T143000Z
+SUMMARY:🏎 FORMULA 1 SAUDI ARABIAN GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b8
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdj5T/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdj64/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdj6c/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdj6k/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdj6r/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdj6N/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdj6V/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdj74/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ 7d/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdj7p/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdj7Q/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Saudi Arabia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240307T170000Z
+DTEND:20240307T180000Z
+SUMMARY:🏎 FORMULA 1 SAUDI ARABIAN GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b9
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdj7Z/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdj8b/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdj8f/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdj8t/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdj8C/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdj8L/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdj8Y/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdj98/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ 9h/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdj9r/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjb6/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Saudi Arabia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240308T133000Z
+DTEND:20240308T143000Z
+SUMMARY:🏎 FORMULA 1 SAUDI ARABIAN GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6ba
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjbh/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjbt/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjbD/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjbQ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjc1/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjc9/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjcj/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjcs/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ cH/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjcS/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjdn/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Saudi Arabia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240308T170000Z
+DTEND:20240308T180000Z
+SUMMARY:⏱️ FORMULA 1 SAUDI ARABIAN GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6bb
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjdx/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjdH/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjdS/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjf3/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjfd/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjfm/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjfy/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjfJ/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ fY/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjg4/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjgC/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Saudi Arabia
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240309T170000Z
+DTEND:20240309T190000Z
+SUMMARY:🏁 FORMULA 1 SAUDI ARABIAN GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6bc
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjgP/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjgX/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjh7/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjhh/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjhp/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjhz/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjhJ/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjhV/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ hZ/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjj9/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjjK/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241121
+DTEND;VALUE=DATE:20241122
+SUMMARY:🏎 FORMULA 1 LAS VEGAS GRAND PRIX 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6bd
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdjjY/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdjk6/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdjkf/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdjkp/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdjky/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdjkH/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdjkS/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ l1/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdjl7/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdjlc/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdjlL/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241122
+DTEND;VALUE=DATE:20241123
+SUMMARY:🏎 FORMULA 1 LAS VEGAS GRAND PRIX 2024 - Practice 3 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e108319c48b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdjp4/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdjpg/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdjpq/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdjpz/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdjpM/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdjpW/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdjq2/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ q9/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdjql/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdjqt/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdjqZ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United States
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241123
+DTEND;VALUE=DATE:20241124
+SUMMARY:🏁 FORMULA 1 LAS VEGAS GRAND PRIX 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6c0
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdjtC/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdjtM/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdjtW/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdjv5/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdjvg/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdjvs/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdjvx/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ vJ/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdjvS/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdjw3/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdjwv/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Belgium
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240726T113000Z
+DTEND:20240726T123000Z
+SUMMARY:🏎 FORMULA 1 BELGIAN GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6c1
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjwM/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjwS/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjx4/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjxd/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjxq/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjxv/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjxM/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjxW/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ y1/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjy8/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjyJ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Belgium
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240726T150000Z
+DTEND:20240726T160000Z
+SUMMARY:🏎 FORMULA 1 BELGIAN GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b35
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjz5/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjzc/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjzp/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjzx/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjzG/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjzP/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjzY/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjB7/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ Bg/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjBq/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjBS/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Belgium
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240727T103000Z
+DTEND:20240727T113000Z
+SUMMARY:🏎 FORMULA 1 BELGIAN GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e108319c48c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjC7/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjCg/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjCs/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjCD/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjCN/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjCZ/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjD8/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjDj/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ Dn/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjDx/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjF5/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Belgium
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240727T140000Z
+DTEND:20240727T150000Z
+SUMMARY:⏱️ FORMULA 1 BELGIAN GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b36
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjFl/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjFv/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjFF/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjFJ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjFX/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjG7/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjGj/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjGr/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ GD/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjGM/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjHc/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Belgium
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240728T130000Z
+DTEND:20240728T150000Z
+SUMMARY:🏁 FORMULA 1 BELGIAN GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b37
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjHw/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjHD/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjHP/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjHZ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjJc/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjJq/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjJy/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjJK/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ JW/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjK3/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjKw/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Mexico
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241025T183000Z
+DTEND:20241025T193000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2024 - Practice 
+ 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b38
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjKG/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjKQ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjKZ/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjL8/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjLl/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjLt/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjLF/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjLQ/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ M1/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjM7/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjMJ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Mexico
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241025T220000Z
+DTEND:20241025T230000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2024 - Practice 
+ 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b39
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjN2/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjN7/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjNh/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjNr/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjNC/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjNQ/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjNX/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjP7/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ Pd/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjPp/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjQ1/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Mexico
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241026T173000Z
+DTEND:20241026T183000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2024 - Practice 
+ 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b3a
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjQc/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjQk/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjQr/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjQD/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjQM/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjQT/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjR6/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjRj/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ Rs/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjRx/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjS2/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Mexico
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241026T210000Z
+DTEND:20241026T220000Z
+SUMMARY:⏱️ FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2024 - Qualify
+ ing
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b3b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjSf/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjSn/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjSx/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjSG/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjSP/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjT1/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjT8/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjTl/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ Ts/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjTD/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjV8/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Mexico
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241027T200000Z
+DTEND:20241027T220000Z
+SUMMARY:🏁 FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b3c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjVh/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjVs/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjVC/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjVJ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjVR/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjW1/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjW8/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjWr/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj
+ Wx/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdjWV/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdjYJ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Kingdom
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240705T113000Z
+DTEND:20240705T123000Z
+SUMMARY:🏎 FORMULA 1 BRITISH GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b3d
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdjYS/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdjZ2/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdjZ9/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdjZm/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdjZs/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdjZD/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdjZL/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdjZX/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ 16/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdk1f/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdk1N/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Kingdom
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240705T150000Z
+DTEND:20240705T160000Z
+SUMMARY:🏎 FORMULA 1 BRITISH GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b3e
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdk1Z/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdk2b/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdk2f/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdk2n/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdk2v/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdk2H/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdk2Q/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdk3L/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ 3T/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdk46/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdk4z/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Kingdom
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240706T103000Z
+DTEND:20240706T113000Z
+SUMMARY:🏎 FORMULA 1 BRITISH GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b3f
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdk4L/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdk4S/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdk54/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdk5j/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdk5p/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdk5y/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdk5M/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdk5W/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ 64/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdk6g/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdk6H/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Kingdom
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240706T140000Z
+DTEND:20240706T150000Z
+SUMMARY:⏱️ FORMULA 1 BRITISH GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b40
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdk6T/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdk73/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdk7f/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdk7q/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdk7C/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdk7N/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdk7Y/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdk89/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ 8l/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdk8s/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdk8W/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Kingdom
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240707T140000Z
+DTEND:20240707T160000Z
+SUMMARY:🏁 FORMULA 1 BRITISH GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b41
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdk96/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdk99/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdk9h/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdk9s/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdk9z/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdk9K/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdk9V/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkb3/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ bf/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkbn/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkbQ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Spain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240621T113000Z
+DTEND:20240621T123000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DE ESPAÑA 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b42
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkc2/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkcb/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkcl/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkcx/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkcG/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkcS/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkd2/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkdc/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ dn/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkdz/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkf5/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Spain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240621T150000Z
+DTEND:20240621T160000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DE ESPAÑA 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b43
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkfg/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkfq/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkfC/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkfL/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkg6/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkgc/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkgm/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkgw/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ gG/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkgR/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkhk/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Spain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240622T103000Z
+DTEND:20240622T113000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DE ESPAÑA 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b44
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkhw/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkhG/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkhQ/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkhZ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkj7/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkjg/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkjq/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkjz/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ jK/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkjV/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkkv/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Spain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240622T140000Z
+DTEND:20240622T150000Z
+SUMMARY:⏱️ FORMULA 1 GRAN PREMIO DE ESPAÑA 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b45
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkkF/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkkQ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkkZ/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkl7/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdklg/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdklp/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdklz/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdklN/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ lV/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkm5/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkmM/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240517T113000Z
+DTEND:20240517T123000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DELL'EMILIA-ROMAGNA 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b47
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkqd/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkqj/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkqw/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkqK/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkqR/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkrh/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkrt/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkrH/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ rT/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdks3/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdksw/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240517T150000Z
+DTEND:20240517T160000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DELL'EMILIA-ROMAGNA 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b48
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdksK/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdksV/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkt3/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdktb/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdktk/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkts/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdktB/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdktN/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ tW/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkv4/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkvW/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240518T103000Z
+DTEND:20240518T113000Z
+SUMMARY:🏎 FORMULA 1 GRAN PREMIO DELL'EMILIA-ROMAGNA 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b49
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkw6/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkwg/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkwn/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkwt/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkwF/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkwP/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkwY/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkx9/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ xd/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkxn/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkxQ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240518T140000Z
+DTEND:20240518T150000Z
+SUMMARY:⏱️ FORMULA 1 GRAN PREMIO DELL'EMILIA-ROMAGNA 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b4a
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkxZ/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdky7/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkyh/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkyp/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkyx/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkyK/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkzb/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkzL/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ zX/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkB6/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkBF/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Italy
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240519T130000Z
+DTEND:20240519T150000Z
+SUMMARY:🏁 FORMULA 1 GRAN PREMIO DELL'EMILIA-ROMAGNA 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b4b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkBS/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkC4/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkCc/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkCm/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkCw/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkCK/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkCR/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkD1/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ D8/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkDj/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkF5/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Bahrain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240229T150000Z
+DTEND:20240229T160000Z
+SUMMARY:🏎 FORMULA 1 BAHRAIN GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b4c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkFl/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkFt/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkFH/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkFQ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkG1/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkG8/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkGj/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkGt/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ GD/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkGM/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkHj/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Bahrain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240229T113000Z
+DTEND:20240229T123000Z
+SUMMARY:🏎 FORMULA 1 BAHRAIN GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b4d
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkHs/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkHD/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkHV/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkJ5/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkJg/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkJp/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkJz/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkJG/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ JP/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkJY/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkKt/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Bahrain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240301T123000Z
+DTEND:20240301T133000Z
+SUMMARY:🏎 FORMULA 1 BAHRAIN GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b4e
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkKF/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkKQ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkL1/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkLd/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkLp/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkLS/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkM2/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkMb/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ Mm/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkMw/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkMZ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Bahrain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240301T160000Z
+DTEND:20240301T170000Z
+SUMMARY:⏱️ FORMULA 1 BAHRAIN GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b4f
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkNg/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkNr/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkND/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkNQ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkNW/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkP6/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkPh/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkPq/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ PF/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkPQ/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkQs/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Bahrain
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240302T150000Z
+DTEND:20240302T170000Z
+SUMMARY:🏁 FORMULA 1 BAHRAIN GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b50
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdkQH/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdkR6/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdkRF/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdkRN/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdkRZ/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdkS7/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdkSh/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdkSq/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdk
+ Sx/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdkSK/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdkTh/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Brazil
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241101
+DTEND;VALUE=DATE:20241102
+SUMMARY:🏎 FORMULA 1 GRANDE PRÊMIO DE SÃO PAULO 2024 - Practice 1 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b51
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdkTx/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdkTG/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdkTR/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdkTZ/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdkV7/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdkVj/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdkVr/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdk
+ Vx/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdkVJ/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdkVV/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdkWv/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Brazil
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241102
+DTEND;VALUE=DATE:20241103
+SUMMARY:🏁 FORMULA 1 GRANDE PRÊMIO DE SÃO PAULO 2024 - Sprint Race (TBC
+ )
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b54
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdl2D/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdl2R/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdl2Y/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdl3b/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdl3k/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdl3t/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdl3D/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdl
+ 3Q/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl41/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdl4c/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdl4J/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Brazil
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART;VALUE=DATE:20241103
+DTEND;VALUE=DATE:20241104
+SUMMARY:🏁 FORMULA 1 GRANDE PRÊMIO DE SÃO PAULO 2024 - Race (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b55
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdl4X/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdl52/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdl57/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdl5g/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdl5p/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdl5z/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdl5K/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdl
+ 5V/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl65/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdl6h/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdl7d/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Arab Emirates
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241206T093000Z
+DTEND:20241206T103000Z
+SUMMARY:🏎 FORMULA 1 ABU DHABI GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b56
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdl7r/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdl7z/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdl7M/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdl7X/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdl86/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdl8g/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdl8q/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdl8C/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ 8M/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdl8Z/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdl9n/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Arab Emirates
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241206T130000Z
+DTEND:20241206T140000Z
+SUMMARY:🏎 FORMULA 1 ABU DHABI GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b57
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdl9L/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdl9V/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlb4/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlbd/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlbB/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlbP/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlc1/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlcb/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ cm/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlcy/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdldc/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Arab Emirates
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241207T103000Z
+DTEND:20241207T113000Z
+SUMMARY:🏎 FORMULA 1 ABU DHABI GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b58
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdldz/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdldQ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdldW/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlf7/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlfj/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlfs/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlfF/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlfK/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ fP/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlfZ/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlgs/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Arab Emirates
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241207T140000Z
+DTEND:20241207T150000Z
+SUMMARY:⏱️ FORMULA 1 ABU DHABI GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b59
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdlgG/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdlgR/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlgY/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlh5/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlhf/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlhn/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlhz/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlhK/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ hT/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlj3/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdljH/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:United Arab Emirates
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20241208T130000Z
+DTEND:20241208T150000Z
+SUMMARY:🏁 FORMULA 1 ABU DHABI GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b5a
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdljT/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdljZ/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlkS/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlkZ/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdll8/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdllk/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdllr/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdllB/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ lJ/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdllR/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlmp/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Azerbaijan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240913T093000Z
+DTEND:20240913T103000Z
+SUMMARY:🏎 FORMULA 1 AZERBAIJAN GRAND PRIX 2024 - Practice 1
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b5b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdlmC/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdlmG/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlmW/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdln7/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlnb/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlnn/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlnx/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlnH/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ nP/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlnY/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlpl/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Azerbaijan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240913T130000Z
+DTEND:20240913T140000Z
+SUMMARY:🏎 FORMULA 1 AZERBAIJAN GRAND PRIX 2024 - Practice 2
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b5c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdlpC/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdlpM/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlpS/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlq2/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlq9/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlqg/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlqq/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlqC/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ qH/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlqV/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlrk/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Azerbaijan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240914T083000Z
+DTEND:20240914T093000Z
+SUMMARY:🏎 FORMULA 1 AZERBAIJAN GRAND PRIX 2024 - Practice 3
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b5d
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdlrB/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdlrK/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlrW/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlsj/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlsy/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlsH/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlsR/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlt6/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ td/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlts/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlvd/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Azerbaijan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240914T120000Z
+DTEND:20240914T130000Z
+SUMMARY:⏱️ FORMULA 1 AZERBAIJAN GRAND PRIX 2024 - Qualifying
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b5e
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdlvn/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdlvC/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlvY/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlw9/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlwh/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlwm/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlwB/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlwM/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ wX/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlx7/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlxK/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:Azerbaijan
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+DTSTART:20240915T110000Z
+DTEND:20240915T130000Z
+SUMMARY:🏁 FORMULA 1 AZERBAIJAN GRAND PRIX 2024 - Race
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b5f
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nFollow 
+ on the go with F1 TV\nhttps://cal.f1.com/f/pdlxW/2kxXC\n\nVisit the Race H
+ ub\nhttps://cal.f1.com/f/pdly5/2kxXC\n\nFree sign up to F1 Unlocked\nhttps
+ ://cal.f1.com/f/pdlyf/2kxXC\n\nDownload the Official F1 Race Programme App
+ \nhttps://cal.f1.com/f/pdlyp/2kxXC\n\nWear your favourite teams colours wi
+ th F1 store\nhttps://cal.f1.com/f/pdlyB/2kxXC\n\nChoose where to watch a r
+ ace with F1 Tickets\nhttps://cal.f1.com/f/pdlyJ/2kxXC\n\nFollow us on Face
+ book\nhttps://cal.f1.com/f/pdlyX/2kxXC\n\nFollow us on Twitter\nhttps://ca
+ l.f1.com/f/pdlz6/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl
+ zj/2kxXC\n\nFollow us on TikTok\nhttps://cal.f1.com/f/pdlzr/2kxXC\n\nManag
+ e my ECAL\nhttps://cal.f1.com/f/pdlzQ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:20240221T122324Z
+DTSTAMP:20240221T122324Z
+LOCATION:
+X-ECAL-SCHEDULE:65d5e5b72ac6030008fa0c24
+DTSTART:20240221T121400Z
+DTEND:20240221T122900Z
+SUMMARY:Formula 1 in your calendar!
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65d5e5b783d3660008458f6c
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Stay up to speed with the latest information from Formula 1.\n\
+ nNew season schedule releases\, updates and any changes to race dates\, ti
+ mes and details will be made automatically – you don’t have to do anyt
+ hing.\n\nManage your ECAL at https://support.ecal.com\n\nManage my ECAL\nh
+ ttps://cal.f1.com/f/q4DdJ/2kxXC\n\n
+BEGIN:VALARM
+TRIGGER:-PT1M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:China
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20240419
+DTEND;VALUE=DATE:20240420
+SUMMARY:⏱️ FORMULA 1 CHINESE GRAND PRIX 2024 - Sprint Shootout (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e5026018b00
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdf94/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdf9b/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdf9m/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdf9v/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdf9C/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdf9K/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdf9Y/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ b8/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfbk/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfbv/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdfc5/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:China
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20240420
+DTEND;VALUE=DATE:20240421
+SUMMARY:⏱️ FORMULA 1 CHINESE GRAND PRIX 2024 - Qualifying (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f3f4b46e107842e6ae
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdf4d/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdf4q/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdf4B/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdf4N/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdf4X/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdf56/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdf5l/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ 5w/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdf5J/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdf5X/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdf6y/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:Qatar
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241130
+DTEND;VALUE=DATE:20241201
+SUMMARY:⏱️ FORMULA 1 QATAR GRAND PRIX 2024 - Qualifying (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b0d
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdfP4/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdfPb/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdfPl/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdfPS/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdfQ1/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdfQ9/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdfQk/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ Qs/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfQH/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfQN/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdfRg/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:Qatar
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241129
+DTEND;VALUE=DATE:20241130
+SUMMARY:⏱️ FORMULA 1 QATAR GRAND PRIX 2024 - Sprint Shootout (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b0e
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdfRv/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdfRC/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdfRP/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdfS3/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdfSc/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdfSn/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdfSB/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdf
+ SM/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdfSX/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdfT6/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdfTx/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:United States
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241018
+DTEND;VALUE=DATE:20241019
+SUMMARY:⏱️ FORMULA 1 UNITED STATES GRAND PRIX 2024 - Sprint Shootout (T
+ BC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6af
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhH9/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhHk/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhHt/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhHC/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhHQ/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhHZ/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhJ5/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ Jf/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhJp/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhJt/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhKb/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:United States
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241019
+DTEND;VALUE=DATE:20241020
+SUMMARY:⏱️ FORMULA 1 UNITED STATES GRAND PRIX 2024 - Qualifying (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b1
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhNs/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhNB/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhNN/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhNY/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhP6/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhPc/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhPn/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ Pv/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhPG/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhPQ/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhQq/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:Brazil
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241102
+DTEND;VALUE=DATE:20241103
+SUMMARY:⏱️ FORMULA 1 GRANDE PRÊMIO DE SÃO PAULO 2024 - Qualifying (TB
+ C)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b52
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdkWL/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdkWW/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdkX3/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdkX9/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdkXk/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdkXw/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdkXF/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdk
+ XQ/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdkY1/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdkYc/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdkYJ/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:Brazil
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241101
+DTEND;VALUE=DATE:20241102
+SUMMARY:⏱️ FORMULA 1 GRANDE PRÊMIO DE SÃO PAULO 2024 - Sprint Shootou
+ t (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b53
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdkZ1/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdkZd/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdkZp/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdkZB/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdkZL/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdkZX/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdl14/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdl
+ 1f/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdl1v/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdl1z/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdl27/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:United States
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241121
+DTEND;VALUE=DATE:20241122
+SUMMARY:🏎 FORMULA 1 LAS VEGAS GRAND PRIX 2024 - Practice 2 (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6be
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdjlV/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdjm6/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdjmh/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdjmr/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdjmz/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdjmJ/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdjmS/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ n2/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdjnc/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdjnk/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdjnP/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:United States
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20241122
+DTEND;VALUE=DATE:20241123
+SUMMARY:⏱️ FORMULA 1 LAS VEGAS GRAND PRIX 2024 - Qualifying (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6bf
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdjr8/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdjrq/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdjrz/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdjrM/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdjrX/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdjs5/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdjsh/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ sq/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdjsB/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdjsV/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdjts/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:Austria
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20240629
+DTEND;VALUE=DATE:20240630
+SUMMARY:⏱️ FORMULA 1 AUSTRIAN GRAND PRIX 2024 - Qualifying (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b2b
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhft/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhfF/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhfS/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhg2/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhg9/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhgl/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhgt/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ gK/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhgT/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhh5/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhhS/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:Austria
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20240628
+DTEND;VALUE=DATE:20240629
+SUMMARY:⏱️ FORMULA 1 AUSTRIAN GRAND PRIX 2024 - Sprint Shootout (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e5026018b2d
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhlh/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhlt/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhlF/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhlN/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhlY/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhmb/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhmk/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ mv/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhmJ/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhmV/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhnQ/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:United States
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20240503
+DTEND;VALUE=DATE:20240504
+SUMMARY:⏱️ FORMULA 1 MIAMI GRAND PRIX 2024 - Sprint Shootout (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b4
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdhW5/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdhWc/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdhWn/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdhWv/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdhWD/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdhWL/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdhWW/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdh
+ X3/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdhXn/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdhXx/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdhXZ/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+LAST-MODIFIED:00010101T000000Z
+DTSTAMP:00010101T000000Z
+LOCATION:United States
+X-ECAL-SCHEDULE:
+DTSTART;VALUE=DATE:20240504
+DTEND;VALUE=DATE:20240505
+SUMMARY:⏱️ FORMULA 1 MIAMI GRAND PRIX 2024 - Qualifying (TBC)
+TRANSP:TRANSPARENT
+SEQUENCE:0
+UID:65af54f4f4b46e107842e6b6
+PRIORITY:5
+X-MICROSOFT-CDO-IMPORTANCE:1
+CLASS:PUBLIC
+DESCRIPTION:Follow all the action on F1 TV and F1.com. \n\nUnlock the insid
+ e world of F1 by signing up to F1 Unlocked at F1.com/F1Unlocked\n\nNOTE: T
+ he date and time of this event is to be confirmed\n\nFollow on the go with
+  F1 TV\nhttps://cal.f1.com/f/pdj1y/2kxXC\n\nVisit the Race Hub\nhttps://ca
+ l.f1.com/f/pdj1D/2kxXC\n\nFree sign up to F1 Unlocked\nhttps://cal.f1.com/
+ f/pdj1M/2kxXC\n\nDownload the Official F1 Race Programme App\nhttps://cal.
+ f1.com/f/pdj1W/2kxXC\n\nWear your favourite teams colours with F1 store\nh
+ ttps://cal.f1.com/f/pdj23/2kxXC\n\nChoose where to watch a race with F1 Ti
+ ckets\nhttps://cal.f1.com/f/pdj2c/2kxXC\n\nFollow us on Facebook\nhttps://
+ cal.f1.com/f/pdj2k/2kxXC\n\nFollow us on Twitter\nhttps://cal.f1.com/f/pdj
+ 2w/2kxXC\n\nFollow us on Instagram\nhttps://cal.f1.com/f/pdj2G/2kxXC\n\nFo
+ llow us on TikTok\nhttps://cal.f1.com/f/pdj2R/2kxXC\n\nManage my ECAL\nhtt
+ ps://cal.f1.com/f/pdj3n/2kxXC\n\n
+X-ECAL-SCHEDULE:63ed7aff4c410f0d70163027
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
