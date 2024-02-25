@@ -1,3 +1,8 @@
+# 0.16.0
+- Fix handling of ICS data with varying line endings [#13], thanks to [vanlooverenkoen](https://github.com/vanlooverenkoen)
+- Allow to set trigger of an alarm to a DateTime[#12], thanks to [liplum](https://github.com/liplum)
+- Added helper to convert Duration to IsoDuration [#11] thanks to [liplum](https://github.com/liplum)
+
 ## 0.15.0
 - Fix export of WKST attribute of a RRULE [#10](https://github.com/Enough-Software/enough_icalendar/issues/10) with thanks to [tgrushka](https://github.com/tgrushka)!
 
