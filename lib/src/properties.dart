@@ -107,16 +107,19 @@ class Property {
     }
     _lastContent = content;
     _lastRunes = runes;
+
     return index;
   }
 
   static String _getName(String content) {
     final nameEndIndex = _getNameEndIndex(content);
+
     return content.substring(0, nameEndIndex);
   }
 
   static String _getTextContent(String content) {
     final valueStartIndex = _getValueStartIndex(content);
+
     return content.substring(valueStartIndex + 1);
   }
 
@@ -143,6 +146,7 @@ class Property {
         }
       }
     }
+
     return null;
   }
 
@@ -175,11 +179,14 @@ class Property {
         lastStartIndex = nextStartIndex + 1;
       }
     }
+
     return result;
   }
 
   static dynamic _parsePropertyValue(
-      Property property, ValueType defaultValueType) {
+    Property property,
+    ValueType defaultValueType,
+  ) {
     final valueType =
         (property[ParameterType.value] as ValueParameter?)?.valueType ??
             defaultValueType;
@@ -1364,6 +1371,7 @@ class RecurrenceDateProperty extends Property {
     if (value.first.duration != null) {
       propertyName += ';VALUE=DURATION';
     }
+
     return RecurrenceDateProperty('$propertyName:${value.join(',')}');
   }
 }
@@ -1372,6 +1380,10 @@ class RecurrenceDateProperty extends Property {
 class TriggerProperty extends Property {
   /// Creates a new [TriggerProperty]
   TriggerProperty(String definition) : super(definition, ValueType.duration);
+
+  /// Creates a new [TriggerProperty]
+  TriggerProperty.dateTime(String definition)
+      : super(definition, ValueType.dateTime);
 
   /// `TRIGGER`
   static const String propertyName = 'TRIGGER';
@@ -1402,8 +1414,11 @@ class TriggerProperty extends Property {
     if (value == null) {
       return null;
     }
-    final prop =
-        TriggerProperty('$propertyName:${DateHelper.toDateTimeString(value)}');
+    final prop = TriggerProperty.dateTime(
+      '$propertyName:${DateHelper.toDateTimeString(value)}',
+    );
+    prop[ParameterType.value] =
+        ValueParameter.value('VALUE', ValueType.dateTime);
     if (relation != null) {
       prop[ParameterType.alarmTriggerRelationship] =
           AlarmTriggerRelationshipParameter.value(
@@ -1415,8 +1430,10 @@ class TriggerProperty extends Property {
     return prop;
   }
 
-  static TriggerProperty? createWithDuration(IsoDuration? value,
-      {AlarmTriggerRelationship? relation}) {
+  static TriggerProperty? createWithDuration(
+    IsoDuration? value, {
+    AlarmTriggerRelationship? relation,
+  }) {
     if (value == null) {
       return null;
     }

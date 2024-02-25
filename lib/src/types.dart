@@ -1220,6 +1220,7 @@ class DateHelper {
     if (value.isUtc) {
       buffer.write('Z');
     }
+
     return buffer.toString();
   }
 }

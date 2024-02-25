@@ -1803,7 +1803,9 @@ class VAlarm extends VComponent {
 
   /// Sets the trigger date time
   set triggerDate(DateTime? value) => setOrRemoveProperty(
-      TriggerProperty.propertyName, TriggerProperty.createWithDateTime(value));
+        TriggerProperty.propertyName,
+        TriggerProperty.createWithDateTime(value),
+      );
 
   /// Retrieves the relative duration of the trigger, e.g. -15 minutes (`-PT15M`) as a reminder before an event starts.
   ///
