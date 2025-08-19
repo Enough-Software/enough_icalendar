@@ -1,3 +1,6 @@
+# 0.17.0
+- Updated dependencies
+
 # 0.16.0
 - Fix handling of ICS data with varying line endings [#13], thanks to [vanlooverenkoen](https://github.com/vanlooverenkoen)
 - Allow to set trigger of an alarm to a DateTime[#12], thanks to [liplum](https://github.com/liplum)

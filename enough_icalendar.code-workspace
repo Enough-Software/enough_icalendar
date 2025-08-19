@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "../enough_icalendar_export"
+        },
+        {
+            "path": "../enough_mail_icalendar"
+        }
+    ],
+    "settings": {
+        "cSpell.words": [
+            "ical"
+        ]
+    }
+}

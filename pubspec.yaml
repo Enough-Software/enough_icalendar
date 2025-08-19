@@ -1,7 +1,7 @@
 name: enough_icalendar
 description: iCalendar library to parse, generate and respond to iCal / ics
   invites. Fully compliant with RFC 5545 (iCalendar) and RFC 5546 (iTIP).
-version: 0.16.0
+version: 0.17.0
 homepage: https://github.com/Enough-Software/enough_icalendar
 topics: 
  - icalendar
@@ -11,13 +11,12 @@ topics:
  - rfc5546
  
 environment:
-  sdk: ">=2.18.0 <4.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   collection: ^1.17.1
-  intl: ^0.19.0
+  intl: any # be compatible with any Flutter version
 
 dev_dependencies:
-  dart_code_metrics: ^5.6.0
-  lints: ^3.0.0
+  lints: ^6.0.0
   test: ^1.20.2
