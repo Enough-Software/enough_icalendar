@@ -11,12 +11,12 @@ topics:
  - rfc5546
  
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.11.0 <4.0.0"
 
 dependencies:
-  collection: ^1.17.1
+  collection: ^1.19.1
   intl: any # be compatible with any Flutter version
 
 dev_dependencies:
-  lints: ^6.0.0
-  test: ^1.20.2
+  lints: ^6.1.0
+  test: ^1.31.1

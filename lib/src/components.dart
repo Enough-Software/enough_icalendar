@@ -18,13 +18,13 @@ enum VComponentType {
   alarm,
 
   /// reserved for future / custom components
-  other
+  other,
 }
 
 /// Common properties
 abstract class VComponent {
   VComponent(this.name, [this.parent])
-      : componentType = _getComponentType(name);
+    : componentType = _getComponentType(name);
 
   /// The type of the component, convenient for switch cases
   final VComponentType componentType;
@@ -76,9 +76,9 @@ abstract class VComponent {
 
   /// Sets the version of this calendar, typically `2.0`
   set version(String? value) => setOrRemoveProperty(
-        VersionProperty.propertyName,
-        VersionProperty.create(value),
-      );
+    VersionProperty.propertyName,
+    VersionProperty.create(value),
+  );
 
   /// Checks if this version is `2.0`, which is assumed to be true unless a
   /// different version is specified.
@@ -87,15 +87,15 @@ abstract class VComponent {
       true;
 
   /// Retrieves the product identifier that generated this iCalendar object
-  String? get productId =>
-      getProperty<TextProperty>(TextProperty.propertyNameProductIdentifier)
-          ?.textValue;
+  String? get productId => getProperty<TextProperty>(
+    TextProperty.propertyNameProductIdentifier,
+  )?.textValue;
 
   /// Sets the product ID
   set productId(String? value) => setOrRemoveProperty(
-        TextProperty.propertyNameProductIdentifier,
-        TextProperty.create(TextProperty.propertyNameProductIdentifier, value),
-      );
+    TextProperty.propertyNameProductIdentifier,
+    TextProperty.create(TextProperty.propertyNameProductIdentifier, value),
+  );
 
   /// Classes can implement this to check the validity.
   ///
@@ -125,7 +125,7 @@ abstract class VComponent {
 
   /// Sets the property [property], replacing other properties with the given
   /// [propertyName] first.
-  operator []=(final String propertyName, final Property property) {
+  void operator []=(final String propertyName, final Property property) {
     properties
       ..removeWhere((prop) => prop.name == propertyName)
       ..add(property);
@@ -230,11 +230,13 @@ abstract class VComponent {
           if (line.trim().isEmpty) {
             continue;
           }
-          final property =
-              Property.parseProperty(line, customParser: customParser);
+          final property = Property.parseProperty(
+            line,
+            customParser: customParser,
+          );
           current.properties.add(property);
         }
-      } on FormatException catch (e) {
+      } on FormatException catch (_) {
         print('Error parsing line $i: "$line"');
         rethrow;
       }
@@ -288,9 +290,7 @@ abstract class VComponent {
   }
 
   /// Unfolds the given [input] text, usually with lines separated by `\r\n`
-  static List<String> unfold(
-    String input,
-  ) {
+  static List<String> unfold(String input) {
     _UnfoldData getUnfoldData(String input) {
       final firstStandardLineBreak = input.indexOf('\r\n');
       final firstUnixLineBreak = input.indexOf('\n');
@@ -354,9 +354,7 @@ abstract class VComponent {
   }
 
   /// Unfolds the given [input] lines, originally separated by `\r\n`
-  static List<String> unfoldStandardCompliantLines(
-    List<String> input,
-  ) {
+  static List<String> unfoldStandardCompliantLines(List<String> input) {
     final output = <String>[];
     StringBuffer? buffer;
     for (var i = 0; i < input.length; i++) {
@@ -478,13 +476,16 @@ class VCalendar extends VComponent {
   ///
   /// Compare [isGregorian]
   String get calendarScale =>
-      getProperty<CalendarScaleProperty>(CalendarScaleProperty.propertyName)
-          ?.textValue ??
+      getProperty<CalendarScaleProperty>(
+        CalendarScaleProperty.propertyName,
+      )?.textValue ??
       'GREGORIAN';
 
   /// Sets the scale of the calendar
   set calendarScale(String? value) => setOrRemoveProperty(
-      CalendarScaleProperty.propertyName, CalendarScaleProperty.create(value));
+    CalendarScaleProperty.propertyName,
+    CalendarScaleProperty.create(value),
+  );
 
   /// Checks if this calendar has a Gregorian scale.
   ///
@@ -497,7 +498,9 @@ class VCalendar extends VComponent {
 
   /// Sets the method to the given value
   set method(Method? value) => setOrRemoveProperty(
-      MethodProperty.propertyName, MethodProperty.create(value));
+    MethodProperty.propertyName,
+    MethodProperty.create(value),
+  );
 
   /// Retrieves the global timezone ID like `America/New_York` or `Europe/Berlin` of this calendar.
   ///
@@ -505,51 +508,66 @@ class VCalendar extends VComponent {
   /// Any dates of subsequent components without explicit timezoneId should be interpreted according to this
   /// timezone ID. For caveats compare https://blog.jonudell.net/2011/10/17/x-wr-timezone-considered-harmful/
   String? get timezoneId =>
-      getProperty<TextProperty>(TextProperty.propertyNameXWrTimezone)
-          ?.textValue ??
+      getProperty<TextProperty>(
+        TextProperty.propertyNameXWrTimezone,
+      )?.textValue ??
       timezone?.timezoneId;
 
   /// Sets the `X-WR-TIMEZONE` property
   set timezoneId(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameXWrTimezone,
-      TextProperty.create(TextProperty.propertyNameXWrTimezone, value));
+    TextProperty.propertyNameXWrTimezone,
+    TextProperty.create(TextProperty.propertyNameXWrTimezone, value),
+  );
 
   /// Retrieves the calendar name like `US Holidays` of this calendar if it has been set.
-  String? get calendarName =>
-      getProperty<TextProperty>(TextProperty.propertyNameXCalendarName)
-          ?.textValue;
+  String? get calendarName => getProperty<TextProperty>(
+    TextProperty.propertyNameXCalendarName,
+  )?.textValue;
 
   /// Sets the `X-WR-CALNAME` property
   set calendarName(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameXCalendarName,
-      TextProperty.create(TextProperty.propertyNameXCalendarName, value));
+    TextProperty.propertyNameXCalendarName,
+    TextProperty.create(TextProperty.propertyNameXCalendarName, value),
+  );
 
   /// Convencience getter for getting the first `VEVENT` child, if there is any:
-  VEvent? get event => children.firstWhereOrNull(
-          (component) => component.componentType == VComponentType.event)
-      as VEvent?;
+  VEvent? get event =>
+      children.firstWhereOrNull(
+            (component) => component.componentType == VComponentType.event,
+          )
+          as VEvent?;
 
   /// Convencience getter for getting the first `VTODO` child, if there is any:
-  VTodo? get todo => children.firstWhereOrNull(
-      (component) => component.componentType == VComponentType.todo) as VTodo?;
+  VTodo? get todo =>
+      children.firstWhereOrNull(
+            (component) => component.componentType == VComponentType.todo,
+          )
+          as VTodo?;
 
   /// Convencience getter for getting the first `VJOURNAL` child, if there is any:
-  VJournal? get journal => children.firstWhereOrNull(
-          (component) => component.componentType == VComponentType.journal)
-      as VJournal?;
+  VJournal? get journal =>
+      children.firstWhereOrNull(
+            (component) => component.componentType == VComponentType.journal,
+          )
+          as VJournal?;
 
   /// Convencience getter for getting the first `VTIMEZONE` child, if there is any:
-  VTimezone? get timezone => children.firstWhereOrNull(
-          (component) => component.componentType == VComponentType.timezone)
-      as VTimezone?;
+  VTimezone? get timezone =>
+      children.firstWhereOrNull(
+            (component) => component.componentType == VComponentType.timezone,
+          )
+          as VTimezone?;
 
-  _UidMandatoryComponent? get _uidMandatoryComponent => children
-          .firstWhereOrNull((component) => component is _UidMandatoryComponent)
-      as _UidMandatoryComponent?;
+  _UidMandatoryComponent? get _uidMandatoryComponent =>
+      children.firstWhereOrNull(
+            (component) => component is _UidMandatoryComponent,
+          )
+          as _UidMandatoryComponent?;
 
   _EventTodoJournalComponent? get _eventTodoJournalComponent =>
       children.firstWhereOrNull(
-              (component) => component is _EventTodoJournalComponent)
+            (component) => component is _EventTodoJournalComponent,
+          )
           as _EventTodoJournalComponent?;
 
   /// Convenience getter for retrieving the UID of the first child that has a UID getter
@@ -591,8 +609,10 @@ class VCalendar extends VComponent {
     String productId = 'enough_icalendar',
     String? delegatedToEmail,
   }) {
-    assert(attendee != null || attendeeEmail != null,
-        'Either [attendee] or [attendeeEmail] must be specified.');
+    assert(
+      attendee != null || attendeeEmail != null,
+      'Either [attendee] or [attendeeEmail] must be specified.',
+    );
     final reply = VCalendar()
       ..productId = productId
       ..version = '2.0'
@@ -603,8 +623,9 @@ class VCalendar extends VComponent {
       final childEvent =
           children.firstWhereOrNull((c) => c is VEvent) as VEvent?;
       if (childEvent != null) {
-        final existing = childEvent.attendees
-            .firstWhereOrNull((a) => a.email == attendeeEmail);
+        final existing = childEvent.attendees.firstWhereOrNull(
+          (a) => a.email == attendeeEmail,
+        );
         delegatedFrom = existing?.delegatedFrom;
       }
       attendee = AttendeeProperty.create(
@@ -619,8 +640,11 @@ class VCalendar extends VComponent {
     }
     for (final child in children) {
       if (child.canReply) {
-        final replyChild =
-            child.reply(attendee, comment: comment, parent: reply);
+        final replyChild = child.reply(
+          attendee,
+          comment: comment,
+          parent: reply,
+        );
         reply.children.add(replyChild);
         break;
       }
@@ -636,10 +660,10 @@ class VCalendar extends VComponent {
   /// Compare [cancelEventForAttendees] when the event should
   /// only be cancelled for some attendees
   VCalendar cancelEvent({String? comment}) => update(
-        method: Method.cancel,
-        comment: comment,
-        eventStatus: EventStatus.cancelled,
-      );
+    method: Method.cancel,
+    comment: comment,
+    eventStatus: EventStatus.cancelled,
+  );
 
   /// Cancels this VCalendar event for the specified [cancelledAttendees].
   ///
@@ -676,8 +700,9 @@ class VCalendar extends VComponent {
             )
           : event.attendees.where(
               (attendee) =>
-                  cancelledAttendees
-                      ?.any((cancelled) => cancelled.uri == attendee.uri) ??
+                  cancelledAttendees?.any(
+                    (cancelled) => cancelled.uri == attendee.uri,
+                  ) ??
                   false,
             );
       for (final attendee in attendees) {
@@ -856,8 +881,10 @@ class VCalendar extends VComponent {
   /// Compare [counter] for attendees to create a counter proposal.
   /// Compare [declineCounter] for organizers to decline a counter proposal.
   VCalendar acceptCounter({String? comment, String? description}) {
-    assert(method == Method.counter,
-        'The current method is not Method.counter but instead $method. Only counter proposals can be accepted with acceptCounter.');
+    assert(
+      method == Method.counter,
+      'The current method is not Method.counter but instead $method. Only counter proposals can be accepted with acceptCounter.',
+    );
 
     return update(
       method: Method.request,
@@ -879,8 +906,10 @@ class VCalendar extends VComponent {
     ParticipantStatus? toStatus,
     String? comment,
   }) {
-    assert(!(toEmail == null && to == null),
-        'Either to or toEmail must be specified.');
+    assert(
+      !(toEmail == null && to == null),
+      'Either to or toEmail must be specified.',
+    );
     final forDelegatee = copy() as VCalendar;
     forDelegatee.method = Method.request;
     final event =
@@ -942,10 +971,14 @@ class VCalendar extends VComponent {
     bool? isAllDayEvent,
     Method method = Method.request,
   }) {
-    assert(organizer != null || organizerEmail != null,
-        'Either organizer or organizerEmail needs to be specified.');
-    assert(end != null || duration != null,
-        'Either end or duration must be specified.');
+    assert(
+      organizer != null || organizerEmail != null,
+      'Either organizer or organizerEmail needs to be specified.',
+    );
+    assert(
+      end != null || duration != null,
+      'Either end or duration must be specified.',
+    );
     final calendar = VCalendar()
       ..calendarScale = calendarScale
       ..productId = productId
@@ -971,8 +1004,10 @@ class VCalendar extends VComponent {
       event.attendees = attendees;
     } else if (attendeeEmails != null) {
       event.attendees = attendeeEmails
-          .map((email) =>
-              AttendeeProperty.create(attendeeEmail: email, rsvp: rsvp)!)
+          .map(
+            (email) =>
+                AttendeeProperty.create(attendeeEmail: email, rsvp: rsvp)!,
+          )
           .toList();
     }
     return calendar;
@@ -1036,13 +1071,14 @@ abstract class _UidMandatoryComponent extends VComponent {
       setProperty(TextProperty.create(TextProperty.propertyNameUid, value)!);
 
   /// Mandatory timestamp / `DTSTAMP` property
-  DateTime get timeStamp =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameTimeStamp)!
-          .dateTime;
+  DateTime get timeStamp => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameTimeStamp,
+  )!.dateTime;
 
   /// Sets the timeStamp  / `DTSTAMP` property
   set timeStamp(DateTime value) => setProperty(
-      DateTimeProperty.create(DateTimeProperty.propertyNameTimeStamp, value)!);
+    DateTimeProperty.create(DateTimeProperty.propertyNameTimeStamp, value)!,
+  );
 
   @override
   void checkValidity() {
@@ -1056,19 +1092,20 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
   _EventTodoJournalComponent(super.name, super.parent);
 
   /// This property defines the access classification for a calendar component
-  Classification? get classification =>
-      getProperty<ClassificationProperty>(ClassificationProperty.propertyName)
-          ?.classification;
+  Classification? get classification => getProperty<ClassificationProperty>(
+    ClassificationProperty.propertyName,
+  )?.classification;
 
   /// Sets the classification
   set classification(Classification? value) => setOrRemoveProperty(
-      ClassificationProperty.propertyName,
-      ClassificationProperty.create(value));
+    ClassificationProperty.propertyName,
+    ClassificationProperty.create(value),
+  );
 
   /// Retrieves the attachments
-  List<AttachmentProperty> get attachments =>
-      getProperties<AttachmentProperty>(AttachmentProperty.propertyName)
-          .toList();
+  List<AttachmentProperty> get attachments => getProperties<AttachmentProperty>(
+    AttachmentProperty.propertyName,
+  ).toList();
 
   /// Sets the attachments
   set attachments(List<AttachmentProperty> value) =>
@@ -1085,8 +1122,11 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   /// Removes the attachment with the given [uri], returning it when it was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttachmentProperty && p.uri == uri) as AttachmentProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttachmentProperty && p.uri == uri,
+            )
+            as AttachmentProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -1094,13 +1134,15 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
   }
 
   /// Retrieves the free text categories
-  List<String>? get categories =>
-      getProperty<CategoriesProperty>(CategoriesProperty.propertyName)
-          ?.categories;
+  List<String>? get categories => getProperty<CategoriesProperty>(
+    CategoriesProperty.propertyName,
+  )?.categories;
 
   /// Sets the free text categories
   set categories(List<String>? value) => setOrRemoveProperty(
-      CategoriesProperty.propertyName, CategoriesProperty.create(value));
+    CategoriesProperty.propertyName,
+    CategoriesProperty.create(value),
+  );
 
   /// Gets the summmary / title
   String? get summary =>
@@ -1108,8 +1150,9 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   /// Sets the comment
   set summary(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameSummary,
-      TextProperty.create(TextProperty.propertyNameSummary, value));
+    TextProperty.propertyNameSummary,
+    TextProperty.create(TextProperty.propertyNameSummary, value),
+  );
 
   /// Retrieves the description
   String? get description =>
@@ -1117,8 +1160,9 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   /// Sets the description
   set description(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameDescription,
-      TextProperty.create(TextProperty.propertyNameDescription, value));
+    TextProperty.propertyNameDescription,
+    TextProperty.create(TextProperty.propertyNameDescription, value),
+  );
 
   /// Retrieves the comment
   String? get comment =>
@@ -1126,8 +1170,9 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   /// Sets the comment
   set comment(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameComment,
-      TextProperty.create(TextProperty.propertyNameComment, value));
+    TextProperty.propertyNameComment,
+    TextProperty.create(TextProperty.propertyNameComment, value),
+  );
 
   /// Retrieves the attendees
   List<AttendeeProperty> get attendees =>
@@ -1147,8 +1192,11 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   /// Removes the attendee with the given [uri], returning it when it was found.
   AttendeeProperty? removeAttendeeWithUri(Uri uri) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttendeeProperty && p.uri == uri) as AttendeeProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttendeeProperty && p.uri == uri,
+            )
+            as AttendeeProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -1157,8 +1205,11 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   /// Removes the attendee with the given [email], returning it when it was found.
   AttendeeProperty? removeAttendeeWithEmail(String email) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttendeeProperty && p.email == email) as AttendeeProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttendeeProperty && p.email == email,
+            )
+            as AttendeeProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -1185,57 +1236,64 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
   ///
   ///  For a given pair of "UID" and "SEQUENCE" property values, the
   /// "RECURRENCE-ID" value for a recurrence instance is fixed.
-  DateTime? get recurrenceId =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameRecurrenceId)
-          ?.dateTime;
+  DateTime? get recurrenceId => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameRecurrenceId,
+  )?.dateTime;
 
   /// Sets the recurrenceId
   set recurrenceId(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameRecurrenceId,
-      DateTimeProperty.create(
-          DateTimeProperty.propertyNameRecurrenceId, value));
+    DateTimeProperty.propertyNameRecurrenceId,
+    DateTimeProperty.create(DateTimeProperty.propertyNameRecurrenceId, value),
+  );
 
   /// Retrieves the recurrence rule of this event
   ///
   /// Compare [additionalRecurrenceDates], [excludingRecurrenceDates]
-  Recurrence? get recurrenceRule =>
-      getProperty<RecurrenceRuleProperty>(RecurrenceRuleProperty.propertyName)
-          ?.rule;
+  Recurrence? get recurrenceRule => getProperty<RecurrenceRuleProperty>(
+    RecurrenceRuleProperty.propertyName,
+  )?.rule;
 
   /// Sets the reccurenceRule
   set recurrenceRule(Recurrence? value) => setOrRemoveProperty(
-      RecurrenceRuleProperty.propertyName,
-      RecurrenceRuleProperty.create(value));
+    RecurrenceRuleProperty.propertyName,
+    RecurrenceRuleProperty.create(value),
+  );
 
   /// Retrieves additional reccurrence dates or durations as defined in the `RDATE` property
   ///
   /// Compare [excludingRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get additionalRecurrenceDates =>
       getProperty<RecurrenceDateProperty>(
-              RecurrenceDateProperty.propertyNameRDate)
-          ?.dates;
+        RecurrenceDateProperty.propertyNameRDate,
+      )?.dates;
 
   /// Sets the additional recurrence dates or durations
   set additionalRecurrenceDates(List<DateTimeOrDuration>? value) =>
       setOrRemoveProperty(
+        RecurrenceDateProperty.propertyNameRDate,
+        RecurrenceDateProperty.create(
           RecurrenceDateProperty.propertyNameRDate,
-          RecurrenceDateProperty.create(
-              RecurrenceDateProperty.propertyNameRDate, value));
+          value,
+        ),
+      );
 
   /// Retrieves excluding reccurrence dates or durations as defined in the `EXDATE` property
   ///
   /// Compare [additionalRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get excludingRecurrenceDates =>
       getProperty<RecurrenceDateProperty>(
-              RecurrenceDateProperty.propertyNameExDate)
-          ?.dates;
+        RecurrenceDateProperty.propertyNameExDate,
+      )?.dates;
 
   /// Sets exluding recurrence dates or durations
   set excludingRecurrenceDates(List<DateTimeOrDuration>? value) =>
       setOrRemoveProperty(
+        RecurrenceDateProperty.propertyNameExDate,
+        RecurrenceDateProperty.create(
           RecurrenceDateProperty.propertyNameExDate,
-          RecurrenceDateProperty.create(
-              RecurrenceDateProperty.propertyNameExDate, value));
+          value,
+        ),
+      );
 
   // Retrieves the UID of a related event, `todo` or journal.
   String? get relatedTo =>
@@ -1243,55 +1301,62 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
 
   // Sets the UID of the related event, `todo` or journal
   set relatedTo(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameRelatedTo,
-      TextProperty.create(TextProperty.propertyNameRelatedTo, value));
+    TextProperty.propertyNameRelatedTo,
+    TextProperty.create(TextProperty.propertyNameRelatedTo, value),
+  );
 
   /// Retrieves the URL for additional information
   Uri? get url => getProperty<UriProperty>(UriProperty.propertyNameUrl)?.uri;
 
   /// Sets the URL for additional information
-  set url(Uri? value) => setOrRemoveProperty(UriProperty.propertyNameUrl,
-      UriProperty.create(UriProperty.propertyNameUrl, value));
+  set url(Uri? value) => setOrRemoveProperty(
+    UriProperty.propertyNameUrl,
+    UriProperty.create(UriProperty.propertyNameUrl, value),
+  );
 
   /// The creation date
-  DateTime? get created =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameCreated)
-          ?.dateTime;
+  DateTime? get created => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameCreated,
+  )?.dateTime;
 
   /// Sets the creation date
   set created(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameCreated,
-      DateTimeProperty.create(DateTimeProperty.propertyNameCreated, value));
+    DateTimeProperty.propertyNameCreated,
+    DateTimeProperty.create(DateTimeProperty.propertyNameCreated, value),
+  );
 
   /// The date of the last modification / update of this event.
-  DateTime? get lastModified =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameLastModified)
-          ?.dateTime;
+  DateTime? get lastModified => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameLastModified,
+  )?.dateTime;
 
   /// Sets the last modification date
   set lastModified(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameLastModified,
-      DateTimeProperty.create(
-          DateTimeProperty.propertyNameLastModified, value));
+    DateTimeProperty.propertyNameLastModified,
+    DateTimeProperty.create(DateTimeProperty.propertyNameLastModified, value),
+  );
 
   /// Gets the revision sequence number of this component
-  int? get sequence =>
-      getProperty<IntegerProperty>(IntegerProperty.propertyNameSequence)
-          ?.intValue;
+  int? get sequence => getProperty<IntegerProperty>(
+    IntegerProperty.propertyNameSequence,
+  )?.intValue;
 
   /// Sets the sequence
   set sequence(int? value) => setOrRemoveProperty(
-      IntegerProperty.propertyNameSequence,
-      IntegerProperty.create(IntegerProperty.propertyNameSequence, value));
+    IntegerProperty.propertyNameSequence,
+    IntegerProperty.create(IntegerProperty.propertyNameSequence, value),
+  );
 
   /// Retrieves the request status, e.g. `4.1;Event conflict.  Date-time is busy.`
-  String? get requestStatus =>
-      getProperty<RequestStatusProperty>(RequestStatusProperty.propertyName)
-          ?.requestStatus;
+  String? get requestStatus => getProperty<RequestStatusProperty>(
+    RequestStatusProperty.propertyName,
+  )?.requestStatus;
 
   /// Sets the request status
   set requestStatus(String? value) => setOrRemoveProperty(
-      RequestStatusProperty.propertyName, RequestStatusProperty.create(value));
+    RequestStatusProperty.propertyName,
+    RequestStatusProperty.create(value),
+  );
 
   /// Checks if the request status is a success, this defaults to `true` when no `REQUEST-STATUS` is set.
   bool get requestStatusIsSuccess => requestStatus?.startsWith('2.') ?? true;
@@ -1304,8 +1369,8 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Tries to the timezone ID like `America/New_York` or `Europe/Berlin` from `DTSTART` property.
   String? get timezoneId {
-    final prop = getProperty<DateTimeProperty>(
-            DateTimeProperty.propertyNameStart) ??
+    final prop =
+        getProperty<DateTimeProperty>(DateTimeProperty.propertyNameStart) ??
         getProperty<DateTimeProperty>(DateTimeProperty.propertyNameEnd) ??
         getProperty<DateTimeProperty>(DateTimeProperty.propertyNameTimeStamp);
     return prop?.timezoneId;
@@ -1316,14 +1381,15 @@ class VEvent extends _EventTodoJournalComponent {
   ///  is REQUIRED if the component appears in an iCalendar object that doesn't
   /// specify the "METHOD" property; otherwise, it is OPTIONAL; in any case, it MUST NOT occur
   /// more than once.
-  DateTime? get start =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameStart)
-          ?.dateTime;
+  DateTime? get start => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameStart,
+  )?.dateTime;
 
   /// Sets the start date (inclusive)
   set start(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameStart,
-      DateTimeProperty.create(DateTimeProperty.propertyNameStart, value));
+    DateTimeProperty.propertyNameStart,
+    DateTimeProperty.create(DateTimeProperty.propertyNameStart, value),
+  );
 
   /// The end date (exclusive) of this event.
   ///
@@ -1334,8 +1400,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the end date (exclusive)
   set end(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameEnd,
-      DateTimeProperty.create(DateTimeProperty.propertyNameEnd, value));
+    DateTimeProperty.propertyNameEnd,
+    DateTimeProperty.create(DateTimeProperty.propertyNameEnd, value),
+  );
 
   /// The duration of this event.
   ///
@@ -1346,7 +1413,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the duration
   set duration(IsoDuration? value) => setOrRemoveProperty(
-      DurationProperty.propertyName, DurationProperty.create(value));
+    DurationProperty.propertyName,
+    DurationProperty.create(value),
+  );
 
   /// The location e.g. room number / name
   String? get location =>
@@ -1354,8 +1423,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the location
   set location(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameLocation,
-      TextProperty.create(TextProperty.propertyNameLocation, value));
+    TextProperty.propertyNameLocation,
+    TextProperty.create(TextProperty.propertyNameLocation, value),
+  );
 
   /// The geo location of this event.
   GeoLocation? get geoLocation =>
@@ -1368,15 +1438,15 @@ class VEvent extends _EventTodoJournalComponent {
   /// Retrieves the transparency of this event in regards to busy time searches.
   TimeTransparency get timeTransparency =>
       getProperty<TimeTransparencyProperty>(
-              TimeTransparencyProperty.propertyName)
-          ?.transparency ??
+        TimeTransparencyProperty.propertyName,
+      )?.transparency ??
       TimeTransparency.opaque;
 
   /// Sets the time transparency
   set timeTransparency(TimeTransparency? value) => setOrRemoveProperty(
-        TimeTransparencyProperty.propertyName,
-        TimeTransparencyProperty.create(value),
-      );
+    TimeTransparencyProperty.propertyName,
+    TimeTransparencyProperty.create(value),
+  );
 
   /// Retrieves the status of this event
   EventStatus? get status =>
@@ -1384,21 +1454,22 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the status
   set status(EventStatus? value) => setOrRemoveProperty(
-        StatusProperty.propertyName,
-        StatusProperty.createEventStatus(value),
-      );
+    StatusProperty.propertyName,
+    StatusProperty.createEventStatus(value),
+  );
 
   /// Gets the propriety busy status that attendees should use when accepting this event.
   ///
   /// Is retrieved from the `X-MICROSOFT-CDO-BUSYSTATUS` custom property.
-  EventBusyStatus? get busyStatus =>
-      getProperty<EventBusyStatusProperty>(EventBusyStatusProperty.propertyName)
-          ?.eventBusyStatus;
+  EventBusyStatus? get busyStatus => getProperty<EventBusyStatusProperty>(
+    EventBusyStatusProperty.propertyName,
+  )?.eventBusyStatus;
 
   /// Sets the proprietary  `X-MICROSOFT-CDO-BUSYSTATUS` property.
   set busyStatus(EventBusyStatus? value) => setOrRemoveProperty(
-      EventBusyStatusProperty.propertyName,
-      EventBusyStatusProperty.create(value));
+    EventBusyStatusProperty.propertyName,
+    EventBusyStatusProperty.create(value),
+  );
 
   /// Retrieves the priority as a numeric value between 1 (highest) and 9 (lowest) priority.
   int? get priorityInt =>
@@ -1406,7 +1477,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the priority as a numeric value
   set priorityInt(int? value) => setOrRemoveProperty(
-      PriorityProperty.propertyName, PriorityProperty.createNumeric(value));
+    PriorityProperty.propertyName,
+    PriorityProperty.createNumeric(value),
+  );
 
   /// Retrieves the priority of this event
   Priority? get priority =>
@@ -1414,7 +1487,9 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Sets the priority
   set priority(Priority? value) => setOrRemoveProperty(
-      PriorityProperty.propertyName, PriorityProperty.createPriority(value));
+    PriorityProperty.propertyName,
+    PriorityProperty.createPriority(value),
+  );
 
   /// Retrieves the resources required for this event
   String? get resources =>
@@ -1422,31 +1497,36 @@ class VEvent extends _EventTodoJournalComponent {
 
   /// Set the resources required for this event
   set resource(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameResources,
-      TextProperty.create(TextProperty.propertyNameResources, value));
+    TextProperty.propertyNameResources,
+    TextProperty.create(TextProperty.propertyNameResources, value),
+  );
 
   /// Checks if this event is an all-day event using the proprietary `X-MICROSOFT-CDO-ALLDAYEVENT` property.
-  bool? get isAllDayEvent =>
-      getProperty<BooleanProperty>(BooleanProperty.propertyNameAllDayEvent)
-          ?.boolValue;
+  bool? get isAllDayEvent => getProperty<BooleanProperty>(
+    BooleanProperty.propertyNameAllDayEvent,
+  )?.boolValue;
 
   /// Sets if this event is an all-day event using the proprietary `X-MICROSOFT-CDO-ALLDAYEVENT` property.
   ///
   /// Note that no other changes are done even when the given [value] is `true`, ie neither [start], nor [end] nor [duration] is changed.
   set isAllDayEvent(bool? value) => setOrRemoveProperty(
-      BooleanProperty.propertyNameAllDayEvent,
-      BooleanProperty.create(BooleanProperty.propertyNameAllDayEvent, value));
+    BooleanProperty.propertyNameAllDayEvent,
+    BooleanProperty.create(BooleanProperty.propertyNameAllDayEvent, value),
+  );
 
   /// Retrieves the teams meeting URL for this event when the `X-MICROSOFT-SKYPETEAMSMEETINGURL` property is set.
   String? get microsoftTeamsMeetingUrl => getProperty<TextProperty>(
-          TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl)
-      ?.text;
+    TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl,
+  )?.text;
 
   /// Sets the teams meeting URL for this event using the proprietary `X-MICROSOFT-SKYPETEAMSMEETINGURL` property.
   set microsoftTeamsMeetingUrl(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameResources,
-      TextProperty.create(
-          TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl, value));
+    TextProperty.propertyNameResources,
+    TextProperty.create(
+      TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl,
+      value,
+    ),
+  );
 
   // @override
   // void checkValidity() {
@@ -1457,8 +1537,11 @@ class VEvent extends _EventTodoJournalComponent {
   bool get canReply => organizer != null;
 
   @override
-  VComponent reply(AttendeeProperty attendee,
-      {VComponent? parent, String? comment}) {
+  VComponent reply(
+    AttendeeProperty attendee, {
+    VComponent? parent,
+    String? comment,
+  }) {
     final event = VEvent(parent: parent);
     if (comment != null) {
       event.comment = comment;
@@ -1471,8 +1554,9 @@ class VEvent extends _EventTodoJournalComponent {
     event.properties.add(attendee);
     final delegatedFrom = attendee.delegatedFrom;
     if (delegatedFrom != null) {
-      final delegator =
-          attendees.firstWhereOrNull((a) => a.uri == delegatedFrom);
+      final delegator = attendees.firstWhereOrNull(
+        (a) => a.uri == delegatedFrom,
+      );
       if (delegator != null) {
         event.properties.add(delegator);
       }
@@ -1497,7 +1581,9 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Sets the status
   set status(TodoStatus? value) => setOrRemoveProperty(
-      StatusProperty.propertyName, StatusProperty.createTodoStatus(value));
+    StatusProperty.propertyName,
+    StatusProperty.createTodoStatus(value),
+  );
 
   /// Retrieves the due date of this task
   DateTime? get due =>
@@ -1505,28 +1591,31 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Sets the due date
   set due(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameDue,
-      DateTimeProperty.create(DateTimeProperty.propertyNameDue, value));
+    DateTimeProperty.propertyNameDue,
+    DateTimeProperty.create(DateTimeProperty.propertyNameDue, value),
+  );
 
   /// Retrieves the start date of this task
-  DateTime? get start =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameStart)
-          ?.dateTime;
+  DateTime? get start => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameStart,
+  )?.dateTime;
 
   /// Sets the due date
   set start(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameStart,
-      DateTimeProperty.create(DateTimeProperty.propertyNameStart, value));
+    DateTimeProperty.propertyNameStart,
+    DateTimeProperty.create(DateTimeProperty.propertyNameStart, value),
+  );
 
   /// Retrieves the date when this task was completed
-  DateTime? get completed =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameCompleted)
-          ?.dateTime;
+  DateTime? get completed => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameCompleted,
+  )?.dateTime;
 
   /// Sets the due date
   set completed(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameCompleted,
-      DateTimeProperty.create(DateTimeProperty.propertyNameCompleted, value));
+    DateTimeProperty.propertyNameCompleted,
+    DateTimeProperty.create(DateTimeProperty.propertyNameCompleted, value),
+  );
 
   /// Retrieves the duration of the task
   IsoDuration? get duration =>
@@ -1534,7 +1623,9 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Sets the duration
   set duration(IsoDuration? value) => setOrRemoveProperty(
-      DurationProperty.propertyName, DurationProperty.create(value));
+    DurationProperty.propertyName,
+    DurationProperty.create(value),
+  );
 
   /// The geo location of this task.
   GeoLocation? get geoLocation =>
@@ -1550,21 +1641,22 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Sets the location
   set location(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameLocation,
-      TextProperty.create(TextProperty.propertyNameLocation, value));
+    TextProperty.propertyNameLocation,
+    TextProperty.create(TextProperty.propertyNameLocation, value),
+  );
 
   /// Retrieves the percentage value between 0 and 100 that shows how much is done of this task,
   ///
   /// 100 means the task is fully done; 0 means the task has not been started.
-  int? get percentComplete =>
-      getProperty<IntegerProperty>(IntegerProperty.propertyNamePercentComplete)
-          ?.intValue;
+  int? get percentComplete => getProperty<IntegerProperty>(
+    IntegerProperty.propertyNamePercentComplete,
+  )?.intValue;
 
   /// Sets the percentage between 0 and 100.
   set percentComplete(int? value) => setOrRemoveProperty(
-      IntegerProperty.propertyNamePercentComplete,
-      IntegerProperty.create(
-          IntegerProperty.propertyNamePercentComplete, value));
+    IntegerProperty.propertyNamePercentComplete,
+    IntegerProperty.create(IntegerProperty.propertyNamePercentComplete, value),
+  );
 
   /// Retrieves the priority as a numeric value between 1 (highest) and 9 (lowest) priority.
   int? get priorityInt =>
@@ -1572,7 +1664,9 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Sets the priority as a numeric value
   set priorityInt(int? value) => setOrRemoveProperty(
-      PriorityProperty.propertyName, PriorityProperty.createNumeric(value));
+    PriorityProperty.propertyName,
+    PriorityProperty.createNumeric(value),
+  );
 
   /// Retrieves the priority of this task
   Priority? get priority =>
@@ -1580,7 +1674,9 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Sets the priority
   set priority(Priority? value) => setOrRemoveProperty(
-      PriorityProperty.propertyName, PriorityProperty.createPriority(value));
+    PriorityProperty.propertyName,
+    PriorityProperty.createPriority(value),
+  );
 
   /// Retrieves the resources required for this task
   String? get resources =>
@@ -1588,8 +1684,9 @@ class VTodo extends _EventTodoJournalComponent {
 
   /// Set the resources required for this event
   set resource(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameResources,
-      TextProperty.create(TextProperty.propertyNameResources, value));
+    TextProperty.propertyNameResources,
+    TextProperty.create(TextProperty.propertyNameResources, value),
+  );
 
   @override
   VComponent instantiate({VComponent? parent}) => VTodo(parent: parent);
@@ -1606,7 +1703,9 @@ class VJournal extends _EventTodoJournalComponent {
 
   /// Sets the status
   set status(JournalStatus? value) => setOrRemoveProperty(
-      StatusProperty.propertyName, StatusProperty.createJournalStatus(value));
+    StatusProperty.propertyName,
+    StatusProperty.createJournalStatus(value),
+  );
 
   @override
   VComponent instantiate({VComponent? parent}) => VJournal(parent: parent);
@@ -1622,7 +1721,8 @@ class VTimezone extends VComponent {
 
   /// Sets the timezone ID
   set timezoneId(String value) => setProperty(
-      TextProperty.create(TextProperty.propertyNameTimezoneId, value)!);
+    TextProperty.create(TextProperty.propertyNameTimezoneId, value)!,
+  );
 
   /// Retrieves the optional URL for more information
   Uri? get url =>
@@ -1630,29 +1730,31 @@ class VTimezone extends VComponent {
 
   /// Retrieves the optional URL for more information
   set url(Uri? value) => setOrRemoveProperty(
-      UriProperty.propertyNameTimezoneUrl,
-      UriProperty.create(UriProperty.propertyNameTimezoneUrl, value));
+    UriProperty.propertyNameTimezoneUrl,
+    UriProperty.create(UriProperty.propertyNameTimezoneUrl, value),
+  );
 
   /// The date of the last modification / update of this timezone.
-  DateTime? get lastModified =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameLastModified)
-          ?.dateTime;
+  DateTime? get lastModified => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameLastModified,
+  )?.dateTime;
 
   /// Sets the last modification date
   set lastModified(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameLastModified,
-      DateTimeProperty.create(
-          DateTimeProperty.propertyNameLastModified, value));
+    DateTimeProperty.propertyNameLastModified,
+    DateTimeProperty.create(DateTimeProperty.propertyNameLastModified, value),
+  );
 
   /// Retrieves the location from the proprietary `X-LIC-LOCATION` property, if defined
-  String? get location =>
-      getProperty<TextProperty>(TextProperty.propertyNameXTimezoneLocation)
-          ?.text;
+  String? get location => getProperty<TextProperty>(
+    TextProperty.propertyNameXTimezoneLocation,
+  )?.text;
 
   /// Sets the timezone location  using the proprietary `X-LIC-LOCATION` property.
   set location(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameXTimezoneLocation,
-      TextProperty.create(TextProperty.propertyNameXTimezoneLocation, value));
+    TextProperty.propertyNameXTimezoneLocation,
+    TextProperty.create(TextProperty.propertyNameXTimezoneLocation, value),
+  );
 
   @override
   void checkValidity() {
@@ -1660,7 +1762,8 @@ class VTimezone extends VComponent {
     checkMandatoryProperty(TextProperty.propertyNameTimezoneId);
     if (children.isEmpty) {
       throw const FormatException(
-          'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component');
+        'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component',
+      );
     }
     var numberOfStandardChildren = 0, numberOfDaylightChildren = 0;
     for (final phase in children) {
@@ -1672,7 +1775,8 @@ class VTimezone extends VComponent {
     }
     if (numberOfStandardChildren == 0 && numberOfDaylightChildren == 0) {
       throw const FormatException(
-          'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component');
+        'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component',
+      );
     }
   }
 
@@ -1683,48 +1787,58 @@ class VTimezone extends VComponent {
 /// Contains the standard or daylight timezone subcomponent
 class VTimezonePhase extends VComponent {
   VTimezonePhase(String componentName, {required VTimezone parent})
-      : super(componentName, parent);
+    : super(componentName, parent);
   static const String componentNameStandard = 'STANDARD';
   static const String componentNameDaylight = 'DAYLIGHT';
 
   /// Gets the start datetime of this phase
-  DateTime get start =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameStart)!
-          .dateTime;
+  DateTime get start => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameStart,
+  )!.dateTime;
 
   /// Sets the last modification date
   set start(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameStart,
-      DateTimeProperty.create(DateTimeProperty.propertyNameStart, value));
+    DateTimeProperty.propertyNameStart,
+    DateTimeProperty.create(DateTimeProperty.propertyNameStart, value),
+  );
 
   /// Gets the UTC offset before this phase
   UtcOffset get from => getProperty<UtfOffsetProperty>(
-          UtfOffsetProperty.propertyNameTimezoneOffsetFrom)!
-      .offset;
+    UtfOffsetProperty.propertyNameTimezoneOffsetFrom,
+  )!.offset;
 
   /// Sets the UTC offset before this phase
-  set from(UtcOffset value) => setProperty(UtfOffsetProperty.create(
-      UtfOffsetProperty.propertyNameTimezoneOffsetFrom, value)!);
+  set from(UtcOffset value) => setProperty(
+    UtfOffsetProperty.create(
+      UtfOffsetProperty.propertyNameTimezoneOffsetFrom,
+      value,
+    )!,
+  );
 
   /// Gets the UTC offset during this phase
   UtcOffset get to => getProperty<UtfOffsetProperty>(
-          UtfOffsetProperty.propertyNameTimezoneOffsetTo)!
-      .offset;
+    UtfOffsetProperty.propertyNameTimezoneOffsetTo,
+  )!.offset;
 
   /// Sets the UTC offset during this phase
-  set to(UtcOffset value) => setProperty(UtfOffsetProperty.create(
-      UtfOffsetProperty.propertyNameTimezoneOffsetTo, value)!);
+  set to(UtcOffset value) => setProperty(
+    UtfOffsetProperty.create(
+      UtfOffsetProperty.propertyNameTimezoneOffsetTo,
+      value,
+    )!,
+  );
 
   //TODO the name property can occur more than once in theory
   /// Retrieves the (first) name of the timezone
-  String? get timezoneName =>
-      getProperty<TextProperty>(TextProperty.propertyNameTimezoneName)
-          ?.textValue;
+  String? get timezoneName => getProperty<TextProperty>(
+    TextProperty.propertyNameTimezoneName,
+  )?.textValue;
 
   /// Sets the timezone's name
   set timezoneName(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameTimezoneName,
-      TextProperty.create(TextProperty.propertyNameTimezoneName, value));
+    TextProperty.propertyNameTimezoneName,
+    TextProperty.create(TextProperty.propertyNameTimezoneName, value),
+  );
 
   /// Retrieves the comment
   String? get comment =>
@@ -1732,50 +1846,58 @@ class VTimezonePhase extends VComponent {
 
   /// Sets the comment
   set comment(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameComment,
-      TextProperty.create(TextProperty.propertyNameComment, value));
+    TextProperty.propertyNameComment,
+    TextProperty.create(TextProperty.propertyNameComment, value),
+  );
 
   /// Retrieves the recurrence rule of this event
   ///
   /// Compare [additionalRecurrenceDates], [excludingRecurrenceDates]
-  Recurrence? get recurrenceRule =>
-      getProperty<RecurrenceRuleProperty>(RecurrenceRuleProperty.propertyName)
-          ?.rule;
+  Recurrence? get recurrenceRule => getProperty<RecurrenceRuleProperty>(
+    RecurrenceRuleProperty.propertyName,
+  )?.rule;
 
   /// Sets the reccurenceRule
   set recurrenceRule(Recurrence? value) => setOrRemoveProperty(
-      RecurrenceRuleProperty.propertyName,
-      RecurrenceRuleProperty.create(value));
+    RecurrenceRuleProperty.propertyName,
+    RecurrenceRuleProperty.create(value),
+  );
 
   /// Retrieves additional reccurrence dates or durations as defined in the `RDATE` property
   ///
   /// Compare [excludingRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get additionalRecurrenceDates =>
       getProperty<RecurrenceDateProperty>(
-              RecurrenceDateProperty.propertyNameRDate)
-          ?.dates;
+        RecurrenceDateProperty.propertyNameRDate,
+      )?.dates;
 
   /// Sets the additional recurrence dates or durations
   set additionalRecurrenceDates(List<DateTimeOrDuration>? value) =>
       setOrRemoveProperty(
+        RecurrenceDateProperty.propertyNameRDate,
+        RecurrenceDateProperty.create(
           RecurrenceDateProperty.propertyNameRDate,
-          RecurrenceDateProperty.create(
-              RecurrenceDateProperty.propertyNameRDate, value));
+          value,
+        ),
+      );
 
   /// Retrieves excluding reccurrence dates or durations as defined in the `EXDATE` property
   ///
   /// Compare [additionalRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get excludingRecurrenceDates =>
       getProperty<RecurrenceDateProperty>(
-              RecurrenceDateProperty.propertyNameExDate)
-          ?.dates;
+        RecurrenceDateProperty.propertyNameExDate,
+      )?.dates;
 
   /// Sets exluding recurrence dates or durations
   set excludingRecurrenceDates(List<DateTimeOrDuration>? value) =>
       setOrRemoveProperty(
+        RecurrenceDateProperty.propertyNameExDate,
+        RecurrenceDateProperty.create(
           RecurrenceDateProperty.propertyNameExDate,
-          RecurrenceDateProperty.create(
-              RecurrenceDateProperty.propertyNameExDate, value));
+          value,
+        ),
+      );
 
   @override
   void checkValidity() {
@@ -1803,9 +1925,9 @@ class VAlarm extends VComponent {
 
   /// Sets the trigger date time
   set triggerDate(DateTime? value) => setOrRemoveProperty(
-        TriggerProperty.propertyName,
-        TriggerProperty.createWithDateTime(value),
-      );
+    TriggerProperty.propertyName,
+    TriggerProperty.createWithDateTime(value),
+  );
 
   /// Retrieves the relative duration of the trigger, e.g. -15 minutes (`-PT15M`) as a reminder before an event starts.
   ///
@@ -1816,15 +1938,18 @@ class VAlarm extends VComponent {
 
   /// Sets the trigger relative duration
   set triggerRelativeDuration(IsoDuration? value) => setOrRemoveProperty(
-      TriggerProperty.propertyName, TriggerProperty.createWithDuration(value));
+    TriggerProperty.propertyName,
+    TriggerProperty.createWithDuration(value),
+  );
 
   /// Resolves if the [triggerRelativeDuration] is calculated in relation to the [VEvent.start] or [VEvent.end] time.
   ///
   /// Defaults to [VEvent.start] / [AlarmTriggerRelationship.start].
   /// Compare [triggerRelativeDuration]
   AlarmTriggerRelationship get triggerRelation =>
-      getProperty<TriggerProperty>(TriggerProperty.propertyName)
-          ?.triggerRelation ??
+      getProperty<TriggerProperty>(
+        TriggerProperty.propertyName,
+      )?.triggerRelation ??
       AlarmTriggerRelationship.start;
 
   /// Sets the trigger, this is useful when you also want to specify the [AlarmTriggerRelationship], for example
@@ -1833,14 +1958,16 @@ class VAlarm extends VComponent {
 
   /// How often the alarm can be repeated, defaults to `0`, ie no additional repeats after the first alaram.
   int get repeat =>
-      getProperty<IntegerProperty>(IntegerProperty.propertyNameRepeat)
-          ?.intValue ??
+      getProperty<IntegerProperty>(
+        IntegerProperty.propertyNameRepeat,
+      )?.intValue ??
       0;
 
   /// Sets the number of repeats
   set repeat(int? value) => setOrRemoveProperty(
-      IntegerProperty.propertyNameRepeat,
-      IntegerProperty.create(IntegerProperty.propertyNameRepeat, value));
+    IntegerProperty.propertyNameRepeat,
+    IntegerProperty.create(IntegerProperty.propertyNameRepeat, value),
+  );
 
   /// Retrieves the action in case it is one described by the icalendar standard or  [AlarmAction.other] in other cases.
   ///
@@ -1851,7 +1978,9 @@ class VAlarm extends VComponent {
 
   /// Sets the action
   set action(AlarmAction? value) => setOrRemoveProperty(
-      ActionProperty.propertyName, ActionProperty.createWithAction(value));
+    ActionProperty.propertyName,
+    ActionProperty.createWithAction(value),
+  );
 
   /// Retrieve the alarm action as a text.
   ///
@@ -1861,7 +1990,9 @@ class VAlarm extends VComponent {
 
   /// Sets the action
   set actionText(String? value) => setOrRemoveProperty(
-      ActionProperty.propertyName, ActionProperty.createWithActionText(value));
+    ActionProperty.propertyName,
+    ActionProperty.createWithActionText(value),
+  );
 
   /// Retrieves the duration of the alarm
   IsoDuration? get duration =>
@@ -1869,14 +2000,16 @@ class VAlarm extends VComponent {
 
   /// Sets the duration
   set duration(IsoDuration? value) => setOrRemoveProperty(
-      DurationProperty.propertyName, DurationProperty.create(value));
+    DurationProperty.propertyName,
+    DurationProperty.create(value),
+  );
 
   /// Retrieves the attachments
   ///
   /// In case the [action] is an [AlarmAction.audio], one attachment describing the audio is expected.
-  List<AttachmentProperty> get attachments =>
-      getProperties<AttachmentProperty>(AttachmentProperty.propertyName)
-          .toList();
+  List<AttachmentProperty> get attachments => getProperties<AttachmentProperty>(
+    AttachmentProperty.propertyName,
+  ).toList();
 
   /// Sets the attachments
   set attachments(List<AttachmentProperty> value) =>
@@ -1893,8 +2026,11 @@ class VAlarm extends VComponent {
 
   /// Removes the attachment with the given [uri], returning it when it was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttachmentProperty && p.uri == uri) as AttachmentProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttachmentProperty && p.uri == uri,
+            )
+            as AttachmentProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -1907,8 +2043,9 @@ class VAlarm extends VComponent {
 
   /// Sets the comment
   set summary(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameSummary,
-      TextProperty.create(TextProperty.propertyNameSummary, value));
+    TextProperty.propertyNameSummary,
+    TextProperty.create(TextProperty.propertyNameSummary, value),
+  );
 
   /// Retrieves the description
   String? get description =>
@@ -1916,8 +2053,9 @@ class VAlarm extends VComponent {
 
   /// Sets the description
   set description(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameDescription,
-      TextProperty.create(TextProperty.propertyNameDescription, value));
+    TextProperty.propertyNameDescription,
+    TextProperty.create(TextProperty.propertyNameDescription, value),
+  );
 
   /// Retrieves the attendees
   List<AttendeeProperty> get attendees =>
@@ -1937,8 +2075,11 @@ class VAlarm extends VComponent {
 
   /// Removes the attendee with the given [uri], returning it when it was found.
   AttendeeProperty? removeAttendeeWithUri(Uri uri) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttendeeProperty && p.uri == uri) as AttendeeProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttendeeProperty && p.uri == uri,
+            )
+            as AttendeeProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -1947,8 +2088,11 @@ class VAlarm extends VComponent {
 
   /// Removes the attendee with the given [email], returning it when it was found.
   AttendeeProperty? removeAttendeeWithEmail(String email) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttendeeProperty && p.email == email) as AttendeeProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttendeeProperty && p.email == email,
+            )
+            as AttendeeProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -1985,18 +2129,20 @@ class VFreeBusy extends _UidMandatoryComponent {
 
   /// Sets the comment
   set comment(String? value) => setOrRemoveProperty(
-      TextProperty.propertyNameComment,
-      TextProperty.create(TextProperty.propertyNameComment, value));
+    TextProperty.propertyNameComment,
+    TextProperty.create(TextProperty.propertyNameComment, value),
+  );
 
   /// The start time (inclusive) of the free busy time.
-  DateTime? get start =>
-      getProperty<DateTimeProperty>(DateTimeProperty.propertyNameStart)
-          ?.dateTime;
+  DateTime? get start => getProperty<DateTimeProperty>(
+    DateTimeProperty.propertyNameStart,
+  )?.dateTime;
 
   /// Sets the start date (inclusive)
   set start(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameStart,
-      DateTimeProperty.create(DateTimeProperty.propertyNameStart, value));
+    DateTimeProperty.propertyNameStart,
+    DateTimeProperty.create(DateTimeProperty.propertyNameStart, value),
+  );
 
   /// The end date (exclusive) of this event.
   ///
@@ -2007,8 +2153,9 @@ class VFreeBusy extends _UidMandatoryComponent {
 
   /// Sets the end date (exclusive)
   set end(DateTime? value) => setOrRemoveProperty(
-      DateTimeProperty.propertyNameEnd,
-      DateTimeProperty.create(DateTimeProperty.propertyNameEnd, value));
+    DateTimeProperty.propertyNameEnd,
+    DateTimeProperty.create(DateTimeProperty.propertyNameEnd, value),
+  );
 
   /// Retrieves the contact for details
   UserProperty? get contact =>
@@ -2019,13 +2166,15 @@ class VFreeBusy extends _UidMandatoryComponent {
       setOrRemoveProperty(OrganizerProperty.propertyName, value);
 
   /// Retrieves the request status, e.g. `4.1;Event conflict.  Date-time is busy.`
-  String? get requestStatus =>
-      getProperty<RequestStatusProperty>(RequestStatusProperty.propertyName)
-          ?.requestStatus;
+  String? get requestStatus => getProperty<RequestStatusProperty>(
+    RequestStatusProperty.propertyName,
+  )?.requestStatus;
 
   /// Sets the request status
   set requestStatus(String? value) => setOrRemoveProperty(
-      RequestStatusProperty.propertyName, RequestStatusProperty.create(value));
+    RequestStatusProperty.propertyName,
+    RequestStatusProperty.create(value),
+  );
 
   /// Checks if the request status is a success, this defaults to `true` when no `REQUEST-STATUS` is set.
   bool get requestStatusIsSuccess => requestStatus?.startsWith('2.') ?? true;
@@ -2051,8 +2200,11 @@ class VFreeBusy extends _UidMandatoryComponent {
 
   /// Removes the attendee with the given [uri], returning it when it was found.
   AttendeeProperty? removeAttendeeWithUri(Uri uri) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttendeeProperty && p.uri == uri) as AttendeeProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttendeeProperty && p.uri == uri,
+            )
+            as AttendeeProperty?;
     if (match != null) {
       properties.remove(match);
     }
@@ -2061,8 +2213,11 @@ class VFreeBusy extends _UidMandatoryComponent {
 
   /// Removes the attendee with the given [email], returning it when it was found.
   AttendeeProperty? removeAttendeeWithEmail(String email) {
-    final match = properties.firstWhereOrNull(
-        (p) => p is AttendeeProperty && p.email == email) as AttendeeProperty?;
+    final match =
+        properties.firstWhereOrNull(
+              (p) => p is AttendeeProperty && p.email == email,
+            )
+            as AttendeeProperty?;
     if (match != null) {
       properties.remove(match);
     }
