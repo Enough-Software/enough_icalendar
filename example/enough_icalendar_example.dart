@@ -40,8 +40,9 @@ END:VCALENDAR''';
   print(event.start); // 1997-06-14 at 17:00
   print(event.end); // 1997-07-15 at 03:59:59
   print(event.recurrenceRule?.toHumanReadableText()); // Annually
-  print(event.recurrenceRule
-      ?.toHumanReadableText(languageCode: 'de')); // Jährlich
+  print(
+    event.recurrenceRule?.toHumanReadableText(languageCode: 'de'),
+  ); // Jährlich
   print(event.organizer?.commonName); // John Doe
   print(event.organizer?.email); // john.doe@example.com
   print(event.geoLocation?.latitude); // 48.85299
@@ -61,7 +62,8 @@ VCalendar generate() {
     url: Uri.parse('https://enough.de'),
     summary: 'Discussion',
     description:
-        'Let us discuss how to proceed with the enough_icalendar development. It seems that basic functionality is now covered. What\'s next?',
+        'Let us discuss how to proceed with the enough_icalendar development. '
+        'It seems that basic functionality is now covered. What\'s next?',
     productId: 'enough_icalendar/v1',
   );
   print('\nGenerated invite:');
@@ -92,8 +94,10 @@ VCalendar generate() {
 }
 
 void changeParticipantStatus(VCalendar invite) {
-  final reply = invite.replyWithParticipantStatus(ParticipantStatus.accepted,
-      attendeeEmail: 'b@example.com');
+  final reply = invite.replyWithParticipantStatus(
+    ParticipantStatus.accepted,
+    attendeeEmail: 'b@example.com',
+  );
   print('\nAccepted by attendee b@example.com:');
   print(reply);
   // prints this:
@@ -202,8 +206,10 @@ void acceptCounter(VCalendar counterProposal) {
   // An organizer can accept a counter proposal.
   // The updated invite is then sent to all attendees.
   final accepted = counterProposal.acceptCounter(
-      comment: 'Accepted this proposed change of date and time');
-  // The accepted proposal will have a higher sequence and the status automatically be set to EventStatus.confirmed.
+    comment: 'Accepted this proposed change of date and time',
+  );
+  // The accepted proposal will have a higher sequence and the status
+  // automatically be set to EventStatus.confirmed.
   print('\nAccepted counter proposal:');
   print(accepted);
   // prints this:
@@ -237,8 +243,9 @@ void declineCounter(VCalendar counterProposal) {
   // An organizer can decline a counter proposal.
   // The declined notice is then sent to the proposing attendee.
   final declined = counterProposal.declineCounter(
-      attendeeEmail: 'b@example.com',
-      comment: 'Sorry, but we have to stick to the original schedule');
+    attendeeEmail: 'b@example.com',
+    comment: 'Sorry, but we have to stick to the original schedule',
+  );
   print('Declined counter proposal:');
   print(declined);
   // prints this:
@@ -266,8 +273,9 @@ void declineCounter(VCalendar counterProposal) {
 
 void cancelEventForAll(VCalendar invite) {
   // An organizer can cancel the event completely:
-  final cancelled =
-      invite.cancelEvent(comment: 'Sorry, let\'s skip this completely');
+  final cancelled = invite.cancelEvent(
+    comment: 'Sorry, let\'s skip this completely',
+  );
   print('\nCancelled event:');
   print(cancelled);
   // prints this:

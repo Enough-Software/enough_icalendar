@@ -7,7 +7,8 @@ void main() {
   group('Valid RRULE', () {
     test('RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4;UNTIL=19980404T070000Z', () {
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4;UNTIL=19980404T070000Z');
+        'RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=4;UNTIL=19980404T070000Z',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.byWeekDay, isNotEmpty);
@@ -41,8 +42,9 @@ void main() {
     });
 
     test('RRULE:FREQ=DAILY;UNTIL=19971224T000000Z', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=DAILY;UNTIL=19971224T000000Z');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=DAILY;UNTIL=19971224T000000Z',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.daily);
       expect(ruleProp.rule.until, DateTime.utc(1997, 12, 24, 00, 00, 00));
@@ -69,8 +71,9 @@ void main() {
     });
 
     test('RRULE:FREQ=DAILY;INTERVAL=10;COUNT=5', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=DAILY;INTERVAL=10;COUNT=5');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=DAILY;INTERVAL=10;COUNT=5',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.daily);
       expect(ruleProp.rule.interval, 10);
@@ -83,34 +86,35 @@ void main() {
     });
 
     test(
-        'RRULE:FREQ=YEARLY;UNTIL=20000131T140000Z;BYMONTH=1;BYDAY=SU,MO,TU,WE,TH,FR,SA',
-        () {
-      // Every day in January, for 3 years:
-      final ruleProp = RecurrenceRuleProperty(
-        'RRULE:FREQ=YEARLY;UNTIL=20000131T140000Z;BYMONTH=1;BYDAY=SU,MO,TU,WE,TH,FR,SA',
-      );
-      expect(ruleProp.name, 'RRULE');
-      expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
-      expect(ruleProp.rule.until, DateTime.utc(2000, 01, 31, 14, 00, 00));
-      expect(ruleProp.rule.byMonth, [1]);
-      expect(ruleProp.rule.byWeekDay, [
-        const ByDayRule(DateTime.sunday),
-        const ByDayRule(DateTime.monday),
-        const ByDayRule(DateTime.tuesday),
-        const ByDayRule(DateTime.wednesday),
-        const ByDayRule(DateTime.thursday),
-        const ByDayRule(DateTime.friday),
-        const ByDayRule(DateTime.saturday),
-      ]);
-      expect(
-        ruleProp.rule.toHumanReadableText(),
-        'Annually on every day in January, until Monday, January 31, 2000',
-      );
-      expect(
-        ruleProp.rule.toHumanReadableText(languageCode: 'de'),
-        'Jährlich an jedem Tag im Januar, bis zum Montag, 31. Januar 2000',
-      );
-    });
+      'RRULE:FREQ=YEARLY;UNTIL=20000131T140000Z;BYMONTH=1;BYDAY=SU,MO,TU,WE,TH,FR,SA',
+      () {
+        // Every day in January, for 3 years:
+        final ruleProp = RecurrenceRuleProperty(
+          'RRULE:FREQ=YEARLY;UNTIL=20000131T140000Z;BYMONTH=1;BYDAY=SU,MO,TU,WE,TH,FR,SA',
+        );
+        expect(ruleProp.name, 'RRULE');
+        expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
+        expect(ruleProp.rule.until, DateTime.utc(2000, 01, 31, 14, 00, 00));
+        expect(ruleProp.rule.byMonth, [1]);
+        expect(ruleProp.rule.byWeekDay, [
+          const ByDayRule(DateTime.sunday),
+          const ByDayRule(DateTime.monday),
+          const ByDayRule(DateTime.tuesday),
+          const ByDayRule(DateTime.wednesday),
+          const ByDayRule(DateTime.thursday),
+          const ByDayRule(DateTime.friday),
+          const ByDayRule(DateTime.saturday),
+        ]);
+        expect(
+          ruleProp.rule.toHumanReadableText(),
+          'Annually on every day in January, until Monday, January 31, 2000',
+        );
+        expect(
+          ruleProp.rule.toHumanReadableText(languageCode: 'de'),
+          'Jährlich an jedem Tag im Januar, bis zum Montag, 31. Januar 2000',
+        );
+      },
+    );
 
     test('RRULE:FREQ=DAILY;UNTIL=20000131T140000Z;BYMONTH=1', () {
       // Every day in January, for 3 years:
@@ -138,20 +142,24 @@ void main() {
       expect(ruleProp.rule.count, 10);
       expect(ruleProp.rule.toHumanReadableText(), 'Weekly, 10 times');
       expect(
-        ruleProp.rule
-            .toHumanReadableText(startDate: DateTime(2021, 07, 27, 15, 00)),
+        ruleProp.rule.toHumanReadableText(
+          startDate: DateTime(2021, 07, 27, 15, 00),
+        ),
         'Every Tuesday, 10 times',
       );
       expect(
         ruleProp.rule.toHumanReadableText(
-            languageCode: 'de', startDate: DateTime(2021, 07, 27, 15, 00)),
+          languageCode: 'de',
+          startDate: DateTime(2021, 07, 27, 15, 00),
+        ),
         'Jeden Dienstag, 10-mal',
       );
     });
 
     test('RRULE:FREQ=WEEKLY;UNTIL=19971224T000000Z', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=WEEKLY;UNTIL=19971224T000000Z');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=WEEKLY;UNTIL=19971224T000000Z',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.weekly);
       expect(ruleProp.rule.until, DateTime.utc(1997, 12, 24, 00, 00, 00));
@@ -160,8 +168,9 @@ void main() {
         'Weekly, until Wednesday, December 24, 1997',
       );
       expect(
-        ruleProp.rule
-            .toHumanReadableText(startDate: DateTime(1997, 12, 03, 15, 00)),
+        ruleProp.rule.toHumanReadableText(
+          startDate: DateTime(1997, 12, 03, 15, 00),
+        ),
         'Every Wednesday, until Wednesday, December 24, 1997',
       );
       expect(
@@ -170,14 +179,17 @@ void main() {
       );
       expect(
         ruleProp.rule.toHumanReadableText(
-            languageCode: 'de', startDate: DateTime(1997, 12, 03, 15, 00)),
+          languageCode: 'de',
+          startDate: DateTime(1997, 12, 03, 15, 00),
+        ),
         'Jeden Mittwoch, bis zum Mittwoch, 24. Dezember 1997',
       );
     });
 
     test('RRULE:FREQ=WEEKLY;INTERVAL=2;WKST=SU', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=WEEKLY;INTERVAL=2;WKST=SU');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=WEEKLY;INTERVAL=2;WKST=SU',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.weekly);
       expect(ruleProp.rule.interval, 2);
@@ -188,13 +200,16 @@ void main() {
         'Alle zwei Wochen',
       );
       expect(
-        ruleProp.rule
-            .toHumanReadableText(startDate: DateTime(1997, 12, 03, 15, 00)),
+        ruleProp.rule.toHumanReadableText(
+          startDate: DateTime(1997, 12, 03, 15, 00),
+        ),
         'Every other Wednesday',
       );
       expect(
         ruleProp.rule.toHumanReadableText(
-            languageCode: 'de', startDate: DateTime(1997, 12, 03, 15, 00)),
+          languageCode: 'de',
+          startDate: DateTime(1997, 12, 03, 15, 00),
+        ),
         'Jeden zweiten Mittwoch',
       );
     });
@@ -227,7 +242,9 @@ void main() {
       );
       expect(
         ruleProp.rule.toHumanReadableText(
-            languageCode: 'de', startDate: DateTime(1997, 12, 03, 15, 00)),
+          languageCode: 'de',
+          startDate: DateTime(1997, 12, 03, 15, 00),
+        ),
         'Wöchentlich am Dienstag & Donnerstag, bis zum Dienstag, 7. Oktober 1997',
       );
     });
@@ -301,8 +318,9 @@ void main() {
       );
     });
     test('RRULE:FREQ=MONTHLY;COUNT=10;BYDAY=1FR', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;COUNT=10;BYDAY=1FR');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;COUNT=10;BYDAY=1FR',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.count, 10);
@@ -360,8 +378,9 @@ void main() {
       );
     });
     test('RRULE:FREQ=MONTHLY;COUNT=6;BYDAY=-2MO', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;COUNT=6;BYDAY=-2MO');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;COUNT=6;BYDAY=-2MO',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.count, 6);
@@ -378,8 +397,9 @@ void main() {
       );
     });
     test('RRULE:FREQ=MONTHLY;BYMONTHDAY=-3', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;BYMONTHDAY=-3');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;BYMONTHDAY=-3',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.byMonthDay, [-3]);
@@ -394,8 +414,9 @@ void main() {
     });
 
     test('RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=2,15', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=2,15');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=2,15',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.count, 10);
@@ -411,8 +432,9 @@ void main() {
     });
 
     test('RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=1,-1', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=1,-1');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;COUNT=10;BYMONTHDAY=1,-1',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.count, 10);
@@ -449,8 +471,9 @@ void main() {
     );
 
     test('RRULE:FREQ=MONTHLY;INTERVAL=2;BYDAY=TU', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;INTERVAL=2;BYDAY=TU');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;INTERVAL=2;BYDAY=TU',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.interval, 2);
@@ -466,8 +489,9 @@ void main() {
     });
 
     test('RRULE:FREQ=YEARLY;COUNT=10;BYMONTH=6,7', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=YEARLY;COUNT=10;BYMONTH=6,7');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=YEARLY;COUNT=10;BYMONTH=6,7',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.count, 10);
@@ -484,19 +508,17 @@ void main() {
 
     test('RRULE:FREQ=YEARLY;INTERVAL=2;COUNT=10;BYMONTH=1,2,3', () {
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=YEARLY;INTERVAL=2;COUNT=10;BYMONTH=1,2,3');
+        'RRULE:FREQ=YEARLY;INTERVAL=2;COUNT=10;BYMONTH=1,2,3',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.interval, 2);
       expect(ruleProp.rule.count, 10);
-      expect(
-        ruleProp.rule.byMonth,
-        [
-          DateTime.january,
-          DateTime.february,
-          DateTime.march,
-        ],
-      );
+      expect(ruleProp.rule.byMonth, [
+        DateTime.january,
+        DateTime.february,
+        DateTime.march,
+      ]);
       expect(
         ruleProp.rule.toHumanReadableText(),
         'Every other year in January – March, 10 times',
@@ -509,7 +531,8 @@ void main() {
 
     test('RRULE:FREQ=YEARLY;INTERVAL=3;COUNT=10;BYYEARDAY=1,100,200', () {
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=YEARLY;INTERVAL=3;COUNT=10;BYYEARDAY=1,100,200');
+        'RRULE:FREQ=YEARLY;INTERVAL=3;COUNT=10;BYYEARDAY=1,100,200',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.interval, 3);
@@ -543,14 +566,13 @@ void main() {
     });
 
     test('RRULE:FREQ=YEARLY;BYWEEKNO=20;BYDAY=MO', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=YEARLY;BYWEEKNO=20;BYDAY=MO');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=YEARLY;BYWEEKNO=20;BYDAY=MO',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.byWeek, [20]);
-      expect(ruleProp.rule.byWeekDay, [
-        const ByDayRule(DateTime.monday),
-      ]);
+      expect(ruleProp.rule.byWeekDay, [const ByDayRule(DateTime.monday)]);
       expect(
         ruleProp.rule.toHumanReadableText(),
         'Annually on Monday in the 20th week of the year',
@@ -562,8 +584,9 @@ void main() {
     });
 
     test('RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=TH', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=TH');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=TH',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.byWeekDay, [const ByDayRule(DateTime.thursday)]);
@@ -579,15 +602,17 @@ void main() {
     });
 
     test('RRULE:FREQ=YEARLY;BYDAY=TH;BYMONTH=6,7,8', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=YEARLY;BYDAY=TH;BYMONTH=6,7,8');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=YEARLY;BYDAY=TH;BYMONTH=6,7,8',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
       expect(ruleProp.rule.byWeekDay, [const ByDayRule(DateTime.thursday)]);
-      expect(
-        ruleProp.rule.byMonth,
-        [DateTime.june, DateTime.july, DateTime.august],
-      );
+      expect(ruleProp.rule.byMonth, [
+        DateTime.june,
+        DateTime.july,
+        DateTime.august,
+      ]);
       expect(
         ruleProp.rule.toHumanReadableText(),
         'Annually on every Thursday in June – August',
@@ -599,8 +624,9 @@ void main() {
     });
 
     test('RRULE:FREQ=MONTHLY;BYDAY=FR;BYMONTHDAY=13', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;BYDAY=FR;BYMONTHDAY=13');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;BYDAY=FR;BYMONTHDAY=13',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.byMonthDay, [13]);
@@ -617,7 +643,8 @@ void main() {
 
     test('RRULE:FREQ=MONTHLY;BYDAY=SA;BYMONTHDAY=7,8,9,10,11,12,13', () {
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=MONTHLY;BYDAY=SA;BYMONTHDAY=7,8,9,10,11,12,13');
+        'RRULE:FREQ=MONTHLY;BYDAY=SA;BYMONTHDAY=7,8,9,10,11,12,13',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.byWeekDay, [const ByDayRule(DateTime.saturday)]);
@@ -633,31 +660,34 @@ void main() {
     });
 
     test(
-        'RRULE:FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;BYMONTHDAY=2,3,4,5,6,7,8',
-        () {
-      final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;BYMONTHDAY=2,3,4,5,6,7,8');
-      expect(ruleProp.name, 'RRULE');
-      expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
-      expect(ruleProp.rule.interval, 4);
-      expect(ruleProp.rule.byMonth, [11]);
-      expect(ruleProp.rule.byWeekDay, [const ByDayRule(DateTime.tuesday)]);
-      expect(ruleProp.rule.byMonthDay, [2, 3, 4, 5, 6, 7, 8]);
-      expect(
-        ruleProp.rule.toHumanReadableText(),
-        'Every 4 years on every Tuesday that are also the second – 8th day of the month and that are also in November',
-      );
-      expect(
-        ruleProp.rule.toHumanReadableText(languageCode: 'de'),
-        'Alle 4 Jahre an jedem Dienstag, der ebenfalls der 2. – 8. Tag des Monats ist und der ebenfalls im November ist',
-      );
-    });
+      'RRULE:FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;BYMONTHDAY=2,3,4,5,6,7,8',
+      () {
+        final ruleProp = RecurrenceRuleProperty(
+          'RRULE:FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;BYMONTHDAY=2,3,4,5,6,7,8',
+        );
+        expect(ruleProp.name, 'RRULE');
+        expect(ruleProp.rule.frequency, RecurrenceFrequency.yearly);
+        expect(ruleProp.rule.interval, 4);
+        expect(ruleProp.rule.byMonth, [11]);
+        expect(ruleProp.rule.byWeekDay, [const ByDayRule(DateTime.tuesday)]);
+        expect(ruleProp.rule.byMonthDay, [2, 3, 4, 5, 6, 7, 8]);
+        expect(
+          ruleProp.rule.toHumanReadableText(),
+          'Every 4 years on every Tuesday that are also the second – 8th day of the month and that are also in November',
+        );
+        expect(
+          ruleProp.rule.toHumanReadableText(languageCode: 'de'),
+          'Alle 4 Jahre an jedem Dienstag, der ebenfalls der 2. – 8. Tag des Monats ist und der ebenfalls im November ist',
+        );
+      },
+    );
 
     test('RRULE:FREQ=MONTHLY;COUNT=3;BYDAY=TU,WE,TH;BYSETPOS=3', () {
       // The third instance into the month of one of Tuesday, Wednesday, or
       // Thursday, for the next 3 months:
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=MONTHLY;COUNT=3;BYDAY=TU,WE,TH;BYSETPOS=3');
+        'RRULE:FREQ=MONTHLY;COUNT=3;BYDAY=TU,WE,TH;BYSETPOS=3',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.count, 3);
@@ -720,8 +750,9 @@ void main() {
     });
 
     test('RRULE:FREQ=MINUTELY;INTERVAL=15;COUNT=6', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MINUTELY;INTERVAL=15;COUNT=6');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MINUTELY;INTERVAL=15;COUNT=6',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.minutely);
       expect(ruleProp.rule.interval, 15);
@@ -733,8 +764,9 @@ void main() {
       );
     });
     test('RRULE:FREQ=MINUTELY;INTERVAL=90;COUNT=4', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MINUTELY;INTERVAL=90;COUNT=4');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MINUTELY;INTERVAL=90;COUNT=4',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.minutely);
       expect(ruleProp.rule.count, 4);
@@ -748,7 +780,8 @@ void main() {
     test('RRULE:FREQ=DAILY;BYHOUR=9,10,11,12,13,14,15,16;BYMINUTE=0,20,40', () {
       // Every 20 minutes from 9:00 AM to 4:40 PM every day:
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=DAILY;BYHOUR=9,10,11,12,13,14,15,16;BYMINUTE=0,20,40');
+        'RRULE:FREQ=DAILY;BYHOUR=9,10,11,12,13,14,15,16;BYMINUTE=0,20,40',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.daily);
       expect(ruleProp.rule.byHour, [9, 10, 11, 12, 13, 14, 15, 16]);
@@ -760,7 +793,8 @@ void main() {
     test('RRULE:FREQ=MINUTELY;INTERVAL=20;BYHOUR=9,10,11,12,13,14,15,16', () {
       // Every 20 minutes from 9:00 AM to 4:40 PM every day:
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=MINUTELY;INTERVAL=20;BYHOUR=9,10,11,12,13,14,15,16');
+        'RRULE:FREQ=MINUTELY;INTERVAL=20;BYHOUR=9,10,11,12,13,14,15,16',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.minutely);
       expect(ruleProp.rule.interval, 20);
@@ -768,7 +802,8 @@ void main() {
     });
     test('RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=4;BYDAY=TU,SU;WKST=MO', () {
       final ruleProp = RecurrenceRuleProperty(
-          'RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=4;BYDAY=TU,SU;WKST=MO');
+        'RRULE:FREQ=WEEKLY;INTERVAL=2;COUNT=4;BYDAY=TU,SU;WKST=MO',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.weekly);
       expect(ruleProp.rule.interval, 2);
@@ -794,8 +829,9 @@ void main() {
       expect(ruleProp.rule.startOfWorkWeek, DateTime.sunday);
     });
     test('RRULE:FREQ=MONTHLY;BYMONTHDAY=15,30;COUNT=5', () {
-      final ruleProp =
-          RecurrenceRuleProperty('RRULE:FREQ=MONTHLY;BYMONTHDAY=15,30;COUNT=5');
+      final ruleProp = RecurrenceRuleProperty(
+        'RRULE:FREQ=MONTHLY;BYMONTHDAY=15,30;COUNT=5',
+      );
       expect(ruleProp.name, 'RRULE');
       expect(ruleProp.rule.frequency, RecurrenceFrequency.monthly);
       expect(ruleProp.rule.count, 5);
@@ -860,10 +896,7 @@ void main() {
       const recurrence = Recurrence(
         RecurrenceFrequency.weekly,
         count: 4,
-        byWeekDay: [
-          ByDayRule(DateTime.tuesday),
-          ByDayRule(DateTime.sunday),
-        ],
+        byWeekDay: [ByDayRule(DateTime.tuesday), ByDayRule(DateTime.sunday)],
         interval: 2,
         startOfWorkWeek: DateTime.sunday,
       );
@@ -889,29 +922,15 @@ void main() {
     test('RRULE:FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO', () {
       const recurrence = Recurrence(
         RecurrenceFrequency.weekly,
-        byWeekDay: [
-          ByDayRule(DateTime.monday),
-          ByDayRule(DateTime.thursday),
-        ],
+        byWeekDay: [ByDayRule(DateTime.monday), ByDayRule(DateTime.thursday)],
         startOfWorkWeek: DateTime.monday,
       );
-      expect(
-        recurrence.toString(),
-        'FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO',
-      );
+      expect(recurrence.toString(), 'FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO');
     });
 
-    test(
-      'RRULE:FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO (parsed)',
-      () {
-        final recurrence = Recurrence.parse(
-          'FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO',
-        );
-        expect(
-          recurrence.toString(),
-          'FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO',
-        );
-      },
-    );
+    test('RRULE:FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO (parsed)', () {
+      final recurrence = Recurrence.parse('FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO');
+      expect(recurrence.toString(), 'FREQ=WEEKLY;BYDAY=MO,TH;WKST=MO');
+    });
   });
 }

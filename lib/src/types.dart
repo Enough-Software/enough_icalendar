@@ -4,36 +4,88 @@ import 'text/l10n/l10n.dart';
 
 /// To explicitly specify the value type format for a property value.
 enum ValueType {
+  /// `BINARY` value type.
   binary,
+
+  /// `BOOLEAN` value type.
   boolean,
+
+  /// `CAL-ADDRESS` value type.
   calendarAddress,
+
+  /// `DATE` value type.
   date,
+
+  /// `DATE-TIME` value type.
   dateTime,
+
+  /// `DURATION` value type.
   duration,
+
+  /// `FLOAT` value type.
   float,
+
+  /// `INTEGER` value type.
   integer,
+
+  /// `PERIOD` value type.
   period,
+
+  /// A list of periods.
   periodList,
+
+  /// `RECUR` value type.
   recurrence,
+
+  /// `TEXT` value type.
   text,
+
+  /// `TIME` value type.
   time,
+
+  /// `URI` value type.
   uri,
+
+  /// `UTC-OFFSET` value type.
   utcOffset,
+
+  /// Any other value type.
   other,
 
+  /// Classification value type.
   typeClassification,
+
+  /// A list of URIs.
   typeUriList,
+
+  /// A list of date-time values.
   typeDateTimeList,
+
+  /// A free/busy value.
   typeFreeBusy,
+
+  /// A participant status value.
   typeParticipantStatus,
+
+  /// A range value.
   typeRange,
+
+  /// An alarm trigger relationship value.
   typeAlarmTriggerRelationship,
+
+  /// A relationship value.
   typeRelationship,
+
+  /// A role value.
   typeRole,
+
+  /// A generic value type marker.
   typeValue,
 }
 
+/// Extends [ValueType] with the corresponding iCalendar type name.
 extension ExtensionValueType on ValueType {
+  /// Retrieves the iCalendar type name, or `null` when there is none.
   String? get typeName {
     switch (this) {
       case ValueType.binary:
@@ -81,9 +133,24 @@ extension ExtensionValueType on ValueType {
   }
 }
 
-enum EventStatus { tentative, confirmed, cancelled, unknown }
+/// The status of an event.
+enum EventStatus {
+  /// The event is tentatively confirmed.
+  tentative,
 
+  /// The event is confirmed.
+  confirmed,
+
+  /// The event has been cancelled.
+  cancelled,
+
+  /// The status is unknown or not set.
+  unknown,
+}
+
+/// Extends [EventStatus] with its iCalendar name.
 extension ExtensionEventStatus on EventStatus {
+  /// Retrieves the `STATUS` value.
   String get name {
     switch (this) {
       case EventStatus.tentative:
@@ -98,9 +165,27 @@ extension ExtensionEventStatus on EventStatus {
   }
 }
 
-enum TodoStatus { needsAction, completed, inProcess, cancelled, unknown }
+/// The status of a to-do.
+enum TodoStatus {
+  /// The to-do still needs action.
+  needsAction,
 
+  /// The to-do has been completed.
+  completed,
+
+  /// The to-do is in process.
+  inProcess,
+
+  /// The to-do has been cancelled.
+  cancelled,
+
+  /// The status is unknown or not set.
+  unknown,
+}
+
+/// Extends [TodoStatus] with its iCalendar name.
 extension ExtensionTodoStatus on TodoStatus {
+  /// Retrieves the `STATUS` value.
   String get name {
     switch (this) {
       case TodoStatus.needsAction:
@@ -117,9 +202,24 @@ extension ExtensionTodoStatus on TodoStatus {
   }
 }
 
-enum JournalStatus { draft, finalized, cancelled, unknown }
+/// The status of a journal entry.
+enum JournalStatus {
+  /// The journal entry is a draft.
+  draft,
 
+  /// The journal entry has been finalized.
+  finalized,
+
+  /// The journal entry has been cancelled.
+  cancelled,
+
+  /// The status is unknown or not set.
+  unknown,
+}
+
+/// Extends [JournalStatus] with its iCalendar name.
 extension ExtensionJournalStatus on JournalStatus {
+  /// Retrieves the `STATUS` value.
   String get name {
     switch (this) {
       case JournalStatus.draft:
@@ -134,9 +234,24 @@ extension ExtensionJournalStatus on JournalStatus {
   }
 }
 
-enum Classification { public, private, confidential, other }
+/// The access classification of a calendar component.
+enum Classification {
+  /// Public access.
+  public,
 
+  /// Private / restricted access.
+  private,
+
+  /// Confidential access.
+  confidential,
+
+  /// Any other classification.
+  other,
+}
+
+/// Extends [Classification] with its iCalendar name.
 extension ExtensionClassificationValue on Classification {
+  /// Retrieves the `CLASS` value, or `null` when there is none.
   String? get name {
     switch (this) {
       case Classification.public:
@@ -155,16 +270,31 @@ extension ExtensionClassificationValue on Classification {
 ///
 /// Compare [Recurrence]
 enum RecurrenceFrequency {
+  /// Repeat every second.
   secondly,
+
+  /// Repeat every minute.
   minutely,
+
+  /// Repeat every hour.
   hourly,
+
+  /// Repeat every day.
   daily,
+
+  /// Repeat every week.
   weekly,
+
+  /// Repeat every month.
   monthly,
+
+  /// Repeat every year.
   yearly,
 }
 
+/// Extends [RecurrenceFrequency] with its iCalendar name.
 extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
+  /// Retrieves the `FREQ` value.
   String get name {
     switch (this) {
       case RecurrenceFrequency.secondly:
@@ -184,7 +314,11 @@ extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
     }
   }
 
+  /// Checks if this frequency is shorter (more frequent) than [other].
   bool operator >(RecurrenceFrequency other) => index < other.index;
+
+  /// Checks if this frequency is shorter (more frequent) than or equal to
+  /// [other].
   bool operator >=(RecurrenceFrequency other) => index <= other.index;
 }
 
@@ -192,7 +326,19 @@ extension ExtensionRecurrenceFrequency on RecurrenceFrequency {
 ///
 ///
 /// Compare [Recurrence.copyWithout]
-enum RecurrenceAttribute { interval, count, until, startOfWeek }
+enum RecurrenceAttribute {
+  /// The `INTERVAL` attribute.
+  interval,
+
+  /// The `COUNT` attribute.
+  count,
+
+  /// The `UNTIL` attribute.
+  until,
+
+  /// The `WKST` (start of work week) attribute.
+  startOfWeek,
+}
 
 /// This value type is used to identify properties that contain a
 /// recurrence rule specification.
@@ -214,8 +360,8 @@ class Recurrence {
     this.byMonthDay,
     int? startOfWorkWeek,
     this.bySetPos,
-  })  : _interval = interval,
-        _startOfWorkWeek = startOfWorkWeek;
+  }) : _interval = interval,
+       _startOfWorkWeek = startOfWorkWeek;
 
   /// The `FREQ` rule part identifies the type of recurrence rule.
   ///
@@ -231,7 +377,8 @@ class Recurrence {
   /// interval of a year or more.
   final RecurrenceFrequency frequency;
 
-  /// The `UNTIL` rule part defines a DATE or DATE-TIME value that bounds the recurrence rule in an inclusive manner.
+  /// The `UNTIL` rule part defines a DATE or DATE-TIME value that bounds
+  /// the recurrence rule in an inclusive manner.
   ///
   ///   If the value
   /// specified by UNTIL is synchronized with the specified recurrence,
@@ -250,7 +397,8 @@ class Recurrence {
   /// present, the "RRULE" is considered to repeat forever.
   final DateTime? until;
 
-  /// The `COUNT` rule part defines the number of occurrences at which to range-bound the recurrence.
+  /// The `COUNT` rule part defines the number of occurrences at which to
+  /// range-bound the recurrence.
   ///
   /// The "DTSTART" property value always counts as the first occurrence.
   final int? count;
@@ -271,11 +419,16 @@ class Recurrence {
   /// Seconds modifier / limiter for this Recurrence.
   ///
   /// BYxxx rule parts modify the recurrence in some manner.
-  /// BYxxx rule parts for a period of time which is the same or greater than the frequency generally reduce or limit the number
-  /// of occurrences of the recurrence generated. For example, "FREQ=DAILY;BYMONTH=1" reduces the number of recurrence instances
-  /// from all days (if BYMONTH tag is not present) to all days in January. BYxxx rule parts for a period of time less than the
-  /// frequency generally increase or expand the number of occurrences of the recurrence. For example, "FREQ=YEARLY;BYMONTH=1,2"
-  /// increases the number of days within the yearly recurrence set from 1 (if BYMONTH tag is not present) to 2.
+  /// BYxxx rule parts for a period of time which is the same or greater
+  /// than the frequency generally reduce or limit the number of
+  /// occurrences of the recurrence generated. For example,
+  /// "FREQ=DAILY;BYMONTH=1" reduces the number of recurrence instances
+  /// from all days (if BYMONTH tag is not present) to all days in
+  /// January. BYxxx rule parts for a period of time less than the
+  /// frequency generally increase or expand the number of occurrences of
+  /// the recurrence. For example, "FREQ=YEARLY;BYMONTH=1,2" increases
+  /// the number of days within the yearly recurrence set from 1 (if
+  /// BYMONTH tag is not present) to 2.
   ///
   /// ```
   /// +----------+--------+--------+-------+-------+------+-------+------+
@@ -714,11 +867,13 @@ class Recurrence {
     SupportedLanguage? language,
     String? languageCode,
   }) {
-    final usedLocalization = localization ??
+    final usedLocalization =
+        localization ??
         ((language != null)
             ? RecurrenceRuleToTextEncoder.getForLanguage(language)
             : RecurrenceRuleToTextEncoder.getForLanguageCode(
-                languageCode ?? 'en'));
+                languageCode ?? 'en',
+              ));
     final encoder = RecurrenceRuleToTextEncoder(usedLocalization);
 
     return encoder.convert(this, startDate: startDate);
@@ -1028,16 +1183,31 @@ class ByDayRule {
   }
 }
 
+/// Extends iterables of [ByDayRule] with week number helpers.
 extension ExtensionOnByDayRuleIteration on Iterable<ByDayRule> {
+  /// Checks if any rule has a week number set.
   bool get anyHasWeekNumber => any((rule) => rule.hasWeekNumber);
+
+  /// Checks if no rule has a week number set.
   bool get noneHasWeekNumber => !anyHasWeekNumber;
 }
 
+/// Represents a time of day with hour, minute and second components.
 class TimeOfDayWithSeconds {
-  TimeOfDayWithSeconds(
-      {required this.hour, required this.minute, required this.second});
+  /// Creates a new time of day with the given [hour], [minute] and [second].
+  TimeOfDayWithSeconds({
+    required this.hour,
+    required this.minute,
+    required this.second,
+  });
+
+  /// The hour component.
   final int hour;
+
+  /// The minute component.
   final int minute;
+
+  /// The second component.
   final int second;
 
   @override
@@ -1050,6 +1220,7 @@ class TimeOfDayWithSeconds {
       other.minute == minute &&
       other.second == second;
 
+  /// Renders this time as `HHMMSS` into the given [buffer].
   void render(StringBuffer buffer) {
     if (hour < 10) {
       buffer.write('0');
@@ -1072,6 +1243,7 @@ class TimeOfDayWithSeconds {
     return buffer.toString();
   }
 
+  /// Parses a `HHMMSS` time definition from the given [content].
   static TimeOfDayWithSeconds parse(String content) {
     final hour = int.tryParse(content.substring(0, 2));
     final minute = int.tryParse(content.substring(2, 4));
@@ -1082,6 +1254,8 @@ class TimeOfDayWithSeconds {
     return TimeOfDayWithSeconds(hour: hour, minute: minute, second: second);
   }
 
+  /// Renders the time part of the given [value] as `HHMMSS` into the
+  /// [buffer].
   static void renderTime(DateTime value, StringBuffer buffer) {
     if (value.hour < 10) {
       buffer.write('0');
@@ -1098,14 +1272,21 @@ class TimeOfDayWithSeconds {
   }
 }
 
-/// This value type is used to identify properties that contain an offset from UTC to local time.
+/// This value type is used to identify properties that contain an offset
+/// from UTC to local time.
 class UtcOffset {
+  /// Parses a UTC offset from the given [content], e.g. `+0130`.
   UtcOffset(String content)
-      : offsetHour = _parseHour(content),
-        offsetMinute = _parseMinute(content);
+    : offsetHour = _parseHour(content),
+      offsetMinute = _parseMinute(content);
 
+  /// Creates a UTC offset from the given [offsetHour] and [offsetMinute].
   UtcOffset.value({required this.offsetHour, required this.offsetMinute});
+
+  /// The hour offset from UTC.
   final int offsetHour;
+
+  /// The minute offset from UTC.
   final int offsetMinute;
 
   @override
@@ -1151,8 +1332,9 @@ class UtcOffset {
     if (content.length < 5) {
       throw FormatException('Invalid UTC-OFFSET $content');
     }
-    final minuteText =
-        content.length > 5 ? content.substring(3, 5) : content.substring(3);
+    final minuteText = content.length > 5
+        ? content.substring(3, 5)
+        : content.substring(3);
     final minute = int.tryParse(minuteText);
     if (minute == null) {
       throw FormatException('Invalid UTC-OFFSET $content');
@@ -1161,9 +1343,11 @@ class UtcOffset {
   }
 }
 
+/// Helper for parsing and rendering date and date-time values.
 class DateHelper {
   DateHelper._();
 
+  /// Parses a date of format `YYYYMMDD` from the given [content].
   static DateTime parseDate(String content) {
     if (content.length != 4 + 2 + 2) {
       throw FormatException('Invalid date definition: $content');
@@ -1177,6 +1361,8 @@ class DateHelper {
     return DateTime(year, month, day);
   }
 
+  /// Parses a date-time of format `YYYYMMDDTHHMMSS[Z]` from the given
+  /// [content].
   static DateTime parseDateTime(String content) {
     final tIndex = content.indexOf('T');
     if (content.length < 4 + 2 + 2 + 1 + 6 || tIndex != 4 + 2 + 2) {
@@ -1187,12 +1373,26 @@ class DateHelper {
     final isUtc = content.endsWith('Z');
     if (isUtc) {
       return DateTime.utc(
-          date.year, date.month, date.day, time.hour, time.minute, time.second);
+        date.year,
+        date.month,
+        date.day,
+        time.hour,
+        time.minute,
+        time.second,
+      );
     }
     return DateTime(
-        date.year, date.month, date.day, time.hour, time.minute, time.second);
+      date.year,
+      date.month,
+      date.day,
+      time.hour,
+      time.minute,
+      time.second,
+    );
   }
 
+  /// Renders the date part of the given [value] as `YYYYMMDD` into the
+  /// [buffer].
   static void renderDate(DateTime value, StringBuffer buffer) {
     if (value.year < 10) {
       buffer.write('000');
@@ -1212,6 +1412,7 @@ class DateHelper {
     buffer.write(value.day);
   }
 
+  /// Converts the [value] to an iCalendar date-time string.
   static String toDateTimeString(DateTime value) {
     final buffer = StringBuffer();
     renderDate(value, buffer);
@@ -1225,13 +1426,24 @@ class DateHelper {
   }
 }
 
+/// Contains either a date-time or a duration value.
 class DateTimeOrDuration {
+  /// Creates a new value that contains either [dateTime] or [duration], but
+  /// not both.
   DateTimeOrDuration(this.dateTime, this.duration)
-      : assert(dateTime != null || duration != null,
-            'Either duration or dateTime must be set'),
-        assert(!(duration != null && dateTime != null),
-            'Either duration or dateTime must be set, but not both');
+    : assert(
+        dateTime != null || duration != null,
+        'Either duration or dateTime must be set',
+      ),
+      assert(
+        !(duration != null && dateTime != null),
+        'Either duration or dateTime must be set, but not both',
+      );
+
+  /// The date-time value, when this is a date-time.
   final DateTime? dateTime;
+
+  /// The duration value, when this is a duration.
   final IsoDuration? duration;
 
   @override
@@ -1243,6 +1455,7 @@ class DateTimeOrDuration {
         : duration?.toString() ?? '';
   }
 
+  /// Parses the [textValue] according to the given value [type].
   static DateTimeOrDuration parse(String textValue, ValueType type) {
     DateTime? dateTime;
     IsoDuration? duration;
@@ -1254,7 +1467,9 @@ class DateTimeOrDuration {
       duration = IsoDuration.parse(textValue);
     } else {
       throw FormatException(
-          'Unsupported type for DateTimeOrDuration: $type with text [$textValue].');
+        'Unsupported type for DateTimeOrDuration: $type with text '
+        '[$textValue].',
+      );
     }
     return DateTimeOrDuration(dateTime, duration);
   }
@@ -1262,15 +1477,23 @@ class DateTimeOrDuration {
 
 /// Contains a precise period of time.
 class Period {
+  /// Creates a period with the given [startDate] and either [duration] or
+  /// [endDate].
   Period(this.startDate, {this.duration, this.endDate})
-      : assert(duration != null || endDate != null,
-            'Either duration or endDate must be set.'),
-        assert(!(duration != null && endDate != null),
-            'Not both duration and endDate can be set at the same time.');
+    : assert(
+        duration != null || endDate != null,
+        'Either duration or endDate must be set.',
+      ),
+      assert(
+        !(duration != null && endDate != null),
+        'Not both duration and endDate can be set at the same time.',
+      );
+
+  /// Parses a period from the given [content].
   Period.text(String content)
-      : startDate = _parseStartDate(content),
-        endDate = _parseEndDate(content),
-        duration = _parseDuration(content);
+    : startDate = _parseStartDate(content),
+      endDate = _parseEndDate(content),
+      duration = _parseDuration(content);
 
   /// The startdate
   final DateTime startDate;
@@ -1289,7 +1512,8 @@ class Period {
     final separatorIndex = content.indexOf('/');
     if (separatorIndex == -1) {
       throw FormatException(
-          'Invalid period definition, no / separator found in $content');
+        'Invalid period definition, no / separator found in $content',
+      );
     }
     return separatorIndex;
   }
@@ -1319,6 +1543,7 @@ class Period {
     return IsoDuration.parse(endText);
   }
 
+  /// Parses a period from the given [textValue].
   static Period parse(String textValue) {
     final startDate = _parseStartDate(textValue);
     final duration = _parseDuration(textValue);
@@ -1336,6 +1561,7 @@ class _DurationSection {
 
 /// ISO 8601 compliant duration
 class IsoDuration {
+  /// Creates a new ISO duration from the given components.
   IsoDuration({
     this.years = 0,
     this.months = 0,
@@ -1346,13 +1572,29 @@ class IsoDuration {
     this.seconds = 0,
     this.isNegativeDuration = false,
   });
+
+  /// The number of years.
   final int years;
+
+  /// The number of months.
   final int months;
+
+  /// The number of weeks.
   final int weeks;
+
+  /// The number of days.
   final int days;
+
+  /// The number of hours.
   final int hours;
+
+  /// The number of minutes.
   final int minutes;
+
+  /// The number of seconds.
   final int seconds;
+
+  /// Whether this is a negative duration.
   final bool isNegativeDuration;
 
   static _DurationSection _parseSection(
@@ -1440,18 +1682,20 @@ class IsoDuration {
 
   /// Converts this ISO duration to an approximate Dart duration.
   ///
-  /// The `days` are converted by assuming 365 days per year and 30 days per month:  `days: years * 365 + months * 30 + weeks * 7 + days`
+  /// The `days` are converted by assuming 365 days per year and 30 days
+  /// per month: `days: years * 365 + months * 30 + weeks * 7 + days`
   /// Compare [addTo] for a better handling of this duration.
   Duration toDuration() => Duration(
-        days: years * 365 + months * 30 + weeks * 7 + days,
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds,
-      );
+    days: years * 365 + months * 30 + weeks * 7 + days,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+  );
 
   /// Adds this duration to the given [input] DateTime.
   ///
-  /// This is adding this duration precisely and is better than [toDuration] in most cases.
+  /// This is adding this duration precisely and is better than
+  /// [toDuration] in most cases.
   DateTime addTo(DateTime input) {
     var y = input.year + years;
     var m = input.month + months;
@@ -1459,8 +1703,16 @@ class IsoDuration {
       y++;
       m -= 12;
     }
-    final intermediate = DateTime(y, m, input.day, input.hour, input.minute,
-        input.second, input.millisecond, input.microsecond);
+    final intermediate = DateTime(
+      y,
+      m,
+      input.day,
+      input.hour,
+      input.minute,
+      input.second,
+      input.millisecond,
+      input.microsecond,
+    );
     final duration = Duration(
       days: weeks * 7 + days,
       hours: hours,
@@ -1477,12 +1729,15 @@ class IsoDuration {
   /// Example: `P3WT1H` means 3 weeks and 1 hour.
   /// Compare https://en.wikipedia.org/wiki/ISO_8601#Durations
   static IsoDuration parse(String textValue) {
-    /// Note ISO_8601 allows floating numbers, compare https://en.wikipedia.org/wiki/ISO_8601#Durations,
-    /// but even the validator https://icalendar.org/validator.html does not accept floating numbers.
+    /// Note ISO_8601 allows floating numbers, compare
+    /// https://en.wikipedia.org/wiki/ISO_8601#Durations,
+    /// but even the validator https://icalendar.org/validator.html does
+    /// not accept floating numbers.
     ///  So this implementation expects integers, too
     if (!(textValue.startsWith('P') || textValue.startsWith('-P'))) {
       throw FormatException(
-          'duration content needs to start with P, $textValue is invalid');
+        'duration content needs to start with P, $textValue is invalid',
+      );
     }
     final isNegativeDuration = textValue.startsWith('-');
     if (isNegativeDuration) {
@@ -1495,8 +1750,12 @@ class IsoDuration {
       final yearsResult = _parseSection(textValue, startIndex, 'Y');
       startIndex = yearsResult.index;
       years = yearsResult.result;
-      final monthsResult = _parseSection(textValue, startIndex, 'M',
-          maxIndex: timeIndex); // M can also stand for minutes after the T
+      final monthsResult = _parseSection(
+        textValue,
+        startIndex,
+        'M',
+        maxIndex: timeIndex,
+      ); // M can also stand for minutes after the T
       startIndex = monthsResult.index;
       months = monthsResult.result;
       final weeksResult = _parseSection(textValue, startIndex, 'W');
@@ -1563,7 +1822,22 @@ extension DurationExtension on Duration {
 /// To specify the free or busy time type.
 ///
 /// Compare [ParameterType.freeBusyTimeType], [FreeBusyType]
-enum FreeBusyTimeType { free, busy, busyUnavailable, busyTentative, other }
+enum FreeBusyTimeType {
+  /// The user is free.
+  free,
+
+  /// The user is busy.
+  busy,
+
+  /// The user is busy and unavailable.
+  busyUnavailable,
+
+  /// The user is tentatively busy.
+  busyTentative,
+
+  /// Any other free/busy type.
+  other,
+}
 
 /// Extends the [FreeBusyTimeType]
 extension ExtensionFreeBusyValue on FreeBusyTimeType {
@@ -1585,7 +1859,25 @@ extension ExtensionFreeBusyValue on FreeBusyTimeType {
 }
 
 /// The type of a user
-enum CalendarUserType { individual, group, resource, room, unknown, other }
+enum CalendarUserType {
+  /// An individual user.
+  individual,
+
+  /// A group of users.
+  group,
+
+  /// A resource such as a projector.
+  resource,
+
+  /// A room.
+  room,
+
+  /// An unknown user type.
+  unknown,
+
+  /// Any other user type.
+  other,
+}
 
 /// Extends [CalendarUserType]
 extension ExtensionCommonCalendarUserTypeValue on CalendarUserType {
@@ -1608,7 +1900,8 @@ extension ExtensionCommonCalendarUserTypeValue on CalendarUserType {
   }
 }
 
-/// Specifies the relationship of the alarm trigger with respect to the start or end of the calendar component.
+/// Specifies the relationship of the alarm trigger with respect to the
+/// start or end of the calendar component.
 ///
 /// It is used for example in the `RELATED` parameter, [TriggerAlarm]
 enum AlarmTriggerRelationship {
@@ -1616,10 +1909,12 @@ enum AlarmTriggerRelationship {
   start,
 
   /// the trigger is specified releative to the end of the calendar component
-  end
+  end,
 }
 
+/// Extends [AlarmTriggerRelationship] with its iCalendar name.
 extension ExtensionAlarmTriggerRelationship on AlarmTriggerRelationship {
+  /// Retrieves the `RELATED` value.
   String? get typeName {
     switch (this) {
       case AlarmTriggerRelationship.start:
@@ -1630,7 +1925,8 @@ extension ExtensionAlarmTriggerRelationship on AlarmTriggerRelationship {
   }
 }
 
-/// To specify the type of hierarchical relationship associated with the calendar component specified by the property.
+/// To specify the type of hierarchical relationship associated with the
+/// calendar component specified by the property.
 enum Relationship {
   /// Parent relationship - Default
   parent,
@@ -1642,10 +1938,12 @@ enum Relationship {
   sibling,
 
   /// other
-  other
+  other,
 }
 
+/// Extends [Relationship] with its iCalendar name.
 extension ExtensionRelationship on Relationship {
+  /// Retrieves the `RELTYPE` value.
   String? get typeName {
     switch (this) {
       case Relationship.parent:
@@ -1660,7 +1958,8 @@ extension ExtensionRelationship on Relationship {
   }
 }
 
-/// To specify the participation role for the calendar user specified by the property.
+/// To specify the participation role for the calendar user specified by
+/// the property.
 enum Role {
   /// Indicates chair of the calendar entity
   chair,
@@ -1675,10 +1974,12 @@ enum Role {
   nonParticipant,
 
   /// Other
-  other
+  other,
 }
 
+/// Extends [Role] with its iCalendar name.
 extension ExtensionRole on Role {
+  /// Retrieves the `ROLE` value.
   String? get typeName {
     switch (this) {
       case Role.chair:
@@ -1703,7 +2004,8 @@ extension ExtensionRole on Role {
 /// can only be "THISANDFUTURE" to indicate a range defined by the
 /// given recurrence instance and all subsequent instances.
 enum Range {
-  /// Specifies the effective range of recurrence instances that is specified by the property.
+  /// Specifies the effective range of recurrence instances that is
+  /// specified by the property.
   ///
   /// The effective range is from the recurrence identifier
   /// specified by the property.  If this parameter is not specified on
@@ -1716,10 +2018,13 @@ enum Range {
   thisAndFuture,
 }
 
+/// Extends [Range] with its iCalendar name.
 extension ExtensionRange on Range {
+  /// Retrieves the `RANGE` value.
   String get name => 'THISANDFUTURE';
 }
 
+/// The participation status of a calendar user.
 enum ParticipantStatus {
   /// Default status
   needsAction,
@@ -1746,10 +2051,12 @@ enum ParticipantStatus {
   completed,
 
   /// Other status
-  other
+  other,
 }
 
+/// Extends [ParticipantStatus] with its iCalendar name.
 extension ExtensionParticpantStatus on ParticipantStatus {
+  /// Retrieves the `PARTSTAT` value, or `null` when there is none.
   String? get typeName {
     switch (this) {
       case ParticipantStatus.needsAction:
@@ -1774,8 +2081,11 @@ extension ExtensionParticpantStatus on ParticipantStatus {
   }
 }
 
+/// Parses classification values.
 class ClassificationParser {
   ClassificationParser._();
+
+  /// Parses a [Classification] from the given [textValue].
   static Classification parse(String textValue) {
     switch (textValue) {
       case 'PUBLIC':
@@ -1819,10 +2129,12 @@ enum AlarmAction {
   email,
 
   /// A different, non-standard alarm action should be taken.
-  other
+  other,
 }
 
+/// Extends [AlarmAction] with its iCalendar name.
 extension ExtensionAlarmAction on AlarmAction {
+  /// Retrieves the `ACTION` value, or `null` when there is none.
   String? get name {
     switch (this) {
       case AlarmAction.audio:
@@ -1839,8 +2151,13 @@ extension ExtensionAlarmAction on AlarmAction {
 
 /// Contains all relevant binary information
 class Binary {
-  Binary(
-      {required this.value, required this.mediaType, required this.encoding});
+  /// Creates new binary data with the given [value], [mediaType] and
+  /// [encoding].
+  Binary({
+    required this.value,
+    required this.mediaType,
+    required this.encoding,
+  });
 
   /// The data in textual form
   final String value;
@@ -1854,8 +2171,13 @@ class Binary {
 
 /// Provides access to a geolocation
 class GeoLocation {
+  /// Creates a new geo location with the given [latitude] and [longitude].
   GeoLocation(this.latitude, this.longitude);
+
+  /// The latitude.
   final double latitude;
+
+  /// The longitude.
   final double longitude;
 
   @override
@@ -1874,7 +2196,8 @@ class GeoLocation {
 enum Method {
   // Post notification of an event / free-busy timeslot / `todo` / journal.
   ///
-  // Used primarily as a method of advertising the existence of an event / `todo` / journal / timeslot.
+  // Used primarily as a method of advertising the existence of an
+  // event / `todo` / journal / timeslot.
   ///
   /// Applicable for [VEvent], [VFreeBusy], [VTodo], [VJournal]
   publish,
@@ -1883,15 +2206,18 @@ enum Method {
   ///
   /// This is an explicit invitation to one or more Attendees.
   // Requests are also used to update or change an existing event / `todo`.
-  /// Clients that cannot handle REQUEST MAY degrade the event to view it as a PUBLISH.
+  /// Clients that cannot handle REQUEST MAY degrade the event to view it
+  /// as a PUBLISH.
   ///
   /// Applicable for [VEvent], [VFreeBusy], [VTodo]
   request,
 
   // Reply to an event / free-busy / `todo` request.
   ///
-  /// Event attendees may set their status (PARTSTAT) to ACCEPTED, DECLINED, TENTATIVE, or DELEGATED.
-  /// Todo attendees MAY set PARTSTAT to ACCEPTED, DECLINED, TENTATIVE, DELEGATED, PARTIAL, and COMPLETED.
+  /// Event attendees may set their status (PARTSTAT) to ACCEPTED,
+  /// DECLINED, TENTATIVE, or DELEGATED.
+  /// Todo attendees MAY set PARTSTAT to ACCEPTED, DECLINED, TENTATIVE,
+  /// DELEGATED, PARTIAL, and COMPLETED.
   ///
   /// Applicable for [VEvent], [VFreeBusy], [VTodo]
   /// Compare [ParticipantStatus]
@@ -1907,7 +2233,8 @@ enum Method {
   /// Applicable for [VEvent], [VTodo], [VJournal]
   cancel,
 
-  // A request is sent to an Organizer by an Attendee asking for the latest version of an event / `todo` to be resent to the requester.
+  // A request is sent to an Organizer by an Attendee asking for the
+  // latest version of an event / `todo` to be resent to the requester.
   ///
   /// Applicable for [VEvent], [VTodo]
   refresh,
@@ -1927,7 +2254,9 @@ enum Method {
   declineCounter,
 }
 
+/// Extends [Method] with its iCalendar name.
 extension ExtensionMethod on Method {
+  /// Retrieves the `METHOD` value.
   String get name {
     switch (this) {
       case Method.publish:
@@ -1951,9 +2280,23 @@ extension ExtensionMethod on Method {
 }
 
 /// The priority of a task or event
-enum Priority { high, medium, low, undefined }
+enum Priority {
+  /// High priority.
+  high,
 
+  /// Medium priority.
+  medium,
+
+  /// Low priority.
+  low,
+
+  /// Undefined priority.
+  undefined,
+}
+
+/// Extends [Priority] with its numeric value.
 extension ExtensionPriority on Priority {
+  /// Retrieves the numeric priority between 0 and 9.
   int get numericValue {
     switch (this) {
       case Priority.high:
@@ -1977,7 +2320,9 @@ enum TimeTransparency {
   transparent,
 }
 
+/// Extends [TimeTransparency] with its iCalendar name.
 extension ExtensionTimeTransparency on TimeTransparency {
+  /// Retrieves the `TRANSP` value.
   String get name {
     switch (this) {
       case TimeTransparency.opaque:
@@ -1990,14 +2335,17 @@ extension ExtensionTimeTransparency on TimeTransparency {
 
 // /// Possible responses to an [VCalendar] or [VComponent] object.
 // ///
-// /// The available responses depend on the used method of the component and the type of the recipient user, ie is the current user the organizator or not
+// /// The available responses depend on the used method of the component
+// /// and the type of the recipient user, ie is the current user the
+// /// organizator or not
 // enum ResponseOption {
 //   /// The participant can change the status
 //   ///
 //   /// Compare [ParticipantStatus], [VCalendar.replyWithParticipantStatus]
 //   changeParticipantStatus,
 
-//   /// The participant can propose a counter event/task, e.g. with a different time slot
+//   /// The participant can propose a counter event/task, e.g. with a
+//   /// different time slot
 //   ///
 //   /// Compare [VCalendar.counter]
 //   counter,
@@ -2016,17 +2364,23 @@ extension ExtensionTimeTransparency on TimeTransparency {
 //   update,
 // }
 
-/// Wraps changes that are to be sent to both the attendee(s) as well as the group.
+/// Wraps changes that are to be sent to both the attendee(s) as well as
+/// the group.
 ///
 /// Example for this is to cancel an event for one or several attendees.
 /// Compare [VCalendar.cancelEventForAttendees]
 class AttendeeCancelResult {
+  /// Creates a new result with the given requests.
   const AttendeeCancelResult(
-      this.requestForCancelledAttendees, this.requestUpdateForGroup);
+    this.requestForCancelledAttendees,
+    this.requestUpdateForGroup,
+  );
 
-  /// The request / info for attendees for which the participation was cancelled:
+  /// The request / info for attendees for which the participation was
+  /// cancelled:
   final VCalendar requestForCancelledAttendees;
-  // The request / update into for the remaining attendees:
+
+  /// The request / update for the remaining attendees.
   final VCalendar requestUpdateForGroup;
 }
 
@@ -2034,9 +2388,11 @@ class AttendeeCancelResult {
 ///
 /// Compare [VCalendar.delegate]
 class AttendeeDelegatedResult {
+  /// Creates a new result with the given requests.
   AttendeeDelegatedResult(this.requestForDelegatee, this.replyForOrganizer);
 
-  /// The request for the attendee to which the particaption should be delegated:
+  /// The request for the attendee to which the particaption should be
+  /// delegated:
   final VCalendar requestForDelegatee;
 
   /// The reply with the information for the organizer
@@ -2045,13 +2401,22 @@ class AttendeeDelegatedResult {
 
 /// Custom event busy status as defined by `X-MICROSOFT-CDO-BUSYSTATUS`
 enum EventBusyStatus {
+  /// The user is free.
   free,
+
+  /// The user is tentatively busy.
   tentative,
+
+  /// The user is busy.
   busy,
+
+  /// The user is out of office.
   outOfOffice,
 }
 
+/// Extends [EventBusyStatus] with its iCalendar name.
 extension ExtensionEventBusyStatus on EventBusyStatus {
+  /// Retrieves the `X-MICROSOFT-CDO-BUSYSTATUS` value.
   String get name {
     switch (this) {
       case EventBusyStatus.free:

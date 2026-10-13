@@ -7,14 +7,31 @@ import 'util.dart';
 
 /// The type of the component, convenient for switch cases
 enum VComponentType {
+  /// A calendar (`VCALENDAR`) component.
   calendar,
+
+  /// An event (`VEVENT`) component.
   event,
+
+  /// A to-do (`VTODO`) component.
   todo,
+
+  /// A journal (`VJOURNAL`) component.
   journal,
+
+  /// A free/busy (`VFREEBUSY`) component.
   freeBusy,
+
+  /// A timezone (`VTIMEZONE`) component.
   timezone,
+
+  /// A standard timezone phase (`STANDARD`) component.
   timezonePhaseStandard,
+
+  /// A daylight timezone phase (`DAYLIGHT`) component.
   timezonePhaseDaylight,
+
+  /// An alarm (`VALARM`) component.
   alarm,
 
   /// reserved for future / custom components
@@ -23,6 +40,7 @@ enum VComponentType {
 
 /// Common properties
 abstract class VComponent {
+  /// Creates a new component with the given [name] and optional [parent].
   VComponent(this.name, [this.parent])
     : componentType = _getComponentType(name);
 
@@ -132,7 +150,7 @@ abstract class VComponent {
   }
 
   /// Sets the property [property], replacing other properties with the
-  /// [property.name] first.
+  /// `property.name` first.
   void setProperty(final Property property) => this[property.name] = property;
 
   /// Sets the given [props] by first removing any properties with the
@@ -376,8 +394,7 @@ abstract class VComponent {
       if (i < input.length - 1) {
         final next = input[i + 1];
         if (next.startsWithWhiteSpace()) {
-          buffer = StringBuffer();
-          buffer.write(current);
+          buffer = StringBuffer()..write(current);
         } else if (current.isNotEmpty) {
           output.add(current);
         }
@@ -415,6 +432,8 @@ abstract class VComponent {
     throw StateError('VComponent cannot reply');
   }
 
+  /// Renders this component and all its properties and children into the
+  /// given [buffer].
   void render(StringBuffer buffer) {
     buffer
       ..write('BEGIN:')
@@ -461,15 +480,21 @@ abstract class VComponent {
   }
 }
 
+/// Extension that adds a helper to detect leading whitespace.
 extension WhiteSpaceDetector on String {
+  /// Checks if this string starts with a space or a tab character.
   bool startsWithWhiteSpace() => startsWith(' ') || startsWith('\t');
 }
 
 /// Contains a `VCALENDAR` component
 ///
-/// The VCalendar is a parent component for others components such as [VEvent], [VTodo] or [VJournal]
+/// The VCalendar is a parent component for others components such as
+/// [VEvent], [VTodo] or [VJournal]
 class VCalendar extends VComponent {
+  /// Creates a new calendar component with the optional [parent].
   VCalendar({VComponent? parent}) : super(componentName, parent);
+
+  /// `VCALENDAR`
   static const String componentName = 'VCALENDAR';
 
   /// Retrieves the scale of the calendar, typically `GREGORIAN`
@@ -502,11 +527,14 @@ class VCalendar extends VComponent {
     MethodProperty.create(value),
   );
 
-  /// Retrieves the global timezone ID like `America/New_York` or `Europe/Berlin` of this calendar.
+  /// Retrieves the global timezone ID like `America/New_York` or
+  /// `Europe/Berlin` of this calendar.
   ///
-  /// When no `X-WR-TIMEZONE` property is found, then a `VTimezone` child is searched and the ID is retrieved from there, if present.
-  /// Any dates of subsequent components without explicit timezoneId should be interpreted according to this
-  /// timezone ID. For caveats compare https://blog.jonudell.net/2011/10/17/x-wr-timezone-considered-harmful/
+  /// When no `X-WR-TIMEZONE` property is found, then a `VTimezone` child
+  /// is searched and the ID is retrieved from there, if present.
+  /// Any dates of subsequent components without explicit timezoneId should
+  /// be interpreted according to this timezone ID. For caveats compare
+  /// https://blog.jonudell.net/2011/10/17/x-wr-timezone-considered-harmful/
   String? get timezoneId =>
       getProperty<TextProperty>(
         TextProperty.propertyNameXWrTimezone,
@@ -519,7 +547,8 @@ class VCalendar extends VComponent {
     TextProperty.create(TextProperty.propertyNameXWrTimezone, value),
   );
 
-  /// Retrieves the calendar name like `US Holidays` of this calendar if it has been set.
+  /// Retrieves the calendar name like `US Holidays` of this calendar if it
+  /// has been set.
   String? get calendarName => getProperty<TextProperty>(
     TextProperty.propertyNameXCalendarName,
   )?.textValue;
@@ -544,14 +573,16 @@ class VCalendar extends VComponent {
           )
           as VTodo?;
 
-  /// Convencience getter for getting the first `VJOURNAL` child, if there is any:
+  /// Convencience getter for getting the first `VJOURNAL` child, if there
+  /// is any:
   VJournal? get journal =>
       children.firstWhereOrNull(
             (component) => component.componentType == VComponentType.journal,
           )
           as VJournal?;
 
-  /// Convencience getter for getting the first `VTIMEZONE` child, if there is any:
+  /// Convencience getter for getting the first `VTIMEZONE` child, if there
+  /// is any:
   VTimezone? get timezone =>
       children.firstWhereOrNull(
             (component) => component.componentType == VComponentType.timezone,
@@ -570,26 +601,33 @@ class VCalendar extends VComponent {
           )
           as _EventTodoJournalComponent?;
 
-  /// Convenience getter for retrieving the UID of the first child that has a UID getter
+  /// Convenience getter for retrieving the UID of the first child that has
+  /// a UID getter
   String? get uid => _uidMandatoryComponent?.uid;
 
-  /// Convenience getter for retrieving the timestamp of the first child that has a timestamp getter
+  /// Convenience getter for retrieving the timestamp of the first child
+  /// that has a timestamp getter
   DateTime? get timeStamp => _uidMandatoryComponent?.timeStamp;
 
-  /// Convenience getter for retrieving the summary of the first child that has a summary getter
+  /// Convenience getter for retrieving the summary of the first child that
+  /// has a summary getter
   String? get summary => _eventTodoJournalComponent?.summary;
 
-  /// Convenience getter for retrieving the description of the first child that has a description getter
+  /// Convenience getter for retrieving the description of the first child
+  /// that has a description getter
   String? get description => _eventTodoJournalComponent?.description;
 
-  /// Convenience getter for retrieving the organizer of the first child that has an organizer getter
+  /// Convenience getter for retrieving the organizer of the first child
+  /// that has an organizer getter
   OrganizerProperty? get organizer => _eventTodoJournalComponent?.organizer;
 
-  /// Convenience getter for retrieving the attendees of the first child that has an attendees getter
+  /// Convenience getter for retrieving the attendees of the first child
+  /// that has an attendees getter
   List<AttendeeProperty>? get attendees =>
       _eventTodoJournalComponent?.attendees;
 
-  /// Convenience getter for retrieving the attachments  of the first child that has an attachments getter
+  /// Convenience getter for retrieving the attachments of the first child
+  /// that has an attachments getter
   List<AttachmentProperty>? get attachments =>
       _eventTodoJournalComponent?.attachments;
 
@@ -597,10 +635,12 @@ class VCalendar extends VComponent {
   bool get canReply =>
       method != null && children.any((child) => child.canReply);
 
-  /// Creates a repy with the given [participantStatus] for the attendee with the given [attendeeEmail] or [attendee].
+  /// Creates a repy with the given [participantStatus] for the attendee
+  /// with the given [attendeeEmail] or [attendee].
   ///
   /// Optionally specify a [comment] and specify a [productId]
-  /// Specify the [delegatedToEmail] when setting the [participantStatus] to [ParticipantStatus.delegated]
+  /// Specify the [delegatedToEmail] when setting the [participantStatus] to
+  /// [ParticipantStatus.delegated]
   VCalendar replyWithParticipantStatus(
     ParticipantStatus participantStatus, {
     String? attendeeEmail,
@@ -786,10 +826,14 @@ class VCalendar extends VComponent {
   /// Creates a counter proposal for this calendar.
   ///
   /// Optionally specify the rationale for the change in [comment].
-  /// You can also set a different [start], [end], [duration], [location] or [description] directly.
-  /// Any other changes have to be done directly on the children of the returned VCalendar.
-  /// Any attendee can propose a counter, for example with different time, location or attendees.
-  /// The [method] is set to [Method.counter], the [VEvent.sequence] stays the same, but the [VEvent.timeStamp] is updated.
+  /// You can also set a different [start], [end], [duration], [location]
+  /// or [description] directly.
+  /// Any other changes have to be done directly on the children of the
+  /// returned VCalendar.
+  /// Any attendee can propose a counter, for example with different time,
+  /// location or attendees.
+  /// The [method] is set to [Method.counter], the [VEvent.sequence] stays
+  /// the same, but the [VEvent.timeStamp] is updated.
   ///
   /// Compare [declineCounter] for organizers to decline a counter proposal.
   VCalendar counter({
@@ -855,16 +899,17 @@ class VCalendar extends VComponent {
     final copied = copy() as VCalendar..method = Method.declineCounter;
     final event =
         copied.children.firstWhereOrNull((ev) => ev is VEvent) as VEvent?;
+    var usedAttendeeEmail = attendeeEmail;
     if (event != null) {
       if (comment != null) {
         event.comment = comment;
       }
       if (attendee != null) {
-        attendeeEmail = attendee.email;
+        usedAttendeeEmail = attendee.email;
       }
-      if (attendeeEmail != null) {
+      if (usedAttendeeEmail != null) {
         event.properties.removeWhere(
-          (p) => p is AttendeeProperty && p.email != attendeeEmail,
+          (p) => p is AttendeeProperty && p.email != usedAttendeeEmail,
         );
       }
     }
@@ -874,7 +919,9 @@ class VCalendar extends VComponent {
 
   /// Accepts a counter proposal.
   ///
-  /// An organizer can accept the counter proposal and optionally provide the reasoning in the [comment].
+  /// An organizer can accept the counter proposal and optionally provide
+  /// the reasoning in the [comment].
+  ///
   /// The current [method] must be [Method.counter].
   /// The [VEvent.sequence] stays the same.
   ///
@@ -883,7 +930,8 @@ class VCalendar extends VComponent {
   VCalendar acceptCounter({String? comment, String? description}) {
     assert(
       method == Method.counter,
-      'The current method is not Method.counter but instead $method. Only counter proposals can be accepted with acceptCounter.',
+      'The current method is not Method.counter but instead $method. '
+      'Only counter proposals can be accepted with acceptCounter.',
     );
 
     return update(
@@ -894,9 +942,11 @@ class VCalendar extends VComponent {
     );
   }
 
-  /// Delegates this calendar from the user with [fromEmail] to the user [toEmail] / [to].
+  /// Delegates this calendar from the user with [fromEmail] to the user
+  /// [toEmail] / [to].
   ///
-  /// The optional parameters [rsvp] and [toStatus] are ignored when [to] is specified.
+  /// The optional parameters [rsvp] and [toStatus] are ignored when [to]
+  /// is specified.
   /// Optionally explain the reason in the [comment].
   AttendeeDelegatedResult delegate({
     required String fromEmail,
@@ -947,7 +997,9 @@ class VCalendar extends VComponent {
   @override
   VComponent instantiate({VComponent? parent}) => VCalendar(parent: parent);
 
-  /// Creates an event from the specified [organizer] resp. [organizerEmail] on the given [start] datetime and either the [end] or [duration].
+  /// Creates an event from the specified [organizer] resp.
+  /// [organizerEmail] on the given [start] datetime and either the [end]
+  /// or [duration].
   ///
   /// Any other settings are optional.
   static VCalendar createEvent({
@@ -1015,7 +1067,8 @@ class VCalendar extends VComponent {
 
   /// Creates a new randomized ID text.
   ///
-  /// Specify [length] when a different length than 18 characters should be used.
+  /// Specify [length] when a different length than 18 characters should
+  /// be used.
   /// This can be used as a UID, for example.
   static String _createRandomId({int length = 18, StringBuffer? buffer}) {
     const characters =
@@ -1035,7 +1088,8 @@ class VCalendar extends VComponent {
   /// Creates a random UID for the given [domain].
   ///
   /// Instead of the [domain] you can also specify the [organizerUri].
-  /// When neither the [domain] nor the [organizerUri] is specified, a default domain will be appended.
+  /// When neither the [domain] nor the [organizerUri] is specified, a
+  /// default domain will be appended.
   static String createUid({String? domain, Uri? organizerUri}) {
     final buffer = StringBuffer();
     _createRandomId(buffer: buffer);
@@ -1116,11 +1170,13 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
     properties.add(attachment);
   }
 
-  /// Removes the given [attachment] returning `true` when the attachment was found
+  /// Removes the given [attachment] returning `true` when the attachment
+  /// was found
   bool removeAttachment(AttachmentProperty attachment) =>
       properties.remove(attachment);
 
-  /// Removes the attachment with the given [uri], returning it when it was found.
+  /// Removes the attachment with the given [uri], returning it when it
+  /// was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
     final match =
         properties.firstWhereOrNull(
@@ -1203,7 +1259,8 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
     return match;
   }
 
-  /// Removes the attendee with the given [email], returning it when it was found.
+  /// Removes the attendee with the given [email], returning it when it
+  /// was found.
   AttendeeProperty? removeAttendeeWithEmail(String email) {
     final match =
         properties.firstWhereOrNull(
@@ -1259,7 +1316,8 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
     RecurrenceRuleProperty.create(value),
   );
 
-  /// Retrieves additional reccurrence dates or durations as defined in the `RDATE` property
+  /// Retrieves additional reccurrence dates or durations as defined in
+  /// the `RDATE` property
   ///
   /// Compare [excludingRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get additionalRecurrenceDates =>
@@ -1277,7 +1335,8 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
         ),
       );
 
-  /// Retrieves excluding reccurrence dates or durations as defined in the `EXDATE` property
+  /// Retrieves excluding reccurrence dates or durations as defined in
+  /// the `EXDATE` property
   ///
   /// Compare [additionalRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get excludingRecurrenceDates =>
@@ -1347,7 +1406,8 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
     IntegerProperty.create(IntegerProperty.propertyNameSequence, value),
   );
 
-  /// Retrieves the request status, e.g. `4.1;Event conflict.  Date-time is busy.`
+  /// Retrieves the request status, e.g.
+  /// `4.1;Event conflict.  Date-time is busy.`
   String? get requestStatus => getProperty<RequestStatusProperty>(
     RequestStatusProperty.propertyName,
   )?.requestStatus;
@@ -1358,16 +1418,21 @@ abstract class _EventTodoJournalComponent extends _UidMandatoryComponent {
     RequestStatusProperty.create(value),
   );
 
-  /// Checks if the request status is a success, this defaults to `true` when no `REQUEST-STATUS` is set.
+  /// Checks if the request status is a success, this defaults to `true`
+  /// when no `REQUEST-STATUS` is set.
   bool get requestStatusIsSuccess => requestStatus?.startsWith('2.') ?? true;
 }
 
 /// Contains information about an event.
 class VEvent extends _EventTodoJournalComponent {
+  /// Creates a new event component with the optional [parent].
   VEvent({VComponent? parent}) : super(componentName, parent);
+
+  /// `VEVENT`
   static const String componentName = 'VEVENT';
 
-  /// Tries to the timezone ID like `America/New_York` or `Europe/Berlin` from `DTSTART` property.
+  /// Tries to the timezone ID like `America/New_York` or `Europe/Berlin`
+  /// from `DTSTART` property.
   String? get timezoneId {
     final prop =
         getProperty<DateTimeProperty>(DateTimeProperty.propertyNameStart) ??
@@ -1379,8 +1444,8 @@ class VEvent extends _EventTodoJournalComponent {
   /// The start time (inclusive) of this event.
   ///
   ///  is REQUIRED if the component appears in an iCalendar object that doesn't
-  /// specify the "METHOD" property; otherwise, it is OPTIONAL; in any case, it MUST NOT occur
-  /// more than once.
+  /// specify the "METHOD" property; otherwise, it is OPTIONAL; in any
+  /// case, it MUST NOT occur more than once.
   DateTime? get start => getProperty<DateTimeProperty>(
     DateTimeProperty.propertyNameStart,
   )?.dateTime;
@@ -1458,7 +1523,8 @@ class VEvent extends _EventTodoJournalComponent {
     StatusProperty.createEventStatus(value),
   );
 
-  /// Gets the propriety busy status that attendees should use when accepting this event.
+  /// Gets the propriety busy status that attendees should use when
+  /// accepting this event.
   ///
   /// Is retrieved from the `X-MICROSOFT-CDO-BUSYSTATUS` custom property.
   EventBusyStatus? get busyStatus => getProperty<EventBusyStatusProperty>(
@@ -1471,7 +1537,8 @@ class VEvent extends _EventTodoJournalComponent {
     EventBusyStatusProperty.create(value),
   );
 
-  /// Retrieves the priority as a numeric value between 1 (highest) and 9 (lowest) priority.
+  /// Retrieves the priority as a numeric value between 1 (highest) and 9
+  /// (lowest) priority.
   int? get priorityInt =>
       getProperty<PriorityProperty>(PriorityProperty.propertyName)?.intValue;
 
@@ -1501,25 +1568,30 @@ class VEvent extends _EventTodoJournalComponent {
     TextProperty.create(TextProperty.propertyNameResources, value),
   );
 
-  /// Checks if this event is an all-day event using the proprietary `X-MICROSOFT-CDO-ALLDAYEVENT` property.
+  /// Checks if this event is an all-day event using the proprietary
+  /// `X-MICROSOFT-CDO-ALLDAYEVENT` property.
   bool? get isAllDayEvent => getProperty<BooleanProperty>(
     BooleanProperty.propertyNameAllDayEvent,
   )?.boolValue;
 
-  /// Sets if this event is an all-day event using the proprietary `X-MICROSOFT-CDO-ALLDAYEVENT` property.
+  /// Sets if this event is an all-day event using the proprietary
+  /// `X-MICROSOFT-CDO-ALLDAYEVENT` property.
   ///
-  /// Note that no other changes are done even when the given [value] is `true`, ie neither [start], nor [end] nor [duration] is changed.
+  /// Note that no other changes are done even when the given [value] is
+  /// `true`, ie neither [start], nor [end] nor [duration] is changed.
   set isAllDayEvent(bool? value) => setOrRemoveProperty(
     BooleanProperty.propertyNameAllDayEvent,
     BooleanProperty.create(BooleanProperty.propertyNameAllDayEvent, value),
   );
 
-  /// Retrieves the teams meeting URL for this event when the `X-MICROSOFT-SKYPETEAMSMEETINGURL` property is set.
+  /// Retrieves the teams meeting URL for this event when the
+  /// `X-MICROSOFT-SKYPETEAMSMEETINGURL` property is set.
   String? get microsoftTeamsMeetingUrl => getProperty<TextProperty>(
     TextProperty.propertyNameXMicrosoftSkypeTeamsMeetingUrl,
   )?.text;
 
-  /// Sets the teams meeting URL for this event using the proprietary `X-MICROSOFT-SKYPETEAMSMEETINGURL` property.
+  /// Sets the teams meeting URL for this event using the proprietary
+  /// `X-MICROSOFT-SKYPETEAMSMEETINGURL` property.
   set microsoftTeamsMeetingUrl(String? value) => setOrRemoveProperty(
     TextProperty.propertyNameResources,
     TextProperty.create(
@@ -1549,8 +1621,9 @@ class VEvent extends _EventTodoJournalComponent {
     if (sequence != null) {
       event.sequence = sequence;
     }
-    event.organizer = organizer;
-    event.uid = uid;
+    event
+      ..organizer = organizer
+      ..uid = uid;
     event.properties.add(attendee);
     final delegatedFrom = attendee.delegatedFrom;
     if (delegatedFrom != null) {
@@ -1561,8 +1634,9 @@ class VEvent extends _EventTodoJournalComponent {
         event.properties.add(delegator);
       }
     }
-    event.timeStamp = DateTime.now();
-    event.requestStatus = '2.0;Success';
+    event
+      ..timeStamp = DateTime.now()
+      ..requestStatus = '2.0;Success';
     return event;
   }
 
@@ -1570,11 +1644,15 @@ class VEvent extends _EventTodoJournalComponent {
   VComponent instantiate({VComponent? parent}) => VEvent(parent: parent);
 }
 
+/// Contains information about a to-do / task.
 class VTodo extends _EventTodoJournalComponent {
+  /// Creates a new to-do component with the optional [parent].
   VTodo({VComponent? parent}) : super(componentName, parent);
+
+  /// `VTODO`
   static const String componentName = 'VTODO';
 
-  // The status of this `todo`
+  /// The status of this task.
   TodoStatus get status =>
       getProperty<StatusProperty>(StatusProperty.propertyName)?.todoStatus ??
       TodoStatus.unknown;
@@ -1645,9 +1723,11 @@ class VTodo extends _EventTodoJournalComponent {
     TextProperty.create(TextProperty.propertyNameLocation, value),
   );
 
-  /// Retrieves the percentage value between 0 and 100 that shows how much is done of this task,
+  /// Retrieves the percentage value between 0 and 100 that shows how much
+  /// is done of this task,
   ///
-  /// 100 means the task is fully done; 0 means the task has not been started.
+  /// 100 means the task is fully done; 0 means the task has not been
+  /// started.
   int? get percentComplete => getProperty<IntegerProperty>(
     IntegerProperty.propertyNamePercentComplete,
   )?.intValue;
@@ -1658,7 +1738,8 @@ class VTodo extends _EventTodoJournalComponent {
     IntegerProperty.create(IntegerProperty.propertyNamePercentComplete, value),
   );
 
-  /// Retrieves the priority as a numeric value between 1 (highest) and 9 (lowest) priority.
+  /// Retrieves the priority as a numeric value between 1 (highest) and 9
+  /// (lowest) priority.
   int? get priorityInt =>
       getProperty<PriorityProperty>(PriorityProperty.propertyName)?.intValue;
 
@@ -1692,8 +1773,12 @@ class VTodo extends _EventTodoJournalComponent {
   VComponent instantiate({VComponent? parent}) => VTodo(parent: parent);
 }
 
+/// Contains information about a journal entry.
 class VJournal extends _EventTodoJournalComponent {
+  /// Creates a new journal component with the optional [parent].
   VJournal({VComponent? parent}) : super(componentName, parent);
+
+  /// `VJOURNAL`
   static const String componentName = 'VJOURNAL';
 
   /// The status of this journal entry
@@ -1711,8 +1796,12 @@ class VJournal extends _EventTodoJournalComponent {
   VComponent instantiate({VComponent? parent}) => VJournal(parent: parent);
 }
 
+/// Contains timezone information such as daylight saving phases.
 class VTimezone extends VComponent {
+  /// Creates a new timezone component with the optional [parent].
   VTimezone({VComponent? parent}) : super(componentName, parent);
+
+  /// `VTIMEZONE`
   static const String componentName = 'VTIMEZONE';
 
   /// Retrieves the ID such as `America/New_York` or `Europe/Berlin`
@@ -1745,12 +1834,14 @@ class VTimezone extends VComponent {
     DateTimeProperty.create(DateTimeProperty.propertyNameLastModified, value),
   );
 
-  /// Retrieves the location from the proprietary `X-LIC-LOCATION` property, if defined
+  /// Retrieves the location from the proprietary `X-LIC-LOCATION`
+  /// property, if defined
   String? get location => getProperty<TextProperty>(
     TextProperty.propertyNameXTimezoneLocation,
   )?.text;
 
-  /// Sets the timezone location  using the proprietary `X-LIC-LOCATION` property.
+  /// Sets the timezone location using the proprietary `X-LIC-LOCATION`
+  /// property.
   set location(String? value) => setOrRemoveProperty(
     TextProperty.propertyNameXTimezoneLocation,
     TextProperty.create(TextProperty.propertyNameXTimezoneLocation, value),
@@ -1762,7 +1853,8 @@ class VTimezone extends VComponent {
     checkMandatoryProperty(TextProperty.propertyNameTimezoneId);
     if (children.isEmpty) {
       throw const FormatException(
-        'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component',
+        'A valid VTIMEZONE requires at least one STANDARD or one '
+        'DAYLIGHT sub-component',
       );
     }
     var numberOfStandardChildren = 0, numberOfDaylightChildren = 0;
@@ -1775,7 +1867,8 @@ class VTimezone extends VComponent {
     }
     if (numberOfStandardChildren == 0 && numberOfDaylightChildren == 0) {
       throw const FormatException(
-        'A valid VTIMEZONE requires at least one STANDARD or one DAYLIGHT sub-component',
+        'A valid VTIMEZONE requires at least one STANDARD or one '
+        'DAYLIGHT sub-component',
       );
     }
   }
@@ -1786,9 +1879,15 @@ class VTimezone extends VComponent {
 
 /// Contains the standard or daylight timezone subcomponent
 class VTimezonePhase extends VComponent {
+  /// Creates a new timezone phase with the given [componentName] and
+  /// required [parent].
   VTimezonePhase(String componentName, {required VTimezone parent})
     : super(componentName, parent);
+
+  /// `STANDARD`
   static const String componentNameStandard = 'STANDARD';
+
+  /// `DAYLIGHT`
   static const String componentNameDaylight = 'DAYLIGHT';
 
   /// Gets the start datetime of this phase
@@ -1863,7 +1962,8 @@ class VTimezonePhase extends VComponent {
     RecurrenceRuleProperty.create(value),
   );
 
-  /// Retrieves additional reccurrence dates or durations as defined in the `RDATE` property
+  /// Retrieves additional reccurrence dates or durations as defined in
+  /// the `RDATE` property
   ///
   /// Compare [excludingRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get additionalRecurrenceDates =>
@@ -1881,7 +1981,8 @@ class VTimezonePhase extends VComponent {
         ),
       );
 
-  /// Retrieves excluding reccurrence dates or durations as defined in the `EXDATE` property
+  /// Retrieves excluding reccurrence dates or durations as defined in
+  /// the `EXDATE` property
   ///
   /// Compare [additionalRecurrenceDates], [recurrenceRule]
   List<DateTimeOrDuration>? get excludingRecurrenceDates =>
@@ -1912,9 +2013,13 @@ class VTimezonePhase extends VComponent {
       VTimezonePhase(name, parent: parent! as VTimezone);
 }
 
-/// Contains an alarm definition with a trigger ([triggerDate] or [triggerRelativeDuration]) and an [action].
+/// Contains an alarm definition with a trigger ([triggerDate] or
+/// [triggerRelativeDuration]) and an [action].
 class VAlarm extends VComponent {
+  /// Creates a new alarm component with the optional [parent].
   VAlarm({VComponent? parent}) : super(componentName, parent);
+
+  /// `VALARM`
   static const String componentName = 'VALARM';
 
   /// Retrieves the date of the trigger.
@@ -1929,10 +2034,12 @@ class VAlarm extends VComponent {
     TriggerProperty.createWithDateTime(value),
   );
 
-  /// Retrieves the relative duration of the trigger, e.g. -15 minutes (`-PT15M`) as a reminder before an event starts.
+  /// Retrieves the relative duration of the trigger, e.g. -15 minutes
+  /// (`-PT15M`) as a reminder before an event starts.
   ///
   /// Compare [triggerDate] for a fixed date.
-  /// Compare [triggerRelation] to see if the [triggerRelativeDuration] is calculated in relation to the [VEvent.start] or [VEvent.end] time.
+  /// Compare [triggerRelation] to see if the [triggerRelativeDuration]
+  /// is calculated in relation to the [VEvent.start] or [VEvent.end] time.
   IsoDuration? get triggerRelativeDuration =>
       getProperty<TriggerProperty>(TriggerProperty.propertyName)?.duration;
 
@@ -1942,7 +2049,8 @@ class VAlarm extends VComponent {
     TriggerProperty.createWithDuration(value),
   );
 
-  /// Resolves if the [triggerRelativeDuration] is calculated in relation to the [VEvent.start] or [VEvent.end] time.
+  /// Resolves if the [triggerRelativeDuration] is calculated in
+  /// relation to the [VEvent.start] or [VEvent.end] time.
   ///
   /// Defaults to [VEvent.start] / [AlarmTriggerRelationship.start].
   /// Compare [triggerRelativeDuration]
@@ -1952,11 +2060,13 @@ class VAlarm extends VComponent {
       )?.triggerRelation ??
       AlarmTriggerRelationship.start;
 
-  /// Sets the trigger, this is useful when you also want to specify the [AlarmTriggerRelationship], for example
+  /// Sets the trigger, this is useful when you also want to specify the
+  /// [AlarmTriggerRelationship], for example
   set trigger(TriggerProperty? value) =>
       setOrRemoveProperty(TriggerProperty.propertyName, value);
 
-  /// How often the alarm can be repeated, defaults to `0`, ie no additional repeats after the first alaram.
+  /// How often the alarm can be repeated, defaults to `0`, ie no
+  /// additional repeats after the first alaram.
   int get repeat =>
       getProperty<IntegerProperty>(
         IntegerProperty.propertyNameRepeat,
@@ -1969,7 +2079,8 @@ class VAlarm extends VComponent {
     IntegerProperty.create(IntegerProperty.propertyNameRepeat, value),
   );
 
-  /// Retrieves the action in case it is one described by the icalendar standard or  [AlarmAction.other] in other cases.
+  /// Retrieves the action in case it is one described by the icalendar
+  /// standard or [AlarmAction.other] in other cases.
   ///
   /// Compare [actionText] in case of a non-standard alarm action.
   AlarmAction get action =>
@@ -2006,7 +2117,8 @@ class VAlarm extends VComponent {
 
   /// Retrieves the attachments
   ///
-  /// In case the [action] is an [AlarmAction.audio], one attachment describing the audio is expected.
+  /// In case the [action] is an [AlarmAction.audio], one attachment
+  /// describing the audio is expected.
   List<AttachmentProperty> get attachments => getProperties<AttachmentProperty>(
     AttachmentProperty.propertyName,
   ).toList();
@@ -2020,11 +2132,13 @@ class VAlarm extends VComponent {
     properties.add(attachment);
   }
 
-  /// Removes the given [attachment] returning `true` when the attachment was found
+  /// Removes the given [attachment] returning `true` when the attachment
+  /// was found
   bool removeAttachment(AttachmentProperty attachment) =>
       properties.remove(attachment);
 
-  /// Removes the attachment with the given [uri], returning it when it was found.
+  /// Removes the attachment with the given [uri], returning it when it
+  /// was found.
   AttachmentProperty? removeAttachmentWithUri(Uri uri) {
     final match =
         properties.firstWhereOrNull(
@@ -2086,7 +2200,8 @@ class VAlarm extends VComponent {
     return match;
   }
 
-  /// Removes the attendee with the given [email], returning it when it was found.
+  /// Removes the attendee with the given [email], returning it when it
+  /// was found.
   AttendeeProperty? removeAttendeeWithEmail(String email) {
     final match =
         properties.firstWhereOrNull(
@@ -2112,7 +2227,10 @@ class VAlarm extends VComponent {
 
 /// Provides information about free and busy times of a particular user
 class VFreeBusy extends _UidMandatoryComponent {
+  /// Creates a new free/busy component with the optional [parent].
   VFreeBusy({VComponent? parent}) : super(componentName, parent);
+
+  /// `VFREEBUSY`
   static const String componentName = 'VFREEBUSY';
 
   /// Retrieves the list of free busy entries
@@ -2147,7 +2265,7 @@ class VFreeBusy extends _UidMandatoryComponent {
   /// The end date (exclusive) of this event.
   ///
   /// either `DTEND` or `DURATION` may occur, but not both
-  /// Compare [duration]
+  /// Compare `duration`
   DateTime? get end =>
       getProperty<DateTimeProperty>(DateTimeProperty.propertyNameEnd)?.dateTime;
 
@@ -2165,7 +2283,8 @@ class VFreeBusy extends _UidMandatoryComponent {
   set contact(UserProperty? value) =>
       setOrRemoveProperty(OrganizerProperty.propertyName, value);
 
-  /// Retrieves the request status, e.g. `4.1;Event conflict.  Date-time is busy.`
+  /// Retrieves the request status, e.g.
+  /// `4.1;Event conflict.  Date-time is busy.`
   String? get requestStatus => getProperty<RequestStatusProperty>(
     RequestStatusProperty.propertyName,
   )?.requestStatus;
@@ -2176,7 +2295,8 @@ class VFreeBusy extends _UidMandatoryComponent {
     RequestStatusProperty.create(value),
   );
 
-  /// Checks if the request status is a success, this defaults to `true` when no `REQUEST-STATUS` is set.
+  /// Checks if the request status is a success, this defaults to `true`
+  /// when no `REQUEST-STATUS` is set.
   bool get requestStatusIsSuccess => requestStatus?.startsWith('2.') ?? true;
 
   /// Retrieves the URL for additional information
@@ -2211,7 +2331,8 @@ class VFreeBusy extends _UidMandatoryComponent {
     return match;
   }
 
-  /// Removes the attendee with the given [email], returning it when it was found.
+  /// Removes the attendee with the given [email], returning it when it
+  /// was found.
   AttendeeProperty? removeAttendeeWithEmail(String email) {
     final match =
         properties.firstWhereOrNull(

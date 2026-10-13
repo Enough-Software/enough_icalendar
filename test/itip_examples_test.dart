@@ -325,8 +325,10 @@ END:VCALENDAR
       event = iCalendar.children.first;
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
-      expect(event.comment,
-          'This time works much better and I think the big conference room is too big');
+      expect(
+        event.comment,
+        'This time works much better and I think the big conference room is too big',
+      );
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
 
@@ -460,7 +462,9 @@ END:VCALENDAR\r
       expect(event.attendees[0].delegatedToEmail, 'e@example.com');
       expect(event.attendees[1].rsvp, isTrue);
       expect(
-          event.attendees[1].delegatedFrom, Uri.parse('mailto:c@example.com'));
+        event.attendees[1].delegatedFrom,
+        Uri.parse('mailto:c@example.com'),
+      );
       expect(event.attendees[1].delegatedFromEmail, 'c@example.com');
       expect(event.attendees[1].email, 'e@example.com');
       expect(event.status, EventStatus.confirmed);
@@ -501,7 +505,9 @@ END:VCALENDAR\r
       expect(event.attendees[0].participantStatus, ParticipantStatus.accepted);
       expect(event.attendees[0].email, 'e@example.com');
       expect(
-          event.attendees[0].delegatedFrom, Uri.parse('mailto:c@example.com'));
+        event.attendees[0].delegatedFrom,
+        Uri.parse('mailto:c@example.com'),
+      );
       expect(event.attendees[0].delegatedFromEmail, 'c@example.com');
       expect(event.attendees[1].participantStatus, ParticipantStatus.delegated);
       expect(event.attendees[1].email, 'c@example.com');
@@ -546,7 +552,9 @@ END:VCALENDAR\r
       expect(event.attendees[0].participantStatus, ParticipantStatus.declined);
       expect(event.attendees[0].email, 'e@example.com');
       expect(
-          event.attendees[0].delegatedFrom, Uri.parse('mailto:c@example.com'));
+        event.attendees[0].delegatedFrom,
+        Uri.parse('mailto:c@example.com'),
+      );
       expect(event.attendees[0].delegatedFromEmail, 'c@example.com');
       expect(event.attendees[1].participantStatus, ParticipantStatus.delegated);
       expect(event.attendees[1].email, 'c@example.com');
@@ -591,12 +599,16 @@ END:VCALENDAR\r
       expect(event.attendees[0].participantStatus, ParticipantStatus.declined);
       expect(event.attendees[0].email, 'e@example.com');
       expect(
-          event.attendees[0].delegatedFrom, Uri.parse('mailto:c@example.com'));
+        event.attendees[0].delegatedFrom,
+        Uri.parse('mailto:c@example.com'),
+      );
       expect(event.attendees[0].delegatedFromEmail, 'c@example.com');
       expect(event.attendees[1].rsvp, isTrue);
       expect(event.attendees[1].email, 'c@example.com');
-      expect(event.comment,
-          'DELEGATE (ATTENDEE mailto:e@example.com) DECLINED YOUR INVITATION');
+      expect(
+        event.comment,
+        'DELEGATE (ATTENDEE mailto:e@example.com) DECLINED YOUR INVITATION',
+      );
     });
 
     test('Cancel a Group Event', () {
@@ -637,7 +649,9 @@ END:VCALENDAR
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.cancelled);
       expect(
-          event.comment, 'Mr. B cannot attend.  It\'s raining.  Lets cancel.');
+        event.comment,
+        'Mr. B cannot attend.  It\'s raining.  Lets cancel.',
+      );
       // other properties are covered by components_test.dart
     });
 

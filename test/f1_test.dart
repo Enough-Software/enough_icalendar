@@ -25,11 +25,7 @@ void main() {
         isFalse,
         reason: '$i: "$line" ends with standard linebreak',
       );
-      expect(
-        line.endsWith('\r'),
-        isFalse,
-        reason: '$i: "$line" ends with r',
-      );
+      expect(line.endsWith('\r'), isFalse, reason: '$i: "$line" ends with r');
     }
   });
 

@@ -15,9 +15,7 @@ void main() {
  ofi3Z/fmujjARoWCg5QcmHFvnNrw70gaHJhZBAAKgJlbg==;X-APPLE-RADIUS=141.29459
  06408928;X-TITLE="Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34
  /4, 119 00 Prague, Czechia":geo:50.091106,14.401799''';
-    final lines = VComponent.unfold(
-      input,
-    );
+    final lines = VComponent.unfold(input);
     expect(lines.length, 1);
     expect(lines.first, _expectedUnfoldedLines[6]);
   });
@@ -48,9 +46,13 @@ void main() {
     final event = iCalendar.event!;
     expect(event.start, DateTime(2022, 09, 29, 19, 30, 00));
     expect(
-        event['DTEND']?[ParameterType.timezoneId]?.textValue, 'Europe/Prague');
-    expect(event.location,
-        'Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia');
+      event['DTEND']?[ParameterType.timezoneId]?.textValue,
+      'Europe/Prague',
+    );
+    expect(
+      event.location,
+      'Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia',
+    );
   });
 
   test('Parse apple VCalendar (test data two)', () {
@@ -61,9 +63,13 @@ void main() {
     final event = iCalendar.event!;
     expect(event.start, DateTime(2022, 09, 29, 19, 30, 00));
     expect(
-        event['DTEND']?[ParameterType.timezoneId]?.textValue, 'Europe/Prague');
-    expect(event.location,
-        'Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia');
+      event['DTEND']?[ParameterType.timezoneId]?.textValue,
+      'Europe/Prague',
+    );
+    expect(
+      event.location,
+      'Pražský hrad\nPrague Castle, náměstí U svatého Jiří 34/4, 119 00 Prague, Czechia',
+    );
   });
 }
 

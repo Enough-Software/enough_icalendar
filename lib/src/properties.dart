@@ -9,9 +9,9 @@ class Property {
     this.definition,
     ValueType defaultValueType, {
     dynamic Function(Property property, String textValue)? parser,
-  })  : name = _getName(definition),
-        textValue = _getTextContent(definition),
-        parameters = _parseParameters(definition) {
+  }) : name = _getName(definition),
+       textValue = _getTextContent(definition),
+       parameters = _parseParameters(definition) {
     value = parser != null
         ? parser(this, textValue)
         : _parsePropertyValue(this, defaultValueType);
@@ -20,7 +20,8 @@ class Property {
   /// The value of this property
   late dynamic value;
 
-  /// Full property content, e.g. `DTSTAMP;TZID=America/New_York:19970610T172345Z`
+  /// Full property content, e.g.
+  /// `DTSTAMP;TZID=America/New_York:19970610T172345Z`
   final String definition;
 
   /// Name of the property, e.g. `DTSTAMP`
@@ -29,7 +30,8 @@ class Property {
   /// Value of the property, e.g. `19970610T172345Z`
   final String textValue;
 
-  /// Additional parameters for this property, e.g. `{'TZID' : TextValueType('America/New_York')}}
+  /// Additional parameters for this property, e.g.
+  /// `{'TZID' : TextValueType('America/New_York')}}
   final Map<String, Parameter> parameters;
 
   /// Parses this property.
@@ -155,8 +157,10 @@ class Property {
     final nameEndIndex = _getNameEndIndex(content);
     final valueStartIndex = _getValueStartIndex(content);
     if (valueStartIndex > nameEndIndex + 1) {
-      final parametersText =
-          content.substring(nameEndIndex + 1, valueStartIndex);
+      final parametersText = content.substring(
+        nameEndIndex + 1,
+        valueStartIndex,
+      );
       final runes = parametersText.runes.toList();
       var lastStartIndex = 0;
       int? nextStartIndex;
@@ -189,7 +193,7 @@ class Property {
   ) {
     final valueType =
         (property[ParameterType.value] as ValueParameter?)?.valueType ??
-            defaultValueType;
+        defaultValueType;
     final textValue = property.textValue;
     switch (valueType) {
       case ValueType.binary:
@@ -240,7 +244,9 @@ class Property {
       case ValueType.typeRole:
       case ValueType.typeValue:
         throw FormatException(
-            'Unable to parse ${property.name} with value $textValue and invalid valueType of $valueType');
+          'Unable to parse ${property.name} with value $textValue and '
+          'invalid valueType of $valueType',
+        );
       case ValueType.typeDateTimeList:
         return textValue
             .split(',')
@@ -249,8 +255,14 @@ class Property {
     }
   }
 
-  static Property parseProperty(String definition,
-      {Property? Function(String name, String definition)? customParser}) {
+  /// Parses the [definition] into a specific [Property] implementation.
+  ///
+  /// A [customParser] can be supplied to support custom properties that carry
+  /// no standard implementation.
+  static Property parseProperty(
+    String definition, {
+    Property? Function(String name, String definition)? customParser,
+  }) {
     final name = _getName(definition);
     switch (name) {
       case TextProperty.propertyNameUid:
@@ -344,7 +356,8 @@ class Property {
     }
   }
 
-  /// Renders this parameter into the given [buffer] without folding / wrapping lines and without `CRLF` at the end.
+  /// Renders this parameter into the given [buffer] without folding /
+  /// wrapping lines and without `CRLF` at the end.
   void render(final StringBuffer buffer) {
     buffer.write(name);
     if (parameters.isNotEmpty) {
@@ -407,17 +420,22 @@ class Property {
   }
 }
 
+/// `RRULE` property.
 class RecurrenceRuleProperty extends Property {
+  /// Creates a new recurrence rule property from the [definition].
   RecurrenceRuleProperty(String definition)
-      : super(definition, ValueType.other);
+    : super(definition, ValueType.other);
 
   /// `RRULE`
   static const String propertyName = 'RRULE';
+
+  /// The parsed recurrence rule.
   Recurrence get rule => value as Recurrence;
 
   @override
   Recurrence parse(String texValue) => Recurrence.parse(textValue);
 
+  /// Creates a new recurrence rule property when [value] is not null.
   static RecurrenceRuleProperty? create(Recurrence? value) {
     if (value == null) {
       return null;
@@ -427,7 +445,9 @@ class RecurrenceRuleProperty extends Property {
   }
 }
 
+/// Property that contains an URI value.
 class UriProperty extends Property {
+  /// Creates a new URI property from the [definition].
   UriProperty(String definition) : super(definition, ValueType.uri);
 
   /// `TZURL`
@@ -436,8 +456,10 @@ class UriProperty extends Property {
   /// `URL`
   static const String propertyNameUrl = 'URL';
 
+  /// The parsed URI value.
   Uri get uri => value as Uri;
 
+  /// Creates a new URI property when [value] is not null.
   static UriProperty? create(String propertyName, Uri? value) {
     if (value == null) {
       return null;
@@ -446,7 +468,10 @@ class UriProperty extends Property {
   }
 }
 
+/// Property that describes a calendar user such as an attendee, organizer
+/// or contact.
 class UserProperty extends UriProperty {
+  /// Creates a new user property from the [definition].
   UserProperty(super.definition);
 
   /// `CONTACT`
@@ -457,18 +482,18 @@ class UserProperty extends UriProperty {
 
   /// Sets the common name associated with this calendar user
   set commonName(String? value) => setOrRemoveParameter(
-        ParameterType.commonName,
-        TextParameter.create(ParameterType.commonName.typeName ?? '', value),
-      );
+    ParameterType.commonName,
+    TextParameter.create(ParameterType.commonName.typeName ?? '', value),
+  );
 
   /// Gets the directory link, for example an LDAP URI
   Uri? get directory => getParameterValue<Uri>(ParameterType.directory);
 
   /// Sets the directory
   set directory(Uri? value) => setOrRemoveParameter(
-        ParameterType.directory,
-        UriParameter.create(ParameterType.directory.typeName ?? '', value),
-      );
+    ParameterType.directory,
+    UriParameter.create(ParameterType.directory.typeName ?? '', value),
+  );
 
   /// Gets the alternative representation, e.g. a link to a VCARD
   Uri? get alternateRepresentation =>
@@ -476,12 +501,12 @@ class UserProperty extends UriProperty {
 
   /// Sets the alternative representation
   set alternateRepresentation(Uri? value) => setOrRemoveParameter(
-        ParameterType.alternateRepresentation,
-        UriParameter.create(
-          ParameterType.alternateRepresentation.typeName ?? '',
-          value,
-        ),
-      );
+    ParameterType.alternateRepresentation,
+    UriParameter.create(
+      ParameterType.alternateRepresentation.typeName ?? '',
+      value,
+    ),
+  );
 
   /// Retrieves the type of the user.
   ///
@@ -492,12 +517,12 @@ class UserProperty extends UriProperty {
 
   /// Set the type of the user
   set userType(CalendarUserType? value) => setOrRemoveParameter(
-        ParameterType.calendarUserType,
-        CalendarUserTypeParameter.create(
-          ParameterType.calendarUserType.typeName ?? '',
-          value,
-        ),
-      );
+    ParameterType.calendarUserType,
+    CalendarUserTypeParameter.create(
+      ParameterType.calendarUserType.typeName ?? '',
+      value,
+    ),
+  );
 
   /// Retrieve the email from this value
   String? get email => uri.isScheme('MAILTO')
@@ -506,9 +531,9 @@ class UserProperty extends UriProperty {
 
   /// Sets the email as an additional parameter
   set email(String? value) => setOrRemoveParameter(
-        ParameterType.email,
-        TextParameter.create(ParameterType.email.typeName ?? '', value),
-      );
+    ParameterType.email,
+    TextParameter.create(ParameterType.email.typeName ?? '', value),
+  );
 }
 
 /// Describes an attendee
@@ -529,9 +554,9 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the rsvp request value
   set rsvp(bool? value) => setOrRemoveParameter(
-        ParameterType.rsvp,
-        BooleanParameter.create(ParameterType.rsvp.typeName ?? '', value),
-      );
+    ParameterType.rsvp,
+    BooleanParameter.create(ParameterType.rsvp.typeName ?? '', value),
+  );
 
   /// Gets the role of this participant, defaults to [Role.requiredParticipant]
   Role get role =>
@@ -540,12 +565,12 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the role of this participant
   set role(Role? value) => setOrRemoveParameter(
-        ParameterType.participantRole,
-        ParticipantRoleParameter.create(
-          ParameterType.participantRole.typeName ?? '',
-          value,
-        ),
-      );
+    ParameterType.participantRole,
+    ParticipantRoleParameter.create(
+      ParameterType.participantRole.typeName ?? '',
+      value,
+    ),
+  );
 
   /// Gets the participant status of this attendee
   ///
@@ -555,12 +580,12 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the participant status
   set participantStatus(ParticipantStatus? value) => setOrRemoveParameter(
-        ParameterType.participantStatus,
-        ParticipantStatusParameter.create(
-          ParameterType.participantStatus.typeName ?? '',
-          value,
-        ),
-      );
+    ParameterType.participantStatus,
+    ParticipantStatusParameter.create(
+      ParameterType.participantStatus.typeName ?? '',
+      value,
+    ),
+  );
 
   /// Retrieves the URI of the the user that this attendee has delegated the
   /// event or task to
@@ -568,9 +593,9 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the delegatedTo URI
   set delegatedTo(Uri? value) => setOrRemoveParameter(
-        ParameterType.delegateTo,
-        UriParameter.create(ParameterType.delegateTo.typeName ?? '', value),
-      );
+    ParameterType.delegateTo,
+    UriParameter.create(ParameterType.delegateTo.typeName ?? '', value),
+  );
 
   /// Retrieves the email of the the user that this attendee has delegated the
   /// event or task to
@@ -593,9 +618,9 @@ class AttendeeProperty extends UserProperty {
 
   /// Sets the delegatedFrom URI
   set delegatedFrom(Uri? value) => setOrRemoveParameter(
-        ParameterType.delegateFrom,
-        UriParameter.create(ParameterType.delegateTo.typeName ?? '', value),
-      );
+    ParameterType.delegateFrom,
+    UriParameter.create(ParameterType.delegateTo.typeName ?? '', value),
+  );
 
   /// Retrieves the email of the the user that this attendee has delegated the
   /// event or task from
@@ -665,8 +690,10 @@ class AttendeeProperty extends UserProperty {
       );
     }
     if (rsvp != null) {
-      prop[ParameterType.rsvp] =
-          BooleanParameter.value(ParameterType.rsvp.typeName ?? '', rsvp);
+      prop[ParameterType.rsvp] = BooleanParameter.value(
+        ParameterType.rsvp.typeName ?? '',
+        rsvp,
+      );
     }
     if (userType != null) {
       prop[ParameterType.calendarUserType] = CalendarUserTypeParameter.value(
@@ -687,8 +714,10 @@ class AttendeeProperty extends UserProperty {
       );
     }
     if (directory != null) {
-      prop[ParameterType.directory] =
-          UriParameter.value(ParameterType.directory.typeName ?? '', directory);
+      prop[ParameterType.directory] = UriParameter.value(
+        ParameterType.directory.typeName ?? '',
+        directory,
+      );
     }
 
     return prop;
@@ -711,9 +740,9 @@ class OrganizerProperty extends UserProperty {
 
   /// Sets the sender of this organizer
   set sentBy(Uri? value) => setOrRemoveParameter(
-        ParameterType.sentBy,
-        UriParameter.create(ParameterType.sentBy.typeName ?? '', value),
-      );
+    ParameterType.sentBy,
+    UriParameter.create(ParameterType.sentBy.typeName ?? '', value),
+  );
 
   /// Creates a new [OrganizerProperty]
   static OrganizerProperty? create({
@@ -732,8 +761,10 @@ class OrganizerProperty extends UserProperty {
       sentBy = Uri.parse('mailto:$sentByEmail');
     }
     if (sentBy != null) {
-      prop[ParameterType.sentBy] =
-          UriParameter.value(ParameterType.sentBy.typeName ?? '', sentBy);
+      prop[ParameterType.sentBy] = UriParameter.value(
+        ParameterType.sentBy.typeName ?? '',
+        sentBy,
+      );
     }
     if (commonName != null) {
       prop.commonName = commonName;
@@ -750,7 +781,7 @@ class GeoProperty extends Property {
 
   /// Creates a new [GeoProperty] based on the given [location]
   GeoProperty.value(GeoLocation location)
-      : this('GEO:${location.latitude};${location.longitude}');
+    : this('GEO:${location.latitude};${location.longitude}');
 
   /// `GEO`
   static const String propertyName = 'GEO';
@@ -795,44 +826,52 @@ class GeoProperty extends Property {
   }
 }
 
+/// Property that defines an attachment.
 class AttachmentProperty extends Property {
+  /// Creates a new attachment property from the [content].
   AttachmentProperty(String content) : super(content, ValueType.uri);
 
   /// `ATTACH`
   static const String propertyName = 'ATTACH';
 
-  /// Retrieves the URI of the data such as `https://domain.com/assets/image.png`
+  /// Retrieves the URI of the data such as
+  /// `https://domain.com/assets/image.png`
   Uri? get uri => value is Uri ? value : null;
 
   /// Retrieves the binary data information
   Binary? get binary => value is Binary ? value : null;
 
-  /// Retrieves the mime type / media type / format type like `image/png` as specified in the `FMTTYPE` parameter.
+  /// Retrieves the mime type / media type / format type like `image/png`
+  /// as specified in the `FMTTYPE` parameter.
   String? get mediaType => getParameterValue<String>(ParameterType.formatType);
 
   /// Sets the media type
-  set mediaType(String? value) => setOrRemoveParameter(ParameterType.formatType,
-      TextParameter.create(ParameterType.formatType.typeName ?? '', value));
+  set mediaType(String? value) => setOrRemoveParameter(
+    ParameterType.formatType,
+    TextParameter.create(ParameterType.formatType.typeName ?? '', value),
+  );
 
-  /// Retrieves the encoding such as `BASE64`, only relevant when the content is binary
+  /// Retrieves the encoding such as `BASE64`, only relevant when the
+  /// content is binary
   ///
   /// Compare [isBinary]
   String? get encoding => getParameterValue<String>(ParameterType.encoding);
 
   /// Sets the encoding
   set encoding(String? value) => setOrRemoveParameter(
-        ParameterType.encoding,
-        TextParameter.create(ParameterType.encoding.typeName ?? '', value),
-      );
+    ParameterType.encoding,
+    TextParameter.create(ParameterType.encoding.typeName ?? '', value),
+  );
 
-  /// Retrieves the mime type / media type / format type like `image/png` as specified in the `FMTTYPE` parameter.
+  /// Retrieves the mime type / media type / format type like `image/png`
+  /// as specified in the `FMTTYPE` parameter.
   String? get filename => getParameterValue<String>(ParameterType.xFilename);
 
   /// Sets the media type
   set filename(String? value) => setOrRemoveParameter(
-        ParameterType.xFilename,
-        TextParameter.create(ParameterType.xFilename.typeName ?? '', value),
-      );
+    ParameterType.xFilename,
+    TextParameter.create(ParameterType.xFilename.typeName ?? '', value),
+  );
 
   /// Checks if this contains binary data
   ///
@@ -840,13 +879,18 @@ class AttachmentProperty extends Property {
   bool get isBinary => value is Binary;
 }
 
+/// Property that defines the calendar scale.
 class CalendarScaleProperty extends Property {
+  /// Creates a new calendar scale property from the [definition].
   CalendarScaleProperty(String definition) : super(definition, ValueType.text);
 
   /// `CALSCALE`
   static const String propertyName = 'CALSCALE';
+
+  /// Checks if the calendar scale is `GREGORIAN`.
   bool get isGregorianCalendar => textValue == 'GREGORIAN';
 
+  /// Creates a new calendar scale property when [value] is not null.
   static CalendarScaleProperty? create(String? value) {
     if (value == null) {
       return null;
@@ -855,14 +899,18 @@ class CalendarScaleProperty extends Property {
   }
 }
 
+/// Property that defines the iCalendar version.
 class VersionProperty extends Property {
+  /// Creates a new version property from the [definition].
   VersionProperty(String definition) : super(definition, ValueType.text);
 
   /// `VERSION`
   static const String propertyName = 'VERSION';
 
+  /// Checks if the version is `2.0`.
   bool get isVersion2 => textValue == '2.0';
 
+  /// Creates a new version property when [value] is not null.
   static VersionProperty? create(String? value) {
     if (value == null) {
       return null;
@@ -871,14 +919,18 @@ class VersionProperty extends Property {
   }
 }
 
+/// Property that defines free-text categories.
 class CategoriesProperty extends Property {
+  /// Creates a new categories property from the [definition].
   CategoriesProperty(String definition) : super(definition, ValueType.text);
 
   /// `CATEGORIES`
   static const String propertyName = 'CATEGORIES';
 
+  /// The comma-separated categories.
   List<String> get categories => textValue.split(',');
 
+  /// Creates a new categories property when [value] is not null.
   static CategoriesProperty? create(List<String>? value) {
     if (value == null) {
       return null;
@@ -892,22 +944,28 @@ class CategoriesProperty extends Property {
   }
 }
 
+/// Property that defines the access classification.
 class ClassificationProperty extends Property {
+  /// Creates a new classification property from the [definition].
   ClassificationProperty(String definition)
-      : super(definition, ValueType.typeClassification);
+    : super(definition, ValueType.typeClassification);
 
   /// `CLASS`
   static const String propertyName = 'CLASS';
 
+  /// The parsed classification.
   Classification get classification => value as Classification;
 
+  /// Creates a new classification property when [value] is not null.
   static ClassificationProperty? create(Classification? value) {
     if (value == null) {
       return null;
     }
     if (value == Classification.other) {
       throw FormatException(
-          'Unknown classification / CLASS value $value. You can set a custom value with a TextProperty.');
+        'Unknown classification / CLASS value $value. You can set a '
+        'custom value with a TextProperty.',
+      );
     }
     return ClassificationProperty('$propertyName:${value.name}');
   }
@@ -915,6 +973,7 @@ class ClassificationProperty extends Property {
 
 /// Contains texts
 class TextProperty extends Property {
+  /// Creates a new text property from the [definition].
   TextProperty(String definition) : super(definition, ValueType.text);
 
   /// `COMMENT`
@@ -965,9 +1024,9 @@ class TextProperty extends Property {
 
   /// Sets the language
   set language(String? value) => setOrRemoveParameter(
-        ParameterType.language,
-        TextParameter.create(ParameterType.language.typeName ?? '', value),
-      );
+    ParameterType.language,
+    TextParameter.create(ParameterType.language.typeName ?? '', value),
+  );
 
   /// Gets a link to an alternative representation
   Uri? get alternateRepresentation =>
@@ -975,15 +1034,25 @@ class TextProperty extends Property {
 
   /// Sets a link to an alternative representation
   set alternateRepresentation(Uri? value) => setOrRemoveParameter(
-        ParameterType.alternateRepresentation,
-        UriParameter.create(
-            ParameterType.alternateRepresentation.typeName ?? '', value),
-      );
+    ParameterType.alternateRepresentation,
+    UriParameter.create(
+      ParameterType.alternateRepresentation.typeName ?? '',
+      value,
+    ),
+  );
 
+  /// The parsed text value.
   String get text => value as String;
 
-  static TextProperty? create(String name, String? value,
-      {String? language, Uri? alternateRepresentation}) {
+  /// Creates a new text property when [value] is not null.
+  ///
+  /// Optionally specify the [language] and an [alternateRepresentation].
+  static TextProperty? create(
+    String name,
+    String? value, {
+    String? language,
+    Uri? alternateRepresentation,
+  }) {
     if (value == null) {
       return null;
     }
@@ -1006,6 +1075,7 @@ class TextProperty extends Property {
     return prop;
   }
 
+  /// Parses the [textValue] by unescaping commas and newline characters.
   static String parseText(String textValue) {
     textValue = textValue.replaceAll('\\,', ',');
     textValue = textValue.replaceAll('\\n', '\n');
@@ -1013,9 +1083,11 @@ class TextProperty extends Property {
   }
 }
 
+/// Property that defines the iTIP method.
 class MethodProperty extends Property {
+  /// Creates a new method property from the [definition].
   MethodProperty(String definition)
-      : super(definition, ValueType.text, parser: _parse);
+    : super(definition, ValueType.text, parser: _parse);
 
   /// `METHOD`
   static const String propertyName = 'METHOD';
@@ -1043,7 +1115,8 @@ class MethodProperty extends Property {
         return Method.declineCounter;
       default:
         throw FormatException(
-            'Unknown method value [$textValue] in property $property');
+          'Unknown method value [$textValue] in property $property',
+        );
     }
   }
 
@@ -1056,7 +1129,9 @@ class MethodProperty extends Property {
   }
 }
 
+/// Property that contains an integer value.
 class IntegerProperty extends Property {
+  /// Creates a new integer property from the [definition].
   IntegerProperty(String definition) : super(definition, ValueType.integer);
 
   /// `PERCENT-COMPLETE`
@@ -1068,8 +1143,10 @@ class IntegerProperty extends Property {
   /// `REPEAT`
   static const String propertyNameRepeat = 'REPEAT';
 
+  /// The parsed integer value.
   int get intValue => value as int;
 
+  /// Creates a new integer property when [value] is not null.
   static IntegerProperty? create(String name, int? value) {
     if (value == null) {
       return null;
@@ -1078,14 +1155,18 @@ class IntegerProperty extends Property {
   }
 }
 
+/// Property that contains a boolean value.
 class BooleanProperty extends Property {
+  /// Creates a new boolean property from the [definition].
   BooleanProperty(String definition) : super(definition, ValueType.boolean);
 
   /// `X-MICROSOFT-CDO-ALLDAYEVENT`
   static const String propertyNameAllDayEvent = 'X-MICROSOFT-CDO-ALLDAYEVENT';
 
+  /// The parsed boolean value.
   bool get boolValue => value as bool;
 
+  /// Creates a new boolean property when [value] is not null.
   static BooleanProperty? create(String name, bool? value) {
     if (value == null) {
       return null;
@@ -1094,7 +1175,9 @@ class BooleanProperty extends Property {
   }
 }
 
+/// Property that contains a date or date-time value.
 class DateTimeProperty extends Property {
+  /// Creates a new date-time property from the [definition].
   DateTimeProperty(String definition) : super(definition, ValueType.dateTime);
 
   /// `COMPLETED`
@@ -1121,17 +1204,22 @@ class DateTimeProperty extends Property {
   /// `RECURRENCE-ID`
   static const String propertyNameRecurrenceId = 'RECURRENCE-ID';
 
+  /// The parsed date-time value.
   DateTime get dateTime => value as DateTime;
 
-  /// Retrieves the timezone ID like `America/New_York` or `Europe/Berlin` from the `TZID` parameter.
+  /// Retrieves the timezone ID like `America/New_York` or
+  /// `Europe/Berlin` from the `TZID` parameter.
   String? get timezoneId => this[ParameterType.timezoneId]?.textValue;
 
   /// Set the timezone ID
   set timezoneId(String? value) => setOrRemoveParameter(
-        ParameterType.timezoneId,
-        TextParameter.create(ParameterType.timezoneId.typeName ?? '', value),
-      );
+    ParameterType.timezoneId,
+    TextParameter.create(ParameterType.timezoneId.typeName ?? '', value),
+  );
 
+  /// Creates a new date-time property when [value] is not null.
+  ///
+  /// Optionally specify the [timeZoneId].
   static DateTimeProperty? create(
     String name,
     DateTime? value, {
@@ -1140,8 +1228,9 @@ class DateTimeProperty extends Property {
     if (value == null) {
       return null;
     }
-    final prop =
-        DateTimeProperty('$name:${DateHelper.toDateTimeString(value)}');
+    final prop = DateTimeProperty(
+      '$name:${DateHelper.toDateTimeString(value)}',
+    );
     if (timeZoneId != null) {
       prop[ParameterType.timezoneId] = TextParameter.value(
         ParameterType.timezoneId.typeName ?? '',
@@ -1152,14 +1241,18 @@ class DateTimeProperty extends Property {
   }
 }
 
+/// Property that contains a duration value.
 class DurationProperty extends Property {
+  /// Creates a new duration property from the [definition].
   DurationProperty(String definition) : super(definition, ValueType.duration);
 
   /// `DURATION`
   static const String propertyName = 'DURATION';
 
+  /// The parsed duration.
   IsoDuration get duration => value as IsoDuration;
 
+  /// Creates a new duration property when [value] is not null.
   static DurationProperty? create(IsoDuration? value) {
     if (value == null) {
       return null;
@@ -1168,14 +1261,19 @@ class DurationProperty extends Property {
   }
 }
 
+/// Property that contains a period value.
 class PeriodProperty extends Property {
+  /// Creates a new period property from the [definition].
   PeriodProperty(String definition) : super(definition, ValueType.period);
   //static const String propertyNameFreeBusy = 'FREEBUSY';
 
+  /// The parsed period.
   Period get period => value as Period;
 }
 
+/// Property that contains a UTC offset value.
 class UtfOffsetProperty extends Property {
+  /// Creates a new UTC offset property from the [definition].
   UtfOffsetProperty(String definition) : super(definition, ValueType.utcOffset);
 
   /// `TZOFFSETFROM`
@@ -1184,8 +1282,10 @@ class UtfOffsetProperty extends Property {
   /// `TZOFFSETTO`
   static const String propertyNameTimezoneOffsetTo = 'TZOFFSETTO';
 
+  /// The parsed UTC offset.
   UtcOffset get offset => value as UtcOffset;
 
+  /// Creates a new UTC offset property when [value] is not null.
   static UtfOffsetProperty? create(String propertyName, UtcOffset? value) {
     if (value == null) {
       return null;
@@ -1194,7 +1294,9 @@ class UtfOffsetProperty extends Property {
   }
 }
 
+/// Property that defines free/busy times.
 class FreeBusyProperty extends Property {
+  /// Creates a new free/busy property from the [definition].
   FreeBusyProperty(String definition) : super(definition, ValueType.periodList);
 
   /// `FREEBUSY`
@@ -1207,22 +1309,26 @@ class FreeBusyProperty extends Property {
 
   /// Sets the type
   set freeBusyType(FreeBusyTimeType? value) => setOrRemoveParameter(
-        ParameterType.freeBusyTimeType,
-        FreeBusyTimeTypeParameter.create(
-          ParameterType.freeBusyTimeType.typeName ?? '',
-          value,
-        ),
-      );
+    ParameterType.freeBusyTimeType,
+    FreeBusyTimeTypeParameter.create(
+      ParameterType.freeBusyTimeType.typeName ?? '',
+      value,
+    ),
+  );
 
+  /// The parsed periods.
   List<Period> get periods => value as List<Period>;
 }
 
+/// Property that defines the priority of an event or to-do.
 class PriorityProperty extends IntegerProperty {
+  /// Creates a new priority property from the [definition].
   PriorityProperty(super.definition);
 
   /// `PRIORITY`
   static const String propertyName = 'PRIORITY';
 
+  /// The parsed [Priority].
   Priority get priority {
     final number = intValue;
     if (number == 0) {
@@ -1237,6 +1343,7 @@ class PriorityProperty extends IntegerProperty {
     return Priority.undefined;
   }
 
+  /// Creates a numeric priority property when [value] is not null.
   static PriorityProperty? createNumeric(int? value) {
     if (value == null) {
       return null;
@@ -1244,16 +1351,20 @@ class PriorityProperty extends IntegerProperty {
     return PriorityProperty('$propertyName:$value');
   }
 
+  /// Creates a priority property from the given [Priority] [value].
   static PriorityProperty? createPriority(Priority? value) =>
       createNumeric(value?.numericValue);
 }
 
+/// Property that defines the status of a component.
 class StatusProperty extends TextProperty {
+  /// Creates a new status property from the [definition].
   StatusProperty(super.definition);
 
   /// `STATUS`
   static const String propertyName = 'STATUS';
 
+  /// The parsed [EventStatus].
   EventStatus get eventStatus {
     final text = textValue;
     switch (text) {
@@ -1268,6 +1379,7 @@ class StatusProperty extends TextProperty {
     }
   }
 
+  /// The parsed [TodoStatus].
   TodoStatus get todoStatus {
     final text = textValue;
     switch (text) {
@@ -1284,6 +1396,7 @@ class StatusProperty extends TextProperty {
     }
   }
 
+  /// The parsed [JournalStatus].
   JournalStatus get journalStatus {
     final text = textValue;
     switch (text) {
@@ -1298,6 +1411,7 @@ class StatusProperty extends TextProperty {
     }
   }
 
+  /// Creates an event status property when [value] is valid.
   static StatusProperty? createEventStatus(EventStatus? value) {
     if (value == null || value == EventStatus.unknown) {
       return null;
@@ -1305,6 +1419,7 @@ class StatusProperty extends TextProperty {
     return StatusProperty('$propertyName:${value.name}');
   }
 
+  /// Creates a to-do status property when [value] is valid.
   static StatusProperty? createTodoStatus(TodoStatus? value) {
     if (value == null || value == TodoStatus.unknown) {
       return null;
@@ -1312,6 +1427,7 @@ class StatusProperty extends TextProperty {
     return StatusProperty('$propertyName:${value.name}');
   }
 
+  /// Creates a journal status property when [value] is valid.
   static StatusProperty? createJournalStatus(JournalStatus? value) {
     if (value == null || value == JournalStatus.unknown) {
       return null;
@@ -1320,8 +1436,10 @@ class StatusProperty extends TextProperty {
   }
 }
 
-/// This property defines whether or not an event is transparent to busy time searches.
+/// This property defines whether or not an event is transparent to
+/// busy time searches.
 class TimeTransparencyProperty extends TextProperty {
+  /// Creates a new time transparency property from the [definition].
   TimeTransparencyProperty(super.definition);
 
   /// `TRANSP`
@@ -1340,6 +1458,7 @@ class TimeTransparencyProperty extends TextProperty {
     }
   }
 
+  /// Creates a time transparency property when [value] is not null.
   static TimeTransparencyProperty? create(TimeTransparency? value) {
     if (value == null) {
       return null;
@@ -1348,9 +1467,11 @@ class TimeTransparencyProperty extends TextProperty {
   }
 }
 
+/// Property that defines recurrence dates.
 class RecurrenceDateProperty extends Property {
+  /// Creates a new recurrence date property from the [definition].
   RecurrenceDateProperty(String definition)
-      : super(definition, ValueType.typeDateTimeList);
+    : super(definition, ValueType.typeDateTimeList);
 
   /// `RDATE`
   static const String propertyNameRDate = 'RDATE';
@@ -1358,10 +1479,14 @@ class RecurrenceDateProperty extends Property {
   /// `EXDATE`
   static const String propertyNameExDate = 'EXDATE';
 
+  /// The parsed dates or durations.
   List<DateTimeOrDuration> get dates => value as List<DateTimeOrDuration>;
 
+  /// Creates a new recurrence date property when [value] is not null.
   static RecurrenceDateProperty? create(
-      String propertyName, List<DateTimeOrDuration>? value) {
+    String propertyName,
+    List<DateTimeOrDuration>? value,
+  ) {
     if (value == null) {
       return null;
     }
@@ -1383,12 +1508,15 @@ class TriggerProperty extends Property {
 
   /// Creates a new [TriggerProperty]
   TriggerProperty.dateTime(String definition)
-      : super(definition, ValueType.dateTime);
+    : super(definition, ValueType.dateTime);
 
   /// `TRIGGER`
   static const String propertyName = 'TRIGGER';
 
+  /// The parsed trigger duration, when a duration trigger is used.
   IsoDuration? get duration => value is IsoDuration ? value : null;
+
+  /// The parsed trigger date-time, when a fixed trigger is used.
   DateTime? get dateTime => value is DateTime ? value : null;
 
   /// Does the trigger relate to the start or the end of the enclosing VEvent?
@@ -1400,13 +1528,14 @@ class TriggerProperty extends Property {
 
   /// Sets the trigger relation
   set triggerRelation(AlarmTriggerRelationship? value) => setOrRemoveParameter(
-        ParameterType.alarmTriggerRelationship,
-        AlarmTriggerRelationshipParameter.create(
-          ParameterType.alarmTriggerRelationship.typeName ?? '',
-          value,
-        ),
-      );
+    ParameterType.alarmTriggerRelationship,
+    AlarmTriggerRelationshipParameter.create(
+      ParameterType.alarmTriggerRelationship.typeName ?? '',
+      value,
+    ),
+  );
 
+  /// Creates a trigger with a fixed date-time when [value] is not null.
   static TriggerProperty? createWithDateTime(
     DateTime? value, {
     AlarmTriggerRelationship? relation,
@@ -1417,19 +1546,22 @@ class TriggerProperty extends Property {
     final prop = TriggerProperty.dateTime(
       '$propertyName:${DateHelper.toDateTimeString(value)}',
     );
-    prop[ParameterType.value] =
-        ValueParameter.value('VALUE', ValueType.dateTime);
+    prop[ParameterType.value] = ValueParameter.value(
+      'VALUE',
+      ValueType.dateTime,
+    );
     if (relation != null) {
       prop[ParameterType.alarmTriggerRelationship] =
           AlarmTriggerRelationshipParameter.value(
-        ParameterType.alarmTriggerRelationship.typeName ?? '',
-        relation,
-      );
+            ParameterType.alarmTriggerRelationship.typeName ?? '',
+            relation,
+          );
     }
 
     return prop;
   }
 
+  /// Creates a trigger with a relative duration when [value] is not null.
   static TriggerProperty? createWithDuration(
     IsoDuration? value, {
     AlarmTriggerRelationship? relation,
@@ -1441,22 +1573,26 @@ class TriggerProperty extends Property {
     if (relation != null) {
       prop[ParameterType.alarmTriggerRelationship] =
           AlarmTriggerRelationshipParameter.value(
-        ParameterType.alarmTriggerRelationship.typeName ?? '',
-        relation,
-      );
+            ParameterType.alarmTriggerRelationship.typeName ?? '',
+            relation,
+          );
     }
 
     return prop;
   }
 }
 
+/// Property that defines the alarm action.
 class ActionProperty extends TextProperty {
+  /// Creates a new action property from the [definition].
   ActionProperty(super.definition);
 
   /// `ACTION`
   static const String propertyName = 'ACTION';
 
   AlarmAction? _action;
+
+  /// The parsed [AlarmAction].
   AlarmAction get action {
     var act = _action;
     if (act == null) {
@@ -1479,6 +1615,7 @@ class ActionProperty extends TextProperty {
     return act;
   }
 
+  /// Creates an action property when [value] is a standard action.
   static ActionProperty? createWithAction(AlarmAction? value) {
     if (value == null || value == AlarmAction.other) {
       return null;
@@ -1486,6 +1623,7 @@ class ActionProperty extends TextProperty {
     return ActionProperty('$propertyName:${value.name}');
   }
 
+  /// Creates an action property when [value] is not null.
   static ActionProperty? createWithActionText(String? value) {
     if (value == null) {
       return null;
@@ -1494,15 +1632,20 @@ class ActionProperty extends TextProperty {
   }
 }
 
+/// Property that stores a request status.
 class RequestStatusProperty extends TextProperty {
+  /// Creates a new request status property from the [definition].
   RequestStatusProperty(super.definition);
 
   /// `REQUEST-STATUS`
   static const String propertyName = 'REQUEST-STATUS';
 
-  //TODO consider extracting status code from text, compare https://datatracker.ietf.org/doc/html/rfc5545#section-3.8.4.5
+  //TODO consider extracting status code from text, compare
+  // https://datatracker.ietf.org/doc/html/rfc5545#section-3.8.4.5
+  /// The request status text.
   String get requestStatus => text;
 
+  /// Creates a new request status property when [value] is not null.
   static RequestStatusProperty? create(String? value) {
     if (value == null) {
       return null;
@@ -1511,16 +1654,24 @@ class RequestStatusProperty extends TextProperty {
   }
 }
 
+/// Property that defines the proprietary Microsoft busy status.
 class EventBusyStatusProperty extends Property {
+  /// Creates a new event busy status property from the [definition].
   EventBusyStatusProperty(String definition)
-      : super(definition, ValueType.other,
-            parser: (property, textValue) => _parse(textValue));
+    : super(
+        definition,
+        ValueType.other,
+        parser: (property, textValue) => _parse(textValue),
+      );
+
+  /// Creates a new event busy status property from the given [value].
   EventBusyStatusProperty.value(EventBusyStatus value)
-      : this('$propertyName:${value.name}');
+    : this('$propertyName:${value.name}');
 
   /// `X-MICROSOFT-CDO-BUSYSTATUS`
   static const String propertyName = 'X-MICROSOFT-CDO-BUSYSTATUS';
 
+  /// The parsed [EventBusyStatus].
   EventBusyStatus get eventBusyStatus => value as EventBusyStatus;
 
   static EventBusyStatus _parse(String textValue) {
@@ -1535,9 +1686,11 @@ class EventBusyStatusProperty extends Property {
         return EventBusyStatus.outOfOffice;
     }
     throw FormatException(
-        'Unable to parse value [$textValue] for X-MICROSOFT-CDO-BUSYSTATUS');
+      'Unable to parse value [$textValue] for X-MICROSOFT-CDO-BUSYSTATUS',
+    );
   }
 
+  /// Creates a new event busy status property when [value] is not null.
   static EventBusyStatusProperty? create(EventBusyStatus? value) {
     if (value == null) {
       return null;

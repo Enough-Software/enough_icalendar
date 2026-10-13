@@ -34,8 +34,9 @@ END:VCALENDAR
       expect(iCalendar.canReply, isTrue);
       final originalEvent = iCalendar.children.first as VEvent;
       final reply = iCalendar.replyWithParticipantStatus(
-          ParticipantStatus.accepted,
-          attendeeEmail: 'b@example.com');
+        ParticipantStatus.accepted,
+        attendeeEmail: 'b@example.com',
+      );
       reply.checkValidity();
       expect(reply.method, Method.reply);
       expect(reply.version, '2.0');
@@ -62,8 +63,10 @@ END:VCALENDAR
       expect(parsedEvent.organizer, originalEvent.organizer);
       expect(parsedEvent.attendees, isNotEmpty);
       expect(parsedEvent.attendees[0].email, 'b@example.com');
-      expect(parsedEvent.attendees[0].participantStatus,
-          ParticipantStatus.accepted);
+      expect(
+        parsedEvent.attendees[0].participantStatus,
+        ParticipantStatus.accepted,
+      );
       expect(parsedEvent.requestStatus, '2.0;Success');
       // print(reply);
     });
@@ -164,8 +167,10 @@ END:VCALENDAR
       event = iCalendar.children.first;
       expect(event, isA<VEvent>());
       expect((event as VEvent).sequence, 0);
-      expect(event.comment,
-          'This time works much better and I think the big conference room is too big');
+      expect(
+        event.comment,
+        'This time works much better and I think the big conference room is too big',
+      );
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
       expect(event.start, DateTime(1997, 07, 01, 16));
@@ -175,21 +180,25 @@ END:VCALENDAR
       //  "Organizer" sends a new event "REQUEST" with an incremented sequence
       //  number.
       final accepted = iCalendar.acceptCounter(
-          description:
-              'Discuss the Merits of the election results - changed to meet B\'s schedule');
+        description:
+            'Discuss the Merits of the election results - changed to meet B\'s schedule',
+      );
       event = accepted.event!;
       expect(accepted.method, Method.request);
       expect(event.sequence, 1);
       expect(event.status, EventStatus.confirmed);
       expect(event.attendees, isNotEmpty);
       expect(event.attendees.length, 3);
-      expect(event.description,
-          'Discuss the Merits of the election results - changed to meet B\'s schedule');
+      expect(
+        event.description,
+        'Discuss the Merits of the election results - changed to meet B\'s schedule',
+      );
 
       // Instead, "A" rejects "B's" counter proposal.
       final declined = iCalendar.declineCounter(
-          attendeeEmail: 'b@example.com',
-          comment: 'Sorry, I cannot change this meeting time');
+        attendeeEmail: 'b@example.com',
+        comment: 'Sorry, I cannot change this meeting time',
+      );
       expect(declined.method, Method.declineCounter);
       expect(declined.children, isNotEmpty);
       event = declined.children.first;
@@ -225,7 +234,7 @@ END:VCALENDAR
 ''';
 
       final original = VComponent.parse(input) as VCalendar;
-// "C" delegates the event to "E":
+      // "C" delegates the event to "E":
       // "C" responds to the "Organizer" "A":
       final delegationResult = original.delegate(
         fromEmail: 'c@example.com',
@@ -255,8 +264,9 @@ END:VCALENDAR
       final attendees = event.attendees;
       expect(attendees, isNotEmpty);
       expect(attendees.length, 4);
-      final from =
-          attendees.firstWhereOrNull((a) => a.email == 'c@example.com');
+      final from = attendees.firstWhereOrNull(
+        (a) => a.email == 'c@example.com',
+      );
       expect(from, isNotNull);
       expect(from!.participantStatus, ParticipantStatus.delegated);
       expect(from.email, 'c@example.com');
@@ -310,8 +320,9 @@ END:VCALENDAR
       expect((event as VEvent).sequence, 0);
       expect(event.requestStatusIsSuccess, isTrue);
       expect(event.attendees, isNotEmpty);
-      final delegatee =
-          event.attendees.firstWhereOrNull((a) => a.email == 'e@example.com');
+      final delegatee = event.attendees.firstWhereOrNull(
+        (a) => a.email == 'e@example.com',
+      );
       expect(delegatee, isNotNull);
 
       expect(delegatee!.participantStatus, ParticipantStatus.accepted);
@@ -319,8 +330,9 @@ END:VCALENDAR
       expect(delegatee.delegatedFrom, Uri.parse('mailto:c@example.com'));
       expect(delegatee.delegatedFromEmail, 'c@example.com');
       // Usually only the accepting participant is listed, so I am keeping this different from the example
-      final delegator =
-          event.attendees.firstWhereOrNull((a) => a.email == 'c@example.com');
+      final delegator = event.attendees.firstWhereOrNull(
+        (a) => a.email == 'c@example.com',
+      );
       expect(delegator, isNotNull);
 
       expect(delegator!.participantStatus, ParticipantStatus.delegated);
@@ -374,7 +386,9 @@ END:VCALENDAR
       expect(event.attendees[0].participantStatus, ParticipantStatus.declined);
       expect(event.attendees[0].email, 'e@example.com');
       expect(
-          event.attendees[0].delegatedFrom, Uri.parse('mailto:c@example.com'));
+        event.attendees[0].delegatedFrom,
+        Uri.parse('mailto:c@example.com'),
+      );
       expect(event.attendees[0].delegatedFromEmail, 'c@example.com');
       expect(event.attendees[1].participantStatus, ParticipantStatus.delegated);
       expect(event.attendees[1].email, 'c@example.com');
@@ -420,7 +434,9 @@ END:VCALENDAR
       expect((event as VEvent).sequence, 1);
       expect(event.status, EventStatus.cancelled);
       expect(
-          event.comment, 'Mr. B cannot attend.  It\'s raining.  Lets cancel.');
+        event.comment,
+        'Mr. B cannot attend.  It\'s raining.  Lets cancel.',
+      );
       // other properties are covered by components_test.dart
     });
 

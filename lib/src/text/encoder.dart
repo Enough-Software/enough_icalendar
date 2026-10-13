@@ -1,20 +1,27 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+
 import '../../enough_icalendar.dart';
 import 'l10n/de.dart';
-
 import 'l10n/l10n.dart';
 
 /// Supported languages
-enum SupportedLanguage { en, de }
+enum SupportedLanguage {
+  /// English.
+  en,
+
+  /// German.
+  de,
+}
 
 /// Encodes recurrence rules to human readable text.
 ///
 /// Compare [Recurrence.toHumanReadableText]
 class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
-
+  /// Creates a new encoder that uses the given [l10n].
   const RecurrenceRuleToTextEncoder(this.l10n);
+
   /// Retrieves the localozation for the specified supported [language]
   static RruleL10n getForLanguage(SupportedLanguage language) {
     switch (language) {
@@ -25,7 +32,8 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
     }
   }
 
-  /// Retrieves the localozation for the specified [languageCode], when supported.
+  /// Retrieves the localozation for the specified [languageCode],
+  /// when supported.
   ///
   /// By defaul the English localization is returned.
   static RruleL10n getForLanguageCode(String languageCode) {
@@ -35,12 +43,15 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
     return RruleL10nEn.create();
   }
 
+  /// The localization used to render human readable text.
   final RruleL10n l10n;
 
   @override
   String convert(Recurrence input, {DateTime? startDate}) {
-    final frequencyIntervalString =
-        l10n.frequencyInterval(input.frequency, input.interval);
+    final frequencyIntervalString = l10n.frequencyInterval(
+      input.frequency,
+      input.interval,
+    );
     final output = StringBuffer();
     if (startDate != null &&
         input.frequency == RecurrenceFrequency.weekly &&
@@ -70,8 +81,12 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
     }
 
     if (input.until != null) {
-      output.write(l10n.until(input.until!,
-          includeTime: input.frequency > RecurrenceFrequency.daily));
+      output.write(
+        l10n.until(
+          input.until!,
+          includeTime: input.frequency > RecurrenceFrequency.daily,
+        ),
+      );
     } else if (input.count != null) {
       output.write(l10n.count(input.count!));
     }
@@ -99,22 +114,27 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
       // byWeekDay, byMonthDays:
       //   on (Monday, Wednesday – Friday & Sunday | weekdays [& Sunday])
       //   that are also the 1st & 3rd-to-last – last day of the month
-      ..add(_formatByWeekDays(
-        input,
-        variant:
-            input.hasBySetPos ? InOnVariant.instanceOf : InOnVariant.simple,
-      ))
-      ..add(_formatByMonthDays(
-        input,
-        variant: input.hasByWeekDay
-            ? InOnVariant.also
-            : input.hasBySetPos
-                ? InOnVariant.instanceOf
-                : InOnVariant.simple,
-        combination: input.hasByWeekDay
-            ? ListCombination.disjunctive
-            : ListCombination.conjunctiveShort,
-      ));
+      ..add(
+        _formatByWeekDays(
+          input,
+          variant: input.hasBySetPos
+              ? InOnVariant.instanceOf
+              : InOnVariant.simple,
+        ),
+      )
+      ..add(
+        _formatByMonthDays(
+          input,
+          variant: input.hasByWeekDay
+              ? InOnVariant.also
+              : input.hasBySetPos
+              ? InOnVariant.instanceOf
+              : InOnVariant.simple,
+          combination: input.hasByWeekDay
+              ? ListCombination.disjunctive
+              : ListCombination.conjunctiveShort,
+        ),
+      );
   }
 
   void _convertWeekly(Recurrence input, StringBuffer output) {
@@ -125,11 +145,14 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
       ..add(_formatBySetPositions(input))
       // [byWeekDay]:
       //   [on (Monday, Wednesday – Friday & Sunday | a weekday [& Sunday])]
-      ..add(_formatByWeekDays(
-        input,
-        variant:
-            input.hasBySetPos ? InOnVariant.instanceOf : InOnVariant.simple,
-      ));
+      ..add(
+        _formatByWeekDays(
+          input,
+          variant: input.hasBySetPos
+              ? InOnVariant.instanceOf
+              : InOnVariant.simple,
+        ),
+      );
   }
 
   void _convertMonthly(Recurrence input, StringBuffer output) {
@@ -145,29 +168,34 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
       // byWeekDay, byMonthDays:
       //   on (Monday, Wednesday – Friday & Sunday | weekdays [& Sunday])
       //   that are also the 1st or 3rd-to-last – last day of the month
-      ..add(_formatByWeekDays(
-        input,
-        frequency: DaysOfWeekFrequency.monthly,
-        indicateFrequency: false,
-        variant:
-            input.hasBySetPos ? InOnVariant.instanceOf : InOnVariant.simple,
-      ))
-      ..add(_formatByMonthDays(
-        input,
-        daysOfVariant: (input.byWeekDay?.anyHasWeekNumber == true)
-            ? DaysOfVariant.dayAndFrequency
-            : input.byMonthDay?.any((d) => d < 0) ?? false
-                ? DaysOfVariant.day
-                : DaysOfVariant.simple,
-        variant: input.hasByWeekDay
-            ? InOnVariant.also
-            : input.hasBySetPos
-                ? InOnVariant.instanceOf
-                : InOnVariant.simple,
-        combination: input.hasByWeekDay
-            ? ListCombination.disjunctive
-            : ListCombination.conjunctiveShort,
-      ));
+      ..add(
+        _formatByWeekDays(
+          input,
+          frequency: DaysOfWeekFrequency.monthly,
+          indicateFrequency: false,
+          variant: input.hasBySetPos
+              ? InOnVariant.instanceOf
+              : InOnVariant.simple,
+        ),
+      )
+      ..add(
+        _formatByMonthDays(
+          input,
+          daysOfVariant: (input.byWeekDay?.anyHasWeekNumber == true)
+              ? DaysOfVariant.dayAndFrequency
+              : input.byMonthDay?.any((d) => d < 0) ?? false
+              ? DaysOfVariant.day
+              : DaysOfVariant.simple,
+          variant: input.hasByWeekDay
+              ? InOnVariant.also
+              : input.hasBySetPos
+              ? InOnVariant.instanceOf
+              : InOnVariant.simple,
+          combination: input.hasByWeekDay
+              ? ListCombination.disjunctive
+              : ListCombination.conjunctiveShort,
+        ),
+      );
   }
 
   void _convertYearly(Recurrence input, StringBuffer output) {
@@ -176,21 +204,20 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
     // Order of remaining by-attributes:
     // byWeekDay, byMonthDays, byYearDay, byWeek, byMonth
 
-    final firstVariant =
-        input.hasBySetPos ? InOnVariant.instanceOf : InOnVariant.simple;
+    final firstVariant = input.hasBySetPos
+        ? InOnVariant.instanceOf
+        : InOnVariant.simple;
 
     final startWithByWeekDays = input.hasByWeekDay;
     if (startWithByWeekDays) {
       final frequency = input.hasByYearDay || input.hasByMonthDay
           ? DaysOfWeekFrequency.yearly
           : input.hasByMonth
-              ? DaysOfWeekFrequency.monthly
-              : DaysOfWeekFrequency.yearly;
-      output.add(_formatByWeekDays(
-        input,
-        frequency: frequency,
-        variant: firstVariant,
-      ));
+          ? DaysOfWeekFrequency.monthly
+          : DaysOfWeekFrequency.yearly;
+      output.add(
+        _formatByWeekDays(input, frequency: frequency, variant: firstVariant),
+      );
     }
 
     final startWithByMonthDays = input.hasByMonthDay && !startWithByWeekDays;
@@ -204,7 +231,8 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
       output.add(_formatByYearDays(input, variant: firstVariant));
     }
 
-    final startWithByWeeks = input.hasByWeek &&
+    final startWithByWeeks =
+        input.hasByWeek &&
         !startWithByWeekDays &&
         !startWithByMonthDays &&
         !startWithByYearDays;
@@ -212,7 +240,8 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
       output.add(_formatByWeeks(input, variant: firstVariant));
     }
 
-    final startWithByMonths = input.hasByMonth &&
+    final startWithByMonths =
+        input.hasByMonth &&
         !startWithByWeekDays &&
         !startWithByMonthDays &&
         !startWithByYearDays &&
@@ -227,22 +256,21 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
         !input.hasByWeekDay && input.hasByMonthDay && !input.hasByYearDay;
 
     final appendByWeeksDirectly = daysOnlyByWeek && input.hasByWeek;
-    final appendByMonthsDirectly = (daysOnlyByWeek || daysOnlyByMonth) &&
+    final appendByMonthsDirectly =
+        (daysOnlyByWeek || daysOnlyByMonth) &&
         !input.hasByWeek &&
         input.hasByMonth;
 
     if (appendByWeeksDirectly) {
-      output.add(_formatByWeeks(
-        input,
-        combination: ListCombination.conjunctiveShort,
-      ));
+      output.add(
+        _formatByWeeks(input, combination: ListCombination.conjunctiveShort),
+      );
     }
     if (appendByMonthsDirectly) {
       assert(!appendByWeeksDirectly);
-      output.add(_formatByMonths(
-        input,
-        combination: ListCombination.conjunctiveShort,
-      ));
+      output.add(
+        _formatByMonths(input, combination: ListCombination.conjunctiveShort),
+      );
     }
 
     final limits = [
@@ -375,7 +403,9 @@ class RecurrenceRuleToTextEncoder extends Converter<Recurrence, String> {
 
 extension on StringBuffer {
   void add(Object? obj) {
-    if (obj == null) return;
+    if (obj == null) {
+      return;
+    }
 
     final text = obj is String ? obj : obj.toString();
     if (!text.startsWith(',')) {
@@ -403,7 +433,7 @@ extension on Iterable<int> {
     _ItemToString<int>? map,
     ListCombination combination = ListCombination.conjunctiveShort,
   }) {
-    assert(isNotEmpty);
+    assert(isNotEmpty, 'Cannot format an empty list of integers for user.');
 
     final raw = sortedForUser();
     final mapped = <String>[];
@@ -442,13 +472,15 @@ extension on Iterable<ByDayRule> {
     //   weekdays & every Sunday
     //   weekdays, every Saturday & Sunday
 
-    final raw = map((e) => e.weekday)
-        .sortedBy<num>((it) => (it - DateTime.monday) % DateTime.daysPerWeek);
+    final raw = map(
+      (e) => e.weekday,
+    ).sortedBy<num>((it) => (it - DateTime.monday) % DateTime.daysPerWeek);
 
     final mapped = <String>[];
 
     final containsAllWeekdays = l10n.weekdays.every(raw.contains);
-    final containsAllDays = containsAllWeekdays &&
+    final containsAllDays =
+        containsAllWeekdays &&
         {
           DateTime.monday,
           DateTime.tuesday,
@@ -456,7 +488,7 @@ extension on Iterable<ByDayRule> {
           DateTime.thursday,
           DateTime.friday,
           DateTime.saturday,
-          DateTime.sunday
+          DateTime.sunday,
         }.every(raw.contains);
     if (containsAllDays) {
       return l10n.everydayString;
@@ -477,20 +509,17 @@ extension on Iterable<ByDayRule> {
         current = raw[i];
       }
 
-      mapped._addIndividualOrCombined<int>(
-        l10n,
-        raw,
-        startIndex,
-        i,
-        (day, {isSingleItem = false}) {
-          var string = l10n.dayOfWeek(day);
-          if (addEveryPrefix && !addedEveryPrefix && day == startValue) {
-            string = '${l10n.everyXDaysOfWeekPrefix}$string';
-            addedEveryPrefix = true;
-          }
-          return string;
-        },
-      );
+      mapped._addIndividualOrCombined<int>(l10n, raw, startIndex, i, (
+        day, {
+        isSingleItem = false,
+      }) {
+        var string = l10n.dayOfWeek(day);
+        if (addEveryPrefix && !addedEveryPrefix && day == startValue) {
+          string = '${l10n.everyXDaysOfWeekPrefix}$string';
+          addedEveryPrefix = true;
+        }
+        return string;
+      });
     }
 
     return l10n.list(mapped, combination);
@@ -501,11 +530,10 @@ extension on Iterable<ByDayRule> {
     required bool addEveryPrefix,
     required int weekStart,
   }) {
-    final grouped = groupBy<ByDayRule, int?>(this, (e) => e.week)
-        .entries
+    final grouped = groupBy<ByDayRule, int?>(this, (e) => e.week).entries
         .sortedForUserGeneral(
-            key: (it) =>
-                it.value.first.hasWeekNumber ? it.value.first.week! : 0);
+          key: (it) => it.value.first.hasWeekNumber ? it.value.first.week! : 0,
+        );
 
     if (anyHasWeekNumber && map((it) => it.weekday).toSet().length == 1) {
       // Simplify this special case:
@@ -534,7 +562,9 @@ extension on Iterable<ByDayRule> {
 
     // If no inner (short) conjunction is used, we can simply use the short
     // variant instead of the long one.
-    final atMostOneWeekDayPerOccurrence = every((entry) => where((e) => e.week == entry.week).length == 1);
+    final atMostOneWeekDayPerOccurrence = every(
+      (entry) => where((e) => e.week == entry.week).length == 1,
+    );
 
     return l10n.list(
       strings,
@@ -553,7 +583,7 @@ extension on List<String> {
     int endIndex,
     _ItemToString<T> map,
   ) {
-    assert(startIndex <= endIndex);
+    assert(startIndex <= endIndex, 'startIndex must be <= endIndex');
 
     switch (endIndex - startIndex) {
       case 0:
@@ -564,8 +594,12 @@ extension on List<String> {
         add(map(source[endIndex], isSingleItem: true));
         return;
       default:
-        add(l10n.range(map(source[startIndex], isSingleItem: false),
-            map(source[endIndex], isSingleItem: false)));
+        add(
+          l10n.range(
+            map(source[startIndex], isSingleItem: false),
+            map(source[endIndex], isSingleItem: false),
+          ),
+        );
         return;
     }
   }

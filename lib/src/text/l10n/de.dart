@@ -1,11 +1,14 @@
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+
 import '../../types.dart';
 import 'l10n.dart';
 
+/// German localization for recurrence rules.
 class RruleL10nDe extends RruleL10n {
   const RruleL10nDe._();
 
+  /// Creates a new German localization, initializing date formatting first.
   static RruleL10nDe create() {
     initializeDateFormatting('de');
     return const RruleL10nDe._();
@@ -58,14 +61,21 @@ class RruleL10nDe extends RruleL10n {
       }
     }
 
-    final weekdayName =
-        formatWithIntl(() => DateFormat.EEEE().format(startDate));
+    final weekdayName = formatWithIntl(
+      () => DateFormat.EEEE().format(startDate),
+    );
     return plurals(one: 'Jeden $weekdayName', singular: weekdayName);
   }
 
   @override
-  String until(DateTime until, {bool includeTime = false}) =>
-      ', bis zum ${formatWithIntl(() => includeTime ? DateFormat.yMMMMEEEEd().add_jms().format(until) : DateFormat.yMMMMEEEEd().format(until))}';
+  String until(DateTime until, {bool includeTime = false}) {
+    final formatted = formatWithIntl(
+      () => includeTime
+          ? DateFormat.yMMMMEEEEd().add_jms().format(until)
+          : DateFormat.yMMMMEEEEd().format(until),
+    );
+    return ', bis zum $formatted';
+  }
 
   @override
   String count(int count) {
@@ -116,14 +126,19 @@ class RruleL10nDe extends RruleL10n {
     DaysOfWeekFrequency? frequency = DaysOfWeekFrequency.monthly,
     InOnVariant variant = InOnVariant.simple,
   }) {
-    // print(
-    //     'onDaysOfWeek: days=$days, indicateFreq=$indicateFrequency, freq=$frequency');
-    assert(variant != InOnVariant.also);
+    // print('onDaysOfWeek: days=$days, indicateFreq=$indicateFrequency, '
+    //     'freq=$frequency');
+    assert(
+      variant != InOnVariant.also,
+      'variant=also is not supported for onDaysOfWeek',
+    );
 
-    final frequencyString =
-        frequency == DaysOfWeekFrequency.monthly ? 'Monats' : 'Jahres';
+    final frequencyString = frequency == DaysOfWeekFrequency.monthly
+        ? 'Monats'
+        : 'Jahres';
     final suffix = indicateFrequency ? ' des $frequencyString' : '';
-    return '${_onVariant(variant, useDativ: !days.contains('em '))} $days$suffix';
+    final variantText = _onVariant(variant, useDativ: !days.contains('em '));
+    return '$variantText $days$suffix';
   }
 
   @override
@@ -136,7 +151,9 @@ class RruleL10nDe extends RruleL10n {
   String get everyXDaysOfWeekPrefix => 'jedem ';
   @override
   String nthDaysOfWeek(Iterable<int> occurrences, String daysOfWeek) {
-    if (occurrences.isEmpty) return daysOfWeek;
+    if (occurrences.isEmpty) {
+      return daysOfWeek;
+    }
 
     final ordinals = list(
       occurrences.map(ordinal).toList(),
@@ -171,8 +188,7 @@ class RruleL10nDe extends RruleL10n {
   String onDaysOfYear(
     String days, {
     InOnVariant variant = InOnVariant.simple,
-  }) =>
-      '${_onVariant(variant)} dem $days Tag des Jahres';
+  }) => '${_onVariant(variant)} dem $days Tag des Jahres';
 
   String _onVariant(InOnVariant variant, {bool useDativ = false}) {
     switch (variant) {
@@ -208,10 +224,16 @@ class RruleL10nDe extends RruleL10n {
 
   @override
   String ordinal(int number, {bool isSingleItem = true}) {
-    assert(number != 0);
-    if (number == -1) return 'letzten';
-    if (number == -2) return 'vorletzten';
-    if (number == -3) return 'drittletzten';
+    assert(number != 0, 'Ordinal number must not be zero');
+    if (number == -1) {
+      return 'letzten';
+    }
+    if (number == -2) {
+      return 'vorletzten';
+    }
+    if (number == -3) {
+      return 'drittletzten';
+    }
 
     final n = number.abs();
     String string;

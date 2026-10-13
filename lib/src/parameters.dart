@@ -30,10 +30,7 @@ abstract class Parameter<T> {
     final textValue = definition.substring(splitIndex + 1);
     switch (name) {
       case 'ALTREP':
-        return UriParameter(
-          name,
-          textValue,
-        );
+        return UriParameter(name, textValue);
       case 'CN':
         return TextParameter(name, textValue);
       case 'CUTYPE':
@@ -49,10 +46,7 @@ abstract class Parameter<T> {
       case 'FMTTYPE':
         return TextParameter(name, textValue);
       case 'FBTYPE':
-        return FreeBusyTimeTypeParameter(
-          name,
-          textValue,
-        );
+        return FreeBusyTimeTypeParameter(name, textValue);
       case 'LANGUAGE':
         return TextParameter(name, textValue);
       case 'MEMBER':
@@ -90,7 +84,7 @@ abstract class Parameter<T> {
 class UriParameter extends Parameter<Uri> {
   /// Creates a new [UriParameter]
   UriParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [UriParameter]
   UriParameter.value(String name, Uri value) : super(name, '"$value"', value);
@@ -125,11 +119,11 @@ class UriParameter extends Parameter<Uri> {
 class UriListParameter extends Parameter<List<Uri>> {
   /// Creates a new [UriListParameter]
   UriListParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [UriListParameter]
   UriListParameter.value(String name, List<Uri> value)
-      : super(name, renderUris(value), value);
+    : super(name, renderUris(value), value);
 
   /// Retrieves the value as Uri
   List<Uri> get uris => value;
@@ -193,11 +187,11 @@ class UriListParameter extends Parameter<List<Uri>> {
 class TextParameter extends Parameter<String> {
   /// Creates a new [TextParameter]
   TextParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [TextParameter]
   TextParameter.value(String name, String value)
-      : super(name, _convertToSafeText(value), value);
+    : super(name, _convertToSafeText(value), value);
 
   /// Retrieves the text
   String get text => value;
@@ -233,12 +227,12 @@ class TextParameter extends Parameter<String> {
 class BooleanParameter extends Parameter<bool> {
   /// Creates a new [BooleanParameter]
   BooleanParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [BooleanParameter]
   // ignore: avoid_positional_boolean_parameters
   BooleanParameter.value(String name, bool value)
-      : super(name, value ? 'TRUE' : 'FALSE', value);
+    : super(name, value ? 'TRUE' : 'FALSE', value);
 
   /// Retrieves the value
   bool get boolValue => value;
@@ -262,11 +256,11 @@ class BooleanParameter extends Parameter<bool> {
 class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
   /// Creates a new [CalendarUserTypeParameter]
   CalendarUserTypeParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [CalendarUserTypeParameter]
   CalendarUserTypeParameter.value(String name, CalendarUserType value)
-      : super(name, value.typeName ?? '', value);
+    : super(name, value.typeName ?? '', value);
 
   /// Parses the given [textValue]
   static CalendarUserType parse(String textValue) {
@@ -303,11 +297,11 @@ class CalendarUserTypeParameter extends Parameter<CalendarUserType> {
 class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
   /// Creates a new [FreeBusyTimeTypeParameter]
   FreeBusyTimeTypeParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [FreeBusyTimeTypeParameter]
   FreeBusyTimeTypeParameter.value(String name, FreeBusyTimeType value)
-      : super(name, value.typeName ?? '', value);
+    : super(name, value.typeName ?? '', value);
 
   /// Gets the value
   FreeBusyTimeType get timeType => value;
@@ -345,15 +339,11 @@ class FreeBusyTimeTypeParameter extends Parameter<FreeBusyTimeType> {
 class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
   /// Creates a new [ParticipantStatusParameter]
   ParticipantStatusParameter(String name, String textValue)
-      : super(
-          name,
-          textValue,
-          parse(textValue),
-        );
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [ParticipantStatusParameter]
   ParticipantStatusParameter.value(String name, ParticipantStatus status)
-      : super(name, status.typeName ?? '', status);
+    : super(name, status.typeName ?? '', status);
 
   /// Retrieves the value
   ParticipantStatus get status => value;
@@ -411,11 +401,11 @@ class ParticipantStatusParameter extends Parameter<ParticipantStatus> {
 class RangeParameter extends Parameter<Range> {
   /// Creates a new [RangeParameter]
   RangeParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [RangeParameter]
   RangeParameter.value(String name, Range range)
-      : super(name, range.name, range);
+    : super(name, range.name, range);
 
   /// Retrieves the range
   Range get range => value;
@@ -451,7 +441,7 @@ class AlarmTriggerRelationshipParameter
     extends Parameter<AlarmTriggerRelationship> {
   /// Creates a new [AlarmTriggerRelationshipParameter]
   AlarmTriggerRelationshipParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [AlarmTriggerRelationshipParameter]
   AlarmTriggerRelationshipParameter.value(
@@ -491,11 +481,11 @@ class AlarmTriggerRelationshipParameter
 class RelationshipParameter extends Parameter<Relationship> {
   /// Creates a new [RelationshipParameter]
   RelationshipParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [RelationshipParameter]
   RelationshipParameter.value(String name, Relationship relationship)
-      : super(name, relationship.typeName ?? '', relationship);
+    : super(name, relationship.typeName ?? '', relationship);
 
   /// Gets the value
   Relationship get relationship => value;
@@ -528,11 +518,11 @@ class RelationshipParameter extends Parameter<Relationship> {
 class ParticipantRoleParameter extends Parameter<Role> {
   /// Creates a new [ParticipantRoleParameter]
   ParticipantRoleParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [ParticipantRoleParameter]
   ParticipantRoleParameter.value(String name, Role role)
-      : super(name, role.typeName ?? '', role);
+    : super(name, role.typeName ?? '', role);
 
   /// Gets the value
   Role get role => value;
@@ -569,11 +559,11 @@ class ParticipantRoleParameter extends Parameter<Role> {
 class ValueParameter extends Parameter<ValueType> {
   /// Creates a new [ValueParameter]
   ValueParameter(String name, String textValue)
-      : super(name, textValue, parse(textValue));
+    : super(name, textValue, parse(textValue));
 
   /// Creates a new [ValueParameter]
   ValueParameter.value(String name, ValueType type)
-      : super(name, type.typeName ?? '', type);
+    : super(name, type.typeName ?? '', type);
 
   /// Retrieves the value type
   ValueType get valueType => value;
@@ -647,7 +637,8 @@ enum ParameterType {
   /// `ENCODING` inline encoding [TextParameter]
   encoding,
 
-  /// `FMTTYPE` format type / media type / mime type, e.g. `text/plain` or `image/png`  [TextParameter]
+  /// `FMTTYPE` format type / media type / mime type, e.g. `text/plain` or
+  /// `image/png`  [TextParameter]
   formatType,
 
   /// `FBTYPE` free busy time type [FreeBusyTimeTypeParameter]
